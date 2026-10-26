@@ -15,6 +15,8 @@ The initial objective is a language model with roughly 100 million parameters. T
 <dd>11,697.79 valid diagnostic tokens/s over 1,024 measured steps.<br><a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/#the-bounded-benchmark">Benchmark results</a></dd>
 <dt>120-hour program</dt>
 <dd>A bounded planning experiment defined, with proposed evaluation targets, baseline comparisons and deadline safeguards. These are plans, not measured outcomes.<br><a href="/model-training-journal/2026/10/26/autonomous-mission-and-120-hour-budget/">The 120-hour plan</a> · 26 Oct 2026</dd>
+<dt>Deadline guard</dt>
+<dd>Eight Linux guard tests passed. A separate bounded job saved a dummy checkpoint and exited after a checkpoint request; behavioral evaluation remained unrun.<br><a href="/model-training-journal/2026/10/26/deadline-guard-and-frozen-evaluation/">Guard verification and evaluation preparation</a> · 26 Oct 2026</dd>
 </dl>
 
 ## What those results establish
