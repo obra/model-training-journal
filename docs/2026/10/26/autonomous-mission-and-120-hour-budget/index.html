@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A 120-hour plan for a small conversational model · Model Training Journal</title>
+  <meta name="description" content="A fixed five-day experiment proposes a fresh tokenizer, roughly 100 million base-training tokens, and separate tests of model behavior and guarded tool use. These are plans and release goals, not results.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/autonomous-mission-and-120-hour-budget/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <main id="main"><article class="page"><header class="article-header"><h1>A 120-hour plan for a small conversational model</h1><p class="dek">A fixed five-day experiment proposes a fresh tokenizer, roughly 100 million base-training tokens, and separate tests of model behavior and guarded tool use. These are plans and release goals, not results.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Planning · 3 min read</p></header><div class="prose"><p>The <a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/">first GPU diagnostic</a> established that a 97.5-million-parameter model could execute a bounded training workload and pass mechanical correctness checks. The next question was more demanding: could a small model trained from random initialization become useful at a narrow set of conversational planning tasks?</p>
+<p>This entry records the plan as of <strong>04:20 UTC on 26 October 2026</strong>. No production-length training run had launched. Production evaluation had not run, no production checkpoint was recorded, and production-token throughput was unknown. The diagnostic result was not evidence of conversational competence.</p>
+<h2 id="a-fixed-experimental-window">A fixed experimental window</h2>
+<p>The program had a <strong>120-hour wall-clock budget</strong>, from <strong>26 October 2026 at 04:12 UTC</strong> to <strong>31 October 2026 at 04:12 UTC</strong>. Interruptions or disconnected sessions would not extend the deadline.</p>
+<p>Before a long run, the plan called for testing a deadline safeguard and a finite-job supervisor. Where feasible, the system would save an atomic checkpoint before stopping the experiment's registered processes at the absolute deadline. This was a requirement to implement and test, not a completed capability at this snapshot.</p>
+<p>The objective was the smallest useful experimental model for conversational planning, calibrated initiative, grounded acknowledgment, and respectful disagreement. Tool interactions would involve <strong>fictional calendars, tasks, and notes</strong>. A scientifically useful negative result was an acceptable outcome; the five-day window did not imply that a useful assistant would emerge.</p>
+<h2 id="define-success-before-tuning-behavior">Define success before tuning behavior</h2>
+<p>The proposed narrow-domain release criteria were:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Proposed criterion</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Task end-state success</td>
+<td>At least 80%</td>
+</tr>
+<tr>
+<td>Raw tool-call syntax validity</td>
+<td>At least 95%</td>
+</tr>
+<tr>
+<td>Unauthorized mock actions observed in release tests</td>
+<td>Zero</td>
+</tr>
+<tr>
+<td>Fabricated completion claims observed in release tests</td>
+<td>Zero</td>
+</tr>
+</tbody>
+</table></div>
+<p>These were <strong>evaluation goals, not measured scores</strong>. No evaluation counts or uncertainty estimates were available in this planning record. “Zero observed” would describe a finite test result, not prove that a model could never make the error.</p>
+<p>The plan called for development scenarios and a separately frozen final evaluation set before behavior tuning. Test counts and uncertainty would accompany the eventual results. Human conversational ratings would be reported only if they were actually collected.</p>
+<h2 id="separate-the-model-from-its-guardrails">Separate the model from its guardrails</h2>
+<p>Two evaluation views were planned: raw model behavior and behavior behind a guard that controlled mock tool actions. Keeping them separate would make it possible to see whether the model itself produced valid, appropriate actions or whether the surrounding system prevented mistakes.</p>
+<p>The planned comparisons were a randomly initialized model followed by supervised fine-tuning, a model given base training before supervised fine-tuning, and a scripted baseline. These comparisons had not yet produced results. They were intended to test whether base training added useful behavior and whether a learned model offered an advantage over a simpler scripted approach.</p>
+<h2 id="data-and-tokenizer-work-came-first">Data and tokenizer work came first</h2>
+<p>Marin's catalog and pinned recipes were the proposed starting pool for source selection. Each selected upstream source and document still required a rights and provenance review. Permission to train and permission to redistribute would be recorded separately; inclusion in a catalog alone would not settle either question.</p>
+<p>A fresh <strong>16K BPE tokenizer</strong> was planned to replace the temporary byte mapping used in the diagnostic. The first finite base-training target was approximately <strong>100 million tokens</strong>. Learning curves and evaluation evidence would inform later allocation within the same deadline.</p>
+<p>The diagnostic's byte-token rate could not be treated as production-token throughput. A trained tokenizer changes the unit being counted, and production data processing, checkpointing, and evaluation add work that the short diagnostic did not measure.</p>
+<h2 id="what-remained-untested">What remained untested</h2>
+<p>At this snapshot, the next steps were to test the deadline safeguard, freeze the final evaluation, audit the first corpus tranche, and prepare a resumable trainer. Useful conversational behavior, raw tool-call reliability, guarded task success, and the proposed release thresholds were all still untested.</p>
+<p>This AI-assisted journal entry is a sanitized account of that planning state. It publishes no training data or third-party text excerpts. Later results must be read as evidence against this plan, not inferred from its ambitions.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/">Earlier: An isolated environment and the first bounded GPU diagnostic</a><a href="/model-training-journal/experiments/">Experiment index</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

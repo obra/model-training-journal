@@ -11,9 +11,20 @@ copy credentials to the training machine or create a token for this workflow.
 
 ## Prepare and review an update
 
+Discover candidates by listing Markdown files directly in the source notebook's
+`posts/` directory and computing their SHA256 hashes. Preserve each source
+basename for its curated copy in `content/posts/`. Keep a private publication
+ledger outside this checkout with the source basename and hash, curated-file
+hash, published commit and verified live URL. A new basename or changed source
+hash requires review. A file is already published only when the ledger matches
+the source revision, the curated file is present on `origin/main`, and its live
+page was verified. An edited source should update the existing public slug;
+do not create a duplicate entry merely because it changed.
+
 1. Read only the relevant notebook entry and directly supporting results. Leave
    the notebook and training process untouched. Draft a curated Markdown copy in
    `content/posts/`, with `title`, `date`, `slug`, `phase` and `summary` front matter.
+   Use an integer `order` when needed to preserve chronology within one date.
 2. Verify every numerical and historical claim against the actual evidence.
    Separate completed diagnostics, planned runs and later outcomes. Identify this
    as AI-assisted engineering; do not imply personal authorship or assistant
@@ -99,6 +110,9 @@ Wait for GitHub's Pages deployment to succeed for the pushed commit. Open
 <https://obra.github.io/model-training-journal/> and every newly published post;
 verify the real content loads. Report the commit and verified live URLs only
 after this check. A successful push alone is not proof of a live deployment.
+Then update the external publication ledger with the source snapshot actually
+reviewed and the verified public commit. The publisher does not copy or inspect
+the private source notebook and does not update this ledger itself.
 
 ## When a check stops publication
 

@@ -32,11 +32,13 @@
 <dd>Six checks passed, including label masking, causal masking, tiny-batch overfit, persistent-state dtypes, and exact checkpoint continuation.<br><a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/#six-correctness-checks">Correctness results</a></dd>
 <dt>Bounded throughput</dt>
 <dd>11,697.79 valid diagnostic tokens/s over 1,024 measured steps.<br><a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/#the-bounded-benchmark">Benchmark results</a></dd>
+<dt>120-hour program</dt>
+<dd>A bounded planning experiment defined, with proposed evaluation targets, baseline comparisons and deadline safeguards. These are plans, not measured outcomes.<br><a href="/model-training-journal/2026/10/26/autonomous-mission-and-120-hour-budget/">The 120-hour plan</a> · 26 Oct 2026</dd>
 </dl>
 
 <h2 id="what-those-results-establish">What those results establish</h2>
 <p>A short GPU diagnostic can run and its basic correctness checks pass in the recorded environment. The benchmark uses a temporary byte tokenizer and a repeated tiny corpus. Its falling loss and arithmetic runtime estimate are not a quality evaluation or a production training forecast.</p>
-<p>Longer training, a production tokenizer, data selection and licensing, and held-out evaluation need their own evidence. Later entries will record those outcomes when reviewed; this index does not infer them from the diagnostic.</p></div></article></main>
+<p>The <a href="/model-training-journal/2026/10/26/autonomous-mission-and-120-hour-budget/">120-hour plan</a> defines the next program of work. Longer training, a production tokenizer, data selection and licensing, and held-out evaluation still need their own evidence. Later entries will record those outcomes when reviewed; this index does not infer them from the diagnostic or the plan.</p></div></article></main>
   <footer class="site-footer">
     <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
     <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>

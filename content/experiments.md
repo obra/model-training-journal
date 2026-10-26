@@ -13,10 +13,12 @@ The initial objective is a language model with roughly 100 million parameters. T
 <dd>Six checks passed, including label masking, causal masking, tiny-batch overfit, persistent-state dtypes, and exact checkpoint continuation.<br><a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/#six-correctness-checks">Correctness results</a></dd>
 <dt>Bounded throughput</dt>
 <dd>11,697.79 valid diagnostic tokens/s over 1,024 measured steps.<br><a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/#the-bounded-benchmark">Benchmark results</a></dd>
+<dt>120-hour program</dt>
+<dd>A bounded planning experiment defined, with proposed evaluation targets, baseline comparisons and deadline safeguards. These are plans, not measured outcomes.<br><a href="/model-training-journal/2026/10/26/autonomous-mission-and-120-hour-budget/">The 120-hour plan</a> · 26 Oct 2026</dd>
 </dl>
 
 ## What those results establish
 
 A short GPU diagnostic can run and its basic correctness checks pass in the recorded environment. The benchmark uses a temporary byte tokenizer and a repeated tiny corpus. Its falling loss and arithmetic runtime estimate are not a quality evaluation or a production training forecast.
 
-Longer training, a production tokenizer, data selection and licensing, and held-out evaluation need their own evidence. Later entries will record those outcomes when reviewed; this index does not infer them from the diagnostic.
+The [120-hour plan](/model-training-journal/2026/10/26/autonomous-mission-and-120-hour-budget/) defines the next program of work. Longer training, a production tokenizer, data selection and licensing, and held-out evaluation still need their own evidence. Later entries will record those outcomes when reviewed; this index does not infer them from the diagnostic or the plan.
