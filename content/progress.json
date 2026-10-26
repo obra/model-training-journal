@@ -2,11 +2,11 @@
   "schema": 1,
   "model_parameters": 97536768,
   "initialization": "from scratch",
-  "experiment_state": "Failure-reflection diagnostic: preparing. Diversity study complete; no broader training run started.",
+  "experiment_state": "Corpus rights and provenance review. Three candidate files inspected; zero records admitted. Broader training not started.",
   "latest_result": {
-    "summary": "New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.",
-    "url": "/model-training-journal/current-plan/#latest-completed-evaluation-slice"
+    "summary": "Three selected failures persisted under rechecking and procedural hints. Small language probes remained unreliable.",
+    "url": "/model-training-journal/current-plan/#reflection-and-correction-results"
   },
-  "verified_at_utc": "2026-10-26T16:43:16Z",
+  "verified_at_utc": "2026-10-26T17:07:16Z",
   "deadline_utc": "2026-10-31T04:12:00Z"
 }

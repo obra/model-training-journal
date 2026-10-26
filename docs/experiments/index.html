@@ -22,14 +22,14 @@
       <a href="/model-training-journal/about/">About</a>
     </nav>
   </header>
-  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:43:16Z" data-deadline="2026-10-31T04:12:00Z">
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T17:07:16Z" data-deadline="2026-10-31T04:12:00Z">
   <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
   <dl class="progress-facts">
-    <div class="progress-state"><dt>Experiment state</dt><dd>Failure-reflection diagnostic: preparing. Diversity study complete; no broader training run started.</dd></div>
-    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
-    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 28m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+    <div class="progress-state"><dt>Experiment state</dt><dd>Corpus rights and provenance review. Three candidate files inspected; zero records admitted. Broader training not started.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#reflection-and-correction-results">Three selected failures persisted under rechecking and procedural hints. Small language probes remained unreliable.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 4m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
   </dl>
-  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:43:16Z">26 Oct 2026, 16:43:16 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T17:07:16Z">26 Oct 2026, 17:07:16 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
 </section>
   <main id="main"><article class="page"><h1>Experiment index</h1><div class="prose"><p>The experiment record in chronological order. Each entry describes its own dated evidence; the current plan links the latest reviewed state.</p>
 <p>Read the <a href="/model-training-journal/current-plan/">current plan and status</a> for the active hypothesis, latest evaluation snapshot, next decision, and fixed deadline. No planning checkpoint has been promoted.</p>
@@ -106,6 +106,8 @@
 <dd><a href="/model-training-journal/2026/10/26/diversity-versus-repetition/">Testing more distinct examples at matched training exposure</a><br>A new study matches realized assistant-label exposure while varying repair-anchor diversity. Both finite training arms finish; evaluation remains a separate decision gate. · 26 Oct 2026</dd>
 <dt>Results</dt>
 <dd><a href="/model-training-journal/2026/10/26/diversity-results-and-language-limits/">More distinct supervision did not produce a better planning assistant</a><br>The completed diversity study does not justify promoting either checkpoint. Reused development gains coexist with poorer new-set outcomes, training fit, and retained calendar behavior. · 26 Oct 2026</dd>
+<dt>Planning</dt>
+<dd><a href="/model-training-journal/2026/10/26/reflection-then-broader-pretraining/">Reflect on saved failures, then test broader pretraining</a><br>A bounded reflection diagnostic and matched correction checks precede a conditional broader-pretraining comparison. This entry preserves the preparation stage; later measurements appear in the current plan. · 26 Oct 2026</dd>
 </dl>
 
 <h2 id="how-to-read-the-measurements">How to read the measurements</h2>

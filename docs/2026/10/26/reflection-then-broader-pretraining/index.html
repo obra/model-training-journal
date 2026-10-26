@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reflect on saved failures, then test broader pretraining · Model Training Journal</title>
+  <meta name="description" content="A bounded reflection diagnostic will test possible repairs to three saved failures before a conditional comparison of broader base training. Neither intervention has results at this planning milestone.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/reflection-then-broader-pretraining/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T17:07:16Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Corpus rights and provenance review. Three candidate files inspected; zero records admitted. Broader training not started.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#reflection-and-correction-results">Three selected failures persisted under rechecking and procedural hints. Small language probes remained unreliable.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 4m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T17:07:16Z">26 Oct 2026, 17:07:16 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>Reflect on saved failures, then test broader pretraining</h1><p class="dek">A bounded reflection diagnostic will test possible repairs to three saved failures before a conditional comparison of broader base training. Neither intervention has results at this planning milestone.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Planning · 3 min read</p></header><div class="prose"><p>After the <a href="/model-training-journal/2026/10/26/diversity-results-and-language-limits/">completed diversity study</a>, the next sequence recorded on <strong>26 October 2026</strong> was a short failure-reflection diagnostic followed by a broader-pretraining comparison. At this entry, the prior evaluation queue was complete and the reflection implementation was being checked. No reflection result, broader download, or additional pretraining run was yet claimed.</p>
+<p>The sequence tests two different possibilities: whether explicit feedback and instructions can repair selected failures, and whether a broader language foundation can improve later supervised behavior. Neither is a promise that the model will become a useful assistant.</p>
+<h2 id="three-saved-failures-with-controlled-feedback">Three saved failures, with controlled feedback</h2>
+<p>The initial diagnostic selects three observed mistakes: updating the wrong task, suggesting a 20-minute interval when 35 minutes were requested after permission withdrawal, and claiming completion without a write.</p>
+<p>Each reflection will preserve the history actually delivered to the model, including tool results. Later corrections that were never delivered during the failed rollout remain hidden. When a reflection prompt identifies an error, that feedback is additional supplied information; the model has not independently discovered it.</p>
+<p>The model will be asked why its answer might be wrong and what information or instruction could help. Its explanation may be incoherent or a plausible rationalization. An explanation alone is not evidence of the internal cause of the mistake, and unsupported rationalizations will not become training targets.</p>
+<p>The three short reflections will be followed by bounded checks on the same cases: the original baseline, generic rechecking, independent procedural instructions, and model-suggested changes only when the model supplies a coherent, actionable suggestion. Raw output, protocol validity, correct requested outcomes, and unsupported completion claims will be recorded separately.</p>
+<p>An intervention that supplies the answer is a correction test. Success there would not establish transfer to fresh cases. Fresh evaluations and the final holdout remain reserved. The combined initial diagnostic has a <strong>900-second guarded budget and no training step</strong>.</p>
+<h2 id="preserve-the-original-base-as-a-control">Preserve the original base as a control</h2>
+<p>The next proposed training comparison keeps the <strong>97.5M-parameter architecture</strong>. It would compare the preserved base trained on 100M token exposures with a separate continuation on <strong>up to 200M additional token exposures</strong> of broader, audited text. Both base checkpoints would then receive identical conversational supervision and fixed task evaluation.</p>
+<p>This preserves a reference for the complete continuation intervention. The existing failures do not distinguish a parameter-capacity ceiling from weak language pretraining, limited source diversity, curriculum gaps, or optimization. No 1B-parameter run is selected.</p>
+<h2 id="audit-the-corpus-before-admitting-it">Audit the corpus before admitting it</h2>
+<p>The original 100M exposures came from about <strong>26.91M unique corpus tokens</strong>. Repeating that text would not create a broader corpus.</p>
+<p>The bounded first audit proposes Taskmaster Wizard-of-Oz dialogue for independently sourced language validation only, plus a DOAB book shard and a Hansard shard for possible training. Actual record rights, attribution, provenance, separation between source families, overlap, and eligible token yield must be checked before admission. Metadata describing a candidate is not blanket redistribution or training permission. No candidate records had entered training at this milestone.</p>
+<p>A full 200M continuation calls for at least <strong>100M eligible new unique tokens</strong>, with at most two passes per document. Lower audited yield must reduce the run or leave a documented data bottleneck. The ceiling is conditional, not a commitment to fill a token budget regardless of source quality or rights.</p>
+<p>The small base-language probe was frozen but unmeasured at this entry. The separate single-fact acquisition study remained a proposal. The fixed project stop remained <strong>31 October 2026 at 04:12 UTC</strong>.</p>
+<p>See the <a href="/model-training-journal/current-plan/">dated current plan</a> for subsequent measured results and decisions. This AI-assisted account preserves the preparation-stage notebook record; private messages, runtime details, raw transcripts, and candidate source text are excluded.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/diversity-results-and-language-limits/">Earlier: More distinct supervision did not produce a better planning assistant</a><a href="/model-training-journal/experiments/">Experiment index</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>
