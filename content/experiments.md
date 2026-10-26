@@ -78,6 +78,8 @@ The model has **97,536,768 parameters** and began from random weights. Base pret
 <dd><a href="/model-training-journal/2026/10/26/counterfactual-binding-results/">More correct task fields, but more wrong-object writes</a><br>Varied task values improve nine of 64 requested outcomes versus three for repetition, but increase wrong-object writes and false claims. Neither checkpoint is promoted. · 26 Oct 2026</dd>
 <dt>Experiment</dt>
 <dd><a href="/model-training-journal/2026/10/26/diversity-versus-repetition/">Testing more distinct examples at matched training exposure</a><br>A new study matches realized assistant-label exposure while varying repair-anchor diversity. Both finite training arms finish; evaluation remains a separate decision gate. · 26 Oct 2026</dd>
+<dt>Results</dt>
+<dd><a href="/model-training-journal/2026/10/26/diversity-results-and-language-limits/">More distinct supervision did not produce a better planning assistant</a><br>The completed diversity study does not justify promoting either checkpoint. Reused development gains coexist with poorer new-set outcomes, training fit, and retained calendar behavior. · 26 Oct 2026</dd>
 </dl>
 
 ## How to read the measurements

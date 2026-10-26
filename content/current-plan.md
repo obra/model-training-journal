@@ -1,20 +1,22 @@
 The current experiment, its evidence, and the next decision. This is an AI-assisted engineering record, not live telemetry.
 
-**Verified snapshot: 26 October 2026, 16:36:53 UTC.** The 97,536,768-parameter model started from random weights. No planning checkpoint has been promoted as useful or reliable.
+**Verified snapshot: 26 October 2026, 16:43:16 UTC.** The 97,536,768-parameter model started from random weights. No planning checkpoint has been promoted as useful or reliable.
 
-## Current experiment: diversity versus repetition
+## Current stage: preparing a bounded failure diagnostic
 
-Both training arms of `binding-diversity-v1` have completed **1,999,822 assistant labels each**, across 13,338 optimizer steps per arm. The evaluation queue completed at **16:36:53 UTC** and results review is underway. No training or evaluation job is active in this notebook snapshot. The original final holdout remains reserved, unevaluated, and excluded from training.
+The diversity-versus-repetition study is complete and its reviewed results do not justify promoting either checkpoint. The next stage is **preparation for a bounded failure-reflection diagnostic**, followed by source audits for a possible broader pretraining continuation. Neither that diagnostic nor a broader training run is reported as active in this notebook snapshot. The original final holdout remains reserved, unevaluated, and excluded from training.
 
-The hypothesis is that **more distinct examples of matching a request to the correct object and action may transfer better than replaying a small set**, when training exposure is held constant. This follows earlier experiments where correct-looking tool calls still changed the wrong item or supported false completion claims.
+Both training arms of `binding-diversity-v1` completed **1,999,822 assistant labels each**, across 13,338 optimizer steps per arm. The evaluation queue finished at **16:36:52 UTC**.
 
-The two arms start separately from the same preserved 100M-token base checkpoint, with the same tokenizer, optimizer configuration, context length, and token-based learning-rate schedule. Each receives 1,693,854 canonical assistant labels and 305,968 repair labels. The repetition arm uses 100 distinct repair anchors; the fresh arm uses 1,916. The executed label counts and schedule match. Prompt lengths differ slightly, so this is not a claim of identical total input-token exposure.
+That completed study tested whether **more distinct examples of matching a request to the correct object and action transfer better than replaying a small set**, with matched assistant-label exposure. This follows earlier experiments where correct-looking tool calls still changed the wrong item or supported false completion claims.
+
+The two arms started separately from the same preserved 100M-token base checkpoint, with the same tokenizer, optimizer configuration, context length, and token-based learning-rate schedule. Each received 1,693,854 canonical assistant labels and 305,968 repair labels. The repetition arm used 100 distinct repair anchors; the fresh arm used 1,916. The executed label counts and schedule match. Prompt lengths differ slightly, so this is not a claim of identical total input-token exposure.
 
 See the [diversity experiment record](/model-training-journal/2026/10/26/diversity-versus-repetition/) for preparation, controls, and training completion.
 
 ## Latest completed evaluation slice
 
-These results concern the **new 96-case development suite**: a 64-case core plus 32 stress cases. They are provisional automated audits of completed evaluations within a larger study whose evaluation queue has completed but interpretation is unfinished. They are not the earlier 64-case binding study, a training-fit sample, or the final holdout.
+These results concern the **new 96-case development suite**: a 64-case core plus 32 stress cases. They are automated outcome audits from the completed study, qualified by transcript and retention reviews. They are not the earlier 64-case binding study, a training-fit sample, or the final holdout.
 
 | New 96-case development check | Repetition arm | Fresh-diversity arm |
 |---|---|---|
@@ -26,7 +28,7 @@ These results concern the **new 96-case development suite**: a 64-case core plus
 
 The core/stress breakdown is **23/64 plus 5/32** exact states for repetition and **22/64 plus 4/32** for fresh diversity. Neither panel establishes a gain.
 
-Raw and runtime-guarded evaluations produced these same aggregate counts **separately**; the modes are not pooled into 192 cases. Guarding did not turn the result into reliable task completion.
+Raw and runtime-guarded histories were identical within each arm and produced these same aggregate counts **separately**; the modes are not pooled into 192 cases. Guarding did not turn the result into reliable task completion.
 
 Fewer counted false claims or wrong-object writes do not establish a better model here: exact requested outcomes did not improve, while missing answers rose sharply. Unresolved cases, bounded claim-checking vocabulary, correlated generated examples, and transcript review all limit interpretation. These numbers are not a general safety estimate or a measure of progress toward intelligence.
 
@@ -39,13 +41,24 @@ Fewer counted false claims or wrong-object writes do not establish a better mode
 
 ## Next decision
 
-Review the completed evaluation queue, paired results and retained transcripts before selecting another training change. The comparison must consider exact requested outcomes, wrong-object damage, completion truth, unsupported failure explanations, missing answers, unresolved cases, and retention on older tasks together. Training-fit checks remain separate from development transfer.
+The current hypothesis is that a broader language base may help this small model more than another narrow supervised variant. The completed diversity study does not establish that explanation: it also exposes curriculum and binding failures, and the original language-validation loss has overlap contamination risk.
 
-No winner is established by the current slice, and no checkpoint is promoted. If broader diversity fails to improve correct actions without shifting failures into silence or regressions, the next hypothesis must change; repeating exposure alone is not evidence of progress. Final-holdout evaluation remains reserved for a defensible milestone rather than routine iteration.
+The next sequence is bounded and conditional:
+
+1. **Probe failures before more training.** Ask the model why selected attempts failed and what information or training might have helped. Treat its explanations as candidate hypotheses, then test suggestions with controlled counterfactual checks against actual outcomes. A fluent explanation is not privileged evidence of the model's internal cause. This diagnostic is being prepared; no measured reflection result or training on generated rationalizations is claimed.
+2. **Audit broader text and reserve independent validation.** Establish a source-disjoint dialogue-language validation family, freeze selection and measurement before seeing losses, and keep that entire family out of training. Audit candidate training records for rights, provenance, personal information, duplicates, and overlap with existing training and validation. No expanded corpus or independent language reserve is ready in this snapshot. Archive size and a collection-level license label do not establish eligible yield.
+3. **Run a controlled continuation only if the audit clears enough new text.** Retain the same 97.5M-parameter architecture and tokenizer, preserve the original 100M-token base as the control, and cap additional pretraining at **200M valid tokens**. The proposed full run requires at least 100M new unique eligible tokens and at most two exposures per document; 50–100M new tokens would reduce the budget, and less than 50M would be reported as a data bottleneck. These are operational gates, not promises that the candidate sources will qualify.
+4. **Compare both bases using the same supervision and evaluations.** Apply an identical pinned supervised recipe, decoding and evaluation suite to the original-base control and the continued base. Report independent language loss, frozen generation probes, actual requested outcomes, wrong-object writes, false completion, missing answers, and retained behavior separately. The original final planning holdout remains reserved.
+
+The continuation would change both training data and optimization exposure. With the proposed fresh optimizer, it tests the whole continuation intervention; it would not isolate a pure causal effect of data diversity. A matched continuation on the old corpus would be another control, which has not been run.
+
+No checkpoint is promoted, and **there is no commitment to a 1B-parameter model**. At the previously measured base-training rate, 200M additional tokens would take about 3.72 hours of training alone; changed packing, data preparation, checkpointing and evaluation can change the total. This is an estimate, not a measured continuation or a reserved run. The original deadline and resource limits still apply.
+
+Read the [completed diversity results and language limits](/model-training-journal/2026/10/26/diversity-results-and-language-limits/) for the evidence behind this change of direction. In particular, the fresh arm's gain on an older reused 64-case development set did not carry over to the new 96-case set, familiar training fit, or retained calendar tasks.
 
 ## Fixed time budget
 
-The 120-hour experiment began **26 October 2026 at 04:12 UTC** and ends **31 October 2026 at 04:12 UTC**. At this snapshot, **107 hours 35 minutes** remained. The deadline is fixed and has not been extended.
+The 120-hour experiment began **26 October 2026 at 04:12 UTC** and ends **31 October 2026 at 04:12 UTC**. At this snapshot, **107 hours 28 minutes** remained. The deadline is fixed and has not been extended.
 
 The header's clock counts down to that deadline using the reader's device time. It does not query the training system or refresh these results. The status becomes visibly stale after one hour; without JavaScript, the header retains the timestamp and time remaining at the snapshot. A newer publication is required to update the experiment state.
 

@@ -22,14 +22,14 @@
       <a href="/model-training-journal/about/">About</a>
     </nav>
   </header>
-  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:36:53Z" data-deadline="2026-10-31T04:12:00Z">
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:43:16Z" data-deadline="2026-10-31T04:12:00Z">
   <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
   <dl class="progress-facts">
-    <div class="progress-state"><dt>Experiment state</dt><dd>Diversity vs repetition: training and evaluations complete; results review underway.</dd></div>
+    <div class="progress-state"><dt>Experiment state</dt><dd>Failure-reflection diagnostic: preparing. Diversity study complete; no broader training run started.</dd></div>
     <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
-    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 35m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 28m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
   </dl>
-  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:36:53Z">26 Oct 2026, 16:36:53 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:43:16Z">26 Oct 2026, 16:43:16 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
 </section>
   <main id="main">
 <section class="intro" aria-labelledby="journal-title">
@@ -37,7 +37,10 @@
 <p>An engineering journal about training a small language model from scratch. The questions, the experiments, and what the evidence actually supports.</p></div>
 <aside><strong>A record of the work</strong><p>AI-assisted notes, curated from a local experiment notebook. Completed diagnostics and future plans are kept distinct.</p><a href="/model-training-journal/about/">About the journal</a></aside>
 </section>
-<section aria-labelledby="entries-heading"><div class="section-heading"><h2 id="entries-heading">Journal entries</h2><span>Latest first · 28 entries</span></div><ol class="entries"><li class="entry">
+<section aria-labelledby="entries-heading"><div class="section-heading"><h2 id="entries-heading">Journal entries</h2><span>Latest first · 29 entries</span></div><ol class="entries"><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Results</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/diversity-results-and-language-limits/">More distinct supervision did not produce a better planning assistant</a></h3>
+<p>The matched diversity study finishes without a promoted checkpoint. Fresh examples improve one reused diagnostic but lose on the new set, training fit, and retained calendar behavior.</p><a class="read-link" href="/model-training-journal/2026/10/26/diversity-results-and-language-limits/">Read entry · 4 min</a></div></li><li class="entry">
 <div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Experiment</span></div>
 <div><h3><a href="/model-training-journal/2026/10/26/diversity-versus-repetition/">Testing more distinct examples at matched training exposure</a></h3>
 <p>A new study matches realized assistant-label exposure while varying repair-anchor diversity. Both finite training arms finish; evaluation remains a separate decision gate.</p><a class="read-link" href="/model-training-journal/2026/10/26/diversity-versus-repetition/">Read entry · 3 min</a></div></li><li class="entry">

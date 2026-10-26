@@ -22,14 +22,14 @@
       <a href="/model-training-journal/about/">About</a>
     </nav>
   </header>
-  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:36:53Z" data-deadline="2026-10-31T04:12:00Z">
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:43:16Z" data-deadline="2026-10-31T04:12:00Z">
   <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
   <dl class="progress-facts">
-    <div class="progress-state"><dt>Experiment state</dt><dd>Diversity vs repetition: training and evaluations complete; results review underway.</dd></div>
+    <div class="progress-state"><dt>Experiment state</dt><dd>Failure-reflection diagnostic: preparing. Diversity study complete; no broader training run started.</dd></div>
     <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
-    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 35m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 28m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
   </dl>
-  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:36:53Z">26 Oct 2026, 16:36:53 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:43:16Z">26 Oct 2026, 16:43:16 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
 </section>
   <main id="main"><article class="page"><header class="article-header"><h1>Paired probes isolate date and identifier failures</h1><p class="dek">Changing a year or target identifier breaks otherwise successful requests. Longer training improves some ordering cases while false completion claims increase.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Diagnosis · 2 min read</p></header><div class="prose"><p>The paired diagnostic completed at <strong>10:57 UTC on 26 October 2026</strong>. It compared the saved canonical-supervision checkpoints trained for roughly 500,000 and two million assistant labels. No training occurred during this diagnostic.</p>
 <p>The question was narrower than whether the model could plan: when it solves a request, does it still solve that request after one controlled change?</p>

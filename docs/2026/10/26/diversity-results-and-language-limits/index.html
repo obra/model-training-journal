@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>More distinct supervision did not produce a better planning assistant · Model Training Journal</title>
+  <meta name="description" content="The matched diversity study finishes without a promoted checkpoint. Fresh examples improve one reused diagnostic but lose on the new set, training fit, and retained calendar behavior.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/diversity-results-and-language-limits/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:43:16Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Failure-reflection diagnostic: preparing. Diversity study complete; no broader training run started.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 28m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:43:16Z">26 Oct 2026, 16:43:16 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>More distinct supervision did not produce a better planning assistant</h1><p class="dek">The matched diversity study finishes without a promoted checkpoint. Fresh examples improve one reused diagnostic but lose on the new set, training fit, and retained calendar behavior.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Results · 4 min read</p></header><div class="prose"><p>The <a href="/model-training-journal/2026/10/26/diversity-versus-repetition/">diversity-versus-repetition study</a> completed its evaluation queue at <strong>16:36:52 UTC on 26 October 2026</strong>. <strong>Neither checkpoint was promoted.</strong></p>
+<p>Both 97,536,768-parameter arms started from the same preserved 100M-token base with fresh optimizers. Each completed <strong>13,338 steps and 1,999,822 assistant labels</strong>. Replay used 100 repair anchors; fresh used 1,916. Canonical messages, per-step label counts, source positions, and learning-rate values matched. Input tokens differed by 328, and the shared shuffled order differed from the preceding experiment.</p>
+<p>This study added owned programmatic supervision, not external text or language pretraining.</p>
+<h2 id="new-outcomes-and-fewer-answers">New outcomes and fewer answers</h2>
+<p>The newly frozen diagnostic had <strong>64 core cases and 32 stress cases</strong>. Those populations share anchors and remain separate from the earlier binding diagnostic with its own 64 cases.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>New frozen diagnostic</th>
+<th>Replay</th>
+<th>Fresh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exact requested states / strict successes</td>
+<td>28/96</td>
+<td>26/96</td>
+</tr>
+<tr>
+<td>Core cases</td>
+<td>23/64</td>
+<td>22/64</td>
+</tr>
+<tr>
+<td>Stress cases</td>
+<td>5/32</td>
+<td>4/32</td>
+</tr>
+<tr>
+<td>False completion claims</td>
+<td>51</td>
+<td>33</td>
+</tr>
+<tr>
+<td>Missing final answers</td>
+<td>17</td>
+<td>37</td>
+</tr>
+<tr>
+<td>Applied wrong-object writes</td>
+<td>40</td>
+<td>24</td>
+</tr>
+<tr>
+<td>Cases with unresolved requested-state / wrong-object scope</td>
+<td>5</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p>Raw and guarded histories were identical within each arm; they are correlated views, not independent replications. Both arms failed all eight create requests and all reserved-year and joint stress cases. Only one repair control succeeded in both arms, too little to support a broad comparison of conditional transfer rates.</p>
+<p>Of replay's 51 false claims, fresh corrected 13, replaced 23 with missing answers, and retained 15. Fresh also turned 12 previously correct cases into false claims. Every missing-answer case in this new set left the complete state unchanged, but still left the request unfinished. Some missing answers in older suites followed silent wrong writes, so the new-set observation cannot be generalized to every evaluation.</p>
+<p>The five unresolved replay cases made no state change, but the audit retained unknown binding because they never obtained the required pre-write read. Genuine receipts and zero mock operation-permission violations did not establish correct requested outcomes.</p>
+<h2 id="fit-retention-and-reused-diagnostics-disagree">Fit, retention, and reused diagnostics disagree</h2>
+<p>On source-specific actual-training samples, replay reproduced <strong>50/50 exact histories</strong> and fresh <strong>26/50</strong>. Each sample contained fifty distinct histories, but the arms did not receive identical prompts. These were training-fit checks, not holdouts or matched-input tests.</p>
+<p>Fresh prefixes through the first successful read matched their references. Its first writes had correct operation, date, and version fields in all fifty cases, but the correct target identifier in only 28.</p>
+<p>On the common retained 64 cases, exact histories were <strong>46/64 versus 44/64</strong>, and correct calendar bookings were <strong>9/23 versus 6/23</strong>. Fresh lost three bookings and gained none. All 31 noncalendar histories stayed exact in both arms.</p>
+<p>The <strong>reused binding-development 64 cases</strong> improved from <strong>3/64 to 19/64</strong> exact outcomes. That is a real result on those familiar diagnostic inputs, not the new 96-case result. The older structural and broader development sets still produced no correct requested plans, while the separate paired 80-case diagnostic declined from <strong>44/80 to 40/80</strong> exact states. These denominators must not be pooled into a synthetic success score.</p>
+<h2 id="readable-output-is-not-reliable-conversation">Readable output is not reliable conversation</h2>
+<p>Saved supervised output includes readable, template-like English alongside wrong intervals, wrong-object changes, and false completion claims. This text within the planning protocol does not establish open-ended chat competence or human-rated quality.</p>
+<p>At this milestone, a frozen base-language probe was prepared but not yet measured. The next bounded failure-reflection diagnostic would treat the model's explanations as hypotheses to test, not privileged evidence of why it failed.</p>
+<h2 id="the-next-plan-is-conditional-on-new-data">The next plan is conditional on new data</h2>
+<p>The recorded direction is to stop serial narrow supervision variants and investigate broader base training at the <strong>same model size</strong>. The original base remains a control; any continued base would receive the same fixed conversational-supervision recipe for comparison.</p>
+<p>The proposed ceiling is <strong>200M additional training labels</strong>, conditional on audited rights, provenance, overlap, and actual new-token yield. The full run calls for at least 100M eligible new unique tokens across both proposed source families, with at most two passes per document. A 50–100M-token yield would shrink the target; below 50M, the plan reports a data bottleneck instead of filling the budget with the old corpus. Candidate sources are not admitted data.</p>
+<p>The original 100M exposures came from about 26.91M corpus tokens, and language-validation overlap risk remains. These results establish neither a parameter-capacity ceiling nor a reason to promise a 1B-parameter run. The final planning holdout remains excluded from training and unevaluated. See the <a href="/model-training-journal/current-plan/">dated current plan</a> for subsequent verified status.</p>
+<p>This AI-assisted account was checked against the notebook, training milestone, and independent outcome reviews. Raw transcripts, source text, and private runtime details are excluded.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/diversity-versus-repetition/">Earlier: Testing more distinct examples at matched training exposure</a><a href="/model-training-journal/experiments/">Experiment index</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>
