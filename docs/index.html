@@ -9,6 +9,7 @@
   <link rel="canonical" href="https://obra.github.io/model-training-journal/">
   <link rel="stylesheet" href="/model-training-journal/assets/site.css">
   <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -17,16 +18,89 @@
     <nav aria-label="Main navigation">
       <a href="/model-training-journal/" aria-current="page">Journal</a>
       <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
       <a href="/model-training-journal/about/">About</a>
     </nav>
   </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:36:53Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Diversity vs repetition: training and evaluations complete; results review underway.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 35m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:36:53Z">26 Oct 2026, 16:36:53 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
   <main id="main">
 <section class="intro" aria-labelledby="journal-title">
 <div><h1 id="journal-title">Small models.<br>Measured progress.</h1>
 <p>An engineering journal about training a small language model from scratch. The questions, the experiments, and what the evidence actually supports.</p></div>
 <aside><strong>A record of the work</strong><p>AI-assisted notes, curated from a local experiment notebook. Completed diagnostics and future plans are kept distinct.</p><a href="/model-training-journal/about/">About the journal</a></aside>
 </section>
-<section aria-labelledby="entries-heading"><div class="section-heading"><h2 id="entries-heading">Journal entries</h2><span>Latest first · 7 entries</span></div><ol class="entries"><li class="entry">
+<section aria-labelledby="entries-heading"><div class="section-heading"><h2 id="entries-heading">Journal entries</h2><span>Latest first · 28 entries</span></div><ol class="entries"><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Experiment</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/diversity-versus-repetition/">Testing more distinct examples at matched training exposure</a></h3>
+<p>A new study matches realized assistant-label exposure while varying repair-anchor diversity. Both finite training arms finish; evaluation remains a separate decision gate.</p><a class="read-link" href="/model-training-journal/2026/10/26/diversity-versus-repetition/">Read entry · 3 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Results</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/counterfactual-binding-results/">More correct task fields, but more wrong-object writes</a></h3>
+<p>Varied task values improve nine of 64 requested outcomes versus three for repetition, but increase wrong-object writes and false claims. Neither checkpoint is promoted.</p><a class="read-link" href="/model-training-journal/2026/10/26/counterfactual-binding-results/">Read entry · 3 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Experiment</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/binding-comparison-launch/">Launching a matched repetition control for task binding</a></h3>
+<p>Two fresh-base arms compare repeated task-repair controls with varied values. Preflight catches overlap before the data freeze, and exact label budgets are recorded.</p><a class="read-link" href="/model-training-journal/2026/10/26/binding-comparison-launch/">Read entry · 2 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Planning</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/contrastive-binding-plan/">Testing input-to-action binding with a repetition control</a></h3>
+<p>The next hypothesis targets requested objects and values. A repetition control will separate varied supervision from simply adding more task-repair examples.</p><a class="read-link" href="/model-training-journal/2026/10/26/contrastive-binding-plan/">Read entry · 2 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Results</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/year-diversity-results/">Varied training years did not produce date transfer</a></h3>
+<p>The year-diversity candidate still fails unseen years and loses retained behavior. Valid tool syntax and some improved date fields do not justify promotion.</p><a class="read-link" href="/model-training-journal/2026/10/26/year-diversity-results/">Read entry · 2 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Experiment</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/year-diversity-experiment/">Testing whether varied training years improve date transfer</a></h3>
+<p>A matched supervised-training experiment varies years while preserving token counts and conversation order. Fresh year diagnostics are frozen before training.</p><a class="read-link" href="/model-training-journal/2026/10/26/year-diversity-experiment/">Read entry · 2 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Diagnosis</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/paired-transfer-probe-results/">Paired probes isolate date and identifier failures</a></h3>
+<p>Changing a year or target identifier breaks otherwise successful requests. Longer training improves some ordering cases while false completion claims increase.</p><a class="read-link" href="/model-training-journal/2026/10/26/paired-transfer-probe-results/">Read entry · 2 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Results</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/canonical-2m-results/">Longer canonical training improves fit but not development planning</a></h3>
+<p>The same 64 training cases fit better after two million supervised labels, while development behavior still fails. Fewer completion claims also conceal more unfinished conversations.</p><a class="read-link" href="/model-training-journal/2026/10/26/canonical-2m-results/">Read entry · 3 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Experiment</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/canonical-two-million-label-fit-study/">Testing a longer optimization budget on canonical supervision</a></h3>
+<p>A fresh two-million-label run tests whether more optimization improves familiar-example fit. Exposure and schedule change together; no new development result is claimed at launch.</p><a class="read-link" href="/model-training-journal/2026/10/26/canonical-two-million-label-fit-study/">Read entry · 2 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Results</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/canonical-serialization-results/">Canonical serialization leaves planning failures unresolved</a></h3>
+<p>Aligned training and runtime histories remove a measurement confound, but the canonical 500K run still fails to produce reliable plans. Familiar-example fit and development behavior are reported separately.</p><a class="read-link" href="/model-training-journal/2026/10/26/canonical-serialization-results/">Read entry · 2 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Experiment</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/canonical-serialization-experiment/">A controlled test of training tool serialization</a></h3>
+<p>The canonical 500K-label experiment starts from the preserved base with matched configuration and assistant targets. This launch snapshot makes no completed-performance claim.</p><a class="read-link" href="/model-training-journal/2026/10/26/canonical-serialization-experiment/">Read entry · 2 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Engineering</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/serialization-repair-and-launch-blocker/">Repairing tool serialization before the next run</a></h3>
+<p>A separate training derivative aligns tool-message representation with the runtime. Stronger date and outcome audits qualify the earlier proxy scores before more compute.</p><a class="read-link" href="/model-training-journal/2026/10/26/serialization-repair-and-launch-blocker/">Read entry · 2 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Experiment</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/broader-supervision-pilot/">Broader supervision exposes scoring and input-format limits</a></h3>
+<p>The finite paired pilot finishes, but its apparent development gains do not establish correct plans. Follow-up checks find incomplete fitting and a tool-serialization mismatch.</p><a class="read-link" href="/model-training-journal/2026/10/26/broader-supervision-pilot/">Read entry · 3 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Preparation</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/broader-supervision-preflight/">Broader supervision, with failures kept in the record</a></h3>
+<p>A larger owned supervision set passes bounded data and context checks. The next comparison tests broader coverage without treating training fit as planning ability.</p><a class="read-link" href="/model-training-journal/2026/10/26/broader-supervision-preflight/">Read entry · 2 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Validation</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/validation-sensitivity-probes/">Validation sensitivity after the overlap audit</a></h3>
+<p>Two frozen filters raise loss on changed validation populations. They measure sensitivity to detected overlap, not an independently sourced test of generalization.</p><a class="read-link" href="/model-training-journal/2026/10/26/validation-sensitivity-probes/">Read entry · 2 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Comparison</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/first-planning-comparison/">The first planning comparison failed</a></h3>
+<p>Both matched models fail all 80 development cases. Base training improves familiar training fit and protocol consistency, but neither result establishes a useful planning model.</p><a class="read-link" href="/model-training-journal/2026/10/26/first-planning-comparison/">Read entry · 3 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Validation</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/auditing-textbook-overlap/">Auditing overlap across the textbook split</a></h3>
+<p>A bounded lexical audit finds strong overlap candidates involving 42 validation documents. Exact hashes and separate book URLs had not established independent content.</p><a class="read-link" href="/model-training-journal/2026/10/26/auditing-textbook-overlap/">Read entry · 2 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Base training</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/first-100m-token-base/">The first 100 million base-training tokens</a></h3>
+<p>The model completes 100 million valid training-token exposures and preserves a verified checkpoint. Language-model loss improves, while conversational transfer and validation independence remain separate questions.</p><a class="read-link" href="/model-training-journal/2026/10/26/first-100m-token-base/">Read entry · 2 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Corpus</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/bounded-news-candidate-audit/">A bounded news-source audit during base training</a></h3>
+<p>A bounded scan identifies 1,426 candidate articles for possible later study. Source correspondence and software integrity checks do not establish training eligibility.</p><a class="read-link" href="/model-training-journal/2026/10/26/bounded-news-candidate-audit/">Read entry · 2 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Engineering</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/queueing-the-matched-comparison/">Queueing the matched comparison</a></h3>
+<p>A reviewed sequential pipeline waits for the base checkpoint, then plans a bounded language probe, isolated supervised smoke test, matched training branches, and development evaluations.</p><a class="read-link" href="/model-training-journal/2026/10/26/queueing-the-matched-comparison/">Read entry · 2 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Evaluation</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/making-the-planning-comparison-fair/">Making the planning comparison fair</a></h3>
+<p>Exact supervised budgets, a stronger symbolic reference, a separate policy check, and a corrected context reserve prepare a comparison of random and base-trained weights.</p><a class="read-link" href="/model-training-journal/2026/10/26/making-the-planning-comparison-fair/">Read entry · 2 min</a></div></li><li class="entry">
 <div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Evaluation</span></div>
 <div><h3><a href="/model-training-journal/2026/10/26/frozen-planning-world-and-review-corrections/">Freezing the planning world and correcting the evaluation</a></h3>
 <p>Review exposed weaknesses in completion checking and the original language split. A revised frozen suite and supervised-training checks improve the machinery, while a failed scripted baseline remains under methodological review.</p><a class="read-link" href="/model-training-journal/2026/10/26/frozen-planning-world-and-review-corrections/">Read entry · 3 min</a></div></li><li class="entry">

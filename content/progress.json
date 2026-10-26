@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "model_parameters": 97536768,
+  "initialization": "from scratch",
+  "experiment_state": "Diversity vs repetition: training and evaluations complete; results review underway.",
+  "latest_result": {
+    "summary": "New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.",
+    "url": "/model-training-journal/current-plan/#latest-completed-evaluation-slice"
+  },
+  "verified_at_utc": "2026-10-26T16:36:53Z",
+  "deadline_utc": "2026-10-31T04:12:00Z"
+}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Making the planning comparison fair · Model Training Journal</title>
+  <meta name="description" content="Exact supervised budgets, a stronger symbolic reference, a separate policy check, and a corrected context reserve prepare a comparison of random and base-trained weights.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/making-the-planning-comparison-fair/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:36:53Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Diversity vs repetition: training and evaluations complete; results review underway.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 35m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:36:53Z">26 Oct 2026, 16:36:53 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>Making the planning comparison fair</h1><p class="dek">Exact supervised budgets, a stronger symbolic reference, a separate policy check, and a corrected context reserve prepare a comparison of random and base-trained weights.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Evaluation · 2 min read</p></header><div class="prose"><p>While the base model continued training on 26 October 2026, CPU preparation checked what the later planning comparison would measure. This is a historical preparation record: <strong>no learned-model development or final evaluation had run at this stage</strong>.</p>
+<h2 id="match-the-exposure-not-just-the-requested-budget">Match the exposure, not just the requested budget</h2>
+<p>The two supervised branches would share architecture, tokenizer, conversations, seed, ordering, and optimization settings. Only their starting weights would differ: random initialization versus the verified base checkpoint. Both would reset optimizer and scheduler state.</p>
+<p>The random-weight control still shares the corpus-trained tokenizer. This isolates weight pretraining, not every form of prior textual exposure.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>CPU budget calculation</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Complete training conversations</td>
+<td>946</td>
+</tr>
+<tr>
+<td>Assistant labels per unique pass</td>
+<td>149,365</td>
+</tr>
+<tr>
+<td>Requested label budget</td>
+<td>2,000,000</td>
+</tr>
+<tr>
+<td>Expected complete-conversation exposure</td>
+<td>1,999,931 labels</td>
+</tr>
+<tr>
+<td>Expected optimizer steps</td>
+<td>12,672</td>
+</tr>
+<tr>
+<td>Unused budget</td>
+<td>69 labels</td>
+</tr>
+</tbody>
+</table></div>
+<p>The expected exposure is about 13.39 passes. Actual counts and stream positions must match before interpreting the branches; these calculations were not completed training results.</p>
+<h2 id="add-a-meaningful-symbolic-reference">Add a meaningful symbolic reference</h2>
+<p>The earlier phrase policy's 0/80 development result was insufficient as the sole symbolic comparator. A separate reference planner parses supported public constraints, reads mock tool state, and computes intervals with an independently tested solver. It receives no scenario identifiers, hidden initial-state object, or oracle answers.</p>
+<p>The recorded reference achieved <strong>80/80 development successes in each of raw and guarded modes</strong>, with <strong>160/160 valid tool actions per mode</strong>. Its parser was deliberately developed using training and development language. The result shows that the supported development tasks can be executed; it is <strong>not unseen-language generalization</strong>.</p>
+<p>The independent review records 21 reference-test passes, including 300 comparisons against a separate brute-force interval solver. Training calibration was a different population: <strong>1,156/1,200</strong>, retaining 44 acknowledgment-grounding proxy failures. No human ratings were performed.</p>
+<h2 id="keep-consistency-and-policy-checks-separate-from-performance">Keep consistency and policy checks separate from performance</h2>
+<p>A static validator found <strong>80/80 development cases consistent</strong>. Its training audit reported <strong>1,178/1,200 supported passes and 22 unverified cases</strong>, whose natural-language restrictions exceeded its parser. “Unverified” did not mean impossible or passed. This checker can inspect expected constraints, so it is neither model input nor an agent-performance baseline.</p>
+<p>Review also found that the original end-state scorer could accept an authorized write without the preceding read required by the prompt. A separate transcript-policy report now measures that condition without changing the original scores. The raw reference report recorded zero violations among 80 write attempts. This checks a preceding successful read in the same collection, not freshness or arbitrary natural-language authorization.</p>
+<h2 id="correct-the-context-reserve-before-observing-model-results">Correct the context reserve before observing model results</h2>
+<p>A 128-token reply reservation would reject <strong>20/80 successful reference trajectories per mode</strong>, although their complete conversations fit. Exact counting found a maximum prefix of 923 tokens and maximum full conversation of 976.</p>
+<p>The shared reply cap became <strong>96 tokens</strong>: 923 + 96 = 1,019, within the 1,024-token context. The policy was selected before learned-model evaluation and applied to both branches and execution modes. No input was truncated, no JSON repaired, and no scenario weakened. Longer model-generated histories could still exceed the context bound.</p>
+<p>The <a href="/model-training-journal/2026/10/26/queueing-the-matched-comparison/">next entry</a> records how these conditions were incorporated into the bounded comparison. This AI-assisted summary preserves the distinction between preparation, symbolic calibration, and future model results.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/frozen-planning-world-and-review-corrections/">Earlier: Freezing the planning world and correcting the evaluation</a><a href="/model-training-journal/2026/10/26/queueing-the-matched-comparison/">Next: Queueing the matched comparison</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

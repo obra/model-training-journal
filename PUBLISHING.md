@@ -43,7 +43,9 @@ hosts, locations and identifiers found in source evidence. Keep it **outside the
 public checkout**. Empty lines and lines beginning with `#` are ignored. Use at
 least three characters per term. Do not copy the file into this repository.
 
-From the checkout, with its local virtual environment already prepared:
+Run these commands from the checkout with its local virtual environment already
+prepared. The clock behavior tests also require a local Node.js runtime; no npm
+packages are needed:
 
 ```sh
 .venv/bin/python scripts/build.py
@@ -56,9 +58,36 @@ git diff
 Inspect untracked candidate files too; `git diff` alone does not show them. The
 validator rejects unknown top-level paths, non-text assets, symlinks, oversized
 files, common credentials and private addresses, and checks generated internal
-links. It also rejects active page scripts and externally hosted resources.
-CSS imports, inline styles, automatic redirects and SVG are excluded; adding
-these features requires a deliberate validator update and review.
+links. There is exactly one reviewed local script exception: UTF-8
+`assets/progress.js` and its byte-identical generated copy at
+`docs/assets/progress.js`. A page may include it once, using exactly
+`<script src="/model-training-journal/assets/progress.js" defer></script>`.
+Inline script content, other script tags or attributes, other JavaScript files
+and externally hosted resources are rejected.
+
+The progress script uses the visitor's local clock to update remaining time and
+snapshot staleness once per minute. Published facts stay static; it performs no
+network requests, storage or telemetry. This exception still requires manual
+source and rendered-page review, and the review receipt binds both script copies
+along with every other candidate file. CSS imports, inline styles, automatic
+redirects and SVG remain excluded; adding these features requires a deliberate
+validator update and review.
+
+## Refresh the progress snapshot
+
+Review the latest notebook status and directly supporting stage results before
+changing `content/progress.json` or `content/current-plan.md`. Old status fields
+can survive newer stages: use timestamps and completed-stage evidence, and keep
+each evaluation population separate. Record the UTC verification timestamp,
+actual experiment state, one qualified result, and the next decision. Planned
+work must not be presented as launched or completed.
+
+The fixed deadline is `2026-10-31T04:12:00Z`; neither content nor the local clock
+script may extend it. The browser updates only countdown and snapshot age. It
+shows a stale warning after 60 minutes and never fetches training telemetry. With
+JavaScript disabled, remaining time is explicitly labeled as measured at the
+snapshot. Include the progress JSON, plan Markdown, generated pages and clock
+script in the same factual, privacy and rendered-page review as the posts.
 
 ## Record the completed review and publish
 

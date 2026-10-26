@@ -9,6 +9,7 @@
   <link rel="canonical" href="$canonical">
   <link rel="stylesheet" href="$base/assets/site.css">
   <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="$base/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -17,9 +18,11 @@
     <nav aria-label="Main navigation">
       <a href="$base/"$journal_current>Journal</a>
       <a href="$base/experiments/"$experiments_current>Experiments</a>
+      <a href="$base/current-plan/"$current_plan_current>Current plan</a>
       <a href="$base/about/"$about_current>About</a>
     </nav>
   </header>
+  $progress_header
   <main id="main">$body</main>
   <footer class="site-footer">
     <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>

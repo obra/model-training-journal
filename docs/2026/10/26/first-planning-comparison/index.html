@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The first planning comparison failed · Model Training Journal</title>
+  <meta name="description" content="Both matched models fail all 80 development cases. Base training improves familiar training fit and protocol consistency, but neither result establishes a useful planning model.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/first-planning-comparison/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:36:53Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Diversity vs repetition: training and evaluations complete; results review underway.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 35m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:36:53Z">26 Oct 2026, 16:36:53 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>The first planning comparison failed</h1><p class="dek">Both matched models fail all 80 development cases. Base training improves familiar training fit and protocol consistency, but neither result establishes a useful planning model.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Comparison · 3 min read</p></header><div class="prose"><p>The first matched behavioral comparison completed on <strong>26 October 2026</strong>. Both 97,536,768-parameter models scored <strong>0/80 development successes</strong>, in both raw and runtime-guarded execution. Familiar training fit improved after base training, but that improvement did not transfer to this development suite. Neither checkpoint was promoted as a useful assistant.</p>
+<h2 id="match-the-training-separate-the-measurements">Match the training, separate the measurements</h2>
+<p>Both branches used the same fresh tokenizer, architecture, seed, optimizer settings, assistant-only loss mask, ordered stream, and 946 original CC0 conversations. One started from random weights; the other from the <a href="/model-training-journal/2026/10/26/first-100m-token-base/">preserved 100-million-token base</a>. Both optimizers were reset before supervision.</p>
+<p>Each branch consumed exactly <strong>1,999,931 assistant labels in 12,672 optimizer steps</strong>. The random branch took 902.23 seconds; the base branch took 903.52 seconds. These rates count assistant labels, not general pretraining throughput.</p>
+<p>The same frozen 80 development cases used greedy, unconstrained generation, a 96-token response limit, a 30-second response bound, and context length 1,024. There was no prompt truncation or JSON repair. The final behavioral holdouts remained unused.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Development measurement</th>
+<th>Random + SFT</th>
+<th>Base + SFT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raw end-state success</td>
+<td>0/80</td>
+<td>0/80</td>
+</tr>
+<tr>
+<td>Guarded end-state success</td>
+<td>0/80</td>
+<td>0/80</td>
+</tr>
+<tr>
+<td>Raw tool-schema validity</td>
+<td>40/46</td>
+<td>80/80</td>
+</tr>
+<tr>
+<td>Corrected raw protocol validity</td>
+<td>97/103</td>
+<td>160/160</td>
+</tr>
+<tr>
+<td>Verified unsupported completion messages, raw</td>
+<td>12</td>
+<td>20</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are correlated generated cases, including twenty initiative cases that repeat one public request. No blind human ratings were collected. A development-informed symbolic reference solved 80/80; that is a comparator informed by this development distribution, not independent generalization evidence.</p>
+<h2 id="correct-structure-did-not-produce-correct-actions">Correct structure did not produce correct actions</h2>
+<p>The base branch created the initial task in all twenty correction cases, then mishandled the requested update: it reread current state, attempted another creation with a stale version and wrong time, and claimed completion after the failed write using an older receipt. It also asked unnecessary questions and stayed silent when a heads-up was requested.</p>
+<p>The random branch produced malformed argument envelopes, selected unavailable tools, copied wrong values, and made unsupported completion claims. Review of all 160 raw development transcripts confirmed the automated completion flags and found no additional affirmative completion claims in that sample. This does not establish a general detection guarantee.</p>
+<p>Review also uncovered a reporting defect: seventeen unexposed tool selections were counted twice in the random branch's action denominator. The historical <strong>97/120</strong> score is preserved. A separate audit counts each actual response once, yielding <strong>97/103 protocol-valid responses</strong>. End-state success remains unchanged; protocol validity does not imply correct tool choice or task completion.</p>
+<h2 id="training-calibration-answers-a-different-question">Training calibration answers a different question</h2>
+<p>A separate <strong>64-case training calibration</strong>, selected before model outcomes, gave random <strong>14/64</strong> successes and base <strong>64/64</strong>. It measures fit to familiar training conversations, not held-out transfer.</p>
+<p>An inference-only teacher-forced check covered the same <strong>8,988 assistant labels</strong> per branch. Random's mean loss was <strong>0.08929435</strong>, with 213 incorrect labels; base's was <strong>0.0000452332</strong>, with none. A low final minibatch loss had hidden the aggregate training-fit difference.</p>
+<p>Calibration also exposed the receipt checker's limits. Of random's 45 affirmative completion messages, six followed failed writes and were flagged; <strong>38 more</strong> followed successful writes to the wrong requested item, date, or time and escaped the checker. Only one matched the requested action. Review found no definite false completion among base's 45 claims, while retaining note-punctuation ambiguities. Those calibration findings are separate from the raw development counts above.</p>
+<h2 id="change-supervision-before-extending-pretraining">Change supervision before extending pretraining</h2>
+<p>The next hypothesis was to vary supervision around constraints, corrections, current versions, permissions, and actual tool outcomes, with matched budgets and newly frozen probes. Textbook validation already had <a href="/model-training-journal/2026/10/26/auditing-textbook-overlap/">documented overlap risk</a>, so its loss did not independently justify more pretraining.</p>
+<p>This AI-assisted summary was checked against the comparison record, protocol audit, transcript reviews, and training-calibration diagnostics. Raw transcripts, checkpoints, data, and private runtime details remain outside this publication.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/auditing-textbook-overlap/">Earlier: Auditing overlap across the textbook split</a><a href="/model-training-journal/2026/10/26/validation-sensitivity-probes/">Next: Validation sensitivity after the overlap audit</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

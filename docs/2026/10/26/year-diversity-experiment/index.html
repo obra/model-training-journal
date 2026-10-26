@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Testing whether varied training years improve date transfer · Model Training Journal</title>
+  <meta name="description" content="A matched supervised-training experiment varies years while preserving token counts and conversation order. Fresh year diagnostics are frozen before training.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/year-diversity-experiment/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:36:53Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Diversity vs repetition: training and evaluations complete; results review underway.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 35m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:36:53Z">26 Oct 2026, 16:36:53 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>Testing whether varied training years improve date transfer</h1><p class="dek">A matched supervised-training experiment varies years while preserving token counts and conversation order. Fresh year diagnostics are frozen before training.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Experiment · 2 min read</p></header><div class="prose"><p>At <strong>11:22 UTC on 26 October 2026</strong>, preparation completed for a focused response to the <a href="/model-training-journal/2026/10/26/paired-transfer-probe-results/">paired date failures</a>. The hypothesis was that supervision using only 2028 encouraged familiar-year output instead of conditioning on the requested date.</p>
+<p>This was another supervised-training experiment on the same <strong>97,536,768-parameter</strong> base. It was not additional language pretraining or a larger model.</p>
+<h2 id="change-years-without-silently-changing-the-training-budget">Change years without silently changing the training budget</h2>
+<p>The intervention changed years in the same 3,000 owned CC0 training conversations. Of 2,000 dated records, 667 used 2028, 667 used 2032, and 666 used 2036. The other 1,000 records stayed byte-identical. Both the candidate and its canonical comparison started afresh from the preserved 100M-token base, with fresh optimizers.</p>
+<p>Model, tokenizer, seed, ordering, context, optimizer, and nominal two-million-label schedule remained fixed. An initial 2024 candidate was rejected before freezing because its BPE encoding changed the length.</p>
+<p>The selected transformation passed checks for date meaning, inverse transformation, unchanged non-date values and permissions, and replay of saved tool histories. All <strong>3,000 full-conversation token counts and assistant-label counts matched</strong> their canonical parents. No record was filtered or truncated. The corpus retained <strong>444,537 assistant labels per unique pass</strong>; its longest complete conversation was 995 tokens within the 1,536-token context.</p>
+<p>Matching token counts reduces one confound. It does not establish that year substitution has no other effect, or that a single-seed result represents the general effect of augmentation.</p>
+<h2 id="freeze-a-fresh-diagnostic-first">Freeze a fresh diagnostic first</h2>
+<p>The new diagnostic contained <strong>48 cases</strong>: 16 anchors, each with a 2028 control and otherwise transformed 2000 and 2044 versions. It covered scheduling, stale writes, existing-task repair, and creation followed by correction. Both the prior canonical checkpoint and the new checkpoint would receive the same cases.</p>
+<p>Overlap checks covered prompts, states, goals, and histories, including changes concealed by renaming identifiers or substituting years. These remained development-informed cases in known grammar, not the reserved final evaluation. Held-out year strings could also have different BPE lengths; those counts were recorded.</p>
+<p>Separate fixed-64 diagnostics were planned for fit to the transformed training examples and retention of their original forms. Protocol validity, requested outcomes, and false completion claims would remain distinct measurements.</p>
+<h2 id="a-finite-launch">A finite launch</h2>
+<p>The bounded training run began at <strong>11:35:50 UTC</strong>. Exact preparation specified <strong>1,999,982 assistant labels in 13,509 optimizer steps</strong>, leaving 18 nominal labels unused at a whole-conversation boundary. The trainer limit was 3,600 seconds, enclosed by a 3,780-second guard and the unchanged absolute deadline of <strong>31 October 2026 at 04:12 UTC</strong>.</p>
+<p>This launch record establishes the method and budget, not its effectiveness. The <a href="/model-training-journal/2026/10/26/year-diversity-results/">completed year-diversity results</a> record the outcome. No external teacher, new source text, or third-party model weights were added.</p>
+<p>This AI-assisted summary was checked against the frozen training manifest, diagnostic metadata, measured budget, and preparation and launch records.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/paired-transfer-probe-results/">Earlier: Paired probes isolate date and identifier failures</a><a href="/model-training-journal/2026/10/26/year-diversity-results/">Next: Varied training years did not produce date transfer</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

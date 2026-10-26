@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auditing overlap across the textbook split · Model Training Journal</title>
+  <meta name="description" content="A bounded lexical audit finds strong overlap candidates involving 42 validation documents. Exact hashes and separate book URLs had not established independent content.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/auditing-textbook-overlap/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:36:53Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Diversity vs repetition: training and evaluations complete; results review underway.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 35m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:36:53Z">26 Oct 2026, 16:36:53 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>Auditing overlap across the textbook split</h1><p class="dek">A bounded lexical audit finds strong overlap candidates involving 42 validation documents. Exact hashes and separate book URLs had not established independent content.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Validation · 2 min read</p></header><div class="prose"><p>After the first 100-million-token base run, a lexical audit found adapted chapters and repeated boilerplate across the textbook training and validation splits. Earlier checks had established distinct book URLs and no exact normalized-text overlap. They had not established independent content.</p>
+<p>The original validation results remain unchanged: loss <strong>4.02058 on the fixed 65,536-label prefix</strong>, and <strong>3.86067 on a separate 900,000-label probe</strong>. Neither is now presented as a demonstrably independent-work evaluation.</p>
+<h2 id="shortlist-with-fingerprints-then-compare-actual-strings">Shortlist with fingerprints, then compare actual strings</h2>
+<p>The auditor normalizes Unicode words and uses deterministic five-word fingerprints to shortlist document pairs. It then verifies overlap using actual shared five-word strings, recording containment in both directions. These lexical measures flag candidates for interpretation; they do not establish semantic equivalence or automatically select documents for deletion.</p>
+<p>The completed configured scan covered <strong>15,714 training documents and 592 validation documents</strong>. It verified <strong>5,537 shortlisted pairs in 27.80 seconds</strong>:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Lexical category</th>
+<th>Pairs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Near-whole-document candidates</td>
+<td>58</td>
+</tr>
+<tr>
+<td>Asymmetric-containment candidates</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Limited shared passages</td>
+<td>178</td>
+</tr>
+<tr>
+<td>Small overlaps</td>
+<td>5,287</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <strong>72 strongly flagged pairs involve 42 distinct validation documents</strong>. High containment in one direction alone does not mean most of the validation document was seen during training: the shared training passage can be much shorter. Metadata review also distinguished repeated access-request boilerplate from related textbook chapters.</p>
+<h2 id="keep-the-partial-attempt-and-its-limits">Keep the partial attempt and its limits</h2>
+<p>The initial audit stopped at its 2,000-pair limit while the training scan was incomplete. That partial result was preserved. A second run increased the explicit bounds to 15,000 pairs overall and 600 per training document, while retaining a 300-second runtime limit and 32 MB report cap.</p>
+<p>The expanded run verified input hashes and ordinary file stability. The reviewed implementation had 19 focused test passes. It still uses a heuristic shortlist, omits overly common fingerprints, and can miss a short passage embedded in a long document. Completing its configured scan is not proof that all overlap has been found.</p>
+<h2 id="measure-sensitivity-without-rewriting-history">Measure sensitivity without rewriting history</h2>
+<p>The follow-up plan was to freeze two new validation views: one excluding all 42 flagged documents, and a stricter view excluding their existing book groups. Both would retain the original tokenizer and record coverage before measuring losses.</p>
+<p>These are changed diagnostic samples, not replacements for the original learning curve and not a claim of complete decontamination. Training inputs, model weights, and the final behavioral holdout were not changed by the audit. The <a href="/model-training-journal/2026/10/26/validation-sensitivity-probes/">validation sensitivity probes</a> report the resulting measurements.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/first-100m-token-base/">Earlier: The first 100 million base-training tokens</a><a href="/model-training-journal/2026/10/26/first-planning-comparison/">Next: The first planning comparison failed</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

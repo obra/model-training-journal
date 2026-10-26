@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Render the deliberately small, reviewed public journal to docs/."""
-from datetime import date
+from datetime import date, datetime, timezone
 from html import escape
+import json
 from pathlib import Path
 from string import Template
 import re
@@ -15,6 +16,64 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = "/model-training-journal"
 ORIGIN = "https://obra.github.io"
 TITLE = "Model Training Journal"
+DEADLINE_UTC = "2026-10-31T04:12:00Z"
+
+
+def utc_timestamp(value):
+    if not isinstance(value, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", value):
+        raise ValueError("Progress timestamps must use YYYY-MM-DDTHH:MM:SSZ")
+    return datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+
+
+def load_progress(path=None):
+    progress = json.loads((path or ROOT / "content/progress.json").read_text())
+    required = {"schema", "model_parameters", "initialization", "experiment_state", "latest_result", "verified_at_utc", "deadline_utc"}
+    if set(progress) != required or progress["schema"] != 1:
+        raise ValueError("Unexpected progress snapshot schema")
+    if type(progress["model_parameters"]) is not int or not 0 < progress["model_parameters"] < 1_000_000_000_000:
+        raise ValueError("Model parameters must be a positive integer")
+    if progress["initialization"] != "from scratch":
+        raise ValueError("This journal records training from scratch")
+    if progress["deadline_utc"] != DEADLINE_UTC:
+        raise ValueError("The fixed 120-hour deadline must not move")
+    utc_timestamp(progress["verified_at_utc"])
+    result = progress["latest_result"]
+    if not isinstance(result, dict) or set(result) != {"summary", "url"}:
+        raise ValueError("Latest result requires summary and a public local URL")
+    for value, limit in ((progress["experiment_state"], 240), (result["summary"], 360)):
+        if not isinstance(value, str) or not value.strip() or len(value) > limit:
+            raise ValueError("Progress text must be concise nonempty plain text")
+    if not isinstance(result["url"], str) or not re.fullmatch(re.escape(BASE) + r"/[a-z0-9/-]*(?:#[a-z0-9-]+)?", result["url"]):
+        raise ValueError("Latest result must link within the public journal")
+    return progress
+
+
+def remaining_at_snapshot(verified):
+    seconds = max(0, int((utc_timestamp(DEADLINE_UTC) - verified).total_seconds()))
+    if seconds == 0:
+        return "Budget elapsed at snapshot"
+    if seconds < 60:
+        return "Less than 1 min remaining at snapshot"
+    minutes = seconds // 60
+    days, minutes = divmod(minutes, 1440)
+    hours, minutes = divmod(minutes, 60)
+    return f"{days}d {hours}h {minutes}m remaining at snapshot"
+
+
+def render_progress(progress):
+    verified = utc_timestamp(progress["verified_at_utc"])
+    parameters = progress["model_parameters"]
+    model = f"{parameters / 1_000_000:.1f}M parameters" if parameters >= 1_000_000 else f"{parameters:,} parameters"
+    result = progress["latest_result"]
+    return f'''<section class="progress" aria-label="Experiment progress" data-progress data-verified-at="{escape(progress['verified_at_utc'], quote=True)}" data-deadline="{DEADLINE_UTC}">
+  <div class="progress-top"><p class="progress-model"><strong title="{parameters:,} trainable parameters">{model}</strong> · from scratch</p><a href="{BASE}/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>{escape(progress['experiment_state'])}</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="{escape(result['url'], quote=True)}">{escape(result['summary'])}</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>{remaining_at_snapshot(verified)}</strong><span class="progress-deadline">Deadline <time datetime="{DEADLINE_UTC}">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="{progress['verified_at_utc']}">{verified:%d %b %Y, %H:%M:%S} UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>'''
 
 
 def load_posts():
@@ -45,6 +104,8 @@ def load_posts():
 
 def build():
     posts = load_posts()
+    progress = load_progress()
+    progress_header = render_progress(progress)
     template = Template((ROOT / "templates/layout.html").read_text())
     output = ROOT / "docs"
     # Only generated output is replaced. Public sources are never imported remotely.
@@ -64,10 +125,11 @@ def build():
         file.write_text(template.substitute(
             title=escape(f"{title} · {TITLE}" if title != TITLE else TITLE),
             description=escape(description, quote=True), canonical=canonical,
-            body=body, base=BASE,
+            body=body, base=BASE, progress_header=progress_header,
             journal_current=' aria-current="page"' if section == "journal" else "",
             experiments_current=' aria-current="page"' if section == "experiments" else "",
             about_current=' aria-current="page"' if section == "about" else "",
+            current_plan_current=' aria-current="page"' if section == "current-plan" else "",
         ))
         paths.append(canonical)
 
@@ -92,7 +154,7 @@ def build():
         body = f'''<article class="page"><header class="article-header"><h1>{escape(post['title'])}</h1><p class="dek">{escape(post['summary'])}</p><p class="article-meta"><time datetime="{post['date']}">{post['date']:%d %B %Y}</time> · {escape(post['phase'])} · {post['read_minutes']} min read</p></header><div class="prose">{post['html']}</div><nav class="post-nav" aria-label="Article navigation">{prev}{next_link}</nav></article>'''
         render(post["path"], post["title"], post["summary"], body)
 
-    for filename, title in (("experiments", "Experiment index"), ("about", "About this journal")):
+    for filename, title in (("experiments", "Experiment index"), ("about", "About this journal"), ("current-plan", "Current plan")):
         source = (ROOT / f"content/{filename}.md").read_text()
         html = markdown.markdown(source, extensions=["tables", "fenced_code", "toc"])
         html = html.replace("<table>", '<div class="table-scroll"><table>').replace("</table>", "</table></div>")
@@ -123,7 +185,7 @@ def build():
         if not path.endswith("/404/"):
             ET.SubElement(ET.SubElement(sitemap, "url"), "loc").text = path
     ET.ElementTree(sitemap).write(output / "sitemap.xml", encoding="utf-8", xml_declaration=True)
-    print(f"Built {len(posts)} posts and 3 index/info pages in docs/")
+    print(f"Built {len(posts)} posts and 4 index/info pages in docs/")
 
 
 if __name__ == "__main__":

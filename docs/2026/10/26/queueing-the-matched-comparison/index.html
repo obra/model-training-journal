@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Queueing the matched comparison · Model Training Journal</title>
+  <meta name="description" content="A reviewed sequential pipeline waits for the base checkpoint, then plans a bounded language probe, isolated supervised smoke test, matched training branches, and development evaluations.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/queueing-the-matched-comparison/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:36:53Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Diversity vs repetition: training and evaluations complete; results review underway.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 35m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:36:53Z">26 Oct 2026, 16:36:53 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>Queueing the matched comparison</h1><p class="dek">A reviewed sequential pipeline waits for the base checkpoint, then plans a bounded language probe, isolated supervised smoke test, matched training branches, and development evaluations.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Engineering · 2 min read</p></header><div class="prose"><p>This entry records the comparison being queued on <strong>26 October 2026</strong>, while the original base run was still active. The CPU coordinator waited for that run; it did not restart it or launch a competing GPU workload. <strong>The stages described here were queued work, not completed model results.</strong></p>
+<p>The aim was to carry the <a href="/model-training-journal/2026/10/26/making-the-planning-comparison-fair/">matched comparison design</a> through execution without losing its measurement boundaries.</p>
+<h2 id="fix-launch-and-recovery-defects-first">Fix launch and recovery defects first</h2>
+<p>Independent review found two defects beyond the initial passing tests. The shortened supervised smoke configuration inherited a warmup longer than its whole run. A recovery edge case could also leave status pointing at a finished job.</p>
+<p>The smoke-only schedule was corrected to a 1,000-label warmup within a 10,000-label requested budget. Recovery could clear stale status only for the exact completed job after a fresh check established that its process group was absent. A different, live, or uncertain job blocked progression.</p>
+<p>The notebook records <strong>38 comparison-test passes on Linux</strong> and a CPU preflight that constructed both schedulers with the actual tokenizer and data budgets. Independent review also records 38 passing tests. These are orchestration and preparation checks, not evidence of conversational ability.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Planned supervised stage</th>
+<th>Complete-conversation labels</th>
+<th>Steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Isolated smoke test</td>
+<td>9,976</td>
+<td>66</td>
+</tr>
+<tr>
+<td>Each matched branch</td>
+<td>1,999,931</td>
+<td>12,672</td>
+</tr>
+</tbody>
+</table></div>
+<p>The unused labels preserve complete conversations rather than truncating constraints or permissions.</p>
+<h2 id="a-fixed-sequence-with-separate-evidence">A fixed sequence with separate evidence</h2>
+<ol>
+<li>Require clean base completion at <strong>100 million valid tokens</strong>. Reload and verify its checkpoint, recoverable state, hashes, finite weights, and FP32 persistent tensors; preserve a separate base snapshot.</li>
+<li>Run a <strong>900,000-valid-label language probe</strong> under a ten-minute bound. CPU counting showed it would consume 902,144 of the 918,539 available raw validation tokens without cycling. This is a partial single pass, not evaluation of every raw token.</li>
+<li>Run the isolated supervised smoke test under a six-minute external bound and three-minute trainer limit. Its trained state must not initialize either matched branch.</li>
+<li>Train random-plus-supervised and base-plus-supervised branches sequentially, each bounded by four hours. Verify equal actual labels, optimizer steps, and stream positions.</li>
+<li>Evaluate both branches on all <strong>80 development cases</strong>, separately in raw and guarded modes, each bounded by one hour. Both use the same 96-token greedy decoding policy, preserve raw output, and receive no oracle state. Report read-before-write policy separately from original scores.</li>
+</ol>
+<p>The final holdout was excluded from this sequence. All GPU stages remained subject to the independent deadline guard and absolute stop of <strong>31 October 2026 at 04:12 UTC</strong>.</p>
+<h2 id="stop-visibly-when-execution-is-uncertain">Stop visibly when execution is uncertain</h2>
+<p>Changed pinned inputs, uncertain launches, failed checkpoint checks, incomplete evaluations, or an unhealthy sentinel would halt progression for inspection. Partial transcripts would remain labeled partial. The pipeline would not blindly retry or launch a duplicate job.</p>
+<p>This AI-assisted record describes the intended sequence at queue time. The experiment still needed actual development outcomes and failure analysis before any model could be considered useful or promoted.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/making-the-planning-comparison-fair/">Earlier: Making the planning comparison fair</a><a href="/model-training-journal/2026/10/26/bounded-news-candidate-audit/">Next: A bounded news-source audit during base training</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

@@ -18,6 +18,8 @@ ROOT_FILES = {"README.md", "PUBLISHING.md", "requirements.txt", ".gitignore", "P
 PUBLIC_DIRS = {"content", "templates", "assets", "scripts", "tests", "docs"}
 LOCAL_DIRS = {".git", ".venv", ".impeccable", ".pytest_cache", ".review"}
 EXTENSIONS = {".md", ".json", ".py", ".txt", ".html", ".css", ".xml"}
+PROGRESS_SCRIPT_FILES = {"assets/progress.js", "docs/assets/progress.js"}
+PROGRESS_SCRIPT_TAG = f'<script src="{BASE}/assets/progress.js" defer>'
 MAX_BYTES = 1_000_000
 
 
@@ -91,7 +93,8 @@ def candidate(root: Path = ROOT, terms: list[str] | None = None) -> dict[str, st
         name = rel.as_posix()
         if not allowed_path(name):
             raise ValidationError(f"{name}: not in the publication allowlist")
-        if path.suffix not in EXTENSIONS and path.name not in {".gitignore", ".nojekyll"}:
+        if (path.suffix not in EXTENSIONS and path.name not in {".gitignore", ".nojekyll"}
+                and name not in PROGRESS_SCRIPT_FILES):
             raise ValidationError(f"{name}: unexpected file type")
         data = path.read_bytes()
         if len(data) > MAX_BYTES or b"\0" in data:
@@ -115,11 +118,27 @@ class Page(HTMLParser):
         self.links: list[tuple[str, str]] = []
         self.ids: set[str] = set()
         self.problems: list[str] = []
+        self.script_count = 0
+        self._in_script = False
+        self._text = text
+        self._line_offsets = [0] + [match.end() for match in re.finditer("\n", text)]
         self.feed(text)
+        self.close()
+        if self._in_script:
+            self.problems.append("unclosed progress script")
 
     def handle_starttag(self, tag, attrs):
+        if tag == "script":
+            self.script_count += 1
+            self._in_script = True
+            # Keep this exception literal: alternate URLs, attributes, duplicate
+            # attributes and unusual parsing forms all require a fresh review.
+            if self.get_starttag_text() != PROGRESS_SCRIPT_TAG:
+                self.problems.append("only the exact reviewed progress script tag is allowed")
+            if self.script_count > 1:
+                self.problems.append("multiple progress script tags")
         attrs = dict(attrs)
-        if tag in {"script", "iframe", "object", "embed", "form", "style", "svg"}:
+        if tag in {"iframe", "object", "embed", "form", "style", "svg"}:
             self.problems.append(f"unexpected active content: {tag}")
         if any(key.lower().startswith("on") for key in attrs):
             self.problems.append("inline event handler")
@@ -134,6 +153,23 @@ class Page(HTMLParser):
         for attr in ("href", "src", "srcset", "action", "xlink:href"):
             if attrs.get(attr):
                 self.links.append(("anchor" if tag == "a" and attr == "href" else "resource", attrs[attr]))
+
+    def handle_startendtag(self, tag, attrs):
+        if tag == "script":
+            self.problems.append("self-closing script tag")
+        super().handle_startendtag(tag, attrs)
+
+    def handle_endtag(self, tag):
+        if tag == "script":
+            line, column = self.getpos()
+            offset = self._line_offsets[line - 1] + column
+            if not self._in_script or not self._text.startswith("</script>", offset):
+                self.problems.append("unexpected progress script closing tag")
+            self._in_script = False
+
+    def handle_data(self, data):
+        if self._in_script and data.strip():
+            self.problems.append("inline script content")
 
 
 def validate_html(root: Path = ROOT) -> None:
@@ -170,6 +206,13 @@ def validate_html(root: Path = ROOT) -> None:
                 raise ValidationError(f"{path.name}: broken local link {href}")
             if url.fragment and target in pages and unquote(url.fragment) not in pages[target].ids:
                 raise ValidationError(f"{path.name}: broken local anchor {href}")
+    if any(page.script_count for page in pages.values()):
+        source = root / "assets/progress.js"
+        generated = docs / "assets/progress.js"
+        if not source.is_file() or not generated.is_file():
+            raise ValidationError("Progress script requires source and generated assets/progress.js files")
+        if source.read_bytes() != generated.read_bytes():
+            raise ValidationError("docs/assets/progress.js must exactly match assets/progress.js")
     for path in docs.rglob("*.css"):
         if re.search(r"@import\b", path.read_text(), re.I):
             raise ValidationError(f"{path.name}: CSS imports are not allowed")

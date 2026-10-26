@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>More correct task fields, but more wrong-object writes · Model Training Journal</title>
+  <meta name="description" content="Varied task values improve nine of 64 requested outcomes versus three for repetition, but increase wrong-object writes and false claims. Neither checkpoint is promoted.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/counterfactual-binding-results/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:36:53Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Diversity vs repetition: training and evaluations complete; results review underway.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 35m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:36:53Z">26 Oct 2026, 16:36:53 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>More correct task fields, but more wrong-object writes</h1><p class="dek">Varied task values improve nine of 64 requested outcomes versus three for repetition, but increase wrong-object writes and false claims. Neither checkpoint is promoted.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Results · 3 min read</p></header><div class="prose"><p>Both training arms and all 18 evaluations completed by <strong>14:25:53 UTC on 26 October 2026</strong>. The <a href="/model-training-journal/2026/10/26/binding-comparison-launch/">binding experiment</a> improved some fields and ordering behavior while worsening other outcomes. <strong>Neither checkpoint was promoted.</strong></p>
+<p>The 1,284 evaluated episodes included correlated raw/guarded views and related probes. They were not 1,284 independent tasks.</p>
+<h2 id="completed-training-limited-transfer">Completed training, limited transfer</h2>
+<p>The repetition and varied-value arms started from the same preserved base. Both retained the canonical supervised data and added 500 repair rows, but had 3,100 and 3,500 distinct histories respectively.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Training measurement</th>
+<th>Repetition</th>
+<th>Varied values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Completed assistant labels</td>
+<td>1,999,908</td>
+<td>1,999,822</td>
+</tr>
+<tr>
+<td>Optimizer steps</td>
+<td>13,338</td>
+<td>13,338</td>
+</tr>
+<tr>
+<td>Process wall time</td>
+<td>976.796 seconds</td>
+<td>977.160 seconds</td>
+</tr>
+</tbody>
+</table></div>
+<p>On the selected added-training sample, repetition reproduced 50/50 histories, representing only <strong>ten distinct histories repeated five times</strong>. Varied values reproduced 49/50 distinct histories. Both solved the ten shared controls. These were training-fit measurements, not generalization results.</p>
+<h2 id="the-fresh-64-case-diagnostic">The fresh 64-case diagnostic</h2>
+<p>This diagnostic combined eight repair anchors with six variants each and eight create/update pairs. Its independent checker used visible requests and reads to verify requested state, preserved unrelated objects, intermediate actions, and claims.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Per-mode result, 64 cases</th>
+<th>Repetition</th>
+<th>Varied values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exact requested outcomes / strict successes</td>
+<td>3</td>
+<td>9</td>
+</tr>
+<tr>
+<td>False completion claims</td>
+<td>28</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Cases with wrong-object applied writes</td>
+<td>21</td>
+<td>29</td>
+</tr>
+<tr>
+<td>Unknown-wording final answers</td>
+<td>4</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Missing final answers</td>
+<td>29</td>
+<td>14</td>
+</tr>
+</tbody>
+</table></div>
+<p>Raw and guarded histories matched within each arm, so they are not independent replications. The runtime allowed the update operation globally, but applying it to the wrong object still violated the requested scope. Successful receipts did not establish successful requested actions.</p>
+<p>Neither arm solved any of the eight repair controls. Conditional-transfer denominators were therefore zero, including their common-control intersection. Nine total successes must not be described as successful transfer from working repair controls.</p>
+<p>The varied arm made progress on some date fields but more often selected a distractor object. Of its 40 false completions, 38 followed successful wrong-result writes and two followed rejected calls. Missing answers and unfamiliar noncompletion wording remained separate categories.</p>
+<h2 id="retention-and-regression-checks-change-the-interpretation">Retention and regression checks change the interpretation</h2>
+<p>On the original 64 calibration examples, exact reference histories fell from <strong>48/64</strong> at canonical 2M to <strong>42/64</strong> for repetition and <strong>40/64</strong> for varied values. Correct calendar bookings fell from <strong>9/23</strong> to <strong>4/23</strong> and <strong>2/23</strong>. These were fresh-base mixed-data runs with reduced canonical exposure, so describing the change as forgetting during continuation would be misleading.</p>
+<p>The original 80-case development set gave proxy passes of 9 and 10, but none represented a correct requested plan or task correction. The broader 80-case set gave ten proxy passes per arm, all invalid suggestions. Fewer false completions in that broader set were accompanied by unsupported failure explanations and more cases abandoning work; that is not demonstrated recovery.</p>
+<p>On the distinct paired 80-case regression set, exact states rose from 39 to 42. Item-order transfer improved from 0/8 to 8/8, while year transfer fell from 4/5 to 0/5 and identifier transfer remained 0/8. False completions rose from 22 to 31. These populations cannot be pooled with the fresh 64 cases.</p>
+<h2 id="next-decision-hold-realized-exposure-fixed">Next decision: hold realized exposure fixed</h2>
+<p>The selected follow-up was <a href="/model-training-journal/2026/10/26/diversity-versus-repetition/">diversity versus repetition at matched exposure</a>: more distinct repair anchors while preserving actual canonical labels, tokens, and masks. Its decision rule would include missing answers and unsupported failure explanations alongside correct outcomes and damage.</p>
+<p>The final holdout remained reserved. These fictional-world results establish neither a useful assistant nor broad safety. This AI-assisted account was checked against completed training records and independent outcome, fit, retention, and regression reviews.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/binding-comparison-launch/">Earlier: Launching a matched repetition control for task binding</a><a href="/model-training-journal/2026/10/26/diversity-versus-repetition/">Next: Testing more distinct examples at matched training exposure</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

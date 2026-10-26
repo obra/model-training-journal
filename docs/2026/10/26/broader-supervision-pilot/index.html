@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Broader supervision exposes scoring and input-format limits · Model Training Journal</title>
+  <meta name="description" content="The finite paired pilot finishes, but its apparent development gains do not establish correct plans. Follow-up checks find incomplete fitting and a tool-serialization mismatch.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/broader-supervision-pilot/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:36:53Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Diversity vs repetition: training and evaluations complete; results review underway.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 35m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:36:53Z">26 Oct 2026, 16:36:53 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>Broader supervision exposes scoring and input-format limits</h1><p class="dek">The finite paired pilot finishes, but its apparent development gains do not establish correct plans. Follow-up checks find incomplete fitting and a tool-serialization mismatch.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Experiment · 3 min read</p></header><div class="prose"><p>This is the completed record of the pilot launched at <strong>08:26 UTC on 26 October 2026</strong>, with follow-up checks through 09:25. Both arms started independently from the same preserved 100M-token base, using the same 97,536,768-parameter model, tokenizer, seed, context 1,536 and optimizer configuration. Original versus broader supervision was the intervention.</p>
+<h2 id="completed-exposure-and-separate-populations">Completed exposure and separate populations</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Measurement</th>
+<th>Original-data control</th>
+<th>Broader supervision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unique conversations</td>
+<td>946</td>
+<td>3,000</td>
+</tr>
+<tr>
+<td>Assistant labels per unique pass</td>
+<td>149,365</td>
+<td>444,537</td>
+</tr>
+<tr>
+<td>Completed assistant labels</td>
+<td>499,871</td>
+<td>499,839</td>
+</tr>
+<tr>
+<td>Optimizer steps</td>
+<td>3,170</td>
+<td>3,368</td>
+</tr>
+<tr>
+<td>Training wall time</td>
+<td>234.32 seconds</td>
+<td>246.67 seconds</td>
+</tr>
+</tbody>
+</table></div>
+<p>Both arms stopped at complete-conversation boundaries below the 500K cap. Wall times include initialization and checkpointing. Checkpoint verification recorded recoverable state and FP32 persistent parameters and Adam tensors, with BF16 computation.</p>
+<p>All eight development evaluations completed. The original 80-case suite used context 1,024; the newer 80-case composition suite used 1,536. Both retained greedy unconstrained replies, a 96-token reply limit and no JSON repair or prompt truncation. Raw and guarded modes are separate views of these cases, not extra independent trials.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Original accepted-state score</th>
+<th>Control</th>
+<th>Broader supervision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Original development, each mode</td>
+<td>2/80</td>
+<td>10/80</td>
+</tr>
+<tr>
+<td>New development, each mode</td>
+<td>0/80</td>
+<td>11/80</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="why-these-are-not-counts-of-correct-plans">Why these are not counts of correct plans</h2>
+<p>The control's two original-suite passes happen to request the twenty-minute interval it writes in every scheduling attempt. The broader model's ten original-suite passes are truthful unavailable-tool acknowledgments after incorrectly specified booking attempts. Ten other successful writes change the requested title and date, followed by false completion claims that receipt checks miss.</p>
+<p>On the new suite, all eleven broader-model passes follow the revocation path without writing after the delivered withdrawal. Their no-booking statements are supported, but <strong>all eleven suggested intervals use the wrong date</strong>; nine also have wrong duration. The original checker rewards no-write, intent and clarification presence without checking the suggested interval. These are narrow procedural passes, not eleven valid plans.</p>
+<p>Only three of those eleven questions ask for missing duration. The simulator supplies duration after any clarification, including eight questions about an already supplied window. Separate review also finds eleven false generic completions on the new suite. Manual-review counts include unfamiliar wording and absent answers; they are not extra fabrication counts. No human ratings or final-holdout results exist here.</p>
+<h2 id="training-fit-and-a-representation-mismatch">Training fit and a representation mismatch</h2>
+<p>Separate source-specific 64-case training samples produced 59/64 accepted outcomes for control and 38/64 for breadth. These are exposed training diagnostics, not matched test inputs or holdouts. Teacher forcing found 59/64 versus 35/64 completely correct conversations, with 45/8,988 versus 44/9,601 incorrect assistant labels. High label accuracy concealed consequential value errors.</p>
+<p>For the broader sample, 28 full histories matched exactly, 25 first differed in assistant output, and 11 first differed in a tool response. Saving the scenario had reordered JSON object keys without changing values. Seventeen teacher histories contained some such difference, but only eleven had it before the model's first divergence; seventeen is not a causal failure count.</p>
+<p>A bounded same-checkpoint probe used two 501-token prefixes with identical tool values. Training key order yielded the correct interval; runtime key order yielded an incorrect interval. That establishes sensitivity in one case, not a universal explanation.</p>
+<h2 id="next-decision">Next decision</h2>
+<p>A separate canonical derivative changed only tool-message key order, preserving all 3,000 conversations, their order and assistant targets. All passed saved-history, semantic-value and token-bound checks; zero were rejected. The next experiment would isolate this serialization change before increasing training duration.</p>
+<p>The resource observer's GPU memory counters were unavailable; no zero-memory or training-peak claim is supported. This AI-assisted summary was checked against paired budgets, separated development metrics, fit reports and independent reviews. <a href="/model-training-journal/2026/10/26/serialization-repair-and-launch-blocker/">The repair record</a> explains the next controlled step.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/broader-supervision-preflight/">Earlier: Broader supervision, with failures kept in the record</a><a href="/model-training-journal/2026/10/26/serialization-repair-and-launch-blocker/">Next: Repairing tool serialization before the next run</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

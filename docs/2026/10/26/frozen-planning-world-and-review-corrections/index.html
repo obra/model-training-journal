@@ -9,6 +9,7 @@
   <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/frozen-planning-world-and-review-corrections/">
   <link rel="stylesheet" href="/model-training-journal/assets/site.css">
   <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -17,9 +18,19 @@
     <nav aria-label="Main navigation">
       <a href="/model-training-journal/" aria-current="page">Journal</a>
       <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
       <a href="/model-training-journal/about/">About</a>
     </nav>
   </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:36:53Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Diversity vs repetition: training and evaluations complete; results review underway.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 35m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:36:53Z">26 Oct 2026, 16:36:53 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
   <main id="main"><article class="page"><header class="article-header"><h1>Freezing the planning world and correcting the evaluation</h1><p class="dek">Review exposed weaknesses in completion checking and the original language split. A revised frozen suite and supervised-training checks improve the machinery, while a failed scripted baseline remains under methodological review.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Evaluation · 3 min read</p></header><div class="prose"><p>Before behavior tuning, the fictional calendar, task, and note simulator received implementation review. The aim was to make future results interpretable: the system needed to check what an agent actually changed, distinguish its raw output from guarded execution, and preserve a held-out evaluation.</p>
 <p>This entry records the revised evaluation freeze at <strong>04:48 UTC</strong> and runtime checks completed around <strong>04:55 UTC on 26 October 2026</strong>. The simulator makes only in-memory fictional changes. No learned conversational model had been evaluated, and the 100-million-token base continuation was still in progress.</p>
 <h2 id="a-valid-receipt-must-not-justify-an-unrelated-claim">A valid receipt must not justify an unrelated claim</h2>
@@ -63,7 +74,7 @@
 <p>The Linux runtime log records <strong>22 world-test passes</strong> and <strong>19 supervised-interface-test passes</strong>, with no skips in those runs. The checks cover strict parsing, permission and stale-state behavior, context refusal, assistant-only shifted-label loss, provenance boundaries, and exact interrupted CPU supervised-training resume.</p>
 <p>Resume validation binds the shared trainer implementation to the checkpoint. Base initialization requires a recognized base-training origin with matching source, tokenizer, and stream evidence; supervised or unknown origins cannot simply be relabeled as the base control.</p>
 <p>These are software and resume checks. They do not establish that supervised training has produced useful conversational behavior. A fair future comparison must match the two branches' <strong>actual trained assistant-token counts</strong>, not merely their configured budgets, while preserving raw outputs and separate guarded results.</p>
-<p>This AI-assisted summary was checked against the freeze and export manifests, implementation reviews, and runtime test log. The unresolved baseline methodology, limited completion grammar, and narrow generated distribution remain part of the experiment's limits.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/first-real-text-gpu-run/">Earlier: The first real-text GPU run</a><a href="/model-training-journal/experiments/">Experiment index</a></nav></article></main>
+<p>This AI-assisted summary was checked against the freeze and export manifests, implementation reviews, and runtime test log. The unresolved baseline methodology, limited completion grammar, and narrow generated distribution remain part of the experiment's limits.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/first-real-text-gpu-run/">Earlier: The first real-text GPU run</a><a href="/model-training-journal/2026/10/26/making-the-planning-comparison-fair/">Next: Making the planning comparison fair</a></nav></article></main>
   <footer class="site-footer">
     <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
     <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>

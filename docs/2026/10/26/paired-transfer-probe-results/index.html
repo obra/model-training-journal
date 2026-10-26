@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paired probes isolate date and identifier failures · Model Training Journal</title>
+  <meta name="description" content="Changing a year or target identifier breaks otherwise successful requests. Longer training improves some ordering cases while false completion claims increase.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/paired-transfer-probe-results/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:36:53Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Diversity vs repetition: training and evaluations complete; results review underway.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 35m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:36:53Z">26 Oct 2026, 16:36:53 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>Paired probes isolate date and identifier failures</h1><p class="dek">Changing a year or target identifier breaks otherwise successful requests. Longer training improves some ordering cases while false completion claims increase.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Diagnosis · 2 min read</p></header><div class="prose"><p>The paired diagnostic completed at <strong>10:57 UTC on 26 October 2026</strong>. It compared the saved canonical-supervision checkpoints trained for roughly 500,000 and two million assistant labels. No training occurred during this diagnostic.</p>
+<p>The question was narrower than whether the model could plan: when it solves a request, does it still solve that request after one controlled change?</p>
+<h2 id="forty-pairs-five-changed-factors">Forty pairs, five changed factors</h2>
+<p>Each checkpoint received <strong>80 episodes arranged in 40 pairs</strong>. A pair changed the year, wording, target identifier, returned-item order, or a calendar blocker's endpoint. Sixteen underlying anchors were reused across factors, making these correlated, development-informed probes rather than a blind generalization test.</p>
+<p>Both checkpoints used the same unconstrained greedy BF16 decoder, context of 1,536 tokens, six assistant turns, and 96-token reply limit.</p>
+<p>Exact final states increased from <strong>40/80 to 43/80</strong>. A stricter measure requiring a successful read followed by exactly one write attempt increased from <strong>40/80 to 42/80</strong>. The difference was a real recovery: the longer-trained model submitted an invalid interval, received a rejection, reread the calendar, and then made the correct booking. Its final state and completion statement were correct; its history failed the one-attempt rule.</p>
+<h2 id="measure-transfer-only-when-the-control-works">Measure transfer only when the control works</h2>
+<p>The following fractions use that stricter definition. Each numerator counts successful changed requests among controls the same checkpoint solved.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Changed factor</th>
+<th>500K checkpoint</th>
+<th>2M checkpoint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Year</td>
+<td>0/5</td>
+<td>0/5</td>
+</tr>
+<tr>
+<td>Target identifier</td>
+<td>0/8</td>
+<td>0/8</td>
+</tr>
+<tr>
+<td>Returned-item order</td>
+<td>5/8</td>
+<td>7/8</td>
+</tr>
+<tr>
+<td>Wording</td>
+<td>5/5</td>
+<td>4/5</td>
+</tr>
+<tr>
+<td>Calendar geometry</td>
+<td>0/2</td>
+<td>0/2</td>
+</tr>
+</tbody>
+</table></div>
+<p>The successful controls are not always the same across checkpoints. Only four task controls are shared for year and wording: all four retain wording success and lose year transfer. The identifier and order comparisons share the same eight successful controls. Geometry has no shared successful control under the strict rule, so its fractions do not show matched improvement or deterioration.</p>
+<p>The failures also differ. The longer-trained checkpoint continued using a familiar year after the request's year changed. Renamed targets elicited updates to an absent, familiar identifier. Ordering failures were not explained by always choosing the first listed item: some earlier successes correctly chose the second item. Interval errors remained even when year and identifier were unchanged.</p>
+<h2 id="more-correct-states-more-false-claims">More correct states, more false claims</h2>
+<p>False completion claims increased from <strong>23 to 28</strong>. The latter included 25 statements following wrong applied writes and three following rejected writes. Fewer missing final answers therefore did not establish better completion reporting.</p>
+<p>One worker's complete artifacts were recovered and validated after a registration failure, but its process exit remained unknown. The result record preserves that distinction; valid output is not proof of a successful process exit.</p>
+<p>The next selected experiment was <a href="/model-training-journal/2026/10/26/year-diversity-experiment/">varied training years</a>. Identifier binding and interval arithmetic remained separate problems. The final behavioral holdout stayed reserved, and no checkpoint was promoted on these results.</p>
+<p>This AI-assisted account was checked against the frozen probe metadata and independent paired comparison. Raw transcripts and evaluation content are not published here.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/canonical-2m-results/">Earlier: Longer canonical training improves fit but not development planning</a><a href="/model-training-journal/2026/10/26/year-diversity-experiment/">Next: Testing whether varied training years improve date transfer</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

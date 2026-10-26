@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Longer canonical training improves fit but not development planning · Model Training Journal</title>
+  <meta name="description" content="The same 64 training cases fit better after two million supervised labels, while development behavior still fails. Fewer completion claims also conceal more unfinished conversations.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/canonical-2m-results/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:36:53Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Diversity vs repetition: training and evaluations complete; results review underway.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 35m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:36:53Z">26 Oct 2026, 16:36:53 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>Longer canonical training improves fit but not development planning</h1><p class="dek">The same 64 training cases fit better after two million supervised labels, while development behavior still fails. Fewer completion claims also conceal more unfinished conversations.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Results · 3 min read</p></header><div class="prose"><p>The canonical two-million-label run, four development evaluations and unchanged 64-case training diagnostic completed on <strong>26 October 2026</strong>. Longer optimization improved reproduction of familiar examples. It did not demonstrate correct completed plans on either development suite.</p>
+<h2 id="completed-exposure">Completed exposure</h2>
+<p>Training finished at <strong>10:27:07 UTC</strong> with <strong>1,999,982 assistant labels in 13,509 steps</strong>, taking <strong>976.4949 seconds</strong>, approximately 2,048 labels per second. The four development evaluations completed at 10:34:05; the training-fit follow-up finished at 10:36:34.</p>
+<p>The run started afresh from the same preserved base and unchanged canonical 3,000-conversation corpus. Model, tokenizer, order, seed, context and optimizer hyperparameters matched canonical 500K. Label exposure and cosine-decay horizon changed together. The 444,537-label unique-pass inventory was exposed about 4.5 times; no extra unique data was added.</p>
+<h2 id="better-fit-on-the-same-training-examples">Better fit on the same training examples</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Training diagnostic</th>
+<th>Canonical 500K</th>
+<th>Canonical 2M</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Original accepted-state outcomes</td>
+<td>38/64</td>
+<td>50/64</td>
+</tr>
+<tr>
+<td>Exact full message histories</td>
+<td>34/64</td>
+<td>48/64</td>
+</tr>
+<tr>
+<td>Teacher-forced all-labels-correct conversations</td>
+<td>34/64</td>
+<td>48/64</td>
+</tr>
+<tr>
+<td>Incorrect assistant labels</td>
+<td>43/9,601</td>
+<td>18/9,601</td>
+</tr>
+<tr>
+<td>Mean assistant-label loss</td>
+<td>0.01306820</td>
+<td>0.00550383</td>
+</tr>
+</tbody>
+</table></div>
+<p>All sixteen nonexact histories first diverge in assistant output, with no environment-prefix mismatch. This is improved fitting on exposed examples, not held-out transfer.</p>
+<p>The two nonexact accepted outcomes differ materially: one still proposes the wrong duration without booking; the other recovers from a rejected reversed interval and then books the correct requested slot. The original 50 accepted outcomes therefore comprise 48 exact histories, one correct recovery and one wrong-duration suggestion. Both nonexact cases must not be dismissed as equivalent errors.</p>
+<p>All fourteen remaining failures concern calendar intervals and finish with false generic completion claims despite real write receipts. Two now overlap observed commitments, even though their earlier failed intervals did not. Aggregate fit improvement is not uniform behavioral improvement.</p>
+<h2 id="development-behavior-remains-unsuccessful">Development behavior remains unsuccessful</h2>
+<p>Raw and guarded histories match within each suite; they are correlated views, not independent replications. The original and newer suites retain different contexts, 1,024 and 1,536 respectively.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Original accepted-state score, each mode</th>
+<th>Canonical 500K</th>
+<th>Canonical 2M</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Original development suite</td>
+<td>12/80</td>
+<td>1/80</td>
+</tr>
+<tr>
+<td>New development compositions</td>
+<td>11/80</td>
+<td>10/80</td>
+</tr>
+</tbody>
+</table></div>
+<p>The sole original-suite pass acknowledges a real unavailable-tool error after a wrongly specified booking attempt. There is no correct event, completed correction or requested proactive heads-up. Redundant questions increase <strong>8→37</strong>. False completion claims fall <strong>25→6</strong> alongside fewer attempted outcomes, so that decline does not establish improved truthfulness.</p>
+<p>All ten newer-suite passes obey a delivered withdrawal but suggest the wrong requested date. Timestamps and interval lengths improve: all ten are positive, and five durations match. None is a correct full plan. <strong>27 of 28 questions are redundant</strong>. False completions fall <strong>20→12</strong>, largely because twenty distractor-task cases now end on invalid updates without final answers. Fewer spoken claims must not conceal more unfinished conversations.</p>
+<h2 id="next-diagnostic-not-promotion">Next diagnostic, not promotion</h2>
+<p>No dedicated training-memory peak was recorded; inference-only memory measurements cannot fill that gap. Final holdouts remained reserved.</p>
+<p>The next selected diagnostic was to compare saved checkpoints on paired changes to year, wording, target identity, item order and calendar geometry. That was a development-informed probe, not a blind holdout; no GPU probe result is claimed at this entry's cutoff. <a href="/model-training-journal/2026/10/26/paired-transfer-probe-results/">The paired-probe results</a> follow separately.</p>
+<p>This AI-assisted account was checked against the exact budget, fixed-64 summary and independent development, fit and claim reviews. The model was not promoted on these results.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/canonical-two-million-label-fit-study/">Earlier: Testing a longer optimization budget on canonical supervision</a><a href="/model-training-journal/2026/10/26/paired-transfer-probe-results/">Next: Paired probes isolate date and identifier failures</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

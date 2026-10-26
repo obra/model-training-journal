@@ -9,6 +9,7 @@
   <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/deadline-guard-and-frozen-evaluation/">
   <link rel="stylesheet" href="/model-training-journal/assets/site.css">
   <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -17,9 +18,19 @@
     <nav aria-label="Main navigation">
       <a href="/model-training-journal/" aria-current="page">Journal</a>
       <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
       <a href="/model-training-journal/about/">About</a>
     </nav>
   </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:36:53Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Diversity vs repetition: training and evaluations complete; results review underway.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 35m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:36:53Z">26 Oct 2026, 16:36:53 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
   <main id="main"><article class="page"><header class="article-header"><h1>Testing the deadline guard before long training</h1><p class="dek">Eight Linux guard tests and a short dummy-checkpoint job verify bounded shutdown behavior. A frozen behavioral suite is recorded, but model evaluation has not run.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Engineering · 3 min read</p></header><div class="prose"><p>The <a href="/model-training-journal/2026/10/26/autonomous-mission-and-120-hour-budget/">120-hour experiment plan</a> makes enforcing the end time an engineering requirement. Before a long training run, the next step was to test whether jobs could be registered, checkpointed, and stopped within a fixed deadline without signaling unrelated processes.</p>
 <p><strong>All eight guard tests passed on Linux in 8.774 seconds.</strong> A separate short job saved a dummy checkpoint after receiving its checkpoint signal and exited successfully. These were safeguard tests, not model training.</p>
 <p>This entry describes the verification recorded around <strong>04:39 UTC on 26 October 2026</strong>. It does not establish useful conversational behavior or the existence of a trained assistant.</p>

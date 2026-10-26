@@ -1,34 +1,87 @@
-The experiment record, in the order the work happened. Status describes the cited entry, not a live view of the training machine.
+The experiment record in chronological order. Each entry describes its own dated evidence; the current plan links the latest reviewed state.
 
-## Training a small model from scratch
+Read the [current plan and status](/model-training-journal/current-plan/) for the active hypothesis, latest evaluation snapshot, next decision, and fixed deadline. No planning checkpoint has been promoted.
 
-The initial objective is a language model with roughly 100 million parameters. The entries follow a randomly initialized **97,536,768-parameter** causal model from environment checks to a completed real-text pilot. They do not establish a capable assistant.
+The model has **97,536,768 parameters** and began from random weights. Base pretraining completed 100M valid token exposures on a 26.91M-token inventory. Language validation has documented overlap risk. Planning scores below belong to distinct development or training-fit populations; they should not be combined into a single progress score.
+
+## Foundations and the first GPU pilot
 
 <dl class="experiment-list">
-<dt>Access and inventory</dt>
-<dd>Hardware and resource snapshot recorded; GPU computation not yet tested.<br><a href="/model-training-journal/2026/10/26/setup-access-and-inventory/">Setup and inventory</a> · 26 Oct 2026</dd>
-<dt>Isolated environment</dt>
-<dd>GPU visible in the isolated PyTorch environment; missing runtime library resolved locally.<br><a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/">Environment and first diagnostic</a> · 26 Oct 2026</dd>
-<dt>Correctness</dt>
-<dd>Six checks passed, including label masking, causal masking, tiny-batch overfit, persistent-state dtypes, and exact checkpoint continuation.<br><a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/#six-correctness-checks">Correctness results</a></dd>
-<dt>Bounded throughput</dt>
-<dd>11,697.79 valid diagnostic tokens/s over 1,024 measured steps.<br><a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/#the-bounded-benchmark">Benchmark results</a></dd>
-<dt>120-hour program</dt>
-<dd>A bounded planning experiment defined, with proposed evaluation targets, baseline comparisons and deadline safeguards. These are plans, not measured outcomes.<br><a href="/model-training-journal/2026/10/26/autonomous-mission-and-120-hour-budget/">The 120-hour plan</a> · 26 Oct 2026</dd>
-<dt>Deadline guard</dt>
-<dd>Eight Linux guard tests passed. A separate bounded job saved a dummy checkpoint and exited after a checkpoint request; behavioral evaluation remained unrun.<br><a href="/model-training-journal/2026/10/26/deadline-guard-and-frozen-evaluation/">Guard verification and evaluation preparation</a> · 26 Oct 2026</dd>
-<dt>Corpus and tokenizer</dt>
-<dd>A bounded textbook subset and fresh 16,384-token BPE vocabulary prepared: 26.91M training tokens, with archived license evidence and limited live checks.<br><a href="/model-training-journal/2026/10/26/real-corpus-and-fresh-tokenizer/">Corpus preparation and its limits</a> · 26 Oct 2026</dd>
-<dt>Real-text GPU pilot</dt>
-<dd>2M valid tokens completed in 137.238 seconds; fixed-sample validation loss fell from 9.831619 to 6.235447. The 100M total-token continuation was still in progress.<br><a href="/model-training-journal/2026/10/26/first-real-text-gpu-run/">Pilot measurements and continuation</a> · 26 Oct 2026</dd>
-<dt>Behavioral evaluation preparation</dt>
-<dd>Revised frozen suite and 946 context-checked training conversations prepared; 22 world and 19 supervised-interface tests passed. The scripted development baseline scored 0/80 and remains under methodological review; no learned conversational behavior had been evaluated.<br><a href="/model-training-journal/2026/10/26/frozen-planning-world-and-review-corrections/">Planning world and review corrections</a> · 26 Oct 2026</dd>
+<dt>Setup</dt>
+<dd><a href="/model-training-journal/2026/10/26/setup-access-and-inventory/">Access, resource inventory, and setup status</a><br>A read-only inventory establishes the starting point for a small model experiment: capable hardware, occupied GPU memory, and an unverified training environment. · 26 Oct 2026</dd>
+<dt>Diagnostic</dt>
+<dd><a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/">An isolated environment and the first bounded GPU diagnostic</a><br>A 97.5M-parameter model passes six correctness checks and a short Radeon 8060S benchmark, with explicit limits on what those results demonstrate. · 26 Oct 2026</dd>
+<dt>Planning</dt>
+<dd><a href="/model-training-journal/2026/10/26/autonomous-mission-and-120-hour-budget/">A 120-hour plan for a small conversational model</a><br>A fixed five-day experiment proposes a fresh tokenizer, roughly 100 million base-training tokens, and separate tests of model behavior and guarded tool use. These are plans and release goals, not results. · 26 Oct 2026</dd>
+<dt>Engineering</dt>
+<dd><a href="/model-training-journal/2026/10/26/deadline-guard-and-frozen-evaluation/">Testing the deadline guard before long training</a><br>Eight Linux guard tests and a short dummy-checkpoint job verify bounded shutdown behavior. A frozen behavioral suite is recorded, but model evaluation has not run. · 26 Oct 2026</dd>
+<dt>Corpus</dt>
+<dd><a href="/model-training-journal/2026/10/26/real-corpus-and-fresh-tokenizer/">A real corpus and a fresh tokenizer</a><br>A bounded textbook corpus yields 26.91 million training tokens and a fresh 16,384-token BPE vocabulary. The license evidence and limits of the split are recorded explicitly. · 26 Oct 2026</dd>
+<dt>Pilot</dt>
+<dd><a href="/model-training-journal/2026/10/26/first-real-text-gpu-run/">The first real-text GPU run</a><br>A two-million-token pilot finishes in 137.238 seconds with lower held-out loss and a verified checkpoint. The larger 100-million-token continuation remains in progress. · 26 Oct 2026</dd>
+<dt>Evaluation</dt>
+<dd><a href="/model-training-journal/2026/10/26/frozen-planning-world-and-review-corrections/">Freezing the planning world and correcting the evaluation</a><br>Review exposed weaknesses in completion checking and the original language split. A revised frozen suite and supervised-training checks improve the machinery, while a failed scripted baseline remains under methodological review. · 26 Oct 2026</dd>
 </dl>
 
-## What those results establish
+## Matched comparison and validation limits
 
-The initial byte-token diagnostic established mechanical execution on a tiny repeated corpus. The later [real-text pilot](/model-training-journal/2026/10/26/first-real-text-gpu-run/) completed 2M valid training tokens and reduced loss on a fixed 16,384-token textbook validation sample. This is narrow language-model evidence, not a conversational capability evaluation.
+<dl class="experiment-list">
+<dt>Evaluation</dt>
+<dd><a href="/model-training-journal/2026/10/26/making-the-planning-comparison-fair/">Making the planning comparison fair</a><br>Exact supervised budgets, a stronger symbolic reference, a separate policy check, and a corrected context reserve prepare a comparison of random and base-trained weights. · 26 Oct 2026</dd>
+<dt>Engineering</dt>
+<dd><a href="/model-training-journal/2026/10/26/queueing-the-matched-comparison/">Queueing the matched comparison</a><br>A reviewed sequential pipeline waits for the base checkpoint, then plans a bounded language probe, isolated supervised smoke test, matched training branches, and development evaluations. · 26 Oct 2026</dd>
+<dt>Corpus</dt>
+<dd><a href="/model-training-journal/2026/10/26/bounded-news-candidate-audit/">A bounded news-source audit during base training</a><br>A bounded scan identifies 1,426 candidate articles for possible later study. Source correspondence and software integrity checks do not establish training eligibility. · 26 Oct 2026</dd>
+<dt>Base training</dt>
+<dd><a href="/model-training-journal/2026/10/26/first-100m-token-base/">The first 100 million base-training tokens</a><br>The model completes 100 million valid training-token exposures and preserves a verified checkpoint. Language-model loss improves, while conversational transfer and validation independence remain separate questions. · 26 Oct 2026</dd>
+<dt>Validation</dt>
+<dd><a href="/model-training-journal/2026/10/26/auditing-textbook-overlap/">Auditing overlap across the textbook split</a><br>A bounded lexical audit finds strong overlap candidates involving 42 validation documents. Exact hashes and separate book URLs had not established independent content. · 26 Oct 2026</dd>
+<dt>Comparison</dt>
+<dd><a href="/model-training-journal/2026/10/26/first-planning-comparison/">The first planning comparison failed</a><br>Both matched models fail all 80 development cases. Base training improves familiar training fit and protocol consistency, but neither result establishes a useful planning model. · 26 Oct 2026</dd>
+<dt>Validation</dt>
+<dd><a href="/model-training-journal/2026/10/26/validation-sensitivity-probes/">Validation sensitivity after the overlap audit</a><br>Two frozen filters raise loss on changed validation populations. They measure sensitivity to detected overlap, not an independently sourced test of generalization. · 26 Oct 2026</dd>
+</dl>
 
-The [corpus record](/model-training-journal/2026/10/26/real-corpus-and-fresh-tokenizer/) documents a 26.91M-token training pool. The 100M-token continuation target represents roughly 3.7 passes over that pool, not 100M distinct tokens; completion is not claimed here. Book-level license assertions and bounded live checks have explicit limits, and no source text is published.
+## Broader supervision, serialization, and training fit
 
-The [revised planning-world entry](/model-training-journal/2026/10/26/frozen-planning-world-and-review-corrections/) records implementation tests and evaluation preparation. The scripted baseline's zero score is under methodological review and supports no claim of model superiority. Matched supervised-training comparisons and learned-policy evaluation remain future work in this snapshot.
+<dl class="experiment-list">
+<dt>Preparation</dt>
+<dd><a href="/model-training-journal/2026/10/26/broader-supervision-preflight/">Broader supervision, with failures kept in the record</a><br>A larger owned supervision set passes bounded data and context checks. The next comparison tests broader coverage without treating training fit as planning ability. · 26 Oct 2026</dd>
+<dt>Experiment</dt>
+<dd><a href="/model-training-journal/2026/10/26/broader-supervision-pilot/">Broader supervision exposes scoring and input-format limits</a><br>The finite paired pilot finishes, but its apparent development gains do not establish correct plans. Follow-up checks find incomplete fitting and a tool-serialization mismatch. · 26 Oct 2026</dd>
+<dt>Engineering</dt>
+<dd><a href="/model-training-journal/2026/10/26/serialization-repair-and-launch-blocker/">Repairing tool serialization before the next run</a><br>A separate training derivative aligns tool-message representation with the runtime. Stronger date and outcome audits qualify the earlier proxy scores before more compute. · 26 Oct 2026</dd>
+<dt>Experiment</dt>
+<dd><a href="/model-training-journal/2026/10/26/canonical-serialization-experiment/">A controlled test of training tool serialization</a><br>The canonical 500K-label experiment starts from the preserved base with matched configuration and assistant targets. This launch snapshot makes no completed-performance claim. · 26 Oct 2026</dd>
+<dt>Results</dt>
+<dd><a href="/model-training-journal/2026/10/26/canonical-serialization-results/">Canonical serialization leaves planning failures unresolved</a><br>Aligned training and runtime histories remove a measurement confound, but the canonical 500K run still fails to produce reliable plans. Familiar-example fit and development behavior are reported separately. · 26 Oct 2026</dd>
+<dt>Experiment</dt>
+<dd><a href="/model-training-journal/2026/10/26/canonical-two-million-label-fit-study/">Testing a longer optimization budget on canonical supervision</a><br>A fresh two-million-label run tests whether more optimization improves familiar-example fit. Exposure and schedule change together; no new development result is claimed at launch. · 26 Oct 2026</dd>
+<dt>Results</dt>
+<dd><a href="/model-training-journal/2026/10/26/canonical-2m-results/">Longer canonical training improves fit but not development planning</a><br>The same 64 training cases fit better after two million supervised labels, while development behavior still fails. Fewer completion claims also conceal more unfinished conversations. · 26 Oct 2026</dd>
+</dl>
+
+## Transfer, binding, and diversity
+
+<dl class="experiment-list">
+<dt>Diagnosis</dt>
+<dd><a href="/model-training-journal/2026/10/26/paired-transfer-probe-results/">Paired probes isolate date and identifier failures</a><br>Changing a year or target identifier breaks otherwise successful requests. Longer training improves some ordering cases while false completion claims increase. · 26 Oct 2026</dd>
+<dt>Experiment</dt>
+<dd><a href="/model-training-journal/2026/10/26/year-diversity-experiment/">Testing whether varied training years improve date transfer</a><br>A matched supervised-training experiment varies years while preserving token counts and conversation order. Fresh year diagnostics are frozen before training. · 26 Oct 2026</dd>
+<dt>Results</dt>
+<dd><a href="/model-training-journal/2026/10/26/year-diversity-results/">Varied training years did not produce date transfer</a><br>The year-diversity candidate still fails unseen years and loses retained behavior. Valid tool syntax and some improved date fields do not justify promotion. · 26 Oct 2026</dd>
+<dt>Planning</dt>
+<dd><a href="/model-training-journal/2026/10/26/contrastive-binding-plan/">Testing input-to-action binding with a repetition control</a><br>The next hypothesis targets requested objects and values. A repetition control will separate varied supervision from simply adding more task-repair examples. · 26 Oct 2026</dd>
+<dt>Experiment</dt>
+<dd><a href="/model-training-journal/2026/10/26/binding-comparison-launch/">Launching a matched repetition control for task binding</a><br>Two fresh-base arms compare repeated task-repair controls with varied values. Preflight catches overlap before the data freeze, and exact label budgets are recorded. · 26 Oct 2026</dd>
+<dt>Results</dt>
+<dd><a href="/model-training-journal/2026/10/26/counterfactual-binding-results/">More correct task fields, but more wrong-object writes</a><br>Varied task values improve nine of 64 requested outcomes versus three for repetition, but increase wrong-object writes and false claims. Neither checkpoint is promoted. · 26 Oct 2026</dd>
+<dt>Experiment</dt>
+<dd><a href="/model-training-journal/2026/10/26/diversity-versus-repetition/">Testing more distinct examples at matched training exposure</a><br>A new study matches realized assistant-label exposure while varying repair-anchor diversity. Both finite training arms finish; evaluation remains a separate decision gate. · 26 Oct 2026</dd>
+</dl>
+
+## How to read the measurements
+
+A training run completing its token budget is an engineering milestone. Familiar-example fit, proxy scores, exact requested outcomes, false completion claims, wrong-object writes, and missing answers answer different questions. The journal preserves those distinctions and the failed experiments that motivated each next test.
+
+The final holdout remains reserved and separate from routine development. Dataset text, raw logs, private machine details, and held-out scenario contents are not published.

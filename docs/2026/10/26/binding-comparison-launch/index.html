@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Launching a matched repetition control for task binding · Model Training Journal</title>
+  <meta name="description" content="Two fresh-base arms compare repeated task-repair controls with varied values. Preflight catches overlap before the data freeze, and exact label budgets are recorded.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/binding-comparison-launch/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T16:36:53Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Diversity vs repetition: training and evaluations complete; results review underway.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#latest-completed-evaluation-slice">New 96-case check: 28 exact outcomes with repetition, 26 with diversity. No checkpoint promoted.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 11h 35m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T16:36:53Z">26 Oct 2026, 16:36:53 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>Launching a matched repetition control for task binding</h1><p class="dek">Two fresh-base arms compare repeated task-repair controls with varied values. Preflight catches overlap before the data freeze, and exact label budgets are recorded.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Experiment · 2 min read</p></header><div class="prose"><p>The two-arm binding study began at <strong>13:04 UTC on 26 October 2026</strong>, after data checks and finite-run preparation. This entry records the launch; <a href="/model-training-journal/2026/10/26/counterfactual-binding-results/">the completed results</a> are separate.</p>
+<p>The <a href="/model-training-journal/2026/10/26/contrastive-binding-plan/">hypothesis</a> was that varied supervised values could improve selection of the requested object and date. Both arms retained 3,000 canonical conversations and started independently from the same self-trained 100M-token base with fresh optimizers. Each added 500 task-repair rows.</p>
+<h2 id="match-the-comparison-without-hiding-unequal-exposure">Match the comparison without hiding unequal exposure</h2>
+<p>The control repeated 100 anchors five times. The varied arm used a control, changed requested year, changed title, renamed target, and reordered returned items for each anchor. Half the anchors changed only the deadline; half explicitly renamed and updated the task. Stored dates stayed unchanged in year variants, and old/new titles were sampled independently to avoid a fixed-prefix shortcut.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Frozen quantity</th>
+<th>Repetition</th>
+<th>Varied values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Training rows</td>
+<td>3,500</td>
+<td>3,500</td>
+</tr>
+<tr>
+<td>Distinct histories</td>
+<td>3,100</td>
+<td>3,500</td>
+</tr>
+<tr>
+<td>Assistant labels per row pass</td>
+<td>524,402</td>
+<td>524,382</td>
+</tr>
+<tr>
+<td>Planned complete-conversation labels</td>
+<td>1,999,908</td>
+<td>1,999,822</td>
+</tr>
+<tr>
+<td>Planned optimizer steps</td>
+<td>13,338</td>
+<td>13,338</td>
+</tr>
+</tbody>
+</table></div>
+<p>The added rows supplied approximately 15.23% of labels in each arm. Equal rows did not equal unique histories or identical label exposure. This tested a declared value-diversity package, not a new loss function or an isolated pairing mechanism.</p>
+<h2 id="a-preflight-failure-prevented-premature-freezing">A preflight failure prevented premature freezing</h2>
+<p>The first production build stopped because a diagnostic title already occurred in retained training. No manifest had been committed and training had not started. The correction changed diagnostic title-number sampling while leaving training unchanged; exact title and history exclusion remained required. It happened before model results existed.</p>
+<p>The successful build passed <strong>44 focused CPU tests</strong> and replayed the retained and added saved conversations. It found zero exact development-title or full-history overlap with training. The longest complete training conversation was 995 tokens, below context 1,536; no truncation was allowed.</p>
+<p>All added material was recorded as owned CC0 text. No external teacher, new language corpus, or third-party model weights were introduced.</p>
+<h2 id="bound-execution-and-preserve-the-denominators">Bound execution and preserve the denominators</h2>
+<p>The model remained <strong>97,536,768 parameters</strong>, using BF16 projection compute and FP32 persistent parameters and Adam moments. Each arm had a 3,600-second trainer limit and a 3,780-second outer guard, with checkpoints every 100,000 labels or 300 seconds. The absolute deadline remained <strong>31 October 2026 at 04:12 UTC</strong>.</p>
+<p>Eighteen finite evaluation jobs were planned: the new 64-case diagnostic, branch-specific training fit, original calibration, known development sets, and paired probes. Raw/guarded views and related anchors were explicitly correlated. In particular, the control's 50-record added-training sample contained only ten distinct repeated histories; the varied sample contained fifty.</p>
+<p>Resource observation had failed and partial attempts, leaving early and middle training gaps. The launch record therefore establishes no complete-run memory maximum. No quality result or checkpoint promotion follows from successful launch.</p>
+<p>This AI-assisted summary was checked against the production manifest, preflight reviews, measured budgets, and launch metadata. Private runtime identities and raw logs remain outside the public journal.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/contrastive-binding-plan/">Earlier: Testing input-to-action binding with a repetition control</a><a href="/model-training-journal/2026/10/26/counterfactual-binding-results/">Next: More correct task fields, but more wrong-object writes</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>
