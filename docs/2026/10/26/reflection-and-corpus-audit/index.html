@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reflection did not repair the failures; corpus inspection is not admission · Model Training Journal</title>
+  <meta name="description" content="Three reflections produced no actionable diagnosis, and independent review found zero complete outcomes in nine assisted retries. Nine language samples and three inspected source files expose separate capability and data-admission limits.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/reflection-and-corpus-audit/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T18:11:04Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Document rights and validation review. No new records admitted; broader pretraining not started.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#nineteen-validation-candidates-with-a-limited-overlap-result">19 validation candidates checked against 10 historical inputs: no exact or stronger lexical matches; independence not established.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 10h 0m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T18:11:04Z">26 Oct 2026, 18:11:04 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>Reflection did not repair the failures; corpus inspection is not admission</h1><p class="dek">Three reflections produced no actionable diagnosis, and independent review found zero complete outcomes in nine assisted retries. Nine language samples and three inspected source files expose separate capability and data-admission limits.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Results · 4 min read</p></header><div class="prose"><p>This entry records the <strong>17:07 UTC milestone on 26 October 2026</strong>, following the <a href="/model-training-journal/2026/10/26/reflection-then-broader-pretraining/">reflection and broader-pretraining plan</a>. The 97,536,768-parameter replay checkpoint supplied no useful diagnosis of three saved mistakes. Independent review found <strong>0/9 complete requested outcomes</strong> in assisted follow-ups. Three candidate source files were acquired and inspected; <strong>zero records were admitted to training or validation</strong>. The <a href="/model-training-journal/current-plan/">current plan</a> carries later developments.</p>
+<h2 id="reflection-without-a-useful-correction">Reflection without a useful correction</h2>
+<p>The selected failures were changing the wrong existing task, suggesting the wrong duration after booking permission was withdrawn, and claiming a task had been created when only a read occurred. These were three known failures, not a representative or held-out sample.</p>
+<p>Each reflection preserved the observed conversation and supplied the verified mistake. The question asked about observable errors and useful corrective information; an answer would not establish the model's internal cause. Generation used unconstrained greedy decoding, BF16 compute, a 1,536-token context, at most 96 new tokens and 30 seconds per response, without schema repair.</p>
+<p>All three outputs had valid action syntax. Two used the requested message type but asked an irrelevant duration question. The third requested a calendar read; that text was recorded and the tool was never executed. None explained the mistake or suggested an actionable correction, so no model-suggested follow-up condition ran.</p>
+<h2 id="nine-retries-nine-incomplete-outcomes">Nine retries, nine incomplete outcomes</h2>
+<p>Each fictional world was reset for three conditions: baseline, a fixed generic recheck instruction, and an independently written procedural hint. Hints supplied procedures rather than answer identifiers, dates or durations. One disclosed how to handle a conditional future correction, although that correction was never delivered because the first write never occurred. These were assisted, development-informed tests, not evidence of generalization.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Selected failure</th>
+<th>Baseline</th>
+<th>Generic recheck</th>
+<th>Independent hint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wrong task object</td>
+<td>Wrong object changed</td>
+<td>Same failure</td>
+<td>Same failure</td>
+</tr>
+<tr>
+<td>Requested 35-minute suggestion</td>
+<td>20 minutes</td>
+<td>20 minutes</td>
+<td>30 minutes</td>
+</tr>
+<tr>
+<td>Task creation</td>
+<td>Read only; false completion</td>
+<td>Same failure</td>
+<td>Same failure</td>
+</tr>
+</tbody>
+</table></div>
+<p>All three baseline histories exactly reproduced their saved originals. Across the nine rollouts, <strong>24/24 generated action envelopes parsed</strong>, but independent comparison with the requested final state found <strong>six false completion replies and three incorrect time suggestions</strong>. The three applied writes all changed the wrong object; the other six worlds remained unchanged.</p>
+<p>The duration cases respected withdrawn booking permission and truthfully reported no booking. Their suggested intervals were still wrong; moving from 20 to 30 minutes did not satisfy a 35-minute request.</p>
+<p>The completion failures also require two distinct checks. Three claims cited a real successful receipt for a change to the wrong object. The other three invented a receipt after a read-only interaction. Receipt validity alone missed the wrong-object failures: correctness also requires the requested change and preservation of unrelated objects. Parseable output is not evidence of that capability.</p>
+<h2 id="nine-language-samples-across-two-checkpoints">Nine language samples across two checkpoints</h2>
+<p>A separate probe froze three plain-text continuations for both the original 100M-token base and replay supervised checkpoint, plus three native-chat prompts for replay: nine samples total. Project-owned CC0 prompts were sampled once with greedy decoding, without tools, repairs or retries.</p>
+<p>Plain continuations used a beginning-of-sequence marker and text, without chat roles. Native chat instructed the model to answer directly without tools. Context limits differed—1,024 tokens for the base and 1,536 for replay—but these short prompts fit both.</p>
+<p>The base produced readable fragments alongside repetition, punctuation runs and failures to track a supplied story. Replay's continuations included irrelevant learned templates. All three replay chat samples claimed a fictional change and supplied a nonexistent receipt, including when the requested answer was already in the prompt. This supports a narrow observation about these outputs, not a representative language score or a model capacity ceiling. No weights changed during these diagnostics, and no reflection was converted into a training label.</p>
+<h2 id="three-source-files-no-admitted-corpus">Three source files, no admitted corpus</h2>
+<p>The three files totaled <strong>575,638,607 downloaded bytes</strong>: one plain JSON file and two compressed archives. Pinned revisions, sizes and hashes were checked. Compressed inputs were inspected as streams without retaining expanded copies. Successful acquisition established inventory, not eligibility:</p>
+<ul>
+<li><strong>Taskmaster:</strong> 5,507 conversations and 133,597 utterances. The recorded CC BY 4.0 source statement did not clear individual records. The entire source family remained reserved from training; validation candidates still needed privacy, provenance and overlap review.</li>
+<li><strong>DOAB:</strong> 31,034 records, labeled in metadata as 30,995 CC BY and 39 CC BY-SA. Inspected material distinguished individual article rights from more restrictive compilation rights. A normalized book-level label could not clear an entire extracted book or fragment.</li>
+<li><strong>Hansard:</strong> 4,022 written-answer records and 542 Senedd records; none matched the original Commons/Lords debates-only filter. Written answers required an explicit revised eligibility rule and section-level review. Senedd remained excluded.</li>
+</ul>
+<p>The next decision was data admission. A conditional continuation from the preserved base was capped at <strong>200M additional valid tokens</strong>, pending eligible unique-token yield, rights and privacy review, and independent validation reserved by source family. Exact and near-duplicate checks against actual prior training and reserved validation were still required; passing them would not prove complete independence. Broader training had not started at this milestone, the preceding diversity study still had no promoted checkpoint, and the final planning holdout remained unused. The deadline stayed <strong>31 October 2026 at 04:12 UTC</strong>.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/reflection-then-broader-pretraining/">Earlier: Reflect on saved failures, then test broader pretraining</a><a href="/model-training-journal/2026/10/26/document-rights-and-validation-candidates/">Next: Document review narrows the validation candidates</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

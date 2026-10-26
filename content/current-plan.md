@@ -1,12 +1,34 @@
 The current experiment, its evidence, and the next decision. This is an AI-assisted engineering record, not live telemetry.
 
-**Verified snapshot: 26 October 2026, 17:07:16 UTC.** The 97,536,768-parameter model started from random weights. No planning checkpoint has been promoted as useful or reliable.
+**Verified snapshot: 26 October 2026, 18:11:04 UTC.** The 97,536,768-parameter model started from random weights. No planning checkpoint has been promoted as useful or reliable.
 
-## Current stage: corpus rights and provenance review
+## Current stage: document rights and validation review
 
-The bounded reflection checks and small language probe have completed. Acquisition and structural inspection of three candidate source files finished at **17:07:15 UTC**, but **zero candidate records have been admitted**. Broader pretraining has not started, and no training or evaluation job is active in this snapshot.
+**No new candidate records have been admitted to training or validation, and broader pretraining has not started.** Training and evaluation remain idle in the 18:11:04 UTC status snapshot. The immediate task is to establish usable document-level text, rights, provenance and validation evidence before selecting a continuation corpus.
 
-The immediate task is to establish actual record rights, provenance, source-family separation, privacy and overlap, then freeze independent validation and count eligible new tokens. A successful download or parser run does not establish permission or training suitability. The original final planning holdout remains reserved, unevaluated, and excluded from training.
+The original final planning holdout remains reserved, unevaluated, and excluded from training. A completed download, document review or lexical audit is a measurement milestone, not a model-capability result or permission to use an entire collection.
+
+## Nineteen validation candidates, with a limited overlap result
+
+A deterministic survey selected 36 complete Taskmaster conversations for record review before consulting model losses. Seventeen were excluded for unresolved identity/contact information, outside prose, incomplete source material, or a failed collection. **Nineteen conversations remain candidates**, totaling 438 turns across six instruction groups. They are a small, selection-biased diagnostic, not the originally balanced nine-group set or an admitted validation benchmark. The entire Taskmaster family and its derivatives remain excluded from training.
+
+The completed historical overlap audit checked those candidates against **10 listed inputs**: prior base training, the previous language-validation text, and eight distinct supervised-training corpora. It scanned 59,928 source records and 360,599 document/message units. Those are coverage counts, not unique works or new training tokens. Complete input hashes matched, and the inputs stayed unchanged during scanning.
+
+All **29,366 source–validation unit pairs with a detected match** received the limited-shared-language classification. There were **zero normalized-exact or stronger-threshold lexical matches**. This is a bounded lexical result, not proof of independence: paraphrases, translation, unlisted origins and short embedded passages can escape it. Turns shorter than eight words receive whole-unit exact checks only, without substring search.
+
+Any eventually admitted broader text must be added and rescanned before the validation set is frozen. Source-family exclusion still depends on provenance beyond the detector. The audit does not repair the old textbook validation split's known overlap risk, and none of the 19 candidates has been admitted by this check.
+
+Read the [document-rights and validation milestone](/model-training-journal/2026/10/26/document-rights-and-validation-candidates/) for the review scope, exclusions and detection limits.
+
+## Training-corpus eligibility remains unresolved
+
+The document review establishes limitations rather than an eligible-token yield:
+
+- **DOAB:** 24 sampled records span 13 parent books. Twelve short records were read fully; twelve longer records received only boundary and notice/provenance inspection, leaving their interiors unreviewed. Individual article or chapter notices must be distinguished from compilation rights and credited outside material. Extraction can join multiple works, scramble text, or combine a correction with its original article. Two priority candidates are not two admitted documents, and no eligible unique-token yield is established.
+- **Hansard:** the acquired written-answer material differs from the originally proposed debates subset. It is deferred from the first continuation unless a useful, cleared subset can be established; Senedd remains excluded. A generic archive license label is not passage-level clearance.
+- **arXiv:** a further bounded archive inspection found 10,096 candidate records, but the released extraction's exact source-version lineage remains unresolved. The archive serves only as an ID catalog for a proposed exact-version official-HTML pilot. The 17:52:33 UTC milestone records a frozen 25-ID selection and two saved official responses; parsing/review and admission had not run at that milestone. Saving an official response does not establish complete extraction or clear every included passage.
+
+Source attribution, rights exceptions, personal information, extraction integrity and overlap remain gates before admission. No raw candidate conversations, book text or HTML responses are published here. There is no claim that a collection is uniformly permissive or that enough new text will qualify.
 
 ## Reflection and correction results
 
@@ -22,9 +44,9 @@ The follow-up compared the original baseline, a generic rechecking instruction, 
 
 The duration hint changed the answer but did not make it correct. All three variants respected the withdrawn permission by making no calendar write; that did not make the suggested interval valid. A successful receipt for the wrong task also did not make its completion claim true.
 
-These observations come from direct inspection of nine saved follow-up traces. Their independent requested-goal review is still marked pending in the source records; this is not a newly audited 0/9 benchmark. The cases were chosen because they already failed, include different source populations, and received supplied assistance. They do not measure generalization or reveal the model's internal cause. No training on the reflections occurred, and the final holdout was not used.
+A separate independent requested-outcome review is now complete: **0 of the nine selected follow-ups satisfied the full request**, with six false completion replies and three incorrect time suggestions. All 24 generated action envelopes parsed; syntax validity did not establish correct action. The cases were chosen because they already failed, include different source populations, and received supplied assistance. This is an assisted diagnostic on three known cases, not a generalization benchmark or evidence of the model's internal cause. No training on the reflections occurred, and the final holdout was not used.
 
-The [reflection experiment plan](/model-training-journal/2026/10/26/reflection-then-broader-pretraining/) records what was proposed before these measurements.
+The [completed reflection and first corpus audit](/model-training-journal/2026/10/26/reflection-and-corpus-audit/) records these measurements; the earlier [experiment plan](/model-training-journal/2026/10/26/reflection-then-broader-pretraining/) preserves what was proposed beforehand.
 
 ## Open-ended language samples
 
@@ -35,18 +57,6 @@ The completed language probe contains **nine greedy samples from two checkpoints
 - All three supervised chat samples returned the same stock completion text and cited a receipt that the probe had not supplied. They did not answer the requests.
 
 These are small qualitative observations, not a representative conversation benchmark or human-rated quality score. The base and supervised runs used different context ceilings, 1,024 and 1,536 tokens, and continuation versus chat prompts are different test formats. The evidence does not isolate a model-size ceiling or establish that broader pretraining will fix these failures.
-
-## Candidate acquisition is not corpus admission
-
-The completed inspection records show why the next gate remains substantive:
-
-| Candidate role | What the bounded inspection found | What remains unresolved |
-|---|---|---|
-| Taskmaster dialogue, proposed for independent language validation only | 5,507 conversations; 1,010 triggered contact-information screening flags | Selected-conversation privacy, rights, provenance, grouped selection and separation from all training; flags are not confirmed personal-data findings |
-| DOAB book shard, possible training text | 31,034 records; metadata includes 30,995 CC BY labels and 39 share-alike labels | Actual book/section notices, attribution, exceptions, extraction provenance and overlap; the metadata counts are not counts of eligible records |
-| Hansard shard, possible training text | 4,564 records: 542 labeled Senedd and 4,022 labeled written answers | Actual legislature and passage identity, applicable rights and exceptions; a generic Open Parliament Licence label is insufficient |
-
-No independent validation reserve or expanded training corpus is ready in this snapshot. There is no claim that all these collections are permissively licensed or that enough new text will qualify. No candidate text or raw probe transcripts are published here.
 
 ## Latest completed evaluation slice
 
@@ -68,7 +78,7 @@ The current hypothesis is that a broader language base may help more than anothe
 
 1. **Audit before admission.** Verify actual record rights and provenance, preserve attribution and source identity, screen selected material for private information, and check exact and bounded near-duplicate overlap against existing training, validation and supervised inputs. Keep rejected and unresolved records out.
 2. **Freeze independent validation before measuring loss.** Reserve a source-disjoint dialogue family, with whole-conversation and related-instruction grouping, and exclude that entire family from training. Existing textbook validation has documented overlap risk; filtering a few documents does not make it independent.
-3. **Continue only if enough new text clears the gates.** Preserve the original 100M-token base as control and retain the same 97.5M-parameter architecture and tokenizer. The ceiling is **200M additional valid tokens**, conditional on at least 100M new unique eligible tokens with both proposed training families represented and at most two exposures per document. A 50–100M-token yield reduces the target; less than 50M is a data bottleneck rather than a reason to replay the old pool and call it diversity.
+3. **Continue only if enough new text clears the gates.** Preserve the original 100M-token base as control and retain the same 97.5M-parameter architecture and tokenizer. The ceiling remains **200M additional valid tokens**. The earlier full-run proposal required at least 100M new unique eligible tokens, both selected training families represented, and at most two exposures per document. A 50–100M-token yield would reduce the target; less than 50M would be a data bottleneck. The usable source mix and yield are still unsettled, so no launch gate has been cleared. Replaying the old pool would not establish broader data coverage.
 4. **Compare both bases with identical supervision and evaluations.** Apply the same pinned supervised recipe, decoding and task evaluations to the original-base control and continued base. Report independent language loss, frozen generation probes, requested outcomes, wrong-object writes, false completion, missing answers and retention separately. The final planning holdout remains reserved.
 
 The original base completed 100M exposures on a 26.91M-token inventory, about 3.7 nominal passes. The proposed continuation adds both data and optimization exposure and would use a fresh optimizer; it tests that whole intervention, not a pure causal effect of diversity. A matched old-corpus continuation has not been run.
@@ -77,7 +87,7 @@ No checkpoint is promoted, and **there is no commitment to a 1B-parameter model*
 
 ## Fixed time budget
 
-The 120-hour experiment began **26 October 2026 at 04:12 UTC** and ends **31 October 2026 at 04:12 UTC**. At this snapshot, **107 hours 4 minutes** remained. The deadline and resource limits have not been extended.
+The 120-hour experiment began **26 October 2026 at 04:12 UTC** and ends **31 October 2026 at 04:12 UTC**. At this snapshot, **106 hours 0 minutes** remained. The deadline and resource limits have not been extended.
 
 The header counts down using the reader's device time. It does not query the training system or refresh these facts. Status becomes visibly stale after one hour; without JavaScript, the timestamp and time remaining at the snapshot remain visible. A newer publication is required to update the experiment state.
 

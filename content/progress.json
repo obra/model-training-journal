@@ -2,11 +2,11 @@
   "schema": 1,
   "model_parameters": 97536768,
   "initialization": "from scratch",
-  "experiment_state": "Corpus rights and provenance review. Three candidate files inspected; zero records admitted. Broader training not started.",
+  "experiment_state": "Document rights and validation review. No new records admitted; broader pretraining not started.",
   "latest_result": {
-    "summary": "Three selected failures persisted under rechecking and procedural hints. Small language probes remained unreliable.",
-    "url": "/model-training-journal/current-plan/#reflection-and-correction-results"
+    "summary": "19 validation candidates checked against 10 historical inputs: no exact or stronger lexical matches; independence not established.",
+    "url": "/model-training-journal/current-plan/#nineteen-validation-candidates-with-a-limited-overlap-result"
   },
-  "verified_at_utc": "2026-10-26T17:07:16Z",
+  "verified_at_utc": "2026-10-26T18:11:04Z",
   "deadline_utc": "2026-10-31T04:12:00Z"
 }

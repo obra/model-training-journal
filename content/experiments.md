@@ -80,8 +80,17 @@ The model has **97,536,768 parameters** and began from random weights. Base pret
 <dd><a href="/model-training-journal/2026/10/26/diversity-versus-repetition/">Testing more distinct examples at matched training exposure</a><br>A new study matches realized assistant-label exposure while varying repair-anchor diversity. Both finite training arms finish; evaluation remains a separate decision gate. · 26 Oct 2026</dd>
 <dt>Results</dt>
 <dd><a href="/model-training-journal/2026/10/26/diversity-results-and-language-limits/">More distinct supervision did not produce a better planning assistant</a><br>The completed diversity study does not justify promoting either checkpoint. Reused development gains coexist with poorer new-set outcomes, training fit, and retained calendar behavior. · 26 Oct 2026</dd>
+</dl>
+
+## Reflection and corpus eligibility
+
+<dl class="experiment-list">
 <dt>Planning</dt>
 <dd><a href="/model-training-journal/2026/10/26/reflection-then-broader-pretraining/">Reflect on saved failures, then test broader pretraining</a><br>A bounded reflection diagnostic and matched correction checks precede a conditional broader-pretraining comparison. This entry preserves the preparation stage; later measurements appear in the current plan. · 26 Oct 2026</dd>
+<dt>Results</dt>
+<dd><a href="/model-training-journal/2026/10/26/reflection-and-corpus-audit/">Reflection did not repair the failures; corpus inspection is not admission</a><br>Three selected failures persist across assisted retries, while qualitative language probes expose template-like responses. Source acquisition remains separate from record admission. · 26 Oct 2026</dd>
+<dt>Data audit</dt>
+<dd><a href="/model-training-journal/2026/10/26/document-rights-and-validation-candidates/">Document review narrows the validation candidates</a><br>Nineteen dialogue candidates remain unadmitted after a limited historical overlap audit. Partial book review and paper-version checks expose unresolved rights and extraction boundaries. · 26 Oct 2026</dd>
 </dl>
 
 ## How to read the measurements
