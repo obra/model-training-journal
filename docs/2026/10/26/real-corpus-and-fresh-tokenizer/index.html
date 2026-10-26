@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A real corpus and a fresh tokenizer · Model Training Journal</title>
+  <meta name="description" content="A bounded textbook corpus yields 26.91 million training tokens and a fresh 16,384-token BPE vocabulary. The license evidence and limits of the split are recorded explicitly.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/real-corpus-and-fresh-tokenizer/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <main id="main"><article class="page"><header class="article-header"><h1>A real corpus and a fresh tokenizer</h1><p class="dek">A bounded textbook corpus yields 26.91 million training tokens and a fresh 16,384-token BPE vocabulary. The license evidence and limits of the split are recorded explicitly.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Corpus · 3 min read</p></header><div class="prose"><p>The first real-text corpus and tokenizer were prepared around <strong>04:44 UTC on 26 October 2026</strong>. This moved the experiment beyond the tiny byte-token sample used in the <a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/">initial diagnostic</a>. It did not yet demonstrate conversational competence.</p>
+<p>The hypothesis was modest: a bounded, auditable textbook subset could test the training pipeline and reveal whether the randomly initialized model learned to predict held-out English text before fictional planning supervision was added.</p>
+<h2 id="select-a-bounded-source-then-record-its-limits">Select a bounded source, then record its limits</h2>
+<p>The source lineage was a <a href="https://github.com/marin-community/marin/blob/8577d258214dd0dcb992c04458ee4eb10496d4e5/lib/marin/src/marin/datakit/download/common_pile.py">pinned Marin recipe</a> mapping to <code>common-pile/pressbooks_filtered</code>. The <a href="https://huggingface.co/datasets/common-pile/pressbooks_filtered/blob/1a1d3b50d77f834370f8eb4c0d174668dd1676bb/README.md">pinned dataset card</a> identifies the upstream collection.</p>
+<p>One compressed shard of <strong>191,725,499 bytes</strong> was downloaded and its checksum matched the recorded source hash. Selection stopped at the configured 120-million-byte accepted-text cap, yielding <strong>119,991,158 accepted bytes across 1,019 canonical book URLs</strong>.</p>
+<p>This was the first qualifying material in the pinned source order, not a random sample. It is a single source family of English educational books, with an English catalog filter and a lightweight character check. It should not be treated as a balanced general-purpose corpus or as independently verified English in every document.</p>
+<h2 id="license-evidence-is-an-assertion-with-provenance">License evidence is an assertion with provenance</h2>
+<p>The local selection policy admitted explicit archived CC-BY-family or CC0 claims. It excluded share-alike, noncommercial, no-derivatives, unknown, and ambiguous public-domain labels, plus detected restrictive conflicts and declared external synthetic text.</p>
+<p>The <a href="https://github.com/r-three/common-pile/tree/9457f04a14cb2355ab00023420369d46ffd4a395/sources/pressbooks">pinned collector</a> inherits directory-level book licenses into chapter metadata and normalizes license labels. It does not independently establish every chapter override, embedded third-party item, or original license version.</p>
+<p>The bounded live checks produced <strong>13 matching license observations</strong>, <strong>19 unavailable sources</strong>, and <strong>987 books not checked live</strong>. The unavailable and unchecked cases remained classified as archived evidence. These figures must not be summarized as 1,019 independently license-verified books.</p>
+<p>The experiment's recorded review accepted this bounded subset for local training under those limitations. Training and redistribution were treated separately. This journal publishes metadata summaries, not the source text.</p>
+<h2 id="what-preparation-produced">What preparation produced</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Split</th>
+<th>Documents</th>
+<th>Text bytes</th>
+<th>BPE tokens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Training</td>
+<td>15,714</td>
+<td>116,118,363</td>
+<td>26,908,211</td>
+</tr>
+<tr>
+<td>Validation</td>
+<td>592</td>
+<td>3,872,795</td>
+<td>918,539</td>
+</tr>
+</tbody>
+</table></div>
+<p>All chapters sharing a canonical book URL stay in one split. The recorded audit found <strong>zero book-URL overlap and zero exact normalized-text overlap</strong> across training and validation. Near-duplicate editions were not comprehensively detected, so the audit does not rule out every form of leakage.</p>
+<p>A fresh <strong>16,384-token BPE vocabulary</strong> was trained on the training split only. No pretrained tokenizer or model weights were used. Each document ends with an end-of-sequence token, and the next-document prediction after that token is masked out of the loss. Packed attention can still attend to earlier documents; the documents are not isolated by attention masks.</p>
+<p>The local review records 17 data-test passes and nine trainer-test passes, including interrupted-resume and changed-code checks. Those are recorded implementation checks, not evidence of model quality.</p>
+<h2 id="token-inventory-is-not-training-exposure">Token inventory is not training exposure</h2>
+<p>The stored training corpus contains <strong>26.91 million tokens</strong>. The planned base run targets <strong>100 million valid training-token exposures</strong>, approximately 3.7 times that inventory. Repeated exposure does not create 100 million distinct tokens, and masking means the inventory and valid-loss-token counts are not identical units.</p>
+<p>The next step was a bounded two-million-token pilot to measure real BPE throughput, loss, memory, and checkpoint behavior. Its outcome is recorded in <a href="/model-training-journal/2026/10/26/first-real-text-gpu-run/">the first real-text GPU run</a>.</p>
+<p>This AI-assisted summary was checked against the local corpus summary, eligibility record, composition audit, and token manifest. The training code, data, and raw logs are not included in this publication.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/deadline-guard-and-frozen-evaluation/">Earlier: Testing the deadline guard before long training</a><a href="/model-training-journal/2026/10/26/first-real-text-gpu-run/">Next: The first real-text GPU run</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

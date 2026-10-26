@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Freezing the planning world and correcting the evaluation · Model Training Journal</title>
+  <meta name="description" content="Review exposed weaknesses in completion checking and the original language split. A revised frozen suite and supervised-training checks improve the machinery, while a failed scripted baseline remains under methodological review.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/frozen-planning-world-and-review-corrections/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <main id="main"><article class="page"><header class="article-header"><h1>Freezing the planning world and correcting the evaluation</h1><p class="dek">Review exposed weaknesses in completion checking and the original language split. A revised frozen suite and supervised-training checks improve the machinery, while a failed scripted baseline remains under methodological review.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Evaluation · 3 min read</p></header><div class="prose"><p>Before behavior tuning, the fictional calendar, task, and note simulator received implementation review. The aim was to make future results interpretable: the system needed to check what an agent actually changed, distinguish its raw output from guarded execution, and preserve a held-out evaluation.</p>
+<p>This entry records the revised evaluation freeze at <strong>04:48 UTC</strong> and runtime checks completed around <strong>04:55 UTC on 26 October 2026</strong>. The simulator makes only in-memory fictional changes. No learned conversational model had been evaluated, and the 100-million-token base continuation was still in progress.</p>
+<h2 id="a-valid-receipt-must-not-justify-an-unrelated-claim">A valid receipt must not justify an unrelated claim</h2>
+<p>Review found that a genuine tool receipt could accompany an unrelated fabricated completion statement and evade the original checker. The revised checker separates affirmative clauses and relates them to receipt domains, quoted identities, and explicit times within its defined vocabulary.</p>
+<p>That correction closes a demonstrated failure in the tested grammar. It does not solve general semantic entailment. A zero count of covered unsupported-completion flags cannot establish that arbitrary prose contains no fabricated claims. Broader claims require a recorded audit of the retained transcripts.</p>
+<p>Raw model output and guarded behavior remain separate measurements. A guard can block an attempted mock action without making the original model output appropriate. Likewise, strict parsing does not repair malformed model output before scoring it.</p>
+<h2 id="replace-wrapper-variation-with-a-more-demanding-split">Replace wrapper variation with a more demanding split</h2>
+<p>The original final suite mostly varied language wrappers around common templates. Distinct family labels therefore did not establish structurally different requests.</p>
+<p>The revised <code>final-v2</code> suite changes request grammars, constraint orderings, and referential follow-ups across splits. Its freeze manifest is timestamped <strong>04:48:27 UTC</strong>, before the revised supervision export. The original suite remains preserved.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Revised split</th>
+<th>Recorded cases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Training, before deduplication</td>
+<td>1,200</td>
+</tr>
+<tr>
+<td>Development</td>
+<td>80</td>
+</tr>
+<tr>
+<td>Frozen final evaluation</td>
+<td>160</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are still narrow, programmatically generated scenarios from the same authoring system. Both logic and language change across splits, so a failure does not isolate which changed factor caused it. The split does not establish broad linguistic generalization, and no final evaluation had run.</p>
+<h2 id="preserve-the-scripted-result-without-settling-its-explanation">Preserve the scripted result without settling its explanation</h2>
+<p>A recorded development rollout of the public-input-only scripted baseline produced <strong>0 successes in 80 scenarios</strong>, with 80 syntactically valid clarification messages and <strong>zero tool attempts</strong>. With no tool attempts, tool-call syntax validity has a denominator of zero and is undefined.</p>
+<p>The baseline's adequacy and interpretation are <strong>under methodological review</strong>. The observation does not establish a settled parsing-limit explanation, learned-model superiority, or safety through successful tool use. The original result remains part of the record; any revised baseline needs its own result and explanation.</p>
+<h2 id="check-complete-conversations-before-supervised-training">Check complete conversations before supervised training</h2>
+<p>The programmatic training conversations are recorded as original CC0 material. After removing 254 duplicates, the export retained <strong>946 complete conversations</strong>. Exact counting with the actual BPE tokenizer rejected none for context length; the longest retained conversation was <strong>700 tokens</strong>, below the 1,024-token context limit.</p>
+<p>No conversation was shortened by truncating a user constraint or permission. The retained material includes six silence situations and six grounded-acknowledgment situations. That is limited training coverage, not evidence of broad initiative or humane conversation. No human dialogue ratings were collected or invented.</p>
+<p>The export uses training records, not held-out final answers. This journal publishes neither the conversation data nor held-out scenarios and oracle text.</p>
+<h2 id="verify-the-machinery-then-test-the-model-separately">Verify the machinery, then test the model separately</h2>
+<p>The Linux runtime log records <strong>22 world-test passes</strong> and <strong>19 supervised-interface-test passes</strong>, with no skips in those runs. The checks cover strict parsing, permission and stale-state behavior, context refusal, assistant-only shifted-label loss, provenance boundaries, and exact interrupted CPU supervised-training resume.</p>
+<p>Resume validation binds the shared trainer implementation to the checkpoint. Base initialization requires a recognized base-training origin with matching source, tokenizer, and stream evidence; supervised or unknown origins cannot simply be relabeled as the base control.</p>
+<p>These are software and resume checks. They do not establish that supervised training has produced useful conversational behavior. A fair future comparison must match the two branches' <strong>actual trained assistant-token counts</strong>, not merely their configured budgets, while preserving raw outputs and separate guarded results.</p>
+<p>This AI-assisted summary was checked against the freeze and export manifests, implementation reviews, and runtime test log. The unresolved baseline methodology, limited completion grammar, and narrow generated distribution remain part of the experiment's limits.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/first-real-text-gpu-run/">Earlier: The first real-text GPU run</a><a href="/model-training-journal/experiments/">Experiment index</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>
