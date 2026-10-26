@@ -1,94 +1,71 @@
 The current experiment, its evidence, and the next decision. This is an AI-assisted engineering record, not live telemetry.
 
-**Verified snapshot: 26 October 2026, 18:11:04 UTC.** The 97,536,768-parameter model started from random weights. No planning checkpoint has been promoted as useful or reliable.
+**Verified snapshot: 26 October 2026, 21:12:54 UTC.** The **97,536,768-parameter** model began from random weights. Its final base completed **100M valid token exposures** on a **26.91M-token inventory**, about 3.7 nominal passes. The original base and tokenizer remain preserved. No planning checkpoint is promoted as useful or reliable.
 
-## Current stage: document rights and validation review
+## Current stage: corpus review and continuation preparation
 
-**No new candidate records have been admitted to training or validation, and broader pretraining has not started.** Training and evaluation remain idle in the 18:11:04 UTC status snapshot. The immediate task is to establish usable document-level text, rights, provenance and validation evidence before selecting a continuation corpus.
+**No new candidate training records have been admitted, and broader pretraining has not started.** A new audit recovered completed scoring and source downloads that postdate the previous public snapshot. The immediate bottleneck remains enough eligible new text and trustworthy independent prose validation.
 
-The original final planning holdout remains reserved, unevaluated, and excluded from training. A completed download, document review or lexical audit is a measurement milestone, not a model-capability result or permission to use an entire collection.
+The 19-conversation dialogue diagnostic has now been frozen and measured. The exact-version 25-response arXiv pilot also finished. These completed jobs must not be repeated merely because their earlier status notes were stale. Read the [recovery and preparation update](/model-training-journal/2026/10/26/recovery-and-corpus-preparation/) for the chronology and limitations.
 
-## Nineteen validation candidates, with a limited overlap result
+## Measured language evidence
 
-A deterministic survey selected 36 complete Taskmaster conversations for record review before consulting model losses. Seventeen were excluded for unresolved identity/contact information, outside prose, incomplete source material, or a failed collection. **Nineteen conversations remain candidates**, totaling 438 turns across six instruction groups. They are a small, selection-biased diagnostic, not the originally balanced nine-group set or an admitted validation benchmark. The entire Taskmaster family and its derivatives remain excluded from training.
+The finite dialogue-scoring sequence completed at **18:18:12 UTC**, using **7,355 valid labels** per checkpoint from the same 19 whole Taskmaster conversations:
 
-The completed historical overlap audit checked those candidates against **10 listed inputs**: prior base training, the previous language-validation text, and eight distinct supervised-training corpora. It scanned 59,928 source records and 360,599 document/message units. Those are coverage counts, not unique works or new training tokens. Complete input hashes matched, and the inputs stayed unchanged during scanning.
+| Checkpoint | Mean language-model loss |
+|---|---|
+| Original 100M-exposure base | 3.7929 |
+| Canonical two-million-label supervised checkpoint | 13.0719 |
 
-All **29,366 source–validation unit pairs with a detected match** received the limited-shared-language classification. There were **zero normalized-exact or stronger-threshold lexical matches**. This is a bounded lexical result, not proof of independence: paraphrases, translation, unlisted origins and short embedded passages can escape it. Turns shorter than eight words receive whole-unit exact checks only, without substring search.
+Both checkpoints used the same 1,024-token scoring context and BF16 computation. The score includes both speakers, role labels, separators and end-of-sequence tokens. This is a small, selected dialogue diagnostic spanning 438 turns and six instruction groups. It is not a broad language benchmark, a planning score, or proof of source independence. The historical lexical audit found no concerning copying under its stated criteria, with limited short-turn and semantic coverage. Taskmaster and its derivatives remain excluded from training; prospective corpus additions must be checked against the reserved dialogue material.
 
-Any eventually admitted broader text must be added and rescanned before the validation set is frozen. Source-family exclusion still depends on provenance beyond the detector. The audit does not repair the old textbook validation split's known overlap risk, and none of the 19 candidates has been admitted by this check.
+The older textbook language losses remain overlap-risk diagnostics. Separately sourced prose validation is still required before selecting a substantial continuation.
 
-Read the [document-rights and validation milestone](/model-training-journal/2026/10/26/document-rights-and-validation-candidates/) for the review scope, exclusions and detection limits.
+## Corpus eligibility and the remaining evidence gates
 
-## Training-corpus eligibility remains unresolved
+All **25 primary arXiv HTML responses** were saved by **18:26:19 UTC** and verified against recorded sizes and hashes. Their **6,856,792 bytes** are raw HTML, not cleared prose or token yield. Offline extraction preserves source version, author attribution, article-specific licence notices, transformations and failures.
 
-The document review establishes limitations rather than an eligible-token yield:
+The two preparation candidates now total **18 works, 49,658 UTF-8 text bytes and 10,725 content tokens** under the original tokenizer:
 
-- **DOAB:** 24 sampled records span 13 parent books. Twelve short records were read fully; twelve longer records received only boundary and notice/provenance inspection, leaving their interiors unreviewed. Individual article or chapter notices must be distinguished from compilation rights and credited outside material. Extraction can join multiple works, scramble text, or combine a correction with its original article. Two priority candidates are not two admitted documents, and no eligible unique-token yield is established.
-- **Hansard:** the acquired written-answer material differs from the originally proposed debates subset. It is deferred from the first continuation unless a useful, cleared subset can be established; Senedd remains excluded. A generic archive license label is not passage-level clearance.
-- **arXiv:** a further bounded archive inspection found 10,096 candidate records, but the released extraction's exact source-version lineage remains unresolved. The archive serves only as an ID catalog for a proposed exact-version official-HTML pilot. The 17:52:33 UTC milestone records a frozen 25-ID selection and two saved official responses; parsing/review and admission had not run at that milestone. Saving an official response does not establish complete extraction or clear every included passage.
-
-Source attribution, rights exceptions, personal information, extraction integrity and overlap remain gates before admission. No raw candidate conversations, book text or HTML responses are published here. There is no claim that a collection is uniformly permissive or that enough new text will qualify.
-
-## Reflection and correction results
-
-The reflection diagnostic used the repetition-arm checkpoint and **three selected known failures**: a wrong-task write, a wrong-duration suggestion after permission withdrawal, and a completion claim without a write. The model received the saved visible history and explicit feedback identifying the error. It returned two irrelevant questions about duration and one calendar-read action despite the offline message-only request. No coherent actionable self-diagnosis was available to turn into a model-derived hint condition.
-
-The follow-up compared the original baseline, a generic rechecking instruction, and an independently written procedural hint on each same case:
-
-| Selected failure | Baseline | Generic recheck | Procedural hint |
+| Candidate | Works | Text bytes | Content tokens |
 |---|---|---|---|
-| Update the requested task | Wrong task changed | Wrong task changed | Wrong task changed |
-| Suggest the requested 35 minutes after write permission was withdrawn | 20-minute suggestion | 20-minute suggestion | 30-minute suggestion |
-| Create the requested task before claiming completion | Read only; false completion | Read only; false completion | Read only; false completion |
+| Primary arXiv excerpts | 16 | 40,729 | 8,901 |
+| Primary IntechOpen chapter selections | 2 | 8,929 | 1,824 |
+| Combined, still unadmitted | 18 | 49,658 | 10,725 |
 
-The duration hint changed the answer but did not make it correct. All three variants respected the withdrawn permission by making no calendar write; that did not make the suggested interval valid. A successful receipt for the wrong task also did not make its completion claim true.
+Appending one end-of-sequence token per work would add 18 tokens; this is not a packed valid-label budget. The first eight-article selection is preserved separately. One additional article excerpt was rejected for incomplete author credit, and 20 repeated whole headings were removed. For the two chapters, review retained ten of 20 body paragraphs, alongside intact abstracts. Entire chapters and compilations are not cleared.
 
-A separate independent requested-outcome review is now complete: **0 of the nine selected follow-ups satisfied the full request**, with six false completion replies and three incorrect time suggestions. All 24 generated action envelopes parsed; syntax validity did not establish correct action. The cases were chosen because they already failed, include different source populations, and received supplied assistance. This is an assisted diagnostic on three known cases, not a generalization benchmark or evidence of the model's internal cause. No training on the reflections occurred, and the final holdout was not used.
+No normalized duplicate documents or paragraphs remain across these candidates. Both historical scans covered ten pinned inputs and 59,928 records. The article scan found zero normalized-exact matches across 82 candidate views, with maximum word-five-gram containment of 5.714%; the chapter scan found zero across 17 views, with a maximum of 4.2553%. Independent review of the reported intersections found common language, technical terms or citation numbers, without concerning copied passages under that lexical scope. The article candidate had no matches against 457 reserved dialogue views under the configured rules. The chapter candidate had two short-utterance trigram matches, both independently reviewed as ordinary grammar. The sole article/chapter five-gram was generic. None of these checks proves semantic independence or clears admission.
 
-The [completed reflection and first corpus audit](/model-training-journal/2026/10/26/reflection-and-corpus-audit/) records these measurements; the earlier [experiment plan](/model-training-journal/2026/10/26/reflection-then-broader-pretraining/) preserves what was proposed beforehand.
+DOAB extraction and compilation-rights issues remain unresolved. Hansard/ParlParse is reserved for validation, including derivatives; Senedd remains excluded. A bounded official Commons capture stopped on its first HTTP 403 response with no saved response bytes and no retry. It has not supplied frozen complete-unit prose or licence-exception evidence. The two known primary IntechOpen pages were reviewed for exact identities, chapter-specific notices and dependent or attributed passages, but their small retained selection establishes neither whole-chapter clearance nor collection-wide rights.
 
-## Open-ended language samples
+Source provenance, rights exceptions, privacy, complete prose, attribution and overlap remain separate admission gates. No raw candidate text or private execution records are published here.
 
-The completed language probe contains **nine greedy samples from two checkpoints**: three plain continuations from the original base, three plain continuations from the repetition-arm supervised checkpoint, and three chat-format requests to that supervised checkpoint.
+## Implementation is prepared; training remains conditional
 
-- The base continuations became repetitive and did not retain the supplied fact in the short context-fact example.
-- The supervised continuations produced repetition or fragments of the learned planning format, rather than useful continuations.
-- All three supervised chat samples returned the same stock completion text and cited a receipt that the probe had not supplied. They did not answer the requests.
+The continuation path verifies the exact original base, copies weights into a separate run, and starts fresh optimizer, schedule, random state, corpus cursor and counters. Its strict same-run resume preserves the new run's own state and lineage. A hard **200M additional-exposure ceiling** applies across the run and resumed invocations. Twenty-six focused CPU tests passed for initialization, resume and downstream supervised compatibility; this is infrastructure evidence from small fixtures, not a completed production continuation or a broad-suite pass.
 
-These are small qualitative observations, not a representative conversation benchmark or human-rated quality score. The base and supervised runs used different context ceilings, 1,024 and 1,536 tokens, and continuation versus chat prompts are different test formats. The evidence does not isolate a model-size ceiling or establish that broader pretraining will fix these failures.
+The selected comparison remains two arms: preserved original base versus a copy continued on eligible broader data. Both then use the **same pinned supervised implementation, configuration, decoding and outcome evaluations**. The intervention adds data and optimization exposure together; it does not isolate breadth alone. No extra control arm or 1B-parameter run is selected.
 
-## Latest completed evaluation slice
+**The current continuation execution budget is zero.** Before launch:
 
-The preceding diversity-versus-repetition study remains negative evidence. Both arms completed **1,999,822 assistant labels each**, across 13,338 optimizer steps per arm. Its **new 96-case development suite** contained a 64-case core plus 32 stress cases:
+1. Run one bounded **offline IntechOpen cohort census** over the existing DOAB inventory. Its 20,105 publisher-labelled records are fragments and mixed units, not 20,105 distinct chapters. Reconstruct exact whole-work identities, own-work notices and author credit; exclude unresolved rights and quality cases; measure provisional novel tokens with the original tokenizer. Preserve per-work provenance and rejection accounting. The proposed limit is 20 minutes and 100MB of new output, with no admission.
+2. Use **1M provisional unique tokens across at least 100 complete DOI-bound works** as a proposed engineering screen for this scale test, alongside resolved whole-work identities and governing rights. This is a chosen feasibility criterion, not a user-imposed minimum or a theoretical sample-size requirement. Failure would reject the current scale proposal for this iteration; passing would justify independent review of the admission process, not corpus approval. Further acquisition needs its own finite reviewed manifest, without repeating completed captures.
+3. Measure credible combined source capacity after exclusions. The current byte/token ratios imply roughly **229–245MB of clean novel text for 50M tokens**. The two-chapter selection averages only 912 tokens per work; even incorrectly treating every inventory record as a unique work would produce about 18.3M tokens at that selection size. Whole-work yield is unestablished, and this arithmetic is a required-scale illustration, not a corpus forecast.
+4. Freeze independent prose validation before scoring or model-dependent selection. Keep entire reserved families out of every proposed training source, and renew historical and prospective overlap checks for any added text.
+5. Choose a finite exposure budget from actually admitted new unique positions. The earlier full-study proposal called for **50M across at least two new source families**, with at most two exposures per admitted document; under that design, the full 200M budget would require at least 100M unique tokens. These are operational study-design choices, not user-imposed minimums or theoretical sample-size thresholds. IntechOpen and its DOAB derivatives are one linked family, and no audited mixture yet demonstrates that proposed scale. The **200M additional-valid-exposure ceiling remains fixed**.
+6. Retain a smaller, prospectively frozen comparison as an alternative if it has a clear question, enough eligible data for that question, independent validation, a finite exposure budget and identical downstream supervision. No smaller design has been selected or launched, and the current 10,725-token sample does not justify repeating narrow excerpts to fill a large budget. Pin the selected design and both arms' recipe and evaluations, verify resource/deadline guards, and launch only when its evidence supports it. The current blockers are the unresolved corpus process and independent prose validation.
 
-| New 96-case development check | Repetition arm | Fresh-diversity arm |
-|---|---|---|
-| Exact requested states | 28/96 | 26/96 |
-| Covered false completion claims | 51 | 33 |
-| Cases with an applied wrong-object write | 40 | 24 |
-| Missing final answers | 17 | 37 |
-| Cases with unresolved requested-state / wrong-object scope | 5 | 0 |
+## Previous planning evidence remains negative
 
-Fewer counted false claims or wrong-object writes did not establish a better model: exact outcomes did not improve and missing answers increased. Raw and guarded histories were identical within each arm; these are correlated views, not 192 independent cases. The older 64-case binding development set, training-fit checks, retained calendar cases and final holdout are separate populations. See the [completed diversity results](/model-training-journal/2026/10/26/diversity-results-and-language-limits/) for their distinct results and limitations.
+The [diversity-versus-repetition study](/model-training-journal/2026/10/26/diversity-results-and-language-limits/) completed 1,999,822 assistant labels per arm. On its new 96-case development suite, repetition achieved 28 exact requested states and fresh diversity 26. Fresh diversity reduced counted false claims while increasing missing final answers from 17 to 37. Neither checkpoint was promoted; training-fit and older development populations remain separate.
 
-## Next decision
+The requested [reflection diagnostic](/model-training-journal/2026/10/26/reflection-and-corpus-audit/) is complete: none of three selected failures produced an actionable model diagnosis, and none of nine baseline or assisted follow-ups satisfied the full request. No weights were updated from reflections. Nine open-ended language samples were also poor, but do not establish a universal model-size ceiling.
 
-The current hypothesis is that a broader language base may help more than another narrow supervised variant. The reflection and language samples motivate investigating that hypothesis; they do not establish it. Curriculum gaps, optimization, source diversity and capacity remain unresolved explanations.
-
-1. **Audit before admission.** Verify actual record rights and provenance, preserve attribution and source identity, screen selected material for private information, and check exact and bounded near-duplicate overlap against existing training, validation and supervised inputs. Keep rejected and unresolved records out.
-2. **Freeze independent validation before measuring loss.** Reserve a source-disjoint dialogue family, with whole-conversation and related-instruction grouping, and exclude that entire family from training. Existing textbook validation has documented overlap risk; filtering a few documents does not make it independent.
-3. **Continue only if enough new text clears the gates.** Preserve the original 100M-token base as control and retain the same 97.5M-parameter architecture and tokenizer. The ceiling remains **200M additional valid tokens**. The earlier full-run proposal required at least 100M new unique eligible tokens, both selected training families represented, and at most two exposures per document. A 50–100M-token yield would reduce the target; less than 50M would be a data bottleneck. The usable source mix and yield are still unsettled, so no launch gate has been cleared. Replaying the old pool would not establish broader data coverage.
-4. **Compare both bases with identical supervision and evaluations.** Apply the same pinned supervised recipe, decoding and task evaluations to the original-base control and continued base. Report independent language loss, frozen generation probes, requested outcomes, wrong-object writes, false completion, missing answers and retention separately. The final planning holdout remains reserved.
-
-The original base completed 100M exposures on a 26.91M-token inventory, about 3.7 nominal passes. The proposed continuation adds both data and optimization exposure and would use a fresh optimizer; it tests that whole intervention, not a pure causal effect of diversity. A matched old-corpus continuation has not been run.
-
-No checkpoint is promoted, and **there is no commitment to a 1B-parameter model**. Scaling the earlier measured training-invocation rate to 200M additional tokens gives an arithmetic estimate of about 3.72 hours. That earlier rate already included its own initialization, validation and checkpoint overhead; new packing, acquisition, checkpointing and evaluation can change actual elapsed time. This remains an estimate, not an active or completed run.
+The sealed final planning holdout remains **excluded from training and unevaluated**. Reused development diagnostics cannot substitute for a final generalization assessment.
 
 ## Fixed time budget
 
-The 120-hour experiment began **26 October 2026 at 04:12 UTC** and ends **31 October 2026 at 04:12 UTC**. At this snapshot, **106 hours 0 minutes** remained. The deadline and resource limits have not been extended.
+The experiment ends **31 October 2026 at 04:12 UTC**. The fixed deadline and resource safeguards remain in force; recovery time does not extend them.
 
-The header counts down using the reader's device time. It does not query the training system or refresh these facts. Status becomes visibly stale after one hour; without JavaScript, the timestamp and time remaining at the snapshot remain visible. A newer publication is required to update the experiment state.
-
-Browse the [experiment index](/model-training-journal/experiments/) for the full sequence. Historical posts retain what was known at their own snapshots. Raw logs, source datasets, private machine details and held-out scenario contents remain outside the public journal.
+The header updates only the countdown and snapshot age using the reader's clock. It does not query the training system, and it flags a snapshot more than one hour old. A new verified publication is required to change the facts. Browse the [experiment index](/model-training-journal/experiments/) for dated results and earlier decisions.

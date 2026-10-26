@@ -91,6 +91,8 @@ The model has **97,536,768 parameters** and began from random weights. Base pret
 <dd><a href="/model-training-journal/2026/10/26/reflection-and-corpus-audit/">Reflection did not repair the failures; corpus inspection is not admission</a><br>Three selected failures persist across assisted retries, while qualitative language probes expose template-like responses. Source acquisition remains separate from record admission. · 26 Oct 2026</dd>
 <dt>Data audit</dt>
 <dd><a href="/model-training-journal/2026/10/26/document-rights-and-validation-candidates/">Document review narrows the validation candidates</a><br>Nineteen dialogue candidates remain unadmitted after a limited historical overlap audit. Partial book review and paper-version checks expose unresolved rights and extraction boundaries. · 26 Oct 2026</dd>
+<dt>Recovery and preparation</dt>
+<dd><a href="/model-training-journal/2026/10/26/recovery-and-corpus-preparation/">Recovering completed work before broader pretraining</a><br>A fresh audit recovers completed dialogue scoring and primary-source downloads. Eighteen candidate works yield 10,725 content tokens with none admitted. A bounded source-level census and independent prose validation remain the next gates. · 26 Oct 2026</dd>
 </dl>
 
 ## How to read the measurements

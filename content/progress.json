@@ -2,11 +2,11 @@
   "schema": 1,
   "model_parameters": 97536768,
   "initialization": "from scratch",
-  "experiment_state": "Document rights and validation review. No new records admitted; broader pretraining not started.",
+  "experiment_state": "Corpus review and continuation preparation. No new training records admitted; broader pretraining not started.",
   "latest_result": {
-    "summary": "19 validation candidates checked against 10 historical inputs: no exact or stronger lexical matches; independence not established.",
-    "url": "/model-training-journal/current-plan/#nineteen-validation-candidates-with-a-limited-overlap-result"
+    "summary": "18 candidate works yield 10,725 content tokens; none admitted. A bounded source-level census is next; independent prose validation remains unresolved.",
+    "url": "/model-training-journal/current-plan/#corpus-eligibility-and-the-remaining-evidence-gates"
   },
-  "verified_at_utc": "2026-10-26T18:11:04Z",
+  "verified_at_utc": "2026-10-26T21:12:54Z",
   "deadline_utc": "2026-10-31T04:12:00Z"
 }
