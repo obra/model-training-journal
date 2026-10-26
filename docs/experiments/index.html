@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Experiment index · Model Training Journal</title>
+  <meta name="description" content="The experiment record, in the order the work happened. Status describes the cited entry, not a live view of the training machine.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/experiments/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/">Journal</a>
+      <a href="/model-training-journal/experiments/" aria-current="page">Experiments</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <main id="main"><article class="page"><h1>Experiment index</h1><div class="prose"><p>The experiment record, in the order the work happened. Status describes the cited entry, not a live view of the training machine.</p>
+<h2 id="training-a-small-model-from-scratch">Training a small model from scratch</h2>
+<p>The initial objective is a language model with roughly 100 million parameters. These first entries establish the environment and test a randomly initialized <strong>97,536,768-parameter</strong> causal model. They do not establish a capable assistant.</p>
+<dl class="experiment-list">
+<dt>Access and inventory</dt>
+<dd>Hardware and resource snapshot recorded; GPU computation not yet tested.<br><a href="/model-training-journal/2026/10/26/setup-access-and-inventory/">Setup and inventory</a> · 26 Oct 2026</dd>
+<dt>Isolated environment</dt>
+<dd>GPU visible in the isolated PyTorch environment; missing runtime library resolved locally.<br><a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/">Environment and first diagnostic</a> · 26 Oct 2026</dd>
+<dt>Correctness</dt>
+<dd>Six checks passed, including label masking, causal masking, tiny-batch overfit, persistent-state dtypes, and exact checkpoint continuation.<br><a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/#six-correctness-checks">Correctness results</a></dd>
+<dt>Bounded throughput</dt>
+<dd>11,697.79 valid diagnostic tokens/s over 1,024 measured steps.<br><a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/#the-bounded-benchmark">Benchmark results</a></dd>
+</dl>
+
+<h2 id="what-those-results-establish">What those results establish</h2>
+<p>A short GPU diagnostic can run and its basic correctness checks pass in the recorded environment. The benchmark uses a temporary byte tokenizer and a repeated tiny corpus. Its falling loss and arithmetic runtime estimate are not a quality evaluation or a production training forecast.</p>
+<p>Longer training, a production tokenizer, data selection and licensing, and held-out evaluation need their own evidence. Later entries will record those outcomes when reviewed; this index does not infer them from the diagnostic.</p></div></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

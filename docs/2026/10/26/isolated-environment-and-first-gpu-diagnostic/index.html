@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>An isolated environment and the first bounded GPU diagnostic · Model Training Journal</title>
+  <meta name="description" content="A 97.5M-parameter model passes six correctness checks and a short Radeon 8060S benchmark, with explicit limits on what those results demonstrate.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <main id="main"><article class="page"><header class="article-header"><h1>An isolated environment and the first bounded GPU diagnostic</h1><p class="dek">A 97.5M-parameter model passes six correctness checks and a short Radeon 8060S benchmark, with explicit limits on what those results demonstrate.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Diagnostic · 5 min read</p></header><div class="prose"><p>The first diagnostic answered a concrete question: could this system run a randomly initialized, roughly 100-million-parameter causal model with BF16 computation, FP32 persistent state, and working loss and checkpoint behavior?</p>
+<p><strong>Yes, for the bounded tests recorded here.</strong> A model with <strong>97,536,768 trainable parameters</strong> passed six correctness checks and completed a short GPU benchmark at <strong>11,697.79 valid training tokens per second</strong>. This establishes local execution and test behavior. It does not establish useful language ability or a trained assistant.</p>
+<p>This entry summarizes the diagnostic completed on 26 October 2026 and recorded at 04:05 UTC. It follows the <a href="/model-training-journal/2026/10/26/setup-access-and-inventory/">initial inventory</a>. Statements about what had not yet run refer to that historical stage.</p>
+<h2 id="preparing-an-isolated-environment">Preparing an isolated environment</h2>
+<p>The occupied GPU allocation was released before the experiment. Reported GPU memory use fell from approximately 31.44 GiB to 171 MiB. The experiment then used a project-local Python environment and runtime libraries; it did not require a system-wide framework installation or a driver or firmware change.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Software or device</th>
+<th>Recorded version or identification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python</td>
+<td>3.14.4</td>
+</tr>
+<tr>
+<td>PyTorch</td>
+<td><code>2.14.0+rocm10.1.0</code></td>
+</tr>
+<tr>
+<td>ROCm package</td>
+<td>10.1.0</td>
+</tr>
+<tr>
+<td>HIP build string</td>
+<td><code>7.16.26385</code></td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>AMD Radeon 8060S Graphics</td>
+</tr>
+<tr>
+<td>Architecture</td>
+<td><code>gfx1151</code></td>
+</tr>
+<tr>
+<td>Reported device memory</td>
+<td>32 GiB</td>
+</tr>
+</tbody>
+</table></div>
+<p>The notebook records selecting official AMD packages using the <a href="https://rocm.docs.amd.com/en/latest/compatibility/compatibility-matrix.html">ROCm compatibility matrix</a>, <a href="https://rocm.docs.amd.com/en/latest/install/rocm.html">ROCm pip guidance</a>, and <a href="https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html">AMD's PyTorch installation guidance</a>. These links are living documentation; the versions above are the versions recorded for this experiment.</p>
+<p>The first import failed because <code>libgomp.so.1</code> was missing. The resolution was to extract Ubuntu's <code>libgomp1</code> package, version <code>16-20260322-1ubuntu1</code>, into the project runtime and expose it through a process-local library search path. The package was not installed system-wide. Dependency checking then passed.</p>
+<p>NumPy remained absent, causing an optional PyTorch bridge warning. The diagnostic needed only PyTorch and the Python standard library. A tensor-to-scalar warning in a loss assertion was also nonfatal; no GPU or nonfinite-loss errors were observed in the completed tests.</p>
+<h2 id="model-and-optimizer">Model and optimizer</h2>
+<p>The model started from random weights. It used 12 layers, hidden width 768, 12 attention heads and 12 key/value heads, a SwiGLU intermediate width of 2,048, RMSNorm, RoPE, tied embeddings, and no linear biases. Context length was 1,024 and vocabulary size was 16,384.</p>
+<p>The temporary tokenizer simply mapped bytes to IDs 0–255. Most of the model's vocabulary was therefore unused. This was a diagnostic tokenizer, not a trained tokenizer suitable for judging production language-model performance.</p>
+<p>AdamW used a learning rate of 0.001, betas of <code>(0.9, 0.95)</code>, epsilon <code>1e-8</code>, no weight decay, and gradient clipping at 1.0, with a LambdaLR schedule. The seed was <code>20261026</code>, and the process used eight CPU threads. The benchmark used PyTorch's automatic scaled dot-product attention backend policy; no particular fused attention kernel is claimed.</p>
+<h2 id="small-data-limited-purpose">Small data, limited purpose</h2>
+<p>The benchmark repeatedly consumed a small, 18,959-byte CPython tutorial sample. The source notebook pins it to revision <code>0cc81280367df838c4b199f8f0378837165071c2</code> and records its license as PSF License Version 2 for prose, with an additional 0BSD option for examples. The overfit test used separate original diagnostic text, 13,652 bytes, recorded as CC0.</p>
+<p>No dataset or third-party text excerpt is redistributed with this journal entry. No pretrained weights or external synthetic teacher were used. These tiny samples tested execution and learning mechanics; they did not constitute a representative training corpus or a quality evaluation.</p>
+<h2 id="six-correctness-checks">Six correctness checks</h2>
+<p>All six recorded checks passed:</p>
+<ol>
+<li><strong>Parameter count:</strong> the instantiated model had 97,536,768 trainable parameters.</li>
+<li><strong>Shifted labels and padding:</strong> the loss used the intended next-token targets and mask.</li>
+<li><strong>Causal masking:</strong> future tokens did not influence the tested earlier predictions.</li>
+<li><strong>Tiny-batch overfit:</strong> loss decreased from 9.860314 to a final-three-step mean of 0.216215 over 44 steps at sequence length 64.</li>
+<li><strong>Persistent precision:</strong> parameters, gradients, and Adam moments remained FP32; attention projection computation was observed in BF16 during overfitting.</li>
+<li><strong>Checkpoint continuation:</strong> model and optimizer continuation matched bitwise after restoration, along with scheduler state, data position, and subsequent Python, CPU, and GPU random-number draws.</li>
+</ol>
+<p>The exact-resume subtest used <strong>FP32 computation and math attention</strong>. Its bitwise result should not be generalized into a claim of exact BF16 resume under every attention backend. The saved checkpoint was 1,170,579,467 bytes. The throughput benchmark initialized a separate model and did not load that checkpoint.</p>
+<h2 id="the-bounded-benchmark">The bounded benchmark</h2>
+<p>Each measured step performed a full forward pass, backward pass, and optimizer update with batch size 1 and sequence length 1,024. Each full sequence contributed 1,023 valid shifted training labels.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Measurement</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Measured steps</td>
+<td>1,024</td>
+</tr>
+<tr>
+<td>Measured valid training tokens</td>
+<td>1,047,552</td>
+</tr>
+<tr>
+<td>Measured time</td>
+<td>89.551 seconds</td>
+</tr>
+<tr>
+<td>Valid training tokens per second</td>
+<td>11,697.79</td>
+</tr>
+<tr>
+<td>Excluded warmup</td>
+<td>5 steps; 5,115 tokens</td>
+</tr>
+<tr>
+<td>Total tokens including warmup</td>
+<td>1,052,667</td>
+</tr>
+<tr>
+<td>First / last measured loss</td>
+<td>3.995616 / 0.372822</td>
+</tr>
+<tr>
+<td>Mean measured loss</td>
+<td>1.709772</td>
+</tr>
+<tr>
+<td>Peak PyTorch allocated memory</td>
+<td>2.164 GiB</td>
+</tr>
+<tr>
+<td>Peak PyTorch reserved memory</td>
+<td>2.219 GiB</td>
+</tr>
+<tr>
+<td>Stop reason</td>
+<td>Step bound reached</td>
+</tr>
+</tbody>
+</table></div>
+<p>The benchmark observed BF16 attention projection computation with FP32 parameters, gradients, and Adam moments. The memory figures describe the PyTorch allocator and exclude other driver allocations.</p>
+<p>The run stopped at its 1,024-step bound. Other limits were 120 seconds of measured work, 1,048,576 measured valid tokens, and 160 seconds of internal total runtime, with an external timeout as a backstop. Warmup was excluded from the measured throughput. The run was not extended to pursue a better number.</p>
+<p>The falling loss is expected on a repeated tiny sample. It is not evidence of generalization, instruction following, or assistant quality.</p>
+<h2 id="what-the-measurement-can-support">What the measurement can support</h2>
+<p>Dividing 100 million tokens by the measured rate gives approximately <strong>2.37 hours</strong> of comparable training steps. This is arithmetic, not a production duration promise. A production tokenizer changes what a token means; data loading, checkpointing, evaluation, sustained thermals, and a more representative workload can all change the rate.</p>
+<p>At the time of this diagnostic, no long production run or 100-million-token run had been performed. Production tokenizer training, corpus selection, and validation/test design remained future work. Physical installed RAM also remained unverified by firmware inspection.</p>
+<p>The useful outcome was a tested starting point: GPU execution worked, the bounded correctness checks passed, and a short-run throughput measurement existed. The next experiment needed a representative, licensed data and tokenizer plan with an evaluation design capable of detecting something more meaningful than memorization of a tiny sample.</p>
+<h2 id="evidence-and-publication-boundaries">Evidence and publication boundaries</h2>
+<p>The public figures were checked against the local correctness and benchmark result files. The diagnostic source revision is identified by SHA-256 <code>d5140c2d6a34a8d48ae1b9bb971d4b91361fdc9106eb99c5eba6d4dfdb69d91e</code>; no source repository commit was recorded for that diagnostic.</p>
+<p>This is an AI-assisted editorial summary of the engineering record, not a personal account attributed to the repository owner. The original result files, raw logs, source scripts, data, and checkpoint remain outside this publication. Those omissions protect private details and keep this journal distinct from a complete reproduction package.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/setup-access-and-inventory/">Earlier: Access, resource inventory, and setup status</a><a href="/model-training-journal/experiments/">Experiment index</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

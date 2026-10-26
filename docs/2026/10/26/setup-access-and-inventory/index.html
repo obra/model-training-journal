@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Access, resource inventory, and setup status · Model Training Journal</title>
+  <meta name="description" content="A read-only inventory establishes the starting point for a small model experiment: capable hardware, occupied GPU memory, and an unverified training environment.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/setup-access-and-inventory/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <main id="main"><article class="page"><header class="article-header"><h1>Access, resource inventory, and setup status</h1><p class="dek">A read-only inventory establishes the starting point for a small model experiment: capable hardware, occupied GPU memory, and an unverified training environment.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Setup · 3 min read</p></header><div class="prose"><p>This is the opening record of an AI-assisted engineering experiment: investigate training a model of roughly 100 million parameters from scratch on an AMD Strix Halo system. The immediate task was narrower than training. Establish access, identify available resources, and find the constraints that would need resolving before any computation began.</p>
+<p><strong>This post describes the setup snapshot recorded at 03:43 UTC on 26 October 2026.</strong> No training, benchmark, GPU stress test, package installation, or model or dataset download occurred in this phase. The <a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/">next entry</a> records the subsequent environment setup and completed diagnostic.</p>
+<h2 id="the-question">The question</h2>
+<p>Was there a usable starting point for a small training experiment, and which assumptions still needed evidence?</p>
+<p>A hardware specification alone would not answer that question. GPU memory could already be allocated, the active Python interpreter might lack a compatible framework, and nominal storage capacity might not provide a writable workspace. The method was a bounded, read-only inventory of the operating system, device driver, memory accounting, storage, and selected software availability.</p>
+<h2 id="what-the-inventory-established">What the inventory established</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Observed at setup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td>AMD Ryzen AI Max+ 395; 16 cores, 32 threads</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>AMD Strix Halo Radeon; Radeon 8060S identified by CPU information</td>
+</tr>
+<tr>
+<td>Driver</td>
+<td><code>amdgpu</code></td>
+</tr>
+<tr>
+<td>Operating system</td>
+<td>Ubuntu 26.04.1 LTS, x86_64</td>
+</tr>
+<tr>
+<td>Kernel</td>
+<td><code>7.0.0-38-generic</code></td>
+</tr>
+<tr>
+<td>Checked Python interpreter</td>
+<td>Python 3.14.4</td>
+</tr>
+<tr>
+<td>PyTorch import</td>
+<td>Failed with <code>ModuleNotFoundError</code></td>
+</tr>
+<tr>
+<td>ROCm installation</td>
+<td>No version found at the checked standard location or through the checked command search path</td>
+</tr>
+</tbody>
+</table></div>
+<p>The software checks had a deliberately limited conclusion: the checked host interpreter did not have PyTorch. They did not establish that every possible virtual environment or container lacked it. Likewise, a GPU visible to the operating system was not yet evidence that PyTorch could execute on it.</p>
+<h2 id="memory-accounting-mattered">Memory accounting mattered</h2>
+<p>Linux reported <strong>30.48 GiB of system memory</strong>, with approximately 27 GiB available. The GPU driver reported a <strong>32 GiB VRAM budget</strong>, of which roughly <strong>31.44 GiB was allocated</strong>. Only about 575 MiB remained in that GPU allocation pool.</p>
+<p>Reported GPU activity was 0% at the snapshot. That did not make the allocated memory available for training: idle computation and free memory are different conditions.</p>
+<p>The driver also reported a 15.24 GiB GTT budget. This overlaps system RAM and must not be added to the other figures as extra physical memory. The Linux and VRAM split was consistent with a 64 GB configuration, but the physical capacity was not independently verified. Reading firmware memory information was denied by the operating system's permissions, and the inventory did not use elevated privileges.</p>
+<p>Storage had sufficient apparent headroom for a small diagnostic, but a writable training-data location was still undecided. Capacity and permission were treated as separate checks.</p>
+<h2 id="failures-and-unresolved-observations">Failures and unresolved observations</h2>
+<p>The failed PyTorch import was a useful result: a functioning GPU driver was insufficient on its own, and a compatible software environment would have to be established before testing the model.</p>
+<p>An initial notebook-generation wrapper also failed with a Python syntax error before reaching the remote system. It made no remote changes and was corrected before the notebook was created.</p>
+<p>At this stage, the source of the large GPU memory allocation had not yet been established conclusively. The setup work did not attempt to free that memory. The later diagnostic entry records the memory release and the environment that actually passed the tests.</p>
+<h2 id="what-remained-to-decide">What remained to decide</h2>
+<p>The proposed model still lacked a settled architecture, tokenizer, licensed training corpus, training budget, and evaluation design. The next engineering steps were to make GPU capacity available, choose an isolated software environment, and test a tightly bounded workload before projecting a longer run.</p>
+<p>This inventory established a starting point and its uncertainties. It produced no trained model and no evidence of language-model quality.</p>
+<h2 id="about-this-record">About this record</h2>
+<p>This public entry is an AI-assisted editorial summary of a local engineering notebook. It preserves relevant observations and their limits while omitting private machine identifiers, access details, unrelated service inventory, and raw logs. Times identify the historical record; they are not a live report of the machine's current state.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/">All journal entries</a><a href="/model-training-journal/2026/10/26/isolated-environment-and-first-gpu-diagnostic/">Next: An isolated environment and the first bounded GPU diagnostic</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>
