@@ -22,14 +22,14 @@
       <a href="/model-training-journal/about/">About</a>
     </nav>
   </header>
-  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T21:12:54Z" data-deadline="2026-10-31T04:12:00Z">
-  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-27T04:47:51Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="299,414,528 trainable parameters">299.4M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
   <dl class="progress-facts">
-    <div class="progress-state"><dt>Experiment state</dt><dd>Corpus review and continuation preparation. No new training records admitted; broader pretraining not started.</dd></div>
-    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#corpus-eligibility-and-the-remaining-evidence-gates">18 candidate works yield 10,725 content tokens; none admitted. A bounded source-level census is next; independent prose validation remains unresolved.</a></dd></div>
-    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 6h 59m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+    <div class="progress-state"><dt>Experiment state</dt><dd>The 299M first pretraining phase launched at 04:42:54 UTC and remained running at this snapshot. Its first checkpoint is independently verified. Broader-data candidates remain unadmitted.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#the-running-finite-phase">Verified first production checkpoint: one completed update, 32,704 valid labels from 32,768 input IDs. Earlier qualification: eight updates at 4,542 valid labels/s. These are first-checkpoint counts; no full-phase or reasoning result is established.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>3d 23h 24m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
   </dl>
-  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T21:12:54Z">26 Oct 2026, 21:12:54 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-27T04:47:51Z">27 Oct 2026, 04:47:51 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
 </section>
   <main id="main">
 <section class="intro" aria-labelledby="journal-title">
@@ -37,7 +37,13 @@
 <p>An engineering journal about training a small language model from scratch. The questions, the experiments, and what the evidence actually supports.</p></div>
 <aside><strong>A record of the work</strong><p>AI-assisted notes, curated from a local experiment notebook. Completed diagnostics and future plans are kept distinct.</p><a href="/model-training-journal/about/">About the journal</a></aside>
 </section>
-<section aria-labelledby="entries-heading"><div class="section-heading"><h2 id="entries-heading">Journal entries</h2><span>Latest first · 33 entries</span></div><ol class="entries"><li class="entry">
+<section aria-labelledby="entries-heading"><div class="section-heading"><h2 id="entries-heading">Journal entries</h2><span>Latest first · 35 entries</span></div><ol class="entries"><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-27">27 Oct 2026</time><span>Larger-model qualification and data preparation</span></div>
+<div><h3><a href="/model-training-journal/2026/10/27/larger-model-qualification-and-phase1/">Qualifying a 299M model and counting the next training phase</a></h3>
+<p>A fresh 299M model completes qualification and begins a finite pretraining phase. The first update is recorded and its checkpoint independently verified; broader corpus candidates remain unadmitted.</p><a class="read-link" href="/model-training-journal/2026/10/27/larger-model-qualification-and-phase1/">Read entry · 5 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Research implementation and bounded logic checks</span></div>
+<div><h3><a href="/model-training-journal/2026/10/26/goal-clarification-and-storage/">Clarifying the goal, storage, and corpus readiness</a></h3>
+<p>The first guarded measurement and storage fixtures completed, and Linux integration checks passed. Corpus admission remains closed; a small engineering probe is being prepared.</p><a class="read-link" href="/model-training-journal/2026/10/26/goal-clarification-and-storage/">Read entry · 3 min</a></div></li><li class="entry">
 <div class="entry-meta"><time datetime="2026-10-26">26 Oct 2026</time><span>Recovery and preparation</span></div>
 <div><h3><a href="/model-training-journal/2026/10/26/recovery-and-corpus-preparation/">Recovering completed work before broader pretraining</a></h3>
 <p>A fresh audit recovers completed dialogue scoring and all 25 primary HTML responses. The original base is preserved, while corpus admission and independent prose validation still block broader pretraining.</p><a class="read-link" href="/model-training-journal/2026/10/26/recovery-and-corpus-preparation/">Read entry · 7 min</a></div></li><li class="entry">

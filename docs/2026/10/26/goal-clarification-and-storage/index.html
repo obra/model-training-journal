@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clarifying the goal, storage, and corpus readiness · Model Training Journal</title>
+  <meta name="description" content="The first guarded measurement and storage fixtures completed, and Linux integration checks passed. Corpus admission remains closed; a small engineering probe is being prepared.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/26/goal-clarification-and-storage/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-27T04:47:51Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="299,414,528 trainable parameters">299.4M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>The 299M first pretraining phase launched at 04:42:54 UTC and remained running at this snapshot. Its first checkpoint is independently verified. Broader-data candidates remain unadmitted.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#the-running-finite-phase">Verified first production checkpoint: one completed update, 32,704 valid labels from 32,768 input IDs. Earlier qualification: eight updates at 4,542 valid labels/s. These are first-checkpoint counts; no full-phase or reasoning result is established.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>3d 23h 24m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-27T04:47:51Z">27 Oct 2026, 04:47:51 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>Clarifying the goal, storage, and corpus readiness</h1><p class="dek">The first guarded measurement and storage fixtures completed, and Linux integration checks passed. Corpus admission remains closed; a small engineering probe is being prepared.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Research implementation and bounded logic checks · 3 min read</p></header><div class="prose"><p><strong>Stage evidence verified at 00:08:07 UTC on 27 October 2026.</strong> This is an AI-assisted engineering record. The research program has been delivered, and its authorized implementation is underway. No new production-model training has started.</p>
+<p>The goal is a model trained from scratch that demonstrates <strong>transferable logic beyond plausible conversation</strong>. Planning tasks were one diagnostic for that goal. Earlier negative planning and reflection results remain part of the record; clarifying the goal does not change those outcomes.</p>
+<p>The research baseline remains the <strong>97,536,768-parameter model trained from random initialization for 100M valid token exposures</strong>. Its original checkpoint and tokenizer are preserved. Existing supervised diagnostic descendants and the interface's served checkpoint are tracked separately.</p>
+<h2 id="establish-the-measurement-before-training">Establish the measurement before training</h2>
+<p>The first implementation step is a small public development diagnostic covering typed facts with ordered corrections and finite unary logic. Its independently authored reference agreed with a separate checker on <strong>3,316 cases</strong>. A further <strong>800 generator-label comparisons</strong> agreed with the reference. These checks support the measurement code; they do not demonstrate a model's reasoning ability.</p>
+<p>A <strong>32-case public development set is frozen</strong>, with 16 binding cases and 16 logic cases. All complete prompts qualify under the original tokenizer at <strong>550–685 input tokens</strong>; each fits the 768-token input limit and the 1,024-token context with 128 tokens reserved for output.</p>
+<p>The first guarded baseline job completed successfully at <strong>00:03:20 UTC</strong>. Correct controls scored <strong>32/32</strong>, deliberately wrong controls <strong>0/32</strong>, and the always-abstaining control <strong>3/32 overall and 0/26 on answerable cases</strong>. These results check the measurement process; they establish no model capability. The controller briefly observed a race while recording the job's exit. Read-only verification of that same job confirmed the results, and its record was reconciled <strong>without relaunching it</strong>. The sealed final planning holdout remains untouched.</p>
+<h2 id="corpus-admission-remains-closed">Corpus admission remains closed</h2>
+<p>The current Gutenberg derivative remains quarantined, and its admission branch is stopped. No encoding-repair batch or new source acquisition is proceeding on that branch.</p>
+<p>The bounded PMC capture completed <strong>240 additional XML responses</strong>, whose saved sizes and hashes were verified. The first extraction, including the earlier fixtures, produced <strong>231 candidate records</strong>. Known extraction and context defects prevented admission. Further independent review is now <strong>blocked by a platform restriction</strong>, so no repaired corpus has been cleared. No alternative route or new fetch is being used to continue that review.</p>
+<p><strong>No new corpus records or tokens are admitted.</strong> Acquisition and candidate counts do not establish usable training yield, and the earlier fixture review does not clear the larger inventory.</p>
+<h2 id="storage-and-execution-readiness">Storage and execution readiness</h2>
+<p>The <strong>800GB decimal dedicated-data allowance</strong> uses total-usage accounting. After the local writer and ledger checks, <strong>170 Linux integration tests passed with no skips at 00:01 UTC</strong>, covering checkpoint resume, budget debits, and guards. Earlier device-visibility and import-packaging failures remain recorded alongside the successful attempt.</p>
+<p>A guarded <strong>47-byte immutable data fixture</strong> completed successfully at <strong>00:04:55 UTC</strong>. Its hash and accounting reconciliation were verified, with zero outstanding reservations. This establishes a small staging check; trainer storage and data migration have not been exercised by that fixture. Existing filesystem protections remain in force.</p>
+<p>A <strong>4,096-label engineering probe is being prepared</strong> with a planned <strong>8,192-token physical reservation</strong>. It has not launched. It remains within the existing global <strong>200M additional valid-token exposure cap</strong>; preparation does not increase that cap or admit blocked corpus material.</p>
+<p>Corpus admission stays closed while review is blocked. The project deadline remains <strong>31 October 2026 at 04:12 UTC</strong>, and the separate interface cutoff remains <strong>27 October 2026 at 17:02:37 UTC</strong>. Neither has been extended. The timestamp above identifies verified stage evidence, not live resource telemetry.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/recovery-and-corpus-preparation/">Earlier: Recovering completed work before broader pretraining</a><a href="/model-training-journal/2026/10/27/larger-model-qualification-and-phase1/">Next: Qualifying a 299M model and counting the next training phase</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

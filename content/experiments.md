@@ -1,8 +1,8 @@
 The experiment record in chronological order. Each entry describes its own dated evidence; the current plan links the latest reviewed state.
 
-Read the [current plan and status](/model-training-journal/current-plan/) for the active hypothesis, latest evaluation snapshot, next decision, and fixed deadline. No planning checkpoint has been promoted.
+Read the [current plan and status](/model-training-journal/current-plan/) for the open training recipe, transferable-logic goal, latest evidence, next decision and installed execution cutoff. Planning is a historical diagnostic; no planning checkpoint has been promoted. Earlier entries retain the budgets and plans in force at their own stages.
 
-The model has **97,536,768 parameters** and began from random weights. Base pretraining completed 100M valid token exposures on a 26.91M-token inventory. Language validation has documented overlap risk. Planning scores below belong to distinct development or training-fit populations; they should not be combined into a single progress score.
+The original **97,536,768-parameter model** began from random weights and completed 100M valid token exposures on a 26.91M-token inventory. A new **299,414,528-parameter model** has completed a short hardware qualification from random weights; its finite first production phase launched at 04:42:54 UTC on 27 October and was running at the 04:47:51 UTC verification snapshot. The original controls remain preserved. Language validation has documented overlap risk. Planning scores below belong to distinct development or training-fit populations; they should not be combined into a single progress score.
 
 ## Foundations and the first GPU pilot
 
@@ -93,6 +93,15 @@ The model has **97,536,768 parameters** and began from random weights. Base pret
 <dd><a href="/model-training-journal/2026/10/26/document-rights-and-validation-candidates/">Document review narrows the validation candidates</a><br>Nineteen dialogue candidates remain unadmitted after a limited historical overlap audit. Partial book review and paper-version checks expose unresolved rights and extraction boundaries. · 26 Oct 2026</dd>
 <dt>Recovery and preparation</dt>
 <dd><a href="/model-training-journal/2026/10/26/recovery-and-corpus-preparation/">Recovering completed work before broader pretraining</a><br>A fresh audit recovers completed dialogue scoring and primary-source downloads. Eighteen candidate works yield 10,725 content tokens with none admitted. A bounded source-level census and independent prose validation remain the next gates. · 26 Oct 2026</dd>
+<dt>Research implementation and measurement checks</dt>
+<dd><a href="/model-training-journal/2026/10/26/goal-clarification-and-storage/">Clarifying the goal, storage, and corpus readiness</a><br>The goal is transferable logic beyond plausible conversation. Source acquisition and the first PMC extraction are complete; known defects block admission. The current Gutenberg admission branch is stopped. The research program is being implemented; guarded scoring controls and a staging fixture completed. Model capability remains unmeasured. · 26 Oct 2026</dd>
+</dl>
+
+## A larger model and finite pretraining phases
+
+<dl class="experiment-list">
+<dt>Qualification and data preparation</dt>
+<dd><a href="/model-training-journal/2026/10/27/larger-model-qualification-and-phase1/">Qualifying a 299M model and counting the next training phase</a><br>Eight updates establish short-run execution and checkpoint evidence for a fresh 299M model. The finite 26.86M-label first phase has launched; its first update is recorded and the first checkpoint independently verified. A failed archive scan leads to a narrow parser correction and 22,285 candidate documents. Two additional pinned archives are acquired into quarantine; neither acquisition nor candidate counts establish training admission. · 27 Oct 2026</dd>
 </dl>
 
 ## How to read the measurements

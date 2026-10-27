@@ -22,14 +22,14 @@
       <a href="/model-training-journal/about/">About</a>
     </nav>
   </header>
-  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-26T21:12:54Z" data-deadline="2026-10-31T04:12:00Z">
-  <div class="progress-top"><p class="progress-model"><strong title="97,536,768 trainable parameters">97.5M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-27T04:47:51Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="299,414,528 trainable parameters">299.4M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
   <dl class="progress-facts">
-    <div class="progress-state"><dt>Experiment state</dt><dd>Corpus review and continuation preparation. No new training records admitted; broader pretraining not started.</dd></div>
-    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#corpus-eligibility-and-the-remaining-evidence-gates">18 candidate works yield 10,725 content tokens; none admitted. A bounded source-level census is next; independent prose validation remains unresolved.</a></dd></div>
-    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>4d 6h 59m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+    <div class="progress-state"><dt>Experiment state</dt><dd>The 299M first pretraining phase launched at 04:42:54 UTC and remained running at this snapshot. Its first checkpoint is independently verified. Broader-data candidates remain unadmitted.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#the-running-finite-phase">Verified first production checkpoint: one completed update, 32,704 valid labels from 32,768 input IDs. Earlier qualification: eight updates at 4,542 valid labels/s. These are first-checkpoint counts; no full-phase or reasoning result is established.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>3d 23h 24m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
   </dl>
-  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-26T21:12:54Z">26 Oct 2026, 21:12:54 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-27T04:47:51Z">27 Oct 2026, 04:47:51 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
 </section>
   <main id="main"><article class="page"><header class="article-header"><h1>Validation sensitivity after the overlap audit</h1><p class="dek">Two frozen filters raise loss on changed validation populations. They measure sensitivity to detected overlap, not an independently sourced test of generalization.</p><p class="article-meta"><time datetime="2026-10-26">26 October 2026</time> · Validation · 2 min read</p></header><div class="prose"><p>Two filtered views of the textbook validation were measured on the preserved 100-million-token base, completing at <strong>07:36 UTC on 26 October 2026</strong>. They quantify sensitivity to the <a href="/model-training-journal/2026/10/26/auditing-textbook-overlap/">detected lexical overlap</a>. They are <strong>not independently sourced validation</strong>, and neither result alone supports further pretraining.</p>
 <div class="table-scroll"><table>

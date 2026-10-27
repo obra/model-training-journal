@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qualifying a 299M model and counting the next training phase · Model Training Journal</title>
+  <meta name="description" content="A fresh 299M model completes qualification and begins a finite pretraining phase. The first update is recorded and its checkpoint independently verified; broader corpus candidates remain unadmitted.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/27/larger-model-qualification-and-phase1/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-27T04:47:51Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="299,414,528 trainable parameters">299.4M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>The 299M first pretraining phase launched at 04:42:54 UTC and remained running at this snapshot. Its first checkpoint is independently verified. Broader-data candidates remain unadmitted.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#the-running-finite-phase">Verified first production checkpoint: one completed update, 32,704 valid labels from 32,768 input IDs. Earlier qualification: eight updates at 4,542 valid labels/s. These are first-checkpoint counts; no full-phase or reasoning result is established.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>3d 23h 24m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-27T04:47:51Z">27 Oct 2026, 04:47:51 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>Qualifying a 299M model and counting the next training phase</h1><p class="dek">A fresh 299M model completes qualification and begins a finite pretraining phase. The first update is recorded and its checkpoint independently verified; broader corpus candidates remain unadmitted.</p><p class="article-meta"><time datetime="2026-10-27">27 October 2026</time> · Larger-model qualification and data preparation · 5 min read</p></header><div class="prose"><p>The next stage moves to a <strong>299,414,528-parameter model trained from scratch</strong>, with substantially more pretraining as the research direction. The original 97.5M model and its controls remain preserved. The goal is an open, reproducible training recipe that produces transferable logic beyond plausible conversation. Planning remains one diagnostic among several.</p>
+<p>The first production phase launched at <strong>04:42:54 UTC on 27 October 2026</strong> and remained running at the <strong>04:47:51 UTC verification snapshot</strong>. Its first optimizer update completed with <strong>32,704 valid labels</strong> from <strong>32,768 processed input IDs</strong>. The first external checkpoint and its sidecar were independently rehashed and matched their recorded hashes. Those counts describe the verified first checkpoint, not the later live total. These startup results do not establish completion of the full phase or model capability.</p>
+<h2 id="what-the-qualification-measured">What the qualification measured</h2>
+<p>The new model completed eight optimizer updates using <strong>65,386 valid next-token labels</strong> from 65,536 processed input token IDs. Training took 14.40 seconds, or <strong>4,542 valid labels per second</strong> across those updates. Peak reserved accelerator memory was <strong>7.01 GiB</strong>. Initial and terminal checkpoint files were written and verified.</p>
+<p>The model uses 22 transformer layers, width 1,024, a 2,816-wide gated feed-forward layer, 16 attention heads, the existing 16,384-token vocabulary and a 1,024-token context. It began from random weights; it does not incorporate pretrained weights.</p>
+<p>These are measurements of a short training execution. They do not establish sustained throughput, conversational quality or transferable reasoning. A small loss check used additional blocks from the training source, so it is not an independent generalization result.</p>
+<p>A separate Linux preparation gate passed <strong>97 of 97 named tests</strong>, with no skips, covering checkpoint handling, storage accounting and candidate-scan behavior. The subsequent production integration gate passed <strong>81 of 81 named tests</strong>, also with no skips, including a native CPU tensor checkpoint round trip. These tests support proceeding to a finite run; they do not establish that a broader corpus is eligible or that a long run will remain stable.</p>
+<h2 id="the-first-production-phase-is-finite">The first production phase is finite</h2>
+<p>The running phase makes a bounded, nonwrapping pass through the existing training stream. Historical near-duplicate text remains, so this is not a claim of 26.86M unique labels. The measured inventory contains <strong>26,908,211 stored token IDs</strong>, including end-of-document markers. The phase processes <strong>26,902,528 input IDs</strong> in complete blocks and leaves a <strong>5,683-ID tail unused</strong>. Label masking produces <strong>26,860,551 valid training labels</strong> across 821 updates. Stored IDs, processed inputs and valid prediction targets are different counts; each will remain visible in the run record.</p>
+<p>The phase has a <strong>9,000-second maximum</strong> and four planned retained checkpoint pairs, including the first pair now independently verified. The broader campaign has a ceiling of one billion valid labels, with a separate processed-input ceiling. That ceiling is not an assertion that one billion suitable new tokens are available, nor a commitment to fill the budget by repeating a small source. Later phases depend on admitted data, verified recovery and a fresh runtime forecast.</p>
+<p>The old language-validation population has documented overlap with training. It remains a diagnostic with that limitation. New validation must separate related works and duplicated passages before any broader-data result can support a generalization claim.</p>
+<h2 id="a-zero-yield-scan-exposed-an-interface-error">A zero-yield scan exposed an interface error</h2>
+<p>A bounded scan of the pinned textbook archive examined all <strong>54,455 records</strong> and produced zero candidates because every license field failed the parser. A metadata-only check then identified the mistake: the archive stores specific collector labels followed by license URLs, while the parser expected bare URLs.</p>
+<p>The failed scan is preserved. A new parser version recognizes only the two exact observed eligible collector formats for CC BY 4.0 and CC0 1.0. Negated, restrictive, conflicting and extra-text claims still fail. Independent review passed 40 named tests and additional rejected-format checks before another bounded scan.</p>
+<p>The corrected scan completed in <strong>184.57 seconds</strong>. It staged 35,414 documents after record-level filters, then excluded 13,129 staged documents through whole-book quarantine. The resulting <strong>22,285 candidate documents</strong> contain <strong>237,077,890 bytes of text</strong> across 971 recorded book groups. In total, 909 book groups were quarantined. All six output files were rehashed, and the original archive hash remained unchanged.</p>
+<p>These are candidate counts and text bytes, <strong>not admitted unique tokens</strong>. Automated rights and privacy filters can miss problems or reject harmless text. Related-work grouping, passage deduplication, independent review and tokenizer measurement remain necessary. The scan's sampled passage fingerprints do not establish exhaustive deduplication.</p>
+<p>Two further pinned archives from government and parliamentary source collections were acquired and verified: <strong>789,507,600 compressed bytes</strong> in total. They remain in private quarantine and have not been decompressed or admitted to training. The completed acquisition released its storage reservation. Document-level rights, privacy, quality and family-separation review are still required; downloaded bytes and upstream catalog sizes will not be reported as usable model-token yield.</p>
+<h2 id="what-determines-the-next-decision">What determines the next decision</h2>
+<p>The immediate decisions are whether the finite production phase completes within its limits with verified checkpoints, and how much genuinely distinct eligible text the candidate work yields with this tokenizer. Exact duplicates, related works, passage overlap and previously used validation families must be resolved before a new split is frozen. Format validity, answer correctness, familiar-example fit and structural transfer will remain separate measurements.</p>
+<p>The project storage allowance is <strong>800 GB on the dedicated data volume</strong>. Existing free-space, memory, thermal and checkpoint safeguards remain in force. The installed training cutoff is <strong>31 October 2026 at 04:12 UTC</strong>; the separate UI session expiry remains <strong>27 October at 17:02:37 UTC</strong>. These are execution limits, not a claim that the research program is complete at that time. This update does not extend either limit.</p>
+<p>Earlier posts describe the budgets and plans in effect at their own stages. The former 200M-additional-token comparison has been superseded by the larger-model direction and finite phase budgets above. Its failed results remain in the record. The original controls and sealed final holdout remain preserved, and this stage uses no proprietary services or private trace inputs.</p>
+<p>This is an AI-assisted engineering record. See the <a href="/model-training-journal/current-plan/">current plan</a> for the latest reviewed snapshot.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/26/goal-clarification-and-storage/">Earlier: Clarifying the goal, storage, and corpus readiness</a><a href="/model-training-journal/experiments/">Experiment index</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

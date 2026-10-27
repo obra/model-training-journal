@@ -1,12 +1,12 @@
 {
   "schema": 1,
-  "model_parameters": 97536768,
+  "model_parameters": 299414528,
   "initialization": "from scratch",
-  "experiment_state": "Corpus review and continuation preparation. No new training records admitted; broader pretraining not started.",
+  "experiment_state": "The 299M first pretraining phase launched at 04:42:54 UTC and remained running at this snapshot. Its first checkpoint is independently verified. Broader-data candidates remain unadmitted.",
   "latest_result": {
-    "summary": "18 candidate works yield 10,725 content tokens; none admitted. A bounded source-level census is next; independent prose validation remains unresolved.",
-    "url": "/model-training-journal/current-plan/#corpus-eligibility-and-the-remaining-evidence-gates"
+    "summary": "Verified first production checkpoint: one completed update, 32,704 valid labels from 32,768 input IDs. Earlier qualification: eight updates at 4,542 valid labels/s. These are first-checkpoint counts; no full-phase or reasoning result is established.",
+    "url": "/model-training-journal/current-plan/#the-running-finite-phase"
   },
-  "verified_at_utc": "2026-10-26T21:12:54Z",
+  "verified_at_utc": "2026-10-27T04:47:51Z",
   "deadline_utc": "2026-10-31T04:12:00Z"
 }
