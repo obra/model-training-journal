@@ -2,11 +2,11 @@
   "schema": 1,
   "model_parameters": 299414528,
   "initialization": "from scratch",
-  "experiment_state": "Saved-record review, not live telemetry: 299M recovery completed; five logic probes failed. Evaluator installed; native tests and scoring pending. ArXiv continuation is prepared, unrun, awaiting remaining deployment/preflight.",
+  "experiment_state": "Saved-record review, not live telemetry: five language evaluations completed; logic probes still failed. The arXiv continuation remains local and unrun, awaiting deployment approval and native preflight.",
   "latest_result": {
-    "summary": "547 recovery updates; model step 821. All five checkpoints: 0/32 correct and 0/32 protocol-valid answers, which does not isolate reasoning capacity. Clean LM loss/perplexity unmeasured. New corpus: 99 training papers, 2,032,000 content IDs; 10 reserved development papers, 224,896 IDs.",
-    "url": "/model-training-journal/current-plan/#five-checkpoint-measurements"
+    "summary": "On the same 32 regulatory-prose sections and 7,057 scored tokens, mean token loss fell 6.49% and perplexity 33.57% from model step 274 to 821. Separate logic scores remain 0/32 correct and 0/32 protocol-valid at all five checkpoints; the loss change is not a reasoning result.",
+    "url": "/model-training-journal/current-plan/#language-loss-on-a-fixed-development-set"
   },
-  "verified_at_utc": "2026-10-28T00:34:00Z",
+  "verified_at_utc": "2026-10-28T00:54:54Z",
   "deadline_utc": "2026-10-31T04:12:00Z"
 }

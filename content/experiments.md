@@ -103,7 +103,7 @@ The original **97,536,768-parameter model** began from random weights and comple
 <dt>Qualification and data preparation</dt>
 <dd><a href="/model-training-journal/2026/10/27/larger-model-qualification-and-phase1/">Qualifying a 299M model and counting the next training phase</a><br>Eight updates establish short-run execution and checkpoint evidence for a fresh 299M model. The finite 26.86M-label first phase has launched; its first update is recorded and the first checkpoint independently verified. A failed archive scan leads to a narrow parser correction and 22,285 candidate documents. Two additional pinned archives are acquired into quarantine; neither acquisition nor candidate counts establish training admission. · 27 Oct 2026</dd>
 <dt>Recovery and source review</dt>
-<dd><a href="/model-training-journal/2026/10/27/recovering-the-first-299m-pretraining-phase/">Completing 299M recovery and testing five checkpoints</a><br>Recovery completes 547 updates. Five fixed logic probes each return 0/32 correct and 0/32 protocol-valid answers. A separate 99-paper arXiv training set is admitted; its 62-update continuation is prepared and unrun. Updated from saved records on 28 Oct UTC. · 27 Oct 2026</dd>
+<dd><a href="/model-training-journal/2026/10/27/recovering-the-first-299m-pretraining-phase/">Measuring language loss after 299M recovery</a><br>Across five checkpoints, loss on a fixed regulatory-prose development set falls 6.49% from baseline to terminal. Logic probes stay at 0/32 correct and 0/32 protocol-valid. The 62-update arXiv continuation remains prepared and unrun. Updated from saved records on 28 Oct UTC. · 27 Oct 2026</dd>
 </dl>
 
 ## How to read the measurements

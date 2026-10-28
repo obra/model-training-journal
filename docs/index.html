@@ -22,14 +22,14 @@
       <a href="/model-training-journal/about/">About</a>
     </nav>
   </header>
-  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-28T00:34:00Z" data-deadline="2026-10-31T04:12:00Z">
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-28T00:54:54Z" data-deadline="2026-10-31T04:12:00Z">
   <div class="progress-top"><p class="progress-model"><strong title="299,414,528 trainable parameters">299.4M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
   <dl class="progress-facts">
-    <div class="progress-state"><dt>Experiment state</dt><dd>Saved-record review, not live telemetry: 299M recovery completed; five logic probes failed. Evaluator installed; native tests and scoring pending. ArXiv continuation is prepared, unrun, awaiting remaining deployment/preflight.</dd></div>
-    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#five-checkpoint-measurements">547 recovery updates; model step 821. All five checkpoints: 0/32 correct and 0/32 protocol-valid answers, which does not isolate reasoning capacity. Clean LM loss/perplexity unmeasured. New corpus: 99 training papers, 2,032,000 content IDs; 10 reserved development papers, 224,896 IDs.</a></dd></div>
-    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>3d 3h 38m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+    <div class="progress-state"><dt>Experiment state</dt><dd>Saved-record review, not live telemetry: five language evaluations completed; logic probes still failed. The arXiv continuation remains local and unrun, awaiting deployment approval and native preflight.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#language-loss-on-a-fixed-development-set">On the same 32 regulatory-prose sections and 7,057 scored tokens, mean token loss fell 6.49% and perplexity 33.57% from model step 274 to 821. Separate logic scores remain 0/32 correct and 0/32 protocol-valid at all five checkpoints; the loss change is not a reasoning result.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>3d 3h 17m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
   </dl>
-  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-28T00:34:00Z">28 Oct 2026, 00:34:00 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-28T00:54:54Z">28 Oct 2026, 00:54:54 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
 </section>
   <main id="main">
 <section class="intro" aria-labelledby="journal-title">
@@ -38,9 +38,9 @@
 <aside><strong>A record of the work</strong><p>AI-assisted notes, curated from a local experiment notebook. Completed diagnostics and future plans are kept distinct.</p><a href="/model-training-journal/about/">About the journal</a></aside>
 </section>
 <section aria-labelledby="entries-heading"><div class="section-heading"><h2 id="entries-heading">Journal entries</h2><span>Latest first · 36 entries</span></div><ol class="entries"><li class="entry">
-<div class="entry-meta"><time datetime="2026-10-27">27 Oct 2026</time><span>Recovery results, evaluation and source admission</span></div>
-<div><h3><a href="/model-training-journal/2026/10/27/recovering-the-first-299m-pretraining-phase/">Completing 299M recovery and testing five checkpoints</a></h3>
-<p>Recovery completes 547 updates. Five fixed logic probes each return 0/32 correct and 0/32 protocol-valid answers. A separate 99-paper arXiv training set is admitted; its 62-update continuation is prepared and unrun.</p><a class="read-link" href="/model-training-journal/2026/10/27/recovering-the-first-299m-pretraining-phase/">Read entry · 6 min</a></div></li><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-27">27 Oct 2026</time><span>Recovery results and separate development measures</span></div>
+<div><h3><a href="/model-training-journal/2026/10/27/recovering-the-first-299m-pretraining-phase/">Measuring language loss after 299M recovery</a></h3>
+<p>Across five checkpoints, loss on a fixed regulatory-prose development set falls 6.49% from baseline to terminal. Logic probes stay at 0/32 correct and 0/32 protocol-valid. The 62-update arXiv continuation remains prepared and unrun.</p><a class="read-link" href="/model-training-journal/2026/10/27/recovering-the-first-299m-pretraining-phase/">Read entry · 8 min</a></div></li><li class="entry">
 <div class="entry-meta"><time datetime="2026-10-27">27 Oct 2026</time><span>Larger-model qualification and data preparation</span></div>
 <div><h3><a href="/model-training-journal/2026/10/27/larger-model-qualification-and-phase1/">Qualifying a 299M model and counting the next training phase</a></h3>
 <p>A fresh 299M model completes qualification and begins a finite pretraining phase. The first update is recorded and its checkpoint independently verified; broader corpus candidates remain unadmitted.</p><a class="read-link" href="/model-training-journal/2026/10/27/larger-model-qualification-and-phase1/">Read entry · 5 min</a></div></li><li class="entry">

@@ -1,13 +1,13 @@
 ---
-title: "Completing 299M recovery and testing five checkpoints"
+title: "Measuring language loss after 299M recovery"
 date: "2026-10-27"
 slug: "recovering-the-first-299m-pretraining-phase"
-phase: "Recovery results, evaluation and source admission"
-summary: "Recovery completes 547 updates. Five fixed logic probes each return 0/32 correct and 0/32 protocol-valid answers. A separate 99-paper arXiv training set is admitted; its 62-update continuation is prepared and unrun."
+phase: "Recovery results and separate development measures"
+summary: "Across five checkpoints, loss on a fixed regulatory-prose development set falls 6.49% from baseline to terminal. Logic probes stay at 0/32 correct and 0/32 protocol-valid. The 62-update arXiv continuation remains prepared and unrun."
 order: 36
 ---
 
-**Updated 28 October 2026, 00:34:00 UTC, from saved records.** This updates the original 27 October entry in place. The timestamp describes review of saved evidence, not live training or machine telemetry. Recovery has completed, five checkpoint probes have completed, and a separate source selection has been admitted for local training. The next continuation is prepared and **has not run**.
+**Updated 28 October 2026, 00:54:54 UTC, from saved records.** This updates the original 27 October entry in place. The timestamp describes review of saved evidence, not live training or machine telemetry. Recovery and both sets of checkpoint evaluations have completed. Language loss improves on a fixed regulatory-prose development set; the separate logic probe still has no successful answers. The next arXiv continuation remains prepared locally and **has not run**.
 
 ## The interruption remains a failure
 
@@ -55,7 +55,23 @@ Each checkpoint completed the same fixed **32-case development probe**: two logi
 
 The measured change from baseline is zero for both scores at every recovery checkpoint. This provides no demonstrated progress on this probe. With **zero protocol-valid answers**, however, exact-answer failure does not isolate reasoning capacity from failure to produce the required response format. Neither recovery completion nor checkpoint integrity establishes transferable logic.
 
-Clean language-model loss and perplexity for these checkpoints have **not been measured**. The evaluator package is now installed and its file manifest verified, but native tests and scoring remain pending. Unmeasured metrics are not zero. Training-stream diagnostics and the older model's overlap-affected validation do not replace a clean language evaluation.
+## Language loss on a fixed development set
+
+All five checkpoints also completed a separate language-model evaluation on the **same 32 sections of 2025 US administrative regulations, Title 5**, with **7,057 scored tokens** per checkpoint. The evaluation used the same frozen data, tokenizer, model configuration, scoring code and native FP32 precision contract throughout. Mean token negative log-likelihood (NLL) is measured in nats per token; perplexity is its exponential. Lower values indicate better prediction of this selected text.
+
+| Checkpoint | Model step | Mean token NLL, nats | Perplexity |
+|---|---|---|---|
+| Pre-recovery baseline | 274 | 6.304254 | 546.8935 |
+| Recovery update 1 | 275 | 6.306247 | 547.9846 |
+| Recovery update 8 | 282 | 6.302080 | 545.7059 |
+| Recovery update 274 | 548 | 6.128803 | 458.8867 |
+| Recovery update 547, terminal | 821 | 5.895244 | 363.3055 |
+
+From baseline to terminal, mean NLL fell **6.49%** and perplexity fell **33.57%**. The first recovery update was slightly worse than baseline, so improvement was not monotonic. These are results on a narrow regulatory-prose development measure, not evidence of improved reasoning or broad language competence.
+
+The historical lexical scan covered the pinned actual Pressbooks training corpus and its old validation set and found **zero observed lexical overlap for the selected material**. That is the scope of the coverage claim. It does not establish globally unseen source families, semantic non-overlap, paraphrase exclusion, coverage of earlier or later regulatory editions, or unknown model histories. The sealed final holdout was not used.
+
+The native CPU smoke check passed **both tests**. All **five bounded language-evaluation jobs exited successfully with return code 0** and verified terminal cleanup. These execution checks support the measurements, not a capability claim.
 
 ## The earlier source review remains unresolved
 
@@ -77,7 +93,9 @@ That closure is bounded by what the archive reveals. The exact upstream converte
 
 The prepared continuation restores the recovery terminal model, optimizer and random state, retaining the architecture and tokenizer. Its one nonwrapping pass would execute **62 updates**, **2,029,534 valid labels** and **2,031,616 processed input IDs**. These batch counts differ from the source's 2,032,000 content IDs; end-of-document markers are stored separately, and **483 trailing stored IDs** are unused by the full-update schedule.
 
-The planned checkpoint boundaries are **updates 16, 31 and 62**, under a **30-minute maximum**. Fixed development probes are planned at each boundary; none has run. Evaluator installation is complete; native tests and scoring remain pending. Continuation awaits the remaining deployment gates, binding of the reviewed code, data and parent checkpoint, and a fresh resource, storage, accounting and exclusive-accelerator preflight.
+The planned checkpoint boundaries are **updates 16, 31 and 62**, under a **30-minute maximum**. The frozen plan schedules the fixed 32-case logic probes serially at each boundary, with companion language-model scoring **disabled**. The completed standalone language evaluations do not establish a future scoring cadence.
+
+This continuation has **not been transferred, installed or launched**. Deployment approval, binding of the reviewed code, data and parent checkpoint, and a fresh native, resource, storage, accounting and exclusive-accelerator preflight remain pending.
 
 The existing data-volume allowance is **800 GB**. The last recorded hard training cutoff remains **31 October 2026 at 04:12 UTC**, with no extension and no new live guard-state claim from this review. The campaign ceiling remains one billion valid labels, with processed inputs counted separately. Storage, memory, thermal and free-space safeguards remain execution requirements.
 
