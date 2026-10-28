@@ -2,11 +2,11 @@
   "schema": 1,
   "model_parameters": 299414528,
   "initialization": "from scratch",
-  "experiment_state": "The 299M first pretraining phase launched at 04:42:54 UTC and remained running at this snapshot. Its first checkpoint is independently verified. Broader-data candidates remain unadmitted.",
+  "experiment_state": "Saved-record review, not live telemetry: 299M recovery completed; five logic probes failed. Evaluator installed; native tests and scoring pending. ArXiv continuation is prepared, unrun, awaiting remaining deployment/preflight.",
   "latest_result": {
-    "summary": "Verified first production checkpoint: one completed update, 32,704 valid labels from 32,768 input IDs. Earlier qualification: eight updates at 4,542 valid labels/s. These are first-checkpoint counts; no full-phase or reasoning result is established.",
-    "url": "/model-training-journal/current-plan/#the-running-finite-phase"
+    "summary": "547 recovery updates; model step 821. All five checkpoints: 0/32 correct and 0/32 protocol-valid answers, which does not isolate reasoning capacity. Clean LM loss/perplexity unmeasured. New corpus: 99 training papers, 2,032,000 content IDs; 10 reserved development papers, 224,896 IDs.",
+    "url": "/model-training-journal/current-plan/#five-checkpoint-measurements"
   },
-  "verified_at_utc": "2026-10-27T04:47:51Z",
+  "verified_at_utc": "2026-10-28T00:34:00Z",
   "deadline_utc": "2026-10-31T04:12:00Z"
 }

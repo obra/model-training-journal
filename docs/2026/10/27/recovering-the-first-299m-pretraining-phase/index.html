@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Completing 299M recovery and testing five checkpoints · Model Training Journal</title>
+  <meta name="description" content="Recovery completes 547 updates. Five fixed logic probes each return 0/32 correct and 0/32 protocol-valid answers. A separate 99-paper arXiv training set is admitted; its 62-update continuation is prepared and unrun.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/27/recovering-the-first-299m-pretraining-phase/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-28T00:34:00Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="299,414,528 trainable parameters">299.4M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Saved-record review, not live telemetry: 299M recovery completed; five logic probes failed. Evaluator installed; native tests and scoring pending. ArXiv continuation is prepared, unrun, awaiting remaining deployment/preflight.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#five-checkpoint-measurements">547 recovery updates; model step 821. All five checkpoints: 0/32 correct and 0/32 protocol-valid answers, which does not isolate reasoning capacity. Clean LM loss/perplexity unmeasured. New corpus: 99 training papers, 2,032,000 content IDs; 10 reserved development papers, 224,896 IDs.</a></dd></div>
+    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>3d 3h 38m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-28T00:34:00Z">28 Oct 2026, 00:34:00 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>Completing 299M recovery and testing five checkpoints</h1><p class="dek">Recovery completes 547 updates. Five fixed logic probes each return 0/32 correct and 0/32 protocol-valid answers. A separate 99-paper arXiv training set is admitted; its 62-update continuation is prepared and unrun.</p><p class="article-meta"><time datetime="2026-10-27">27 October 2026</time> · Recovery results, evaluation and source admission · 6 min read</p></header><div class="prose"><p><strong>Updated 28 October 2026, 00:34:00 UTC, from saved records.</strong> This updates the original 27 October entry in place. The timestamp describes review of saved evidence, not live training or machine telemetry. Recovery has completed, five checkpoint probes have completed, and a separate source selection has been admitted for local training. The next continuation is prepared and <strong>has not run</strong>.</p>
+<h2 id="the-interruption-remains-a-failure">The interruption remains a failure</h2>
+<p>The first production phase of the from-scratch <strong>299,414,528-parameter model stopped at 05:18:12 UTC on 27 October</strong>, after <strong>355 completed optimizer updates</strong>. The recorded reason was a resource-monitor subprocess error, <code>CalledProcessError</code>; the guard terminated the worker. The saved evidence does not identify the underlying subprocess failure, so it cannot establish a disappearing file, exhausted memory or a model problem as the cause.</p>
+<p>The last retained checkpoint is from <strong>update 274</strong>. Its payload and metadata hashes were independently verified after the stop. The original run, both retained checkpoints and its accounting history remain preserved. Completing recovery does not convert the interrupted original run into a success.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Original-run evidence</th>
+<th>Valid training labels</th>
+<th>Processed input IDs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retained checkpoint, update 274</td>
+<td>8,962,077</td>
+<td>8,978,432</td>
+</tr>
+<tr>
+<td>Last completed update, 355</td>
+<td>11,612,290</td>
+<td>11,632,640</td>
+</tr>
+<tr>
+<td>Durable charges at the stop</td>
+<td>11,620,471</td>
+<td>11,640,832</td>
+</tr>
+</tbody>
+</table></div>
+<p>The final charged microbatches were recorded before computation, and their exact completion is uncertain. Their charges remain counted. Recovery charges replay again; restarting from an older checkpoint does not refund lost work.</p>
+<p>The main resource monitor was repaired at the recorded <strong>15:58:05 UTC</strong> snapshot. Before recovery, a corrected Linux gate passed <strong>91 of 91 tests</strong>, including all <strong>six required native checks</strong>, with no skips. The actual checkpoint passed model, complete Adam optimizer and native random-state validation. Campaign and storage failure records were reconciled without releasing original charges or reservations.</p>
+<h2 id="recovery-completed-its-finite-suffix">Recovery completed its finite suffix</h2>
+<p>Recovery launched at <strong>16:21:15 UTC on 27 October</strong>, restored checkpoint 274 and continued its exact original source suffix. The original entry's <strong>16:24:25 UTC</strong> snapshot recorded 24 completed recovery updates; it was a startup observation, superseded here by terminal evidence.</p>
+<p>The terminal record confirms <strong>547 completed recovery updates</strong>, <strong>17,898,474 valid labels</strong> and <strong>17,924,096 processed input IDs</strong>, successful process exit and a verified terminal checkpoint. The planned checkpoint boundaries were recovery updates 1, 8, 274 and 547; all four saved checkpoints subsequently completed the development probe below.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Accounting view after recovery</th>
+<th>Updates</th>
+<th>Valid labels</th>
+<th>Processed input IDs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Completed recovery</td>
+<td>547</td>
+<td>17,898,474</td>
+<td>17,924,096</td>
+</tr>
+<tr>
+<td>Retained model trajectory</td>
+<td>821</td>
+<td>26,860,551</td>
+<td>26,902,528</td>
+</tr>
+<tr>
+<td>Physical campaign</td>
+<td>902 completed</td>
+<td>29,518,945 charged</td>
+<td>29,564,928 charged</td>
+</tr>
+</tbody>
+</table></div>
+<p>The model trajectory follows the state retained at update 274 plus recovery. Physical accounting retains all original charges, including the uncertain partial accumulation, and all replay. The suffix overlaps <strong>2,658,394 valid labels</strong> already charged before interruption. The learning-rate schedule follows the model trajectory; physical charges measure resources consumed. These are distinct counters.</p>
+<p>The phase was bounded by a <strong>9,000-second maximum</strong>, with a latest permitted end of <strong>18:51:15 UTC on 27 October</strong>. That was a phase limit, not its measured completion time. Recovery consumed the existing admitted stream, which still has historical near-duplicate risk. The separate new arXiv selection below was not part of it.</p>
+<h2 id="five-checkpoints-no-successful-probe-answers">Five checkpoints, no successful probe answers</h2>
+<p>Each checkpoint completed the same fixed <strong>32-case development probe</strong>: two logic families, 16 cases each, with greedy decoding capped at 128 new tokens. The baseline is the <strong>299M checkpoint at model step 274 before recovery</strong>, rather than random initialization or the older 97.5M control. The final holdout was not used.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Evaluated checkpoint</th>
+<th>Model step</th>
+<th>Correct answers</th>
+<th>Protocol-valid answers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pre-recovery baseline</td>
+<td>274</td>
+<td>0/32</td>
+<td>0/32</td>
+</tr>
+<tr>
+<td>Recovery update 1</td>
+<td>275</td>
+<td>0/32</td>
+<td>0/32</td>
+</tr>
+<tr>
+<td>Recovery update 8</td>
+<td>282</td>
+<td>0/32</td>
+<td>0/32</td>
+</tr>
+<tr>
+<td>Recovery update 274</td>
+<td>548</td>
+<td>0/32</td>
+<td>0/32</td>
+</tr>
+<tr>
+<td>Recovery update 547, terminal</td>
+<td>821</td>
+<td>0/32</td>
+<td>0/32</td>
+</tr>
+</tbody>
+</table></div>
+<p>The measured change from baseline is zero for both scores at every recovery checkpoint. This provides no demonstrated progress on this probe. With <strong>zero protocol-valid answers</strong>, however, exact-answer failure does not isolate reasoning capacity from failure to produce the required response format. Neither recovery completion nor checkpoint integrity establishes transferable logic.</p>
+<p>Clean language-model loss and perplexity for these checkpoints have <strong>not been measured</strong>. The evaluator package is now installed and its file manifest verified, but native tests and scoring remain pending. Unmeasured metrics are not zero. Training-stream diagnostics and the older model's overlap-affected validation do not replace a clean language evaluation.</p>
+<h2 id="the-earlier-source-review-remains-unresolved">The earlier source review remains unresolved</h2>
+<p>The fixed 30-sample public Pressbooks review verified sample identities and found readable English excerpts, alongside navigation-heavy material, missing equations, malformed mathematics and a damaged table. A chapter described republication by permission, raising an unresolved downstream-rights question. The samples relied on archival license claims without cached chapter-level confirmation; excerpts were not whole-document certificates.</p>
+<p>Issues of the same undergraduate research journal series appeared in both provisional training and reserved validation groups. Different book-component identifiers therefore did not establish source-family independence. This was not proof of exact textual duplication, but it prevented accepting the proposed split as independently validated.</p>
+<p><strong>That follow-on Pressbooks pool remains unadmitted, with zero accepted yield.</strong> Its 3,326 normalized-exact-unique candidate documents and 12,308,819 stored IDs remain candidate inventory, not accepted unique training labels. Rights decisions, whole-record quality checks, passage deduplication and source-family separation remain unresolved gates. Those candidates were not added to recovery.</p>
+<h2 id="a-distinct-arxiv-selection-is-admitted-locally">A distinct arXiv selection is admitted locally</h2>
+<p>A later whole-document selection from a pinned Common Pile arXiv archive was admitted for <strong>local training data only</strong>: <strong>99 training papers containing 2,032,000 content token IDs</strong>, and <strong>10 reserved development papers containing 224,896 content IDs</strong>. The selection has produced <strong>zero new training exposures</strong> and has not been model-scored. Its admission does not clear the separate Pressbooks failures.</p>
+<p>The provenance record ties an exact archive revision and compressed-file hash to original selected rows, text hashes and tokenized outputs. Original notices and archived per-paper CC BY 4.0, CC BY 3.0 or CC0 labels are preserved. Historical-overlap exclusions, source-quality holds and negative controls remain excluded. The frozen split uses observed work families and normalized author connections; development works and their observed author components must remain excluded from future training.</p>
+<p>That closure is bounded by what the archive reveals. The exact upstream converter build, original arXiv versions, original source-package bytes and unobserved publication aliases remain unknown. Base work identifiers group whole observed works; normalized author names cannot establish universal identity or discover every alias. The decision is scoped to these pinned bytes and observed families, not universal legal, privacy, factual or semantic-novelty truth. A later incompatible rights exception or sensitive narrative requires whole-work quarantine and a fresh review.</p>
+<h2 id="the-next-finite-run-is-prepared-not-launched">The next finite run is prepared, not launched</h2>
+<p>The prepared continuation restores the recovery terminal model, optimizer and random state, retaining the architecture and tokenizer. Its one nonwrapping pass would execute <strong>62 updates</strong>, <strong>2,029,534 valid labels</strong> and <strong>2,031,616 processed input IDs</strong>. These batch counts differ from the source's 2,032,000 content IDs; end-of-document markers are stored separately, and <strong>483 trailing stored IDs</strong> are unused by the full-update schedule.</p>
+<p>The planned checkpoint boundaries are <strong>updates 16, 31 and 62</strong>, under a <strong>30-minute maximum</strong>. Fixed development probes are planned at each boundary; none has run. Evaluator installation is complete; native tests and scoring remain pending. Continuation awaits the remaining deployment gates, binding of the reviewed code, data and parent checkpoint, and a fresh resource, storage, accounting and exclusive-accelerator preflight.</p>
+<p>The existing data-volume allowance is <strong>800 GB</strong>. The last recorded hard training cutoff remains <strong>31 October 2026 at 04:12 UTC</strong>, with no extension and no new live guard-state claim from this review. The campaign ceiling remains one billion valid labels, with processed inputs counted separately. Storage, memory, thermal and free-space safeguards remain execution requirements.</p>
+<p>The goal remains an open-source, reproducible recipe for transferable logic beyond plausible conversation. Model training and corpus preparation in this stage use no paid compute, proprietary model APIs or private trace inputs. Earlier controls and failures remain preserved, and the sealed final holdout stays reserved. This is an AI-assisted engineering record of aggregate methods and results; raw corpus text and private logs are not published. See the <a href="/model-training-journal/current-plan/">current plan</a> for the latest reviewed decision.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/27/larger-model-qualification-and-phase1/">Earlier: Qualifying a 299M model and counting the next training phase</a><a href="/model-training-journal/experiments/">Experiment index</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>
