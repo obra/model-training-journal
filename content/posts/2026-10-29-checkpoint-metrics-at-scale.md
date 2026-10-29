@@ -3,21 +3,23 @@ title: "Checkpoint metrics after larger one-pass training phases"
 date: "2026-10-29"
 slug: "checkpoint-metrics-at-scale"
 phase: "Pretraining continuation and development measurements"
-summary: "The 299M model completes a 130.07M-label stage with six measured checkpoints. Its next stage is running; the latest saved checkpoint regresses to CFR perplexity 42.5430 from 41.6422. These are narrow development-language results, not a new reasoning score."
+summary: "The 299M model completes a 130.07M-label stage with six measured checkpoints. Its next stage is running; saved checkpoint 3,316 reaches CFR perplexity 39.6483 after the earlier regression at 1,990. These are narrow development-language results, not a new reasoning score."
 order: 38
 ---
 
-**Snapshot: 29 October 2026, 16:31:12 UTC.** One stage completed; the second is running with **saved** checkpoint 1,990. This follows the historical [99-paper infrastructure pilot](/model-training-journal/2026/10/28/first-admitted-arxiv-continuation/).
+**Snapshot: 29 October 2026, 18:31:32 UTC.** One stage completed; the second is running with **saved** checkpoint 3,316. This follows the historical [99-paper infrastructure pilot](/model-training-journal/2026/10/28/first-admitted-arxiv-continuation/).
 
 The **299,414,528-parameter model** began from scratch. The goal remains demonstrable transferable logic beyond plausible conversation; better language prediction alone does not establish it.
 
+**Revision notice:** Updated from the 16:31 snapshot to saved evidence observed at **18:31:32 UTC**. The [initial published revision](https://github.com/obra/model-training-journal/blob/f23b61ee9f41749eef14ff1953911b862fa1d237/content/posts/2026-10-29-checkpoint-metrics-at-scale.md) preserves the earlier text and table; this page and its linked charts now describe the later snapshot.
+
 ## Checkpoint charts
 
-Static figures freeze the saved measurements observed at **16:31 UTC**. Missing is not zero; tables retain the values.
+Static figures freeze the saved measurements observed at **18:31 UTC**. Missing is not zero; tables retain the values.
 
 <figure class="metric-chart">
 <img src="/model-training-journal/assets/charts/checkpoint-perplexity.svg" alt="CFR development perplexity versus retained model-lineage and phase-local valid labels, with lower later saved values and local increases">
-<figcaption>CFR development perplexity, 7,057 labels per report. Left: cumulative retained model-lineage valid labels, in millions; right: phase-local valid labels. Hollow markers retain repeated baseline observations. The cumulative panel plots 24 observations and omits five unknown coordinates; the phase-local panel plots 28 and omits one. <a href="/model-training-journal/assets/charts/checkpoint-perplexity.svg">Open full-size checkpoint chart</a>. Perplexity has no universal pass threshold: comparisons require the same tokenizer, evaluation population and scoring contract. Lower CFR loss does not establish transferable logic.</figcaption>
+<figcaption>CFR development perplexity, 7,057 labels per report. Left: cumulative retained model-lineage valid labels, in millions; right: phase-local valid labels. Hollow markers retain repeated baseline observations. The cumulative panel plots 26 observations and omits five unknown coordinates; the phase-local panel plots 30 and omits one. <a href="/model-training-journal/assets/charts/checkpoint-perplexity.svg">Open full-size checkpoint chart</a>. Perplexity has no universal pass threshold: comparisons require the same tokenizer, evaluation population and scoring contract. Lower CFR loss does not establish transferable logic.</figcaption>
 </figure>
 
 <figure class="metric-chart">
@@ -63,7 +65,7 @@ The [checkpoint history JSON](/model-training-journal/assets/checkpoint-history.
 
 ## The running stage: saved evidence only
 
-The second stage started at **12:40:54 UTC**, targeting **130,105,270 valid labels** and **3,979 updates** under a finite **10-hour guard**. At the 16:31 observation, its guard remained active with no reported resource stop; sampled GPU activity was 88% and temperature 62°C.
+The second stage started at **12:40:54 UTC**, targeting **130,105,270 valid labels** and **3,979 updates** under a finite **10-hour guard**. The latest saved evidence was observed at 18:31:32 UTC; a separate 18:42 guard read confirmed that training was still running. One scheduled terminal save, update 3,979, remains; no stage completion is established here.
 
 | Running-stage saved checkpoint | New valid labels in this stage | NLL, nats/label | Perplexity |
 |---|----|----|----|
@@ -71,8 +73,12 @@ The second stage started at **12:40:54 UTC**, targeting **130,105,270 valid labe
 | Update 664 | 21,711,322 | 3.740508296 | 42.119393839 |
 | Update 1,327 | 43,390,057 | 3.729114554 | 41.642219879 |
 | Update 1,990 | 65,068,850 | 3.750515592 | 42.543011193 |
+| Update 2,653 | 86,747,812 | 3.707616779 | 40.756558816 |
+| Update 3,316 | 108,426,641 | 3.680047886 | 39.648292622 |
 
-Saved update 1,990 regressed from 1,327 (perplexity 41.6422 to 42.5430), while remaining below the parent’s 43.7761. It records physical 570,445,650 labels/17,441 updates versus retained model lineage 567,787,256/17,360. These are saved counters, not live progress or completion. New broad-panel and reasoning outcomes are `not_evaluated`, with null metrics. Historical fixed32 results were 0/32 correct and 0/32 protocol-valid: a reused development diagnostic with interface failure, not isolated capacity or fresh final evidence. A bounded broader-LM and fixed-logic/protocol check is being prepared for this stage’s terminal checkpoint; it remains unrun, and source eligibility must be verified before use.
+Saved update 1,990 regressed from 1,327 (perplexity 41.6422 to 42.5430), while remaining below the parent’s 43.7761. The two later saves reach 40.7566 and 39.6483; the regression remains part of the record. Update 3,316 contains **108,426,641 phase-valid labels / 108,658,688 processed input IDs**. Physical campaign totals are **613,803,441 valid labels / 18,767 updates / 614,965,248 processed input IDs**, versus retained model lineage **611,145,047 valid labels / 18,686 updates / 612,302,848 processed input IDs**. These are saved counters, not live progress or completion.
+
+New broad-panel and reasoning outcomes are `not_evaluated`, with null metrics. Historical fixed32 results were 0/32 correct and 0/32 protocol-valid: a reused development diagnostic with interface failure, not isolated capacity or fresh final evidence. The bounded 130,209-label broader-LM and 32-case logic/protocol checks for this stage’s terminal checkpoint are prepared, with source exclusions reviewed. Neither has run; no outcome or reasoning gain is inferred from the CFR curve.
 
 ## Counting the remaining finite program
 

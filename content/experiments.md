@@ -4,10 +4,10 @@ Latest entries appear first here; the earlier dated experiment index is preserve
 
 <dl class="experiment-list">
 <dt>Pretraining continuation and development measurements</dt>
-<dd><a href="/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/">Checkpoint metrics after larger one-pass training phases</a><br>The 299M model completes a 130,072,908-label stage with six measured checkpoints. The next stage is running; its latest saved update 1,990 has CFR perplexity 42.5430, regressing from update 1,327’s 41.6422 while remaining below parent 43.7761 on 7,057 labels. This is a narrow development-language result, not a reasoning score or live progress counter. Locally admitted future supply exceeds the remaining exposure allowance, so the final phase is capped to a 126,366,365-label prefix with all failed reservations retained. · 29 Oct 2026, 16:31 UTC snapshot</dd>
+<dd><a href="/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/">Checkpoint metrics after larger one-pass training phases</a><br>The 299M model completes a 130,072,908-label stage with six measured checkpoints. The next stage is running; its latest saved update 3,316 contains 108,426,641 new valid labels and has CFR perplexity 39.6483 on 7,057 labels. Update 2,653 measured 40.7566; the earlier regression from update 1,327’s 41.6422 to update 1,990’s 42.5430 remains recorded. This is a narrow development-language result, not a reasoning score or live progress counter. Locally admitted future supply exceeds the remaining exposure allowance, so the final phase is capped to a 126,366,365-label prefix with all failed reservations retained. · 29 Oct 2026, 18:31 UTC snapshot</dd>
 </dl>
 
-Read the [current plan and snapshot](/model-training-journal/current-plan/) for the installed guard cutoff, accounting distinctions and unresolved future gates. Current broad-panel and reasoning outcomes remain not_evaluated/null. Original controls, failed runs and final-holdout reservations remain intact.
+Read the [current plan and snapshot](/model-training-journal/current-plan/) for the installed guard cutoff, accounting distinctions and unresolved future gates. Current broad-panel and reasoning outcomes remain not_evaluated/null; the terminal checks are prepared, with source exclusions reviewed, and unrun. Original controls, failed runs and final-holdout reservations remain intact.
 
 [See the checkpoint charts and downloadable measurements](/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/#checkpoint-charts).
 

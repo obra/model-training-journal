@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Checkpoint metrics after larger one-pass training phases · Model Training Journal</title>
-  <meta name="description" content="The 299M model completes a 130.07M-label stage with six measured checkpoints. Its next stage is running; the latest saved checkpoint regresses to CFR perplexity 42.5430 from 41.6422. These are narrow development-language results, not a new reasoning score.">
+  <meta name="description" content="The 299M model completes a 130.07M-label stage with six measured checkpoints. Its next stage is running; saved checkpoint 3,316 reaches CFR perplexity 39.6483 after the earlier regression at 1,990. These are narrow development-language results, not a new reasoning score.">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/">
   <link rel="stylesheet" href="/model-training-journal/assets/site.css">
@@ -22,22 +22,23 @@
       <a href="/model-training-journal/about/">About</a>
     </nav>
   </header>
-  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-29T16:31:12Z" data-deadline="2026-10-31T04:12:00Z">
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-29T18:31:32Z" data-deadline="2026-10-31T04:12:00Z">
   <div class="progress-top"><p class="progress-model"><strong title="299,414,528 trainable parameters">299.4M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
   <dl class="progress-facts">
-    <div class="progress-state"><dt>Experiment state</dt><dd>Recorded 29 Oct 16:31 UTC: stage one completed. Stage two is active; saved checkpoint 1,990 is the latest measured point. Its CFR perplexity regressed from checkpoint 1,327. These are saved results, not live counters.</dd></div>
-    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/">Saved stage-two update 1,990: 65,068,850 new valid labels; CFR perplexity 42.5430, up from 41.6422 at update 1,327 but below parent 43.7761 on 7,057 labels. This narrow development result is not a reasoning score or completed-stage claim.</a></dd></div>
-    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>1d 11h 40m remaining at snapshot</strong><span class="progress-deadline">Cutoff <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+    <div class="progress-state"><dt>Experiment state</dt><dd>Recorded 29 Oct 18:31 UTC: stage one completed. Stage two is active; saved checkpoint 3,316 is the latest measured point. One scheduled terminal save at 3,979 remains. These are saved results, not live counters or stage completion.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/">Saved stage-two update 3,316: 108,426,641 new valid labels; CFR perplexity 39.6483 on 7,057 labels, following 40.7566 at 2,653. The earlier 1,990 regression (41.6422 to 42.5430) remains recorded. Broader-LM and logic checks are prepared but unrun; no reasoning gain is established.</a></dd></div>
+    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>1d 9h 40m remaining at snapshot</strong><span class="progress-deadline">Cutoff <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
   </dl>
-  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-29T16:31:12Z">29 Oct 2026, 16:31:12 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-29T18:31:32Z">29 Oct 2026, 18:31:32 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
 </section>
-  <main id="main"><article class="page"><header class="article-header"><h1>Checkpoint metrics after larger one-pass training phases</h1><p class="dek">The 299M model completes a 130.07M-label stage with six measured checkpoints. Its next stage is running; the latest saved checkpoint regresses to CFR perplexity 42.5430 from 41.6422. These are narrow development-language results, not a new reasoning score.</p><p class="article-meta"><time datetime="2026-10-29">29 October 2026</time> · Pretraining continuation and development measurements · 5 min read</p></header><div class="prose"><p><strong>Snapshot: 29 October 2026, 16:31:12 UTC.</strong> One stage completed; the second is running with <strong>saved</strong> checkpoint 1,990. This follows the historical <a href="/model-training-journal/2026/10/28/first-admitted-arxiv-continuation/">99-paper infrastructure pilot</a>.</p>
+  <main id="main"><article class="page"><header class="article-header"><h1>Checkpoint metrics after larger one-pass training phases</h1><p class="dek">The 299M model completes a 130.07M-label stage with six measured checkpoints. Its next stage is running; saved checkpoint 3,316 reaches CFR perplexity 39.6483 after the earlier regression at 1,990. These are narrow development-language results, not a new reasoning score.</p><p class="article-meta"><time datetime="2026-10-29">29 October 2026</time> · Pretraining continuation and development measurements · 5 min read</p></header><div class="prose"><p><strong>Snapshot: 29 October 2026, 18:31:32 UTC.</strong> One stage completed; the second is running with <strong>saved</strong> checkpoint 3,316. This follows the historical <a href="/model-training-journal/2026/10/28/first-admitted-arxiv-continuation/">99-paper infrastructure pilot</a>.</p>
 <p>The <strong>299,414,528-parameter model</strong> began from scratch. The goal remains demonstrable transferable logic beyond plausible conversation; better language prediction alone does not establish it.</p>
+<p><strong>Revision notice:</strong> Updated from the 16:31 snapshot to saved evidence observed at <strong>18:31:32 UTC</strong>. The <a href="https://github.com/obra/model-training-journal/blob/f23b61ee9f41749eef14ff1953911b862fa1d237/content/posts/2026-10-29-checkpoint-metrics-at-scale.md">initial published revision</a> preserves the earlier text and table; this page and its linked charts now describe the later snapshot.</p>
 <h2 id="checkpoint-charts">Checkpoint charts</h2>
-<p>Static figures freeze the saved measurements observed at <strong>16:31 UTC</strong>. Missing is not zero; tables retain the values.</p>
+<p>Static figures freeze the saved measurements observed at <strong>18:31 UTC</strong>. Missing is not zero; tables retain the values.</p>
 <figure class="metric-chart">
 <img src="/model-training-journal/assets/charts/checkpoint-perplexity.svg" alt="CFR development perplexity versus retained model-lineage and phase-local valid labels, with lower later saved values and local increases">
-<figcaption>CFR development perplexity, 7,057 labels per report. Left: cumulative retained model-lineage valid labels, in millions; right: phase-local valid labels. Hollow markers retain repeated baseline observations. The cumulative panel plots 24 observations and omits five unknown coordinates; the phase-local panel plots 28 and omits one. <a href="/model-training-journal/assets/charts/checkpoint-perplexity.svg">Open full-size checkpoint chart</a>. Perplexity has no universal pass threshold: comparisons require the same tokenizer, evaluation population and scoring contract. Lower CFR loss does not establish transferable logic.</figcaption>
+<figcaption>CFR development perplexity, 7,057 labels per report. Left: cumulative retained model-lineage valid labels, in millions; right: phase-local valid labels. Hollow markers retain repeated baseline observations. The cumulative panel plots 26 observations and omits five unknown coordinates; the phase-local panel plots 30 and omits one. <a href="/model-training-journal/assets/charts/checkpoint-perplexity.svg">Open full-size checkpoint chart</a>. Perplexity has no universal pass threshold: comparisons require the same tokenizer, evaluation population and scoring contract. Lower CFR loss does not establish transferable logic.</figcaption>
 </figure>
 
 <figure class="metric-chart">
@@ -118,7 +119,7 @@
 <p>The guard's wall time was approximately <strong>7 hours 6 minutes</strong>. The worker measured <strong>25,395.229 seconds</strong>; its training loop measured <strong>25,338.614 seconds</strong>. Checkpoint and evaluation hooks together used <strong>1.9226747%</strong> of that loop. Whole-run timers and reserved budgets are distinct from kernel throughput and measured hooks.</p>
 <p>The <a href="/model-training-journal/assets/checkpoint-history.json">checkpoint history JSON</a>, <a href="/model-training-journal/assets/checkpoint-history.txt" download="checkpoints.csv">checkpoint CSV</a> and <a href="/model-training-journal/assets/training-throughput.txt">run-timing download</a> preserve the measured populations and accounting clocks. Broad-panel results are a separate series and must not be joined to the CFR curve.</p>
 <h2 id="the-running-stage-saved-evidence-only">The running stage: saved evidence only</h2>
-<p>The second stage started at <strong>12:40:54 UTC</strong>, targeting <strong>130,105,270 valid labels</strong> and <strong>3,979 updates</strong> under a finite <strong>10-hour guard</strong>. At the 16:31 observation, its guard remained active with no reported resource stop; sampled GPU activity was 88% and temperature 62°C.</p>
+<p>The second stage started at <strong>12:40:54 UTC</strong>, targeting <strong>130,105,270 valid labels</strong> and <strong>3,979 updates</strong> under a finite <strong>10-hour guard</strong>. The latest saved evidence was observed at 18:31:32 UTC; a separate 18:42 guard read confirmed that training was still running. One scheduled terminal save, update 3,979, remains; no stage completion is established here.</p>
 <div class="table-scroll"><table>
 <thead>
 <tr>
@@ -153,9 +154,22 @@
 <td>3.750515592</td>
 <td>42.543011193</td>
 </tr>
+<tr>
+<td>Update 2,653</td>
+<td>86,747,812</td>
+<td>3.707616779</td>
+<td>40.756558816</td>
+</tr>
+<tr>
+<td>Update 3,316</td>
+<td>108,426,641</td>
+<td>3.680047886</td>
+<td>39.648292622</td>
+</tr>
 </tbody>
 </table></div>
-<p>Saved update 1,990 regressed from 1,327 (perplexity 41.6422 to 42.5430), while remaining below the parent’s 43.7761. It records physical 570,445,650 labels/17,441 updates versus retained model lineage 567,787,256/17,360. These are saved counters, not live progress or completion. New broad-panel and reasoning outcomes are <code>not_evaluated</code>, with null metrics. Historical fixed32 results were 0/32 correct and 0/32 protocol-valid: a reused development diagnostic with interface failure, not isolated capacity or fresh final evidence. A bounded broader-LM and fixed-logic/protocol check is being prepared for this stage’s terminal checkpoint; it remains unrun, and source eligibility must be verified before use.</p>
+<p>Saved update 1,990 regressed from 1,327 (perplexity 41.6422 to 42.5430), while remaining below the parent’s 43.7761. The two later saves reach 40.7566 and 39.6483; the regression remains part of the record. Update 3,316 contains <strong>108,426,641 phase-valid labels / 108,658,688 processed input IDs</strong>. Physical campaign totals are <strong>613,803,441 valid labels / 18,767 updates / 614,965,248 processed input IDs</strong>, versus retained model lineage <strong>611,145,047 valid labels / 18,686 updates / 612,302,848 processed input IDs</strong>. These are saved counters, not live progress or completion.</p>
+<p>New broad-panel and reasoning outcomes are <code>not_evaluated</code>, with null metrics. Historical fixed32 results were 0/32 correct and 0/32 protocol-valid: a reused development diagnostic with interface failure, not isolated capacity or fresh final evidence. The bounded 130,209-label broader-LM and 32-case logic/protocol checks for this stage’s terminal checkpoint are prepared, with source exclusions reviewed. Neither has run; no outcome or reasoning gain is inferred from the CFR curve.</p>
 <h2 id="counting-the-remaining-finite-program">Counting the remaining finite program</h2>
 <p>Physical campaign charges and retained model lineage remain separate. An earlier restore replayed charged work, leaving a persistent gap of <strong>2,658,394 valid labels and 81 updates</strong>; those charges are not refunded. Documents, content IDs, processed inputs and label exposures are distinct.</p>
 <p>Two locally admitted, cached cohorts have <strong>268,840 documents / 222,892,775 valid labels</strong> and <strong>269,543 documents / 215,100,897 valid labels</strong>. No download is needed. The final cohort uses its largest contiguous full-update prefix: <strong>126,366,365 labels</strong>, leaving <strong>88,734,532</strong> unused. If intervening stages complete, the forecast is <strong>984,741,210 consumed plus 15,240,080 failed reserved = 999,981,290 charged labels</strong>. This is a forecast; parent, transfer and ingress gates remain unresolved.</p>

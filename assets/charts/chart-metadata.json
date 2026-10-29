@@ -1,21 +1,21 @@
 {
   "builder": {
     "file": "scripts/build_charts.py",
-    "sha256": "9b49129fecd4ede5c4ab75a399d6f802b5aa5f55f82ad6b0cb2a01d1a20d4549"
+    "sha256": "c679acaddbe1e3778b8e4e73953d187dd45decbbc85561b017ee526049498159"
   },
   "charts": [
     {
-      "bytes": 114914,
-      "caption": "Narrow CFR development evaluation only:7,057 scored labels per report under one unchanged contract. Left:cumulative model-lineage valid labels in millions. Right:phase-local valid labels. Hollow markers retain baseline observations without averaging repeated checkpoints. Of 29 evaluated rows, the cumulative panel plots 24 and omits five unknown x values; the phase-local panel plots 28 and omits one early baseline. Missing values are never plotted at zero. Broad-panel and fixed32 results are separate. Stage2 has three saved checkpoints, not a terminal result. The latest PPL42.54301119340581 regresses from41.64221987947464 at checkpoint1327, while below parent43.77612727431155.",
+      "bytes": 116482,
+      "caption": "Narrow CFR development evaluation only:7,057 scored labels per report under one unchanged contract. Left:cumulative model-lineage valid labels in millions. Right:phase-local valid labels. Hollow markers retain baseline observations without averaging repeated checkpoints. Of 31 evaluated rows, the cumulative panel plots 26 and omits five unknown x values; the phase-local panel plots 30 and omits one early baseline. Missing values are never plotted at zero. Broad-panel and fixed32 results are separate. Stage2 has five saved checkpoints, not a terminal result. Checkpoint1990 PPL42.54301119340581 regressed from41.64221987947464 at checkpoint1327; checkpoint2653 reached40.75655881589883 and latest checkpoint3316 reached39.64829262191972, below parent43.77612727431155. Latest observation:2026-10-29T18:31:32.221751+00:00; checkpoint creation time unavailable.",
       "counts": {
         "baseline_markers_per_panel": 4,
         "baseline_observations_total": 5,
-        "evaluated_rows": 29,
+        "evaluated_rows": 31,
         "omitted_unknown_cumulative_x": 5,
         "omitted_unknown_phase_x": 1,
-        "plotted_cumulative_rows": 24,
-        "plotted_phase_local_rows": 28,
-        "unique_checkpoint_identities": 25
+        "plotted_cumulative_rows": 26,
+        "plotted_phase_local_rows": 30,
+        "unique_checkpoint_identities": 27
       },
       "file": "assets/charts/checkpoint-perplexity.svg",
       "passive_svg_profile": {
@@ -39,7 +39,7 @@
           "x",
           "y"
         ],
-        "nodes": 1222,
+        "nodes": 1242,
         "tags": [
           "clipPath",
           "defs",
@@ -52,7 +52,7 @@
           "use"
         ]
       },
-      "sha256": "6ba48f2f34664e6db9c79d22797d635d14aade5f175936865a786c1fcdf76cab",
+      "sha256": "233c36d7b2764efde0204ecf1888dbc5d90dcd63f52ddc8c7ac298e6948731ad",
       "title": "CFR checkpoint perplexity by cumulative and phase-local valid labels"
     },
     {
@@ -219,10 +219,10 @@
     "xml_metadata_removed": true
   },
   "input": {
-    "bytes": 94230,
+    "bytes": 101785,
     "file": "assets/checkpoint-history.json",
-    "frozen_utc": "2026-10-29T16:39:28.277512+00:00",
-    "sha256": "0fe801b9c69aa119266bd3aeabcf3efdce425d8c93d4409750203bb347789761"
+    "frozen_utc": "2026-10-29T18:33:03.713598+00:00",
+    "sha256": "3a854fc18127fd1083ded21773e43d9e58cdb828cff8c522ddb759c5ecfef4f9"
   },
   "publication_performed": false,
   "runtime_versions": {
