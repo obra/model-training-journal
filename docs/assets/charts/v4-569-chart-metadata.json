@@ -1,0 +1,245 @@
+{
+  "builder": {
+    "file": "scripts/build_v4_first_checkpoint_charts.py",
+    "sha256": "f81fc27f832a5873ef66047ea7746980dac4f7ff485adb009343fe517969115e"
+  },
+  "charts": [
+    {
+      "bytes": 136203,
+      "caption": "Narrow CFR development evaluation only:7,057 scored labels per report under one unchanged contract. Left:cumulative model-lineage valid labels in millions. Right:phase-local valid labels. Hollow markers retain baseline observations without averaging repeated checkpoints. Of 34 evaluated rows, the cumulative panel plots 29 and omits five unknown x values; the phase-local panel plots 33 and omits one early baseline. Missing values are never plotted at zero. Broad-panel and fixed32 results are separate. Stage2 completed six scheduled checkpoints. Terminal PPL39.776214231484126 slightly regressed from39.64829262191972 at checkpoint3316, below parent43.77612727431155. The checkpoint1990 regression remains visible. V4 adds a repeated parent baseline and one unique saved checkpoint569:39.776214231484126 to39.4729645509789 at18604156 phase labels. Inset shows this pair. V4 capture observation:2026-10-29T21:58:47.291635+00:00; exact checkpoint creation time unavailable.",
+      "counts": {
+        "baseline_markers_per_panel": 5,
+        "baseline_observations_total": 6,
+        "evaluated_rows": 34,
+        "omitted_unknown_cumulative_x": 5,
+        "omitted_unknown_phase_x": 1,
+        "plotted_cumulative_rows": 29,
+        "plotted_phase_local_rows": 33,
+        "unique_checkpoint_identities": 29,
+        "v4_inset_points": 2,
+        "v4_new_saved_checkpoints": 1
+      },
+      "file": "assets/charts/v4-569-checkpoint-perplexity.svg",
+      "passive_svg_profile": {
+        "attributes": [
+          "aria-labelledby",
+          "clip-path",
+          "d",
+          "fill",
+          "height",
+          "href",
+          "id",
+          "role",
+          "stroke",
+          "stroke-linecap",
+          "stroke-linejoin",
+          "stroke-width",
+          "transform",
+          "version",
+          "viewBox",
+          "width",
+          "x",
+          "y"
+        ],
+        "nodes": 1499,
+        "tags": [
+          "clipPath",
+          "defs",
+          "desc",
+          "g",
+          "path",
+          "rect",
+          "svg",
+          "title",
+          "use"
+        ]
+      },
+      "sha256": "c00a41566413d5d7c4b29688363127bd40477da07aeb2d922d6e5a496af2645d",
+      "title": "CFR checkpoint perplexity by cumulative and phase-local valid labels"
+    },
+    {
+      "bytes": 80970,
+      "caption": "Mixed-source development panel:130,209 scored labels at three checkpoints, with nine separate source slices. Science-terminal PPL62.10324143003107 at133411556 retained labels versus previous-parent-terminal14.631154356930713 at632823676 spans multiple phases; not an isolated phase effect. Source denominators:arXiv45516, StackExchange38590, Wikimedia46103. Separate from CFR; no reasoning or sealed-holdout claim.",
+      "counts": {
+        "aggregate_points": 3,
+        "aggregate_scored_labels": 130209,
+        "source_denominators": {
+          "arxiv": 45516,
+          "stackexchange": 38590,
+          "wikimedia": 46103
+        },
+        "source_slice_points": 9
+      },
+      "file": "assets/charts/v4-569-broader-lm.svg",
+      "passive_svg_profile": {
+        "attributes": [
+          "aria-labelledby",
+          "clip-path",
+          "d",
+          "fill",
+          "height",
+          "href",
+          "id",
+          "role",
+          "stroke",
+          "stroke-linecap",
+          "stroke-linejoin",
+          "stroke-width",
+          "transform",
+          "version",
+          "viewBox",
+          "width",
+          "x",
+          "y"
+        ],
+        "nodes": 853,
+        "tags": [
+          "clipPath",
+          "defs",
+          "desc",
+          "g",
+          "path",
+          "rect",
+          "svg",
+          "title",
+          "use"
+        ]
+      },
+      "sha256": "8bfd1aafe70d2d12f31fd5a5b0c0acc1d02bdfe1001b81fe6f065be66f3565ee",
+      "title": "Three frozen earlier broader-panel evaluations; V4 not evaluated"
+    },
+    {
+      "bytes": 85030,
+      "caption": "Five completed runs and one intermediate V4 boundary through569. V4 loop rate5358.397046451784 labels/s includes measured hooks; training excluding those hooks5547.727102367691 labels/s. Model load excluded from both. Missing guard and worker denominators omitted; live startup-inclusive wall rates are separately downloadable. No GPU-kernel throughput claim.",
+      "counts": {
+        "actual_bars": 20,
+        "completed_runs": 5,
+        "intermediate_runs": 1,
+        "omitted_missing_denominators": [
+          {
+            "denominator": "Guard wall (approximate)",
+            "stage": "science_104521471"
+          },
+          {
+            "denominator": "Guard wall (approximate)",
+            "stage": "admitted_v4_tranche1"
+          },
+          {
+            "denominator": "Worker elapsed",
+            "stage": "filtered_96012838"
+          },
+          {
+            "denominator": "Worker elapsed",
+            "stage": "admitted_v4_tranche1"
+          }
+        ]
+      },
+      "file": "assets/charts/v4-569-throughput.svg",
+      "passive_svg_profile": {
+        "attributes": [
+          "aria-labelledby",
+          "clip-path",
+          "d",
+          "fill",
+          "height",
+          "href",
+          "id",
+          "role",
+          "stroke",
+          "stroke-linecap",
+          "stroke-linejoin",
+          "stroke-width",
+          "transform",
+          "version",
+          "viewBox",
+          "width",
+          "x",
+          "y"
+        ],
+        "nodes": 878,
+        "tags": [
+          "clipPath",
+          "defs",
+          "desc",
+          "g",
+          "path",
+          "rect",
+          "svg",
+          "title",
+          "use"
+        ]
+      },
+      "sha256": "aaddfabb26f42be2e2d4069bf77ba3d488592c1169e5f0e6572f3566dbecc86a",
+      "title": "Measured valid-label throughput: five completed runs and intermediate V4"
+    },
+    {
+      "bytes": 72237,
+      "caption": "Five completed runs plus intermediate V4 through checkpoint569. V4 measured checkpoint115.91997592698317s plus evaluation2.569439060986042s divided by3471.9629468889907 loop seconds:3.412749986117801%. V4 evaluation includes baseline and checkpoint; full-boundary hooks included and model load excluded. This is not final-run overhead. The10% line is an engineering reference. Reserved charges are not measured overhead.",
+      "counts": {
+        "actual_hook_components": 12,
+        "completed_runs": 5,
+        "intermediate_runs": 1,
+        "missing_hook_values": 0,
+        "reference_ceiling_percent": 10
+      },
+      "file": "assets/charts/v4-569-overhead.svg",
+      "passive_svg_profile": {
+        "attributes": [
+          "aria-labelledby",
+          "clip-path",
+          "d",
+          "fill",
+          "height",
+          "href",
+          "id",
+          "role",
+          "stroke",
+          "stroke-dasharray",
+          "stroke-dashoffset",
+          "stroke-linecap",
+          "stroke-linejoin",
+          "stroke-width",
+          "transform",
+          "version",
+          "viewBox",
+          "width",
+          "x",
+          "y"
+        ],
+        "nodes": 712,
+        "tags": [
+          "clipPath",
+          "defs",
+          "desc",
+          "g",
+          "path",
+          "rect",
+          "svg",
+          "title",
+          "use"
+        ]
+      },
+      "sha256": "99bc2fd5a1558e94eb273e71464430b8bd233ccbc78f9e375141abe7496ab915",
+      "title": "Measured checkpoint and evaluation fractions of training-loop elapsed time"
+    }
+  ],
+  "determinism": {
+    "css_removed": true,
+    "fonttype": "path",
+    "svg_date_metadata": null,
+    "svg_hashsalt": "checkpoint-chart-history-20261029-v1",
+    "xml_metadata_removed": true
+  },
+  "input": {
+    "bytes": 229802,
+    "file": "assets/v4-first-checkpoint-569/checkpoint-history.json",
+    "frozen_utc": "2026-10-29T22:01:03+00:00",
+    "sha256": "c01d31c0608ac949b5c995166646f55fb1ff73ebeaa3d78139081893b93c2d7a"
+  },
+  "publication_performed": false,
+  "runtime_versions": {
+    "matplotlib": "3.10.9",
+    "numpy": "2.5.2"
+  },
+  "schema": "sanitized_reproducible_static_charts_v1"
+}

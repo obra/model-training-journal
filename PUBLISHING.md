@@ -74,7 +74,11 @@ redirects remain excluded.
 
 There is one narrow passive SVG exception: checkpoint-perplexity.svg,
 broader-panel.svg, training-throughput.svg and checkpoint-overhead.svg under
-assets/charts/, with byte-identical copies under docs/assets/charts/. Other SVG
+assets/charts/, plus the four frozen V4 checkpoint569 chart names:
+`v4-569-checkpoint-perplexity.svg`, `v4-569-broader-lm.svg`,
+`v4-569-throughput.svg`, and `v4-569-overhead.svg` in the same directory,
+with byte-identical copies under docs/assets/charts/. The earlier four shared
+chart assets and historical captions remain unchanged in this update. Other SVG
 paths remain excluded. Each chart must be UTF-8, no larger than 1,000,000 bytes,
 and pass the same privacy scan as every other public file. Its XML must use the
 SVG namespace and only the reviewed passive geometry, glyph-path and title/desc

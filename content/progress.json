@@ -2,11 +2,11 @@
   "schema": 1,
   "model_parameters": 299414528,
   "initialization": "from scratch",
-  "experiment_state": "Recorded 29 Oct 19:36 UTC: both finite training stages completed; terminal CFR, broader-LM and fixed32 development checks completed. The next cohort is in control preparation; no corpus transfer or training launch is recorded.",
+  "experiment_state": "Recorded 29 Oct 22:01 UTC: V4 one-pass training continues; first checkpoint569 saved and scored. Live progress612 completed updates; next scheduled checkpoint1137.",
   "latest_result": {
-    "summary": "Terminal CFR perplexity 39.7762 on 7,057 labels, slightly above preceding 39.6483; separate broader panel 14.6312 on 130209 labels. Fixed32:0/32 correct and 0/32 protocol-valid; interface failure leaves reasoning capacity unresolved.",
-    "url": "/model-training-journal/2026/10/29/two-stages-terminal-evaluations/"
+    "summary": "Saved checkpoint569: CFR perplexity39.4730 on7,057 labels versus matching baseline39.7762. Intermediate checkpoint/evaluation hooks3.413% of loop time. No fresh mixed-source or fixed32 result; transferable logic remains unestablished.",
+    "url": "/model-training-journal/2026/10/29/first-checkpoint-on-the-next-corpus-slice/"
   },
-  "verified_at_utc": "2026-10-29T19:36:22Z",
+  "verified_at_utc": "2026-10-29T22:01:03Z",
   "deadline_utc": "2026-10-31T04:12:00Z"
 }

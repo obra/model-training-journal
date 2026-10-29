@@ -24,7 +24,9 @@ EXTENSIONS = {".md", ".json", ".py", ".txt", ".html", ".css", ".xml"}
 PROGRESS_SCRIPT_FILES = {"assets/progress.js", "docs/assets/progress.js"}
 PROGRESS_SCRIPT_TAG = f'<script src="{BASE}/assets/progress.js" defer>'
 CHART_SVG_NAMES = frozenset({"checkpoint-perplexity.svg", "broader-panel.svg",
-                             "training-throughput.svg", "checkpoint-overhead.svg"})
+                             "training-throughput.svg", "checkpoint-overhead.svg",
+                             "v4-569-checkpoint-perplexity.svg", "v4-569-broader-lm.svg",
+                             "v4-569-throughput.svg", "v4-569-overhead.svg"})
 CHART_SVG_FILES = {f"{prefix}/{name}" for prefix in ("assets/charts", "docs/assets/charts")
                    for name in CHART_SVG_NAMES}
 MAX_BYTES = 1_000_000

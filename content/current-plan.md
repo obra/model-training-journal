@@ -1,5 +1,27 @@
 Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. No checkpoint has yet established the target capability.
 
+**Recorded snapshot: 29 October 2026, 22:01:03 UTC.** V4 is running a finite, nonwrapping one-pass corpus slice. Its first saved and scored checkpoint is update **569**, with **18,604,156** phase-local valid labels. CFR development perplexity is **39.4730** on the same **7,057** labels, versus the matching in-memory parent baseline **39.7762**. This repeated baseline is the previous terminal checkpoint, not another unique checkpoint. Saved model-lineage exposure is **651,427,832** valid labels; physical completed work is **654,086,226** labels. The receipt capture was observed at **21:58:47 UTC**; exact checkpoint creation time is unavailable.
+
+A separate live observation at **22:01:03 UTC** records **612 completed updates / 20,010,132 applied valid labels**, with **20,027,502 charged labels** across 19,601 microbatches. Charged work includes unfinished accumulation. These later live counters do not advance the saved checkpoint's quality result. The finite slice permits **111,462,468 valid labels over 3,409 updates**; the next scheduled checkpoint is update **1,137**.
+
+Through checkpoint569, full-boundary checkpoint and evaluation hooks occupied **3.413%** of measured loop time: **115.920 seconds** for checkpoint hooks and **2.569 seconds** for evaluation, over **3,471.963 loop seconds**. Evaluation includes the baseline and checkpoint; model loading is excluded. These are intermediate measurements, not final-run overhead. Loop throughput is **5,358 labels/s**, or **5,548 labels/s** after subtracting measured hooks. Startup-inclusive and interval wall rates are separate observations in the downloads.
+
+Read [the first-checkpoint post](/model-training-journal/2026/10/29/first-checkpoint-on-the-next-corpus-slice/) for the four frozen charts, sanitized downloads, accounting clocks and limitations. The previous parent's mixed-source perplexity **14.6312** and fixed32 **0/32 correct / 0/32 protocol-valid** are earlier-parent results; neither evaluation has run on this new checkpoint. Repeated development-set improvement does not establish transferable logic, an unseen-source result, or a universal perplexity threshold. Earlier interface failure prevents isolating reasoning capacity.
+
+## Next finite work
+
+Continue this finite slice to its scheduled checkpoints. A revised probe is approved but **only prepared**: eight complete samples are planned at a safe boundary, with no new probe result yet. Further pretraining reallocation within the **one-billion-valid-label ceiling** is planned; this snapshot does not claim a later reservation, launch or completed job. Original failure charges and resource safeguards remain preserved. The installed execution cutoff remains **31 October 2026 at 04:12 UTC**.
+
+This AI-assisted journal reports aggregate evidence. An open reproducible recipe remains a research goal; code and weights are not claimed released.
+
+---
+
+## Preserved dated snapshot: 29 October 2026, 19:36 UTC
+
+The complete earlier plan follows unchanged as dated history, including the previous failures and its older preserved snapshot. Its statements about no transfer or launch describe that earlier cutoff; the current snapshot above supersedes those status claims.
+
+Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. No checkpoint has yet established the target capability.
+
 **Recorded snapshot: 29 October 2026, 19:36 UTC.** Both finite training stages and their terminal development checks completed. The second stage added 130,105,270 valid labels over 3,979 updates. Current model lineage is 632,823,676 valid labels; physical work is 635,482,070 valid labels over 19,430 updates. The persistent replay gap remains charged.
 
 Terminal CFR perplexity is 39.7762 on 7,057 scored labels, below the phase parent 43.7761 but slightly above the preceding saved 39.6483. The separate 130,209-label mixed-source panel reaches 14.6312, versus historical 62.1032 at 133,411,556 retained labels. That comparison spans multiple phases. Fixed32 returns 0/32 correct and 0/32 protocol-valid; interface failure prevents isolating reasoning capacity. These are scoped development measures, not sealed holdout results or proof of globally unseen sources.
