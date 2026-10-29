@@ -1,47 +1,18 @@
-Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. Planning remains a historical diagnostic, not the product definition. No checkpoint has yet established the target capability.
+Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. No checkpoint has yet established the target capability.
 
-**Recorded snapshot: 29 October 2026, 18:31:32 UTC.** The 299,414,528-parameter model has completed the first new 130.07M-label stage. The second is active under its existing finite guard. Its latest **saved** checkpoint is update **3,316**, containing **108,426,641 new valid labels** in this stage. This page does not report live optimizer counters; later training progress is unknown here.
+**Recorded snapshot: 29 October 2026, 19:36 UTC.** Both finite training stages and their terminal development checks completed. The second stage added 130,105,270 valid labels over 3,979 updates. Current model lineage is 632,823,676 valid labels; physical work is 635,482,070 valid labels over 19,430 updates. The persistent replay gap remains charged.
 
-## Latest measured checkpoints
+Terminal CFR perplexity is 39.7762 on 7,057 scored labels, below the phase parent 43.7761 but slightly above the preceding saved 39.6483. The separate 130,209-label mixed-source panel reaches 14.6312, versus historical 62.1032 at 133,411,556 retained labels. That comparison spans multiple phases. Fixed32 returns 0/32 correct and 0/32 protocol-valid; interface failure prevents isolating reasoning capacity. These are scoped development measures, not sealed holdout results or proof of globally unseen sources.
 
-The completed stage added **130,072,908 valid labels / 130,351,104 processed input IDs / 3,978 updates**, in one nonwrapping pass. Actual terminal evidence confirmed successful exit, no surviving worker group, six verified checkpoint pairs and closed storage. Its loaded-parent CFR perplexity was **51.4213706187**; terminal perplexity was **43.7761272743**. The six saves include two local increases, so the trajectory is not monotonic.
+Read [the terminal results post](/model-training-journal/2026/10/29/two-stages-terminal-evaluations/) for all results, limitations, four updated charts and sanitized downloads. The previous [checkpoint catch-up post](/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/) remains a dated record.
 
-The running second stage began **12:40:54 UTC**, with a **130,105,270-label / 3,979-update target** and a **10-hour guard**. A separate guard read at **18:42 UTC** confirmed training was still running. One scheduled terminal save, update **3,979**, remains; no completion is established here.
+## Next finite work
 
-| Running-stage observation | New valid labels in this stage | CFR perplexity |
-|---|----|----|
-| Loaded parent baseline | 0 | 43.776127274 |
-| Saved update 664 | 21,711,322 | 42.119393839 |
-| Saved update 1,327 | 43,390,057 | 41.642219879 |
-| Saved update 1,990 | 65,068,850 | 42.543011193 |
-| Saved update 2,653 | 86,747,812 | 40.756558816 |
-| Saved update 3,316 | 108,426,641 | 39.648292622 |
+The next admitted cohort is in control preparation. This snapshot records no corpus transfer or training launch. Planned later cohorts and prefix limits remain forecasts, not completed work. No universal perplexity threshold or reasoning gain is inferred. The 800GB data allowance, original failure charges, resource guards, preserved controls and untouched sealed final holdout remain in force. The installed execution cutoff is 31 October 2026 at 04:12 UTC.
 
-Saved update 1,990 regressed from 41.6422 to 42.5430 perplexity, while remaining below its parent baseline of 43.7761. Later saved updates 2,653 and 3,316 reach 40.7566 and 39.6483 respectively. These measurements do not erase the earlier regression.
+The second-stage measured loop processed 5,442 valid labels per second, including checkpoint/evaluation hooks occupying 2.120% of loop time. Named worker and approximate guard-wall clocks remain separate. Terminal broader and fixed32 checks retain their full 180- and 420-second reserved charges despite shorter measured durations.
 
-These are **7,057-label narrow CFR development-language measurements**, using frozen data, tokenizer and scorer. The current parent baseline and checkpoint hooks borrow the training model in memory and run serially with training. They do not establish improved reasoning or general language competence. No new broad-panel or reasoning scores were measured; their status is `not_evaluated` and values are null. Historical fixed32 scores remain 0/32 exact and 0/32 protocol-valid. Output-format failure prevents those scores from isolating reasoning capacity. Perplexity has no universal pass threshold; comparison requires the same tokenizer, population and scoring contract. Lower CFR loss does not establish transferable logic. The historical fixed32 probe is reused development evidence, not a fresh final test. The bounded 130,209-label broader-LM and 32-case logic/protocol checks for the current stage’s terminal checkpoint are prepared, with source exclusions reviewed; neither has run. The sealed final holdout remains untouched.
-
-Read [the checkpoint catch-up post](/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/) for all six completed-stage checkpoints, the five running-stage saved measurements and interpretation. Downloads: [checkpoint JSON](/model-training-journal/assets/checkpoint-history.json), <a href="/model-training-journal/assets/checkpoint-history.txt" download="checkpoints.csv">checkpoint CSV</a>, and [run timings](/model-training-journal/assets/training-throughput.txt). The historical 130,209-label broad panel stays separate from the CFR population.
-
-## Checkpoint charts
-
-[View the four checkpoint and run-timing charts](/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/#checkpoint-charts), with full-size versions, captions and data downloads. The figures separate the narrow CFR development curve from the historical broader panel, and show measured throughput and checkpoint/evaluation overhead. The figures freeze the saved measurements observed at 18:31; the latest is update 3,316. The post links its initial published revision so the earlier snapshot remains inspectable. Missing measurements are not plotted as zero, and these charts do not provide live telemetry or a new reasoning result.
-
-## Completed work and accounting
-
-After the 99-paper pilot, larger phases completed **104,521,471**, **96,012,838** and **143,221,104 valid labels** before the latest completed 130,072,908-label stage. The small pilot below remains a dated infrastructure result, not the current scale.
-
-At the latest saved second-stage checkpoint, physical campaign charges are **613,803,441 valid labels / 18,767 updates / 614,965,248 processed input IDs**; retained model lineage is **611,145,047 valid labels / 18,686 updates / 612,302,848 processed input IDs**. The phase itself contains **108,658,688 processed input IDs** at this save. The persistent gap is **2,658,394 valid labels and 81 updates**, reflecting earlier interrupted work and checkpoint restore/replay. Those charges remain. Neither clock is a unique-source-document count; content IDs, processed inputs and valid-label exposures have separate meanings.
-
-The completed stage's guard wall time was approximately **7 hours 6 minutes**, with **25,395.229 worker seconds**. Checkpoint/evaluation hooks were **1.9226747% of its measured loop**. Whole-run timing is not GPU-kernel-only throughput.
-
-## Next finite stages
-
-Two additional filtered Common Pile Wiki/Stack cohorts are locally admitted and already cached: **268,840 documents / 222,892,775 valid labels**, then **269,543 documents / 215,100,897 valid labels**. No new download is needed for this finite plan. Provenance, attribution, deduplication, connected-family and frozen-development exclusions, and rights/privacy holds remain required. The older unresolved V4 batch52 remains held, not claimed scanned or cleared. Bounded candidate quality review is not universal rights/privacy certification.
-
-Future parent completion and ingress/custody gates remain unknown. The planned final cohort uses only a **126,366,365-label contiguous full-update prefix**, leaving **88,734,532** full-reader labels unused. If every intervening stage completes, expected physical consumption is **984,741,210 labels**. Add **15,240,080 retained failed reservations** to obtain **999,981,290 charged labels** under the 1B ceiling. This forecast is not completed training and does not reset or refund failure charges.
-
-The dedicated data allowance remains **800GB**. Root/free-space, memory and thermal guards remain required; the expired UI stays stopped. The **installed guard cutoff is 31 October 2026 at 04:12 UTC**, an execution setting that this snapshot does not extend. Original 97M controls, failures and the final holdout remain preserved. The open-source recipe is a research goal, not a claim that code or weights have already been released. This AI-assisted journal reports aggregate methods and results without source passages, private records or raw logs.
+This AI-assisted journal reports aggregate evidence. An open reproducible recipe remains a research goal; code and weights are not claimed released.
 
 ## Preserved dated snapshot: 28 October 2026
 

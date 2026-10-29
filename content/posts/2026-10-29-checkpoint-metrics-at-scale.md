@@ -15,26 +15,28 @@ The **299,414,528-parameter model** began from scratch. The goal remains demonst
 
 ## Checkpoint charts
 
-Static figures freeze the saved measurements observed at **18:31 UTC**. Missing is not zero; tables retain the values.
+**Shared-figure revision, 29 October 2026, 19:36 UTC:** The experiment narrative and tables below retain the **18:31:32 UTC** snapshot. The four shared figures and their captions now include the later completed terminal evaluations and timings; their scope is later than that narrative. The [immutable 18:31 published revision](https://github.com/obra/model-training-journal/blob/8cb18f50a9fa4b4b2428b3c8aee9a49bc9017bc6/content/posts/2026-10-29-checkpoint-metrics-at-scale.md) preserves the earlier text and figures in that revision. See [the terminal results post](/model-training-journal/2026/10/29/two-stages-terminal-evaluations/) for the completed-stage interpretation.
+
+Missing is not zero; the historical tables retain their original snapshot values.
 
 <figure class="metric-chart">
 <img src="/model-training-journal/assets/charts/checkpoint-perplexity.svg" alt="CFR development perplexity versus retained model-lineage and phase-local valid labels, with lower later saved values and local increases">
-<figcaption>CFR development perplexity, 7,057 labels per report. Left: cumulative retained model-lineage valid labels, in millions; right: phase-local valid labels. Hollow markers retain repeated baseline observations. The cumulative panel plots 26 observations and omits five unknown coordinates; the phase-local panel plots 30 and omits one. <a href="/model-training-journal/assets/charts/checkpoint-perplexity.svg">Open full-size checkpoint chart</a>. Perplexity has no universal pass threshold: comparisons require the same tokenizer, evaluation population and scoring contract. Lower CFR loss does not establish transferable logic.</figcaption>
+<figcaption>CFR development perplexity, 7,057 labels per report. The shared terminal figure uses 32 CFR rows and 28 unique checkpoint identities within the 35-row LM download. Left: cumulative retained model-lineage valid labels, in millions; right: phase-local valid labels. Hollow markers retain repeated baseline observations. The cumulative panel plots 27 observations and omits five unknown coordinates; the phase-local panel plots 31 and omits one. Terminal perplexity 39.7762 is slightly above the preceding 39.6483 and below the phase parent 43.7761. <a href="/model-training-journal/assets/charts/checkpoint-perplexity.svg">Open full-size checkpoint chart</a>. Perplexity has no universal pass threshold: comparisons require the same tokenizer, evaluation population and scoring contract. Lower CFR loss does not establish transferable logic.</figcaption>
 </figure>
 
 <figure class="metric-chart">
-<img src="/model-training-journal/assets/charts/broader-panel.svg" alt="Historical broader-panel perplexity at two checkpoints, with aggregate and three source slices separated from the CFR evaluation">
-<figcaption>Historical 130,209-label broader panel has two aggregate checkpoints and six source-slice measurements. It is separate from CFR and does not measure the current stage or reasoning. <a href="/model-training-journal/assets/charts/broader-panel.svg">Open full-size broader-panel chart</a>.</figcaption>
+<img src="/model-training-journal/assets/charts/broader-panel.svg" alt="Historical and terminal broader-panel perplexity at three checkpoints, with aggregate and three source slices separated from the CFR evaluation">
+<figcaption>The shared 130,209-label broader development panel now has three aggregate checkpoints and nine source-slice measurements. It remains separate from CFR. The science-terminal 62.1032 at 133,411,556 retained labels versus later terminal 14.6312 at 632,823,676 spans multiple phases; it does not isolate the final phase or establish reasoning. <a href="/model-training-journal/assets/charts/broader-panel.svg">Open full-size broader-panel chart</a>.</figcaption>
 </figure>
 
 <figure class="metric-chart">
-<img src="/model-training-journal/assets/charts/training-throughput.svg" alt="Measured valid-label throughput for four completed runs with guard-wall, worker-elapsed and training-loop denominators shown separately">
-<figcaption>Four completed runs, ten measured rates in thousands of valid labels per second. Guard-wall, worker-elapsed and loop denominators remain distinct; science guard-wall and filtered worker timings are missing. These are not GPU-kernel-only rates. <a href="/model-training-journal/assets/charts/training-throughput.svg">Open full-size throughput chart</a>.</figcaption>
+<img src="/model-training-journal/assets/charts/training-throughput.svg" alt="Measured valid-label throughput for five completed runs with guard-wall, worker-elapsed and training-loop denominators shown separately">
+<figcaption>Five completed runs, thirteen measured rates in thousands of valid labels per second. Guard-wall, worker-elapsed and loop denominators remain distinct; science guard-wall and filtered worker timings are missing. These are not GPU-kernel-only rates. <a href="/model-training-journal/assets/charts/training-throughput.svg">Open full-size throughput chart</a>.</figcaption>
 </figure>
 
 <figure class="metric-chart">
 <img src="/model-training-journal/assets/charts/checkpoint-overhead.svg" alt="Measured checkpoint and evaluation hook times as stacked percentages of each completed run's training-loop time">
-<figcaption>Checkpoint and evaluation hooks divided by each matching measured loop: totals approximately 1.330%, 1.391%, 0.989% and 1.923%. The 10% line is an engineering reference ceiling; reserved campaign charges are not hook measurements. <a href="/model-training-journal/assets/charts/checkpoint-overhead.svg">Open full-size overhead chart</a>.</figcaption>
+<figcaption>Checkpoint and evaluation hooks divided by each matching measured loop for five completed runs: totals approximately 1.330%, 1.391%, 0.989%, 1.923% and 2.120%. The 10% line is an engineering reference ceiling; reserved campaign charges are not hook measurements. <a href="/model-training-journal/assets/charts/checkpoint-overhead.svg">Open full-size overhead chart</a>.</figcaption>
 </figure>
 
 ## Catching up the completed phases

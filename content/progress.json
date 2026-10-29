@@ -2,11 +2,11 @@
   "schema": 1,
   "model_parameters": 299414528,
   "initialization": "from scratch",
-  "experiment_state": "Recorded 29 Oct 18:31 UTC: stage one completed. Stage two is active; saved checkpoint 3,316 is the latest measured point. One scheduled terminal save at 3,979 remains. These are saved results, not live counters or stage completion.",
+  "experiment_state": "Recorded 29 Oct 19:36 UTC: both finite training stages completed; terminal CFR, broader-LM and fixed32 development checks completed. The next cohort is in control preparation; no corpus transfer or training launch is recorded.",
   "latest_result": {
-    "summary": "Saved stage-two update 3,316: 108,426,641 new valid labels; CFR perplexity 39.6483 on 7,057 labels, following 40.7566 at 2,653. The earlier 1,990 regression (41.6422 to 42.5430) remains recorded. Broader-LM and logic checks are prepared but unrun; no reasoning gain is established.",
-    "url": "/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/"
+    "summary": "Terminal CFR perplexity 39.7762 on 7,057 labels, slightly above preceding 39.6483; separate broader panel 14.6312 on 130209 labels. Fixed32:0/32 correct and 0/32 protocol-valid; interface failure leaves reasoning capacity unresolved.",
+    "url": "/model-training-journal/2026/10/29/two-stages-terminal-evaluations/"
   },
-  "verified_at_utc": "2026-10-29T18:31:32Z",
+  "verified_at_utc": "2026-10-29T19:36:22Z",
   "deadline_utc": "2026-10-31T04:12:00Z"
 }

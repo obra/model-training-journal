@@ -53,6 +53,33 @@
       "scored_tokens": 46103,
       "source_family": "wikimedia",
       "total_nll_nats": 252211.60932159424
+    },
+    {
+      "evaluation_population": "broad_panel_130209",
+      "mean_token_nll_nats": 2.8840709618896034,
+      "perplexity": 17.886942222909948,
+      "point_id": "point-035",
+      "scored_tokens": 45516,
+      "source_family": "arxiv",
+      "total_nll_nats": 131271.3739013672
+    },
+    {
+      "evaluation_population": "broad_panel_130209",
+      "mean_token_nll_nats": 1.956757840099468,
+      "perplexity": 7.076347183979465,
+      "point_id": "point-035",
+      "scored_tokens": 38590,
+      "source_family": "stackexchange",
+      "total_nll_nats": 75511.28504943848
+    },
+    {
+      "evaluation_population": "broad_panel_130209",
+      "mean_token_nll_nats": 3.0928144598721894,
+      "perplexity": 22.039018703793943,
+      "point_id": "point-035",
+      "scored_tokens": 46103,
+      "source_family": "wikimedia",
+      "total_nll_nats": 142588.02504348755
     }
   ],
   "completed_run_timings": [
@@ -155,6 +182,31 @@
       "valid_labels_per_loop_second": 5133.386938068589,
       "valid_labels_per_worker_second": 5121.942712921423,
       "worker_elapsed_seconds": 25395.22897666495
+    },
+    {
+      "checkpoint_hook_seconds": 498.4458002981264,
+      "checkpoint_plus_evaluation_fraction_of_loop": 0.02119998098656652,
+      "evaluation_hook_seconds": 8.391197486198507,
+      "guard_wall_is_approximate": true,
+      "guard_wall_seconds": 24177.19065,
+      "phase_processed_ids": 130383872,
+      "phase_valid_labels": 130105270,
+      "processed_ids_per_loop_second": 5453.697380890788,
+      "rate_numerator_scope": "phase-local complete run; valid labels or processed IDs as field named",
+      "scope": "End-to-end guard/worker/loop metrics; not GPU-kernel throughput. Accounting charged/reserved evaluation seconds are not measured phase hook time.",
+      "source_metadata_aliases": [
+        "stage2_terminal_capture",
+        "stage2_typed_completion"
+      ],
+      "stage": "admitted_v3_stage2",
+      "status": "completed",
+      "time_denominator_units": "seconds",
+      "training_loop_elapsed_seconds": 23907.42699748103,
+      "training_seconds_excluding_measured_hooks": 23400.589999696705,
+      "valid_labels_per_guard_wall_second": 5381.322912304536,
+      "valid_labels_per_loop_second": 5442.044014761954,
+      "valid_labels_per_worker_second": 5425.157629705834,
+      "worker_elapsed_seconds": 23981.84142845904
     }
   ],
   "contracts": {
@@ -183,7 +235,7 @@
         "tokenizer_sha256": "56f55be78fdf829b1c8706b91c6b919607603901bfb0e133ce1f98d49d29c965"
       }
     },
-    "stage2_freeze": "Publication revision frozen at the2026-10-29T18:31:32.221751+00:00 observation of saved checkpoint3316; five saved stage2 checkpoints plus the parent baseline. Observation time is not checkpoint creation time. Terminal, broader-panel and fixed32 evaluations remain unrun.",
+    "stage2_freeze": "Both finite stages completed. Terminal narrow CFR, separate broader-panel LM and fixed32 development checks completed; fixed32 protocol validity remains zero. Checkpoint creation time remains unknown. Observation timestamps are metadata read times, not checkpoint times.",
     "units": {
       "mean_token_nll_nats": "nats per scored label",
       "perplexity": "exp(mean_token_nll_nats)",
@@ -194,21 +246,22 @@
     }
   },
   "coverage": {
-    "broad_panel_rows": 2,
-    "completed_run_timing_rows": 4,
-    "direct_metadata_files_hashed": 16,
-    "duplicate_checkpoint_rows_all_populations": 6,
+    "broad_panel_rows": 3,
+    "completed_benchmark_timing_rows": 2,
+    "completed_run_timing_rows": 5,
+    "direct_metadata_files_hashed": 22,
+    "duplicate_checkpoint_rows_all_populations": 7,
     "duplicate_checkpoint_rows_within_population": 4,
-    "evaluation_rows": 33,
+    "evaluation_rows": 35,
     "explicit_not_evaluated_rows": 26,
-    "historical_fixed32_rows": 2,
-    "narrow_cfr_rows": 31,
+    "historical_fixed32_rows": 3,
+    "narrow_cfr_rows": 32,
     "stage1_rows": 7,
-    "stage2_canonical_rows": 6,
-    "stage2_repeated_observation_rows": 21,
-    "stage2_unique_saved_checkpoints": 5,
-    "unique_checkpoint_identities_all_populations": 27,
-    "unique_narrow_checkpoint_identities": 27
+    "stage2_canonical_rows": 8,
+    "stage2_repeated_observation_rows": 22,
+    "stage2_unique_saved_checkpoints": 6,
+    "unique_checkpoint_identities_all_populations": 28,
+    "unique_narrow_checkpoint_identities": 28
   },
   "evaluation_points": [
     {
@@ -1547,9 +1600,89 @@
       "total_nll_nats_derived": 25970.097930908203,
       "training_manifest_sha256": null,
       "unique_checkpoint_claim": true
+    },
+    {
+      "checkpoint_sha256": "85642db3138a1d8c976efc96c387ef78a5027f596dcfea029347e3f177c9f349",
+      "checkpoint_sidecar_sha256": "c6c7c3b3521d8647b56d77021334cefa51727f276768a5322132b7006ed9b015",
+      "checkpoint_time_is_exact": false,
+      "checkpoint_time_utc": null,
+      "clocks_first_observed_utc": "2026-10-29T19:27:22.274377+00:00",
+      "duplicate_checkpoint_of": null,
+      "duplicate_checkpoint_within_population_of": null,
+      "evaluation_manifest_sha256": "2eea5c4228ce7ff09d8b464c6e180cc6bc70fda395e76f643d7648ca27459def",
+      "evaluation_population": "narrow_cfr_7057",
+      "evaluation_status": "evaluated",
+      "evaluator_sha256": "b43d9e441c5d9273f0146bb46690ad6de1ec6044186db685cd7ae18a787dbdf2",
+      "mean_token_nll_nats": 3.6832691012622107,
+      "model_lineage_processed_ids": 634028032,
+      "model_lineage_updates": 19349,
+      "model_lineage_valid_labels": 632823676,
+      "observed_first_utc": "2026-10-29T19:27:22.274377+00:00",
+      "observed_latest_utc": "2026-10-29T19:27:22.274377+00:00",
+      "perplexity": 39.776214231484126,
+      "phase_processed_ids": 130383872,
+      "phase_updates": 3979,
+      "phase_valid_labels": 130105270,
+      "physical_processed_ids": 636690432,
+      "physical_updates": 19430,
+      "physical_valid_labels": 635482070,
+      "point_id": "point-034",
+      "point_kind": "saved_checkpoint_evaluation",
+      "report_sha256": "b10241d1d75ef62c6103803ff1b78a4a7bb222632e91b51a2168b862b904d595",
+      "role": "terminal",
+      "scored_labels": 7057,
+      "source_metadata_aliases": [
+        "stage2_terminal_capture",
+        "stage2_typed_completion"
+      ],
+      "stage": "admitted_v3_stage2",
+      "tokenizer_sha256": "56f55be78fdf829b1c8706b91c6b919607603901bfb0e133ce1f98d49d29c965",
+      "total_nll_nats_derived": 25992.830047607422,
+      "training_manifest_sha256": "b1b4dbfd71bf608b2f0b03e8c47d3fed2b33ea66893289410704a158baa5fc8e",
+      "unique_checkpoint_claim": true
+    },
+    {
+      "checkpoint_sha256": "85642db3138a1d8c976efc96c387ef78a5027f596dcfea029347e3f177c9f349",
+      "checkpoint_sidecar_sha256": "c6c7c3b3521d8647b56d77021334cefa51727f276768a5322132b7006ed9b015",
+      "checkpoint_time_is_exact": false,
+      "checkpoint_time_utc": null,
+      "clocks_first_observed_utc": "2026-10-29T19:27:22.274377+00:00",
+      "duplicate_checkpoint_of": "point-034",
+      "duplicate_checkpoint_within_population_of": null,
+      "evaluation_manifest_sha256": "9ed05e88d7ef65d56ddffd1e56e9d3769eee583f91082fa603951f106b7cd0b9",
+      "evaluation_population": "broad_panel_130209",
+      "evaluation_status": "evaluated",
+      "evaluator_sha256": "5c88386acc0ce2b7856fed463865127fbcac3dd3a8e3716b93e0fd70f0d54bb8",
+      "historical_series": "broad_panel_130209",
+      "mean_token_nll_nats": 2.6831531153322215,
+      "model_lineage_processed_ids": 634028032,
+      "model_lineage_updates": 19349,
+      "model_lineage_valid_labels": 632823676,
+      "observed_first_utc": "2026-10-29T19:31:28.541099+00:00",
+      "observed_latest_utc": "2026-10-29T19:31:28.541099+00:00",
+      "perplexity": 14.631154356930713,
+      "phase_processed_ids": 130383872,
+      "phase_updates": 3979,
+      "phase_valid_labels": 130105270,
+      "physical_processed_ids": 636690432,
+      "physical_updates": 19430,
+      "physical_valid_labels": 635482070,
+      "point_id": "point-035",
+      "point_kind": "saved_checkpoint_evaluation",
+      "report_sha256": "2cde75c0e6710a18cb0a5b49bf5db9538e035cf446b837fa49a0f9df9129cd69",
+      "role": "terminal",
+      "scored_labels": 130209,
+      "source_metadata_aliases": [
+        "terminal_benchmark_broader-terminal-capture-v1"
+      ],
+      "stage": "admitted_v3_stage2",
+      "tokenizer_sha256": "56f55be78fdf829b1c8706b91c6b919607603901bfb0e133ce1f98d49d29c965",
+      "total_nll_nats_derived": 349370.6839942932,
+      "training_manifest_sha256": "b1b4dbfd71bf608b2f0b03e8c47d3fed2b33ea66893289410704a158baa5fc8e",
+      "unique_checkpoint_claim": false
     }
   ],
-  "frozen_utc": "2026-10-29T18:33:03.713598+00:00",
+  "frozen_utc": "2026-10-29T19:37:55.972031+00:00",
   "historical_fixed32": [
     {
       "correct": 0,
@@ -1570,10 +1703,20 @@
       "protocol_valid": 0,
       "report_sha256": "3989389633a0018c62316771065ee5823f68945e7b853cfaf36a20cd901efaec",
       "stage": "filtered_96012838"
+    },
+    {
+      "correct": 0,
+      "denominator": 32,
+      "evaluation_population": "fixed32_historical",
+      "evaluation_status": "evaluated_interface_failure",
+      "interpretation": "Output-interface failure on public F1/F2 development; zero protocol-valid outputs prevents isolating reasoning or model capacity. Fixed32-report LM-not-run fields apply only to that evaluator; separate CFR and broader LM evaluations ran.",
+      "protocol_valid": 0,
+      "report_sha256": "c6637c10bd3c0d52d81358d447c49c6add7e1d77b4650d9e509ab56e40523964",
+      "stage": "admitted_v3_stage2"
     }
   ],
   "privacy": "sanitized_aggregate_metrics",
-  "schema": "checkpoint_chart_history_v1_private_v5",
+  "schema": "checkpoint_chart_history_v1_private_v7",
   "stage2_observations": [
     {
       "checkpoint_sha256": "1de91e327f6c25784db2ba3da0fed895577a68979063ea519579d8758035f8fa",
@@ -1888,6 +2031,21 @@
       "report_sha256": "4d8b000ccec01720ddbd27a593999f6af85ca22ac06599b4fd5bb4942cfec2ff",
       "scored_labels": 7057,
       "source_metadata_alias": "stage2_saved_observation_1830",
+      "stage": "admitted_v3_stage2"
+    },
+    {
+      "checkpoint_sha256": "85642db3138a1d8c976efc96c387ef78a5027f596dcfea029347e3f177c9f349",
+      "complete_matching_sidecar_present": true,
+      "is_new_unique_checkpoint_claim": false,
+      "mean_token_nll_nats": 3.6832691012622107,
+      "observation_id": "observation-022",
+      "observed_utc": "2026-10-29T19:27:22.274377+00:00",
+      "perplexity": 39.776214231484126,
+      "phase_updates": 3979,
+      "physical_valid_labels": 635482070,
+      "report_sha256": "b10241d1d75ef62c6103803ff1b78a4a7bb222632e91b51a2168b862b904d595",
+      "scored_labels": 7057,
+      "source_metadata_alias": "stage2_terminal_capture",
       "stage": "admitted_v3_stage2"
     }
   ],

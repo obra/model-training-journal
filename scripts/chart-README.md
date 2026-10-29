@@ -1,45 +1,35 @@
-# Reproducing the frozen checkpoint charts
+# Reproducing the terminal checkpoint charts
 
-Sanitized input: `assets/checkpoint-history.json`; SHA256 `3a854fc18127fd1083ded21773e43d9e58cdb828cff8c522ddb759c5ecfef4f9`.
+Sanitized input: `assets/checkpoint-history.json`; SHA256 `6a43c0f3126635369415b29834688dda4b74ce3c97f8ecd2afb858798406d590`.
 
-Data freeze: 2026-10-29T18:33:03.713598+00:00. Latest saved-checkpoint observation:2026-10-29T18:31:32.221751+00:00. Observation/freeze timestamps are not checkpoint creation times. This revises the initial October29 publication at commit f23b61ee9f41749eef14ff1953911b862fa1d237.
+Run `python3 scripts/build_charts.py` from the site root with Python3.13 and the existing pinned `chart-requirements.txt` environment. No installation or network activity is performed by the builder. The fixed SVG hash salt, font paths, sanitizer, passive tag/attribute profile and local glyph/clip references are unchanged.
 
-Use Python3.13 and the existing versions in `chart-requirements.txt`. Run `python3 scripts/build_charts.py` from the site root. Generation performs no installation or network activity. The SVG sanitizer, fixed hash salt, font paths, passive tag/attribute profile and local glyph/clip references are unchanged.
+The frozen download contains35 LM evaluation rows:32 narrow CFR and3 broader-panel rows,28 global checkpoint identities,22 separate stage2 observations and5 completed-run timings. Three fixed32 summaries are separate from LM scores. Only the current terminal broader/fixed32 unrun markers have been resolved;26 other unrun markers remain. Unknown coordinates are omitted; missing checkpoint creation times remain null. Physical and model-lineage clocks retain their replay gap. Repeated observations are not new unique checkpoints.
 
-The downloads contain33 evaluation rows (31 narrow CFR and2 historical broader-panel rows),27 global checkpoint identities,21 separate observational metadata rows, and4 unchanged completed-run timing rows. Repeated checkpoint observations remain distinct and are never averaged. Missing x values are omitted; null/unrun results remain missing. The five saved stage2 checkpoints are664,1327,1990,2653,3316 plus a repeated parent baseline. The checkpoint1990 regression remains visible; the last observed PPL is39.64829262191972. No terminal, broader-panel or fixed32 result is inferred for the current phase. CFR is a cheap narrow development metric, not reasoning or a universal perplexity target.
+CFR terminal PPL39.7762 slightly regresses from39.6483, remaining below parent43.7761. Broader-panel PPL14.6312 versus historical62.1032 compares the same130209-label panel across many phases. Fixed32 remains an output-interface failure, not a capacity ceiling. These are scoped development measurements, not sealed holdout results or globally unseen-source claims. Timing denominators remain distinct; no GPU-kernel throughput claim is made.
 
-Physical and model-lineage clocks remain separate; phase-local clocks reset. Private source paths, host/job details and source-receipt pins are excluded; actual checkpoint, sidecar, report, evaluator, evaluation-manifest and tokenizer hashes remain.
+Private source paths, hosts/jobs and source-receipt pins are excluded using the established public-field allowlist. Checkpoint, sidecar, report, evaluator, evaluation-manifest and tokenizer identities remain under that same contract. No historical post body is changed by this candidate.
 
 ## checkpoint-perplexity.svg
 
-Narrow CFR development evaluation only:7,057 scored labels per report under one unchanged contract. Left:cumulative model-lineage valid labels in millions. Right:phase-local valid labels. Hollow markers retain baseline observations without averaging repeated checkpoints. Of 31 evaluated rows, the cumulative panel plots 26 and omits five unknown x values; the phase-local panel plots 30 and omits one early baseline. Missing values are never plotted at zero. Broad-panel and fixed32 results are separate. Stage2 has five saved checkpoints, not a terminal result. Checkpoint1990 PPL42.54301119340581 regressed from41.64221987947464 at checkpoint1327; checkpoint2653 reached40.75655881589883 and latest checkpoint3316 reached39.64829262191972, below parent43.77612727431155. Latest observation:2026-10-29T18:31:32.221751+00:00; checkpoint creation time unavailable.
+Narrow CFR development evaluation only:7,057 scored labels per report under one unchanged contract. Left:cumulative model-lineage valid labels in millions. Right:phase-local valid labels. Hollow markers retain baseline observations without averaging repeated checkpoints. Of 32 evaluated rows, the cumulative panel plots 27 and omits five unknown x values; the phase-local panel plots 31 and omits one early baseline. Missing values are never plotted at zero. Broad-panel and fixed32 results are separate. Stage2 completed six scheduled checkpoints. Terminal PPL39.776214231484126 slightly regressed from39.64829262191972 at checkpoint3316, below parent43.77612727431155. The checkpoint1990 regression remains visible. Terminal observation:2026-10-29T19:27:22.274377+00:00; checkpoint creation time unavailable.
 
-SHA256 `233c36d7b2764efde0204ecf1888dbc5d90dcd63f52ddc8c7ac298e6948731ad`; 116,482 bytes.
-
-Counts: `{"baseline_markers_per_panel": 4, "baseline_observations_total": 5, "evaluated_rows": 31, "omitted_unknown_cumulative_x": 5, "omitted_unknown_phase_x": 1, "plotted_cumulative_rows": 26, "plotted_phase_local_rows": 30, "unique_checkpoint_identities": 27}`.
+SHA256 `8ded85873446c9b75d13005d94308447f9c9ba47283cd8c150bf72ec5497e06e`; 116,739 bytes. Counts: `{"baseline_markers_per_panel": 4, "baseline_observations_total": 5, "evaluated_rows": 32, "omitted_unknown_cumulative_x": 5, "omitted_unknown_phase_x": 1, "plotted_cumulative_rows": 27, "plotted_phase_local_rows": 31, "unique_checkpoint_identities": 28}`.
 
 ## broader-panel.svg
 
-Historical mixed-source development panel:130,209 scored labels. Only the parent and science-terminal aggregate checkpoints are available. Source slices keep arXiv45,516, StackExchange38,590 and Wikimedia46,103 labels separate. Not merged with the7,057-label CFR contract; not a current-stage or reasoning result.
+Mixed-source development panel:130,209 scored labels at three checkpoints, with nine separate source slices. Science-terminal PPL62.10324143003107 at133411556 retained labels versus current-terminal14.631154356930713 at632823676 spans multiple phases; not an isolated phase effect. Source denominators:arXiv45516, StackExchange38590, Wikimedia46103. Separate from CFR; no reasoning or sealed-holdout claim.
 
-SHA256 `4b1a105b4e66dcb9b2a9271580d4f5475fe53ed29cbf01469d17f2e20ba4fc85`; 75,797 bytes.
-
-Counts: `{"aggregate_points": 2, "aggregate_scored_labels": 130209, "source_denominators": {"arxiv": 45516, "stackexchange": 38590, "wikimedia": 46103}, "source_slice_points": 6}`.
+SHA256 `7090a597c3aab86cdff5069652b10ca5114113bd0eec5e8166153a3f93c64560`; 82,839 bytes. Counts: `{"aggregate_points": 3, "aggregate_scored_labels": 130209, "source_denominators": {"arxiv": 45516, "stackexchange": 38590, "wikimedia": 46103}, "source_slice_points": 9}`.
 
 ## training-throughput.svg
 
-Four completed runs; actual phase-local valid labels divided by named guard-wall, worker-elapsed or training-loop seconds. Rates are thousands of valid labels per second. Guard wall is approximate where available. Two missing denominator values are omitted, not zero-filled. No GPU-kernel throughput claim.
+Five completed runs; actual phase-local valid labels divided by named guard-wall, worker-elapsed or training-loop seconds. Rates are thousands of valid labels per second. Guard wall is approximate where available. Two missing denominator values are omitted, not zero-filled. No GPU-kernel throughput claim.
 
-SHA256 `5c83a5691fc2afa35df4351ada1a65b3bd6885cb6bddc2b6b66152e44e4b99dd`; 71,453 bytes.
-
-Counts: `{"actual_bars": 10, "completed_runs": 4, "omitted_missing_denominators": [{"denominator": "Guard wall (approximate)", "stage": "science_104521471"}, {"denominator": "Worker elapsed", "stage": "filtered_96012838"}]}`.
+SHA256 `c7a123874abcf943b0a491c0ce72405c00f06923d0f38a77034ebaec6340003f`; 74,597 bytes. Counts: `{"actual_bars": 13, "completed_runs": 5, "omitted_missing_denominators": [{"denominator": "Guard wall (approximate)", "stage": "science_104521471"}, {"denominator": "Worker elapsed", "stage": "filtered_96012838"}]}`.
 
 ## checkpoint-overhead.svg
 
-Four completed runs. Checkpoint and evaluation full-boundary hook seconds are divided separately by matching training-loop seconds and stacked. Totals approximately1.330%,1.391%,0.989%,1.923%. The10% engineering reference ceiling is not a new timing measurement. Reserved or campaign-wide evaluation charges are not substituted for actual phase hooks.
+Five completed runs. Checkpoint and evaluation full-boundary hook seconds are divided separately by matching training-loop seconds and stacked. Totals approximately1.330%,1.391%,0.989%,1.923%,2.120%. The10% engineering reference ceiling is not a new timing measurement. Reserved or campaign-wide evaluation charges are not substituted for actual phase hooks.
 
-SHA256 `a435686def4e2b084254e8f63414f3bb1f9e017efc22b56a826395e82b5a1efc`; 65,523 bytes.
-
-Counts: `{"actual_hook_components": 8, "completed_runs": 4, "missing_hook_values": 0, "reference_ceiling_percent": 10}`.
-
-No publication action is performed by the generator. The10% overhead line is an engineering reference. Timing denominators retain guard wall, worker elapsed and training loop; they are not GPU-kernel rates.
+SHA256 `855be181244c4c3903bf7a22d3fa62aa23064d4dcfc134edea7a7b05b30ac77f`; 67,849 bytes. Counts: `{"actual_hook_components": 10, "completed_runs": 5, "missing_hook_values": 0, "reference_ceiling_percent": 10}`.
