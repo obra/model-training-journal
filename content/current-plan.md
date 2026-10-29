@@ -1,3 +1,25 @@
+Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. No checkpoint has yet established that capability.
+
+**Recorded snapshot: 29 October 2026, 23:04:51 UTC.** The current one-pass stage continues. Its second saved and scored checkpoint is update **1,137**, with **37,175,835 completed phase-local valid labels**. CFR development perplexity is **38.5124** on the same **7,057 labels**, versus the matching parent **39.7762** and first checkpoint **39.4730**. The parent repeats the preceding terminal weights at zero labels in this stage. Receipt capture was observed at **22:55:46 UTC**; exact checkpoint creation time is unavailable.
+
+The separate live observation records **1,242 completed updates / 40,608,907 applied valid labels**, with **40,616,058 charged labels** across **39,751 microbatches**. Charged work includes unfinished accumulation; these live counters do not advance the saved checkpoint's measured quality. The finite stage permits **111,462,468 valid labels over 3,409 updates**; its next scheduled checkpoint is **1,705**.
+
+Cumulative timing through update 1,137 records **232.004 seconds** of checkpoint hooks and **4.461 seconds** of evaluation over **6,935.874 loop seconds**, or **3.4093%**. Full boundary hooks are included and model loading is excluded. These totals overlap the first-checkpoint totals; they are not separate durations to add. Read [the second-checkpoint post](/model-training-journal/2026/10/29/second-checkpoint-on-the-next-corpus-slice/) for the frozen three-point chart and sanitized downloads. [The first-checkpoint post](/model-training-journal/2026/10/29/first-checkpoint-on-the-next-corpus-slice/) retains its four earlier frozen charts.
+
+No fresh broader-panel or reasoning evaluation has run at this checkpoint. The earlier parent's mixed-source perplexity 14.6312 and fixed32 result 0/32 correct / 0/32 protocol-valid remain separate historical measurements. Repeated CFR development improvements do not establish transferable logic or a universal perplexity threshold. Interface failure prevents isolating reasoning capacity.
+
+## Next finite work
+
+Finish the current stage and its scheduled checkpoint evaluations. The approved small format/logic before-and-after diagnostic is installed as source and data only: no model or CPU readiness run has taken place. It waits for successful terminal checkpoint and writer closure, preserves the unadapted base, and includes every result from a fixed text-continuation panel. The horizon of one billion charged valid labels, original failure charges, resource and privacy protections, controls and untouched sealed final holdout remain in force. The installed execution cutoff stays **31 October 2026 at 04:12 UTC**; It remains the installed guard setting for the currently reviewed finite runs.
+
+This AI-assisted engineering journal reports aggregate evidence. A fully open reproducible recipe remains the goal; code and weights are not claimed released.
+
+---
+
+## Preserved dated snapshot: 29 October 2026, 22:01 UTC
+
+The complete prior plan follows unchanged as dated history. Its statements about preparation and earlier checkpoint status describe that snapshot; the current entry above supersedes them.
+
 Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. No checkpoint has yet established the target capability.
 
 **Recorded snapshot: 29 October 2026, 22:01:03 UTC.** V4 is running a finite, nonwrapping one-pass corpus slice. Its first saved and scored checkpoint is update **569**, with **18,604,156** phase-local valid labels. CFR development perplexity is **39.4730** on the same **7,057** labels, versus the matching in-memory parent baseline **39.7762**. This repeated baseline is the previous terminal checkpoint, not another unique checkpoint. Saved model-lineage exposure is **651,427,832** valid labels; physical completed work is **654,086,226** labels. The receipt capture was observed at **21:58:47 UTC**; exact checkpoint creation time is unavailable.

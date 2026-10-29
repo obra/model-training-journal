@@ -2,11 +2,11 @@
   "schema": 1,
   "model_parameters": 299414528,
   "initialization": "from scratch",
-  "experiment_state": "Recorded 29 Oct 22:01 UTC: V4 one-pass training continues; first checkpoint569 saved and scored. Live progress612 completed updates; next scheduled checkpoint1137.",
+  "experiment_state": "Recorded 29 Oct 23:04 UTC: finite one-pass pretraining continues; 1,242 updates / 40,608,907 completed phase labels. Checkpoint 1,137 is saved and scored; next checkpoint 1,705.",
   "latest_result": {
-    "summary": "Saved checkpoint569: CFR perplexity39.4730 on7,057 labels versus matching baseline39.7762. Intermediate checkpoint/evaluation hooks3.413% of loop time. No fresh mixed-source or fixed32 result; transferable logic remains unestablished.",
-    "url": "/model-training-journal/2026/10/29/first-checkpoint-on-the-next-corpus-slice/"
+    "summary": "Checkpoint 1,137: CFR perplexity 38.5124 on the same 7,057 labels, versus stage parent 39.7762 and checkpoint 569 at 39.4730. Cumulative checkpoint/evaluation overhead 3.409%. No new broader or logic evaluation; transferable logic remains unestablished.",
+    "url": "/model-training-journal/2026/10/29/second-checkpoint-on-the-next-corpus-slice/"
   },
-  "verified_at_utc": "2026-10-29T22:01:03Z",
+  "verified_at_utc": "2026-10-29T23:04:51Z",
   "deadline_utc": "2026-10-31T04:12:00Z"
 }
