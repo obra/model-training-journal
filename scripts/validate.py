@@ -5,12 +5,15 @@ from __future__ import annotations
 import argparse
 import hashlib
 from html.parser import HTMLParser
+import io
 import ipaddress
 import json
+import math
 import os
 from pathlib import Path
 import re
 from urllib.parse import unquote, urlsplit
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "/model-training-journal"
@@ -20,11 +23,187 @@ LOCAL_DIRS = {".git", ".venv", ".impeccable", ".pytest_cache", ".review"}
 EXTENSIONS = {".md", ".json", ".py", ".txt", ".html", ".css", ".xml"}
 PROGRESS_SCRIPT_FILES = {"assets/progress.js", "docs/assets/progress.js"}
 PROGRESS_SCRIPT_TAG = f'<script src="{BASE}/assets/progress.js" defer>'
+CHART_SVG_NAMES = frozenset({"checkpoint-perplexity.svg", "broader-panel.svg",
+                             "training-throughput.svg", "checkpoint-overhead.svg"})
+CHART_SVG_FILES = {f"{prefix}/{name}" for prefix in ("assets/charts", "docs/assets/charts")
+                   for name in CHART_SVG_NAMES}
 MAX_BYTES = 1_000_000
+SVG_NAMESPACE = "http://www.w3.org/2000/svg"
+XLINK_NAMESPACE = "http://www.w3.org/1999/xlink"
+MAX_SVG_NODES = 25_000
+MAX_SVG_DEPTH = 64
+SVG_ID = r"[A-Za-z_][A-Za-z0-9_.:-]{0,127}"
+SVG_NUMBER = r"[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?"
+SVG_PAINT_ATTRIBUTES = {"id", "transform", "fill", "stroke", "color", "stroke-width",
+                        "stroke-linecap", "stroke-linejoin", "stroke-miterlimit",
+                        "stroke-dasharray", "stroke-dashoffset", "fill-opacity",
+                        "stroke-opacity", "opacity", "clip-path"}
+SVG_ATTRIBUTES = {
+    "svg": SVG_PAINT_ATTRIBUTES | {"width", "height", "viewBox", "version", "role",
+                                    "aria-labelledby", "aria-describedby"},
+    "g": SVG_PAINT_ATTRIBUTES,
+    "defs": {"id"},
+    "path": SVG_PAINT_ATTRIBUTES | {"d"},
+    "rect": SVG_PAINT_ATTRIBUTES | {"x", "y", "width", "height"},
+    "line": SVG_PAINT_ATTRIBUTES | {"x1", "y1", "x2", "y2"},
+    "polyline": SVG_PAINT_ATTRIBUTES | {"points"},
+    "polygon": SVG_PAINT_ATTRIBUTES | {"points"},
+    "use": SVG_PAINT_ATTRIBUTES | {"href", "x", "y"},
+    "clipPath": {"id"},
+    "title": {"id"},
+    "desc": {"id"},
+}
+SVG_XML_DECLARATION = re.compile(
+    r'''<\?xml\s+version=(?:"1\.0"|'1\.0')'''
+    r'''(?:\s+encoding=(?:"[Uu][Tt][Ff]-8"|'[Uu][Tt][Ff]-8'))?'''
+    r'''(?:\s+standalone=(?:"(?:yes|no)"|'(?:yes|no)'))?\s*\?>''')
 
 
 class ValidationError(ValueError):
     pass
+
+
+def _svg_numbers(value: str, name: str) -> list[float]:
+    if not re.fullmatch(SVG_NUMBER + r"(?:[\s,]+" + SVG_NUMBER + r")*", value.strip()):
+        raise ValidationError(f"{name}: SVG geometry must contain only finite numbers")
+    numbers = [float(item) for item in re.findall(SVG_NUMBER, value)]
+    if any(not math.isfinite(item) or abs(item) > 1_000_000_000 for item in numbers):
+        raise ValidationError(f"{name}: SVG coordinate exceeds the passive chart bounds")
+    return numbers
+
+
+def _svg_attribute(tag: str, key: str, value: str, name: str,
+                   references: list[tuple[str, set[str]]]) -> None:
+    if key == "id":
+        valid = re.fullmatch(SVG_ID, value)
+    elif key == "href":
+        valid = re.fullmatch("#" + SVG_ID, value)
+        if valid:
+            references.append((value[1:], {"path"}))
+    elif key == "clip-path":
+        valid = re.fullmatch(r"url\(#(" + SVG_ID + r")\)", value)
+        if valid:
+            references.append((valid.group(1), {"clipPath"}))
+    elif key in {"aria-labelledby", "aria-describedby"}:
+        ids = value.split()
+        valid = bool(ids) and all(re.fullmatch(SVG_ID, item) for item in ids)
+        if valid:
+            references.extend((item, {"title", "desc"}) for item in ids)
+    elif key == "role":
+        valid = value == "img"
+    elif key == "version":
+        valid = value == "1.1"
+    elif key in {"fill", "stroke", "color"}:
+        valid = (value in {"none", "transparent", "currentColor", "black", "white"} or
+                 re.fullmatch(r"#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})", value))
+    elif key in {"stroke-linecap", "stroke-linejoin"}:
+        valid = value in ({"butt", "round", "square"} if key == "stroke-linecap"
+                          else {"miter", "round", "bevel"})
+    elif key == "transform":
+        end = 0
+        valid = False
+        arities = {"matrix": {6}, "translate": {1, 2}, "scale": {1, 2},
+                   "rotate": {1, 3}, "skewX": {1}, "skewY": {1}}
+        for match in re.finditer(r"(matrix|translate|scale|rotate|skewX|skewY)\s*\(([^()]*)\)", value):
+            if value[end:match.start()].strip(" ,\t\r\n"):
+                raise ValidationError(f"{name}: unsupported SVG transform")
+            if len(_svg_numbers(match.group(2), name)) not in arities[match.group(1)]:
+                raise ValidationError(f"{name}: incorrect SVG transform arguments")
+            end = match.end()
+            valid = True
+        valid = valid and not value[end:].strip(" ,\t\r\n")
+    elif key == "d":
+        # Accept passive path commands and finite coordinates, never CSS or URLs.
+        rest = re.sub(SVG_NUMBER + r"|[MmZzLlHhVvCcSsQqTtAa]|[\s,]", "", value)
+        valid = not rest
+        for number in re.findall(SVG_NUMBER, value):
+            _svg_numbers(number, name)
+    else:
+        numeric = value
+        if key in {"width", "height"} and tag == "svg":
+            numeric = re.sub(r"(?:pt|px)$", "", value)
+        if key == "stroke-dasharray" and value == "none":
+            return
+        numbers = _svg_numbers(numeric, name)
+        valid = len(numbers) == 1
+        if key == "viewBox":
+            valid = len(numbers) == 4 and numbers[2] > 0 and numbers[3] > 0
+        elif key == "points":
+            valid = len(numbers) >= 4 and len(numbers) % 2 == 0
+        elif key == "stroke-dasharray":
+            valid = all(item >= 0 for item in numbers)
+        elif key in {"width", "height", "stroke-width"}:
+            valid = valid and numbers[0] >= 0
+            if tag == "svg":
+                valid = valid and numbers[0] <= 10_000
+        elif key == "stroke-miterlimit":
+            valid = valid and numbers[0] >= 1
+        elif key in {"opacity", "fill-opacity", "stroke-opacity"}:
+            valid = valid and 0 <= numbers[0] <= 1
+    if not valid:
+        raise ValidationError(f"{name}: unsupported passive SVG attribute value: {key}")
+
+
+def validate_svg(text: str, name: str) -> None:
+    """Accept only bounded passive chart markup with local glyph/clip references."""
+    if name not in CHART_SVG_FILES:
+        raise ValidationError(f"{name}: SVG path is not a reviewed chart")
+    prolog = text.removeprefix("\ufeff")
+    declaration = SVG_XML_DECLARATION.match(prolog)
+    remainder = prolog[declaration.end():] if declaration else prolog
+    if re.search(r"<!\s*(?:DOCTYPE|ENTITY)\b", text, re.I) or "<?" in remainder:
+        raise ValidationError(f"{name}: SVG declarations, entities or processing instructions are forbidden")
+    nodes = []
+    depth = 0
+    try:
+        parser = ET.iterparse(io.StringIO(text), events=("start", "end", "start-ns"))
+        for event, item in parser:
+            if event == "start-ns":
+                if item[1] not in {SVG_NAMESPACE, XLINK_NAMESPACE}:
+                    raise ValidationError(f"{name}: unknown SVG namespace")
+            elif event == "start":
+                depth += 1
+                nodes.append(item)
+                if len(nodes) > MAX_SVG_NODES or depth > MAX_SVG_DEPTH:
+                    raise ValidationError(f"{name}: SVG node/depth limit exceeded")
+            else:
+                depth -= 1
+    except ET.ParseError as exc:
+        raise ValidationError(f"{name}: malformed SVG XML") from exc
+    root = parser.root
+    if root.tag != "{" + SVG_NAMESPACE + "}svg":
+        raise ValidationError(f"{name}: exact SVG namespace/root required")
+    ids: dict[str, str] = {}
+    references: list[tuple[str, set[str]]] = []
+    for node in nodes:
+        prefix = "{" + SVG_NAMESPACE + "}"
+        tag = node.tag.removeprefix(prefix)
+        if not node.tag.startswith(prefix) or tag not in SVG_ATTRIBUTES or (tag == "svg" and node is not root):
+            raise ValidationError(f"{name}: unexpected SVG element")
+        if tag not in {"svg", "g", "defs", "clipPath"} and len(node):
+            raise ValidationError(f"{name}: chart geometry and descriptions must be leaf elements")
+        if tag == "clipPath" and any(child.tag not in {prefix + "rect", prefix + "path"}
+                                     or "clip-path" in child.attrib for child in node):
+            raise ValidationError(f"{name}: only nonrecursive path/rect clips are allowed")
+        if ((tag not in {"title", "desc"} and node.text and node.text.strip()) or
+                (node.tail and node.tail.strip())):
+            raise ValidationError(f"{name}: SVG text is limited to title/desc")
+        hrefs = 0
+        for attribute, value in node.attrib.items():
+            key = "href" if attribute == "{" + XLINK_NAMESPACE + "}href" else attribute
+            if key not in SVG_ATTRIBUTES[tag]:
+                raise ValidationError(f"{name}: unknown SVG attribute: {attribute}")
+            hrefs += key == "href"
+            _svg_attribute(tag, key, value, name, references)
+        if (tag == "use" and hrefs != 1) or hrefs > 1:
+            raise ValidationError(f"{name}: one local glyph reference is required per use")
+        if "id" in node.attrib:
+            identity = node.attrib["id"]
+            if identity in ids:
+                raise ValidationError(f"{name}: duplicate SVG id")
+            ids[identity] = tag
+    if any(identity not in ids or ids[identity] not in kinds for identity, kinds in references):
+        raise ValidationError(f"{name}: unresolved or invalid local SVG reference")
 
 
 def allowed_path(name: str) -> bool:
@@ -94,7 +273,7 @@ def candidate(root: Path = ROOT, terms: list[str] | None = None) -> dict[str, st
         if not allowed_path(name):
             raise ValidationError(f"{name}: not in the publication allowlist")
         if (path.suffix not in EXTENSIONS and path.name not in {".gitignore", ".nojekyll"}
-                and name not in PROGRESS_SCRIPT_FILES):
+                and name not in PROGRESS_SCRIPT_FILES and name not in CHART_SVG_FILES):
             raise ValidationError(f"{name}: unexpected file type")
         data = path.read_bytes()
         if len(data) > MAX_BYTES or b"\0" in data:
@@ -104,6 +283,8 @@ def candidate(root: Path = ROOT, terms: list[str] | None = None) -> dict[str, st
         except UnicodeDecodeError as exc:
             raise ValidationError(f"{name}: not UTF-8 text") from exc
         scan_text(text, name, terms)
+        if name in CHART_SVG_FILES:
+            validate_svg(text, name)
         if path.suffix == ".py":
             compile(text, name, "exec")
         hashes[name] = hashlib.sha256(data).hexdigest()
@@ -213,6 +394,12 @@ def validate_html(root: Path = ROOT) -> None:
             raise ValidationError("Progress script requires source and generated assets/progress.js files")
         if source.read_bytes() != generated.read_bytes():
             raise ValidationError("docs/assets/progress.js must exactly match assets/progress.js")
+    for name in CHART_SVG_NAMES:
+        source = root / "assets/charts" / name
+        generated = docs / "assets/charts" / name
+        if source.exists() or generated.exists():
+            if not source.is_file() or not generated.is_file() or source.read_bytes() != generated.read_bytes():
+                raise ValidationError(f"{name}: source and generated SVG chart must match exactly")
     for path in docs.rglob("*.css"):
         if re.search(r"@import\b", path.read_text(), re.I):
             raise ValidationError(f"{path.name}: CSS imports are not allowed")

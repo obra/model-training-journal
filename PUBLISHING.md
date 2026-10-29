@@ -69,9 +69,33 @@ The progress script uses the visitor's local clock to update remaining time and
 snapshot staleness once per minute. Published facts stay static; it performs no
 network requests, storage or telemetry. This exception still requires manual
 source and rendered-page review, and the review receipt binds both script copies
-along with every other candidate file. CSS imports, inline styles, automatic
-redirects and SVG remain excluded; adding these features requires a deliberate
+along with every other candidate file. CSS imports, inline styles and automatic
+redirects remain excluded.
+
+There is one narrow passive SVG exception: checkpoint-perplexity.svg,
+broader-panel.svg, training-throughput.svg and checkpoint-overhead.svg under
+assets/charts/, with byte-identical copies under docs/assets/charts/. Other SVG
+paths remain excluded. Each chart must be UTF-8, no larger than 1,000,000 bytes,
+and pass the same privacy scan as every other public file. Its XML must use the
+SVG namespace and only the reviewed passive geometry, glyph-path and title/desc
+profile, bounded to 25,000 elements and depth 64. Glyph hrefs may reference only
+existing local path IDs; clip-path may reference only existing local clipPath
+IDs. Duplicate, unresolved or recursive references, external/data references,
+unknown namespaces or attributes, styles, events, scripts, images, links,
+foreignObject, animation, DTD/entity declarations and nonstandard processing
+instructions are rejected. Only a standard XML declaration is allowed. Inline
+SVG in HTML remains excluded.
+
+Review the chart's numbers, captions, accessibility text, rights and actual
+desktop/mobile rendering; the validator does not establish factual accuracy.
+The publication receipt binds source and generated chart bytes with the whole
+candidate. New chart names or changes to this passive profile require a deliberate
 validator update and review.
+
+The charts are generated separately from publication. See `scripts/chart-README.md`
+for the fixed data input, pinned optional plotting requirements and reproducible
+build command. The normal site build copies the reviewed SVG bytes; it does not
+fetch data or regenerate them.
 
 ## Refresh the progress snapshot
 
@@ -82,8 +106,10 @@ each evaluation population separate. Record the UTC verification timestamp,
 actual experiment state, one qualified result, and the next decision. Planned
 work must not be presented as launched or completed.
 
-The fixed deadline is `2026-10-31T04:12:00Z`; neither content nor the local clock
-script may extend it. The browser updates only countdown and snapshot age. It
+The currently installed training cutoff is `2026-10-31T04:12:00Z`; neither content
+nor the local clock script may change it. This is an installed guard setting, not
+a fixed user deadline for the research. Research proceeds through finite runs
+with measured progress and separately reviewed run budgets. The browser updates only countdown and snapshot age. It
 shows a stale warning after 60 minutes and never fetches training telemetry. With
 JavaScript disabled, remaining time is explicitly labeled as measured at the
 snapshot. Include the progress JSON, plan Markdown, generated pages and clock

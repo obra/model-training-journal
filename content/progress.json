@@ -2,11 +2,11 @@
   "schema": 1,
   "model_parameters": 299414528,
   "initialization": "from scratch",
-  "experiment_state": "Saved-record review, not live telemetry: five language evaluations completed; logic probes still failed. The arXiv continuation remains local and unrun, awaiting deployment approval and native preflight.",
+  "experiment_state": "Recorded 29 Oct 16:31 UTC: stage one completed. Stage two is active; saved checkpoint 1,990 is the latest measured point. Its CFR perplexity regressed from checkpoint 1,327. These are saved results, not live counters.",
   "latest_result": {
-    "summary": "On the same 32 regulatory-prose sections and 7,057 scored tokens, mean token loss fell 6.49% and perplexity 33.57% from model step 274 to 821. Separate logic scores remain 0/32 correct and 0/32 protocol-valid at all five checkpoints; the loss change is not a reasoning result.",
-    "url": "/model-training-journal/current-plan/#language-loss-on-a-fixed-development-set"
+    "summary": "Saved stage-two update 1,990: 65,068,850 new valid labels; CFR perplexity 42.5430, up from 41.6422 at update 1,327 but below parent 43.7761 on 7,057 labels. This narrow development result is not a reasoning score or completed-stage claim.",
+    "url": "/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/"
   },
-  "verified_at_utc": "2026-10-28T00:54:54Z",
+  "verified_at_utc": "2026-10-29T16:31:12Z",
   "deadline_utc": "2026-10-31T04:12:00Z"
 }

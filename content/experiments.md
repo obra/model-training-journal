@@ -1,3 +1,18 @@
+Latest entries appear first here; the earlier dated experiment index is preserved below. Recorded status is a snapshot, not live telemetry.
+
+## 29 October: larger one-pass stages and saved checkpoint metrics
+
+<dl class="experiment-list">
+<dt>Pretraining continuation and development measurements</dt>
+<dd><a href="/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/">Checkpoint metrics after larger one-pass training phases</a><br>The 299M model completes a 130,072,908-label stage with six measured checkpoints. The next stage is running; its latest saved update 1,990 has CFR perplexity 42.5430, regressing from update 1,327’s 41.6422 while remaining below parent 43.7761 on 7,057 labels. This is a narrow development-language result, not a reasoning score or live progress counter. Locally admitted future supply exceeds the remaining exposure allowance, so the final phase is capped to a 126,366,365-label prefix with all failed reservations retained. · 29 Oct 2026, 16:31 UTC snapshot</dd>
+</dl>
+
+Read the [current plan and snapshot](/model-training-journal/current-plan/) for the installed guard cutoff, accounting distinctions and unresolved future gates. Current broad-panel and reasoning outcomes remain not_evaluated/null. Original controls, failed runs and final-holdout reservations remain intact.
+
+[See the checkpoint charts and downloadable measurements](/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/#checkpoint-charts).
+
+## Earlier dated experiment index, preserved
+
 The experiment record in chronological order. Each entry describes its own dated evidence; the current plan links the latest reviewed state.
 
 Read the [current plan and status](/model-training-journal/current-plan/) for the open training recipe, transferable-logic goal, latest evidence, next decision and installed execution cutoff. Planning is a historical diagnostic; no planning checkpoint has been promoted. Earlier entries retain the budgets and plans in force at their own stages.
@@ -104,6 +119,8 @@ The original **97,536,768-parameter model** began from random weights and comple
 <dd><a href="/model-training-journal/2026/10/27/larger-model-qualification-and-phase1/">Qualifying a 299M model and counting the next training phase</a><br>Eight updates establish short-run execution and checkpoint evidence for a fresh 299M model. The finite 26.86M-label first phase has launched; its first update is recorded and the first checkpoint independently verified. A failed archive scan leads to a narrow parser correction and 22,285 candidate documents. Two additional pinned archives are acquired into quarantine; neither acquisition nor candidate counts establish training admission. · 27 Oct 2026</dd>
 <dt>Recovery and source review</dt>
 <dd><a href="/model-training-journal/2026/10/27/recovering-the-first-299m-pretraining-phase/">Measuring language loss after 299M recovery</a><br>Across five checkpoints, loss on a fixed regulatory-prose development set falls 6.49% from baseline to terminal. Logic probes stay at 0/32 correct and 0/32 protocol-valid. The 62-update arXiv continuation remains prepared and unrun. Updated from saved records on 28 Oct UTC. · 27 Oct 2026</dd>
+<dt>Infrastructure pilot and corpus continuation</dt>
+<dd><a href="/model-training-journal/2026/10/28/first-admitted-arxiv-continuation/">Completing the first admitted arXiv continuation pilot</a><br>A bounded infrastructure pilot completes one pass over 99 admitted arXiv papers: 62 updates and 2,029,534 valid labels. All three logic probes return 0/32 correct and 0/32 protocol-valid answers. New-phase language loss is unmeasured; broader corpus admission continues. · 28 Oct 2026</dd>
 </dl>
 
 ## How to read the measurements

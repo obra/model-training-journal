@@ -70,7 +70,7 @@ def render_progress(progress):
   <dl class="progress-facts">
     <div class="progress-state"><dt>Experiment state</dt><dd>{escape(progress['experiment_state'])}</dd></div>
     <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="{escape(result['url'], quote=True)}">{escape(result['summary'])}</a></dd></div>
-    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>{remaining_at_snapshot(verified)}</strong><span class="progress-deadline">Deadline <time datetime="{DEADLINE_UTC}">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>{remaining_at_snapshot(verified)}</strong><span class="progress-deadline">Cutoff <time datetime="{DEADLINE_UTC}">31 Oct 2026, 04:12 UTC</time></span></dd></div>
   </dl>
   <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="{progress['verified_at_utc']}">{verified:%d %b %Y, %H:%M:%S} UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
 </section>'''

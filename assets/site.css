@@ -127,3 +127,9 @@ td:first-child { min-width: 115px; }
   h2, h3 { break-after: avoid; }
   pre, tr { break-inside: avoid; }
 }
+
+/* Static checkpoint figures; tables remain the text alternative. */
+.metric-chart { margin: 2rem 0; min-width: 0; }
+.metric-chart img { display: block; width: 100%; height: auto; max-width: 100%; }
+.metric-chart figcaption { margin-top: .7rem; font: 14px/1.6 var(--sans); color: var(--muted); overflow-wrap: anywhere; }
+.metric-chart figcaption a { display: inline-block; }

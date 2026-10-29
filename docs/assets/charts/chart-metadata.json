@@ -1,0 +1,233 @@
+{
+  "builder": {
+    "file": "scripts/build_charts.py",
+    "sha256": "9b49129fecd4ede5c4ab75a399d6f802b5aa5f55f82ad6b0cb2a01d1a20d4549"
+  },
+  "charts": [
+    {
+      "bytes": 114914,
+      "caption": "Narrow CFR development evaluation only:7,057 scored labels per report under one unchanged contract. Left:cumulative model-lineage valid labels in millions. Right:phase-local valid labels. Hollow markers retain baseline observations without averaging repeated checkpoints. Of 29 evaluated rows, the cumulative panel plots 24 and omits five unknown x values; the phase-local panel plots 28 and omits one early baseline. Missing values are never plotted at zero. Broad-panel and fixed32 results are separate. Stage2 has three saved checkpoints, not a terminal result. The latest PPL42.54301119340581 regresses from41.64221987947464 at checkpoint1327, while below parent43.77612727431155.",
+      "counts": {
+        "baseline_markers_per_panel": 4,
+        "baseline_observations_total": 5,
+        "evaluated_rows": 29,
+        "omitted_unknown_cumulative_x": 5,
+        "omitted_unknown_phase_x": 1,
+        "plotted_cumulative_rows": 24,
+        "plotted_phase_local_rows": 28,
+        "unique_checkpoint_identities": 25
+      },
+      "file": "assets/charts/checkpoint-perplexity.svg",
+      "passive_svg_profile": {
+        "attributes": [
+          "aria-labelledby",
+          "clip-path",
+          "d",
+          "fill",
+          "height",
+          "href",
+          "id",
+          "role",
+          "stroke",
+          "stroke-linecap",
+          "stroke-linejoin",
+          "stroke-width",
+          "transform",
+          "version",
+          "viewBox",
+          "width",
+          "x",
+          "y"
+        ],
+        "nodes": 1222,
+        "tags": [
+          "clipPath",
+          "defs",
+          "desc",
+          "g",
+          "path",
+          "rect",
+          "svg",
+          "title",
+          "use"
+        ]
+      },
+      "sha256": "6ba48f2f34664e6db9c79d22797d635d14aade5f175936865a786c1fcdf76cab",
+      "title": "CFR checkpoint perplexity by cumulative and phase-local valid labels"
+    },
+    {
+      "bytes": 75797,
+      "caption": "Historical mixed-source development panel:130,209 scored labels. Only the parent and science-terminal aggregate checkpoints are available. Source slices keep arXiv45,516, StackExchange38,590 and Wikimedia46,103 labels separate. Not merged with the7,057-label CFR contract; not a current-stage or reasoning result.",
+      "counts": {
+        "aggregate_points": 2,
+        "aggregate_scored_labels": 130209,
+        "source_denominators": {
+          "arxiv": 45516,
+          "stackexchange": 38590,
+          "wikimedia": 46103
+        },
+        "source_slice_points": 6
+      },
+      "file": "assets/charts/broader-panel.svg",
+      "passive_svg_profile": {
+        "attributes": [
+          "aria-labelledby",
+          "clip-path",
+          "d",
+          "fill",
+          "height",
+          "href",
+          "id",
+          "role",
+          "stroke",
+          "stroke-linecap",
+          "stroke-linejoin",
+          "stroke-width",
+          "transform",
+          "version",
+          "viewBox",
+          "width",
+          "x",
+          "y"
+        ],
+        "nodes": 779,
+        "tags": [
+          "clipPath",
+          "defs",
+          "desc",
+          "g",
+          "path",
+          "rect",
+          "svg",
+          "title",
+          "use"
+        ]
+      },
+      "sha256": "4b1a105b4e66dcb9b2a9271580d4f5475fe53ed29cbf01469d17f2e20ba4fc85",
+      "title": "Two historical broader-panel perplexity evaluations"
+    },
+    {
+      "bytes": 71453,
+      "caption": "Four completed runs; actual phase-local valid labels divided by named guard-wall, worker-elapsed or training-loop seconds. Rates are thousands of valid labels per second. Guard wall is approximate where available. Two missing denominator values are omitted, not zero-filled. No GPU-kernel throughput claim.",
+      "counts": {
+        "actual_bars": 10,
+        "completed_runs": 4,
+        "omitted_missing_denominators": [
+          {
+            "denominator": "Guard wall (approximate)",
+            "stage": "science_104521471"
+          },
+          {
+            "denominator": "Worker elapsed",
+            "stage": "filtered_96012838"
+          }
+        ]
+      },
+      "file": "assets/charts/training-throughput.svg",
+      "passive_svg_profile": {
+        "attributes": [
+          "aria-labelledby",
+          "clip-path",
+          "d",
+          "fill",
+          "height",
+          "href",
+          "id",
+          "role",
+          "stroke",
+          "stroke-linecap",
+          "stroke-linejoin",
+          "stroke-width",
+          "transform",
+          "version",
+          "viewBox",
+          "width",
+          "x",
+          "y"
+        ],
+        "nodes": 695,
+        "tags": [
+          "clipPath",
+          "defs",
+          "desc",
+          "g",
+          "path",
+          "rect",
+          "svg",
+          "title",
+          "use"
+        ]
+      },
+      "sha256": "5c83a5691fc2afa35df4351ada1a65b3bd6885cb6bddc2b6b66152e44e4b99dd",
+      "title": "Measured phase-local valid-label throughput with separate time denominators"
+    },
+    {
+      "bytes": 65523,
+      "caption": "Four completed runs. Checkpoint and evaluation full-boundary hook seconds are divided separately by matching training-loop seconds and stacked. Totals approximately1.330%,1.391%,0.989%,1.923%. The10% engineering reference ceiling is not a new timing measurement. Reserved or campaign-wide evaluation charges are not substituted for actual phase hooks.",
+      "counts": {
+        "actual_hook_components": 8,
+        "completed_runs": 4,
+        "missing_hook_values": 0,
+        "reference_ceiling_percent": 10
+      },
+      "file": "assets/charts/checkpoint-overhead.svg",
+      "passive_svg_profile": {
+        "attributes": [
+          "aria-labelledby",
+          "clip-path",
+          "d",
+          "fill",
+          "height",
+          "href",
+          "id",
+          "role",
+          "stroke",
+          "stroke-dasharray",
+          "stroke-dashoffset",
+          "stroke-linecap",
+          "stroke-linejoin",
+          "stroke-width",
+          "transform",
+          "version",
+          "viewBox",
+          "width",
+          "x",
+          "y"
+        ],
+        "nodes": 625,
+        "tags": [
+          "clipPath",
+          "defs",
+          "desc",
+          "g",
+          "path",
+          "rect",
+          "svg",
+          "title",
+          "use"
+        ]
+      },
+      "sha256": "a435686def4e2b084254e8f63414f3bb1f9e017efc22b56a826395e82b5a1efc",
+      "title": "Measured checkpoint and evaluation fractions of training-loop elapsed time"
+    }
+  ],
+  "determinism": {
+    "css_removed": true,
+    "fonttype": "path",
+    "svg_date_metadata": null,
+    "svg_hashsalt": "checkpoint-chart-history-20261029-v1",
+    "xml_metadata_removed": true
+  },
+  "input": {
+    "bytes": 94230,
+    "file": "assets/checkpoint-history.json",
+    "frozen_utc": "2026-10-29T16:39:28.277512+00:00",
+    "sha256": "0fe801b9c69aa119266bd3aeabcf3efdce425d8c93d4409750203bb347789761"
+  },
+  "publication_performed": false,
+  "runtime_versions": {
+    "matplotlib": "3.10.9",
+    "numpy": "2.5.2"
+  },
+  "schema": "sanitized_reproducible_static_charts_v1"
+}

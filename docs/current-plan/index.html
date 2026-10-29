@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Current plan · Model Training Journal</title>
-  <meta name="description" content="Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. Planning remains one historical diagnostic, not the product definition.">
+  <meta name="description" content="Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. Planning remains a historical diagnostic, not the product definition. No checkpoint has yet established the target capability.">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://obra.github.io/model-training-journal/current-plan/">
   <link rel="stylesheet" href="/model-training-journal/assets/site.css">
@@ -22,24 +22,75 @@
       <a href="/model-training-journal/about/">About</a>
     </nav>
   </header>
-  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-28T00:54:54Z" data-deadline="2026-10-31T04:12:00Z">
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-29T16:31:12Z" data-deadline="2026-10-31T04:12:00Z">
   <div class="progress-top"><p class="progress-model"><strong title="299,414,528 trainable parameters">299.4M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
   <dl class="progress-facts">
-    <div class="progress-state"><dt>Experiment state</dt><dd>Saved-record review, not live telemetry: five language evaluations completed; logic probes still failed. The arXiv continuation remains local and unrun, awaiting deployment approval and native preflight.</dd></div>
-    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/current-plan/#language-loss-on-a-fixed-development-set">On the same 32 regulatory-prose sections and 7,057 scored tokens, mean token loss fell 6.49% and perplexity 33.57% from model step 274 to 821. Separate logic scores remain 0/32 correct and 0/32 protocol-valid at all five checkpoints; the loss change is not a reasoning result.</a></dd></div>
-    <div class="progress-budget"><dt>Fixed 120-hour budget</dt><dd><strong data-countdown>3d 3h 17m remaining at snapshot</strong><span class="progress-deadline">Deadline <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+    <div class="progress-state"><dt>Experiment state</dt><dd>Recorded 29 Oct 16:31 UTC: stage one completed. Stage two is active; saved checkpoint 1,990 is the latest measured point. Its CFR perplexity regressed from checkpoint 1,327. These are saved results, not live counters.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/">Saved stage-two update 1,990: 65,068,850 new valid labels; CFR perplexity 42.5430, up from 41.6422 at update 1,327 but below parent 43.7761 on 7,057 labels. This narrow development result is not a reasoning score or completed-stage claim.</a></dd></div>
+    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>1d 11h 40m remaining at snapshot</strong><span class="progress-deadline">Cutoff <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
   </dl>
-  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-28T00:54:54Z">28 Oct 2026, 00:54:54 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-29T16:31:12Z">29 Oct 2026, 16:31:12 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
 </section>
-  <main id="main"><article class="page"><h1>Current plan</h1><div class="prose"><p>Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. Planning remains one historical diagnostic, not the product definition.</p>
-<p><strong>Saved-record review: 28 October 2026, 00:54:54 UTC.</strong> This timestamp records review of saved completion, evaluation, admission and run-plan evidence. It is <strong>not live training or machine telemetry</strong>. The 299M recovery completed. Five language-model evaluations now show lower loss from baseline to terminal on a fixed regulatory-prose development set. The separate logic probes still have no correct or protocol-valid answers. The arXiv continuation remains prepared locally and <strong>has not run</strong>; deployment approval and native preflight remain pending.</p>
-<h2 id="completed-recovery">Completed recovery</h2>
+  <main id="main"><article class="page"><h1>Current plan</h1><div class="prose"><p>Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. Planning remains a historical diagnostic, not the product definition. No checkpoint has yet established the target capability.</p>
+<p><strong>Recorded snapshot: 29 October 2026, 16:31:12 UTC.</strong> The 299,414,528-parameter model has completed the first new 130.07M-label stage. The second is active under its existing finite guard. Its latest <strong>saved</strong> checkpoint is update <strong>1,990</strong>, containing <strong>65,068,850 new valid labels</strong> in this stage. This page does not report live optimizer counters; later training progress is unknown here.</p>
+<h2 id="latest-measured-checkpoints">Latest measured checkpoints</h2>
+<p>The completed stage added <strong>130,072,908 valid labels / 130,351,104 processed input IDs / 3,978 updates</strong>, in one nonwrapping pass. Actual terminal evidence confirmed successful exit, no surviving worker group, six verified checkpoint pairs and closed storage. Its loaded-parent CFR perplexity was <strong>51.4213706187</strong>; terminal perplexity was <strong>43.7761272743</strong>. The six saves include two local increases, so the trajectory is not monotonic.</p>
+<p>The running second stage began <strong>12:40:54 UTC</strong>, with a <strong>130,105,270-label / 3,979-update target</strong> and a <strong>10-hour guard</strong>. At the recorded observation, sampled GPU activity was <strong>88%</strong>, temperature <strong>62°C</strong>, and no resource stop was reported.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Running-stage observation</th>
+<th>New valid labels in this stage</th>
+<th>CFR perplexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loaded parent baseline</td>
+<td>0</td>
+<td>43.776127274</td>
+</tr>
+<tr>
+<td>Saved update 664</td>
+<td>21,711,322</td>
+<td>42.119393839</td>
+</tr>
+<tr>
+<td>Saved update 1,327</td>
+<td>43,390,057</td>
+<td>41.642219879</td>
+</tr>
+<tr>
+<td>Saved update 1,990</td>
+<td>65,068,850</td>
+<td>42.543011193</td>
+</tr>
+</tbody>
+</table></div>
+<p>Saved update 1,990 regressed from 41.6422 to 42.5430 perplexity, while remaining below its parent baseline of 43.7761. This snapshot does not report a fourth saved checkpoint.</p>
+<p>These are <strong>7,057-label narrow CFR development-language measurements</strong>, using frozen data, tokenizer and scorer. The current parent baseline and checkpoint hooks borrow the training model in memory and run serially with training. They do not establish improved reasoning or general language competence. No new broad-panel or reasoning scores were measured; their status is <code>not_evaluated</code> and values are null. Historical fixed32 scores remain 0/32 exact and 0/32 protocol-valid. Output-format failure prevents those scores from isolating reasoning capacity. Perplexity has no universal pass threshold; comparison requires the same tokenizer, population and scoring contract. Lower CFR loss does not establish transferable logic. The historical fixed32 probe is reused development evidence, not a fresh final test. A bounded broader-LM and fixed-logic/protocol check is being prepared for the current stage’s terminal checkpoint; it is unrun, and broader-source eligibility must first be verified. The sealed final holdout remains untouched.</p>
+<p>Read <a href="/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/">the checkpoint catch-up post</a> for all six completed-stage checkpoints, the three new saved measurements and interpretation. Downloads: <a href="/model-training-journal/assets/checkpoint-history.json">checkpoint JSON</a>, <a href="/model-training-journal/assets/checkpoint-history.txt" download="checkpoints.csv">checkpoint CSV</a>, and <a href="/model-training-journal/assets/training-throughput.txt">run timings</a>. The historical 130,209-label broad panel stays separate from the CFR population.</p>
+<h2 id="checkpoint-charts">Checkpoint charts</h2>
+<p><a href="/model-training-journal/2026/10/29/checkpoint-metrics-at-scale/#checkpoint-charts">View the four checkpoint and run-timing charts</a>, with full-size versions, captions and data downloads. The figures separate the narrow CFR development curve from the historical broader panel, and show measured throughput and checkpoint/evaluation overhead. The figures freeze the saved measurements observed at 16:31; the latest is update 1,990. Missing measurements are not plotted as zero, and these charts do not provide live telemetry or a new reasoning result.</p>
+<h2 id="completed-work-and-accounting">Completed work and accounting</h2>
+<p>After the 99-paper pilot, larger phases completed <strong>104,521,471</strong>, <strong>96,012,838</strong> and <strong>143,221,104 valid labels</strong> before the latest completed 130,072,908-label stage. The small pilot below remains a dated infrastructure result, not the current scale.</p>
+<p>At the latest saved second-stage checkpoint, physical campaign charges are <strong>570,445,650 valid labels / 17,441 updates</strong>; retained model lineage is <strong>567,787,256 labels / 17,360 updates</strong>. The persistent gap is <strong>2,658,394 valid labels and 81 updates</strong>, reflecting earlier interrupted work and checkpoint restore/replay. Those charges remain. Neither clock is a unique-source-document count; content IDs, processed inputs and valid-label exposures have separate meanings.</p>
+<p>The completed stage's guard wall time was approximately <strong>7 hours 6 minutes</strong>, with <strong>25,395.229 worker seconds</strong>. Checkpoint/evaluation hooks were <strong>1.9226747% of its measured loop</strong>. Whole-run timing is not GPU-kernel-only throughput.</p>
+<h2 id="next-finite-stages">Next finite stages</h2>
+<p>Two additional filtered Common Pile Wiki/Stack cohorts are locally admitted and already cached: <strong>268,840 documents / 222,892,775 valid labels</strong>, then <strong>269,543 documents / 215,100,897 valid labels</strong>. No new download is needed for this finite plan. Provenance, attribution, deduplication, connected-family and frozen-development exclusions, and rights/privacy holds remain required. The older unresolved V4 batch52 remains held, not claimed scanned or cleared. Bounded candidate quality review is not universal rights/privacy certification.</p>
+<p>Future parent completion and ingress/custody gates remain unknown. The planned final cohort uses only a <strong>126,366,365-label contiguous full-update prefix</strong>, leaving <strong>88,734,532</strong> full-reader labels unused. If every intervening stage completes, expected physical consumption is <strong>984,741,210 labels</strong>. Add <strong>15,240,080 retained failed reservations</strong> to obtain <strong>999,981,290 charged labels</strong> under the 1B ceiling. This forecast is not completed training and does not reset or refund failure charges.</p>
+<p>The dedicated data allowance remains <strong>800GB</strong>. Root/free-space, memory and thermal guards remain required; the expired UI stays stopped. The <strong>installed guard cutoff is 31 October 2026 at 04:12 UTC</strong>, an execution setting that this snapshot does not extend. Original 97M controls, failures and the final holdout remain preserved. The open-source recipe is a research goal, not a claim that code or weights have already been released. This AI-assisted journal reports aggregate methods and results without source passages, private records or raw logs.</p>
+<h2 id="preserved-dated-snapshot-28-october-2026">Preserved dated snapshot: 28 October 2026</h2>
+<p>The following saved-record review is retained unchanged as historical evidence. Its descriptions of the then-current pilot, pending broader work and execution budget apply to that date; the snapshot above supersedes its current-status claims.</p>
+<p>Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. Planning remains one historical diagnostic, not the product definition.</p>
+<p><strong>Saved-record review: 28 October 2026, 02:39:23 UTC.</strong> This timestamp records review of saved evidence, not live training or machine telemetry. The first admitted arXiv continuation <strong>completed</strong> as a bounded infrastructure pilot: 62 updates, three verified checkpoints and three logic probes, all with 0/32 correct and 0/32 protocol-valid answers. This pilot does not stand in for the main pretraining program. Broader corpus admission is active; the prior language-loss measurements remain a separate historical result.</p>
+<h2 id="completed-recovery-before-the-arxiv-continuation">Completed recovery before the arXiv continuation</h2>
 <p>The model has <strong>299,414,528 parameters</strong> and began from random weights. Its original production run stopped at <strong>05:18:12 UTC on 27 October</strong>, after <strong>355 completed optimizer updates</strong>, when the resource monitor reported a subprocess error. The underlying subprocess cause remains unestablished. Its last retained checkpoint was update <strong>274</strong>. The failed run, checkpoints and all charges remain preserved.</p>
 <p>After monitor repair, the corrected Linux recovery gate passed <strong>91 of 91 tests</strong>, including all six required native checks, with no skips. The saved model, complete Adam state and native random state were validated. Recovery restored checkpoint 274 and consumed its exact original source suffix. The terminal record confirms successful exit and a verified terminal checkpoint.</p>
 <div class="table-scroll"><table>
 <thead>
 <tr>
-<th>Accounting view</th>
+<th>Accounting view at recovery completion</th>
 <th>Optimizer updates</th>
 <th>Valid labels</th>
 <th>Processed input IDs</th>
@@ -160,14 +211,52 @@
 <p>The historical lexical scan covered the pinned actual Pressbooks training corpus and its old validation set and found <strong>zero observed lexical overlap for the selected material</strong>. That is the scope of the coverage claim. It does not establish globally unseen source families, semantic non-overlap, paraphrase exclusion, coverage of earlier or later regulatory editions, or unknown model histories. The sealed final holdout was not used.</p>
 <p>The native CPU smoke check passed <strong>both tests</strong>. All <strong>five bounded language-evaluation jobs exited successfully with return code 0</strong> and verified terminal cleanup. These execution checks support the measurements, not a capability claim.</p>
 <h2 id="separate-arxiv-data-admission">Separate arXiv data admission</h2>
-<p>A whole-document arXiv selection from a pinned Common Pile archive was admitted for <strong>local training data only</strong>: <strong>99 training papers with 2,032,000 content token IDs</strong>, plus <strong>10 reserved development papers with 224,896 content IDs</strong>. No training exposure or model scoring of this selection has occurred.</p>
+<p>A whole-document arXiv selection from a pinned Common Pile archive was admitted for <strong>local training data only</strong>: <strong>99 training papers with 2,032,000 content token IDs</strong>, plus <strong>10 reserved development papers with 224,896 content IDs</strong>. The admitted training stream was used by the completed pilot below. The 10 development papers remain excluded from training; no language-model score on that arXiv development selection is reported.</p>
 <p>The evidence binds an exact archive revision and compressed-file hash to its selected rows, original text hashes and tokenizer outputs. Preserved notices and archived per-paper CC BY 4.0, CC BY 3.0 or CC0 labels support the scoped decision. Exact historical-overlap exclusions, source-quality holds and negative controls were retained. The split groups observed works and normalized author connections; development work and observed author components remain reserved from subsequent training.</p>
 <p>This is a complete inventory of the <strong>known pinned archive and observed work families</strong>, not recovery of unknown original source-package bytes. The upstream converter build and exact original arXiv versions are unknown. Whole-work grouping uses the base work identifier; observed author closure cannot resolve every alias, homonym or unobserved publication relationship. Admission is not universal legal, privacy, factual or semantic-novelty certification. Any later incompatible rights exception or sensitive narrative requires whole-work quarantine and a new review.</p>
 <p>The earlier <strong>Pressbooks follow-on remains unadmitted</strong>, with zero accepted yield from that candidate pool. Its fixed 30-sample review found missing equations, malformed mathematics, a damaged table, navigation-heavy text, unresolved republication rights and a source-family split problem. Readable excerpts and archival labels did not certify whole documents. The later arXiv admission is a distinct source decision and does not clear those earlier failures.</p>
-<h2 id="prepared-continuation-not-launched">Prepared continuation, not launched</h2>
-<p>The finite continuation would restore the terminal model, optimizer and random state, then make one nonwrapping pass through the new training stream with the same architecture and tokenizer. Its prepared budget is <strong>62 updates</strong>, <strong>2,029,534 valid labels</strong> and <strong>2,031,616 processed input IDs</strong>. Content IDs describe source inventory; valid labels and processed IDs describe realized batch accounting. The stored stream also contains end-of-document markers, and <strong>483 trailing IDs</strong> remain unused by the full-update schedule.</p>
-<p>The prepared checkpoint boundaries are <strong>updates 16, 31 and 62</strong>, with a <strong>30-minute maximum</strong>. The frozen plan schedules the fixed 32-case logic probe serially at those boundaries and keeps companion language-model scoring <strong>disabled</strong>. No future language-evaluation cadence is established by the completed standalone measurements.</p>
-<p>The continuation remains local: it has <strong>not been transferred, installed or launched</strong>. Deployment approval, binding of the reviewed code, data and parent checkpoint, and a fresh native, resource, storage, accounting and exclusive-accelerator preflight remain gates. Preparation and data admission do not establish a launch or its outcome.</p>
+<h2 id="completed-arxiv-infrastructure-pilot">Completed arXiv infrastructure pilot</h2>
+<p>The continuation launched at <strong>02:17:09 UTC on 28 October</strong> and its guard recorded successful exit at <strong>02:32:18 UTC</strong>, about <strong>909 seconds</strong> later. The worker reported <strong>884.43 seconds</strong>, on its own elapsed timer. The phase stayed within its <strong>30-minute maximum</strong>, whose hard stop was <strong>02:47:09 UTC</strong>. Terminal evidence confirms successful process exit, no surviving worker group, all three checkpoint payload/metadata pairs verified and checkpoint storage closed.</p>
+<p>This was a bounded infrastructure test on the <strong>128-paper review cohort</strong>, from which <strong>99 training papers</strong> were admitted with <strong>2,032,000 content token IDs</strong>. The cohort limit was a pilot choice, not an exhaustive archive result or extraction failure. The main pretraining program and broader corpus-admission pipeline continue separately; this small pass is not the scale of that program.</p>
+<p>The pilot restored the recovery terminal model at step <strong>821</strong>, including optimizer and random state, with the same architecture and tokenizer. It completed <strong>62 updates</strong>, <strong>2,029,534 valid labels</strong> and <strong>2,031,616 processed input IDs</strong>, in one nonwrapping pass without synthetic repair examples or a repeat pass. The <strong>483 trailing stored IDs</strong> were unused. The <strong>10 reserved development papers with 224,896 content IDs</strong> remained excluded from training.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Pilot checkpoint</th>
+<th>Model step</th>
+<th>Physical campaign step</th>
+<th>Correct answers</th>
+<th>Protocol-valid answers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Update 16</td>
+<td>837</td>
+<td>918</td>
+<td>0/32</td>
+<td>0/32</td>
+</tr>
+<tr>
+<td>Update 31</td>
+<td>852</td>
+<td>933</td>
+<td>0/32</td>
+<td>0/32</td>
+</tr>
+<tr>
+<td>Update 62, terminal</td>
+<td>883</td>
+<td>964</td>
+<td>0/32</td>
+<td>0/32</td>
+</tr>
+</tbody>
+</table></div>
+<p>Model steps follow the retained model trajectory; checkpoint metadata uses physical campaign steps, which also retain interrupted work and replay. The final model trajectory is <strong>883 steps</strong>, <strong>28,890,085 valid labels</strong> and <strong>28,934,144 processed IDs</strong>. Physical campaign totals are <strong>964 completed steps</strong>, <strong>31,548,479 charged valid labels</strong> and <strong>31,596,544 charged IDs</strong>, including historical partial accumulation. Neither counter is a unique-corpus count.</p>
+<p>All three fixed 32-case logic probes used the same frozen protocol and <strong>BF16 computation using the existing training model in memory</strong>, serialized with training. Earlier probes used standalone checkpoint execution, so raw scores are descriptive comparisons rather than strict automatic deltas under an identical execution contract. Zero protocol-valid answers prevents separation of reasoning capacity from answer-format failure. No capability improvement is established.</p>
+<p>Companion language-model scoring remained <strong>disabled</strong> at all three boundaries, with no metric values. No new-checkpoint language loss or perplexity was measured. The earlier model-step-274-to-821 regulatory-prose results remain unchanged; their historical lexical-coverage review does not establish coverage of the newly added training phase.</p>
+<p>Read the <a href="/model-training-journal/2026/10/28/first-admitted-arxiv-continuation/">completed pilot entry</a> for the cohort scope, accounting and measurements.</p>
 <h2 id="limits-and-reporting">Limits and reporting</h2>
 <p>The dedicated data-volume allowance remains <strong>800 GB</strong>. The last recorded hard training cutoff is <strong>31 October 2026 at 04:12 UTC</strong>; this saved-record review does not establish current guard or machine state and does not extend that cutoff. Storage, free-space, memory and thermal safeguards remain execution requirements. The broader ceiling remains <strong>one billion valid labels</strong>, with processed inputs accounted separately. A countdown measures the fixed budget, not a promise of project completion.</p>
 <p>The original <strong>97,536,768-parameter model</strong>, its 100M-exposure base, historical controls and earlier failures remain preserved. The original language split has documented overlap risk; its diagnostics remain distinct from the regulatory-prose development measure and structural transfer. No checkpoint has been promoted as demonstrating the target capability.</p>

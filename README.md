@@ -22,7 +22,9 @@ python3 -m venv .venv
 .venv/bin/python scripts/build.py
 ```
 
-The build is local and deterministic. It uses no CDN, remote fonts, JavaScript or tracking. The generated pages are committed so they can be reviewed before publication. GitHub Pages serves `main:/docs` with `.nojekyll`.
+The build is local and deterministic. It uses no CDN, remote fonts or tracking.
+The only browser JavaScript is the reviewed local snapshot-age and cutoff clock;
+charts are static SVG images. The generated pages are committed so they can be reviewed before publication. GitHub Pages serves `main:/docs` with `.nojekyll`.
 
 See [PUBLISHING.md](PUBLISHING.md) for the review-and-publish procedure. Publication needs an existing authorized GitHub login; this project neither creates nor transfers credentials.
 

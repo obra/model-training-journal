@@ -1,0 +1,3 @@
+# Reproduction versions used with Python3.13; generation installs nothing.
+matplotlib==3.10.9
+numpy==2.5.2
