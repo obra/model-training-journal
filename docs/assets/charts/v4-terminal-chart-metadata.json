@@ -1,0 +1,102 @@
+{
+  "schema": "sanitized_reproducible_static_chart_v1",
+  "builder_file": "scripts/build_v4_terminal_charts.py",
+  "builder_sha256": "f08b142062db518dd13d9d4cfdb7752543625adc5374fb0f6293b03b04cf66fc",
+  "figures": [
+    {
+      "file": "assets/charts/v4-terminal-cfr-perplexity.svg",
+      "sha256": "030713bae46d932f3dff1f30c54b9e13cdfc66d074e8bcf2cabe42a3bbd63777",
+      "bytes": 78561,
+      "title": "Completed V4 slice: narrow CFR development perplexity",
+      "description": "Seven observations on the same 7057-label CFR development panel. Parent 39.776214231484126; CP569: 39.4729645509789; CP1137: 38.51235059861212; CP1705: 38.54555845078176; CP2273: 38.17367341486999; CP2841: 37.315892535997385; terminal3409: 37.7860145783434. Regressions retained. Restricted y-axis; no broader or reasoning inference.",
+      "input_file": "assets/v4-terminal-tranche1/cfr-checkpoints.json",
+      "input_sha256": "9d4bb34626a5839ca702640a9189aa21ddb63a9fe015937369bb486a807d6abf",
+      "passive_svg_profile": {
+        "tags": [
+          "clipPath",
+          "defs",
+          "desc",
+          "g",
+          "path",
+          "rect",
+          "svg",
+          "title",
+          "use"
+        ],
+        "attributes": [
+          "aria-labelledby",
+          "clip-path",
+          "d",
+          "fill",
+          "height",
+          "href",
+          "id",
+          "role",
+          "stroke",
+          "stroke-linecap",
+          "stroke-linejoin",
+          "stroke-width",
+          "transform",
+          "version",
+          "viewBox",
+          "width",
+          "x",
+          "y"
+        ],
+        "nodes": 775
+      }
+    },
+    {
+      "file": "assets/charts/v4-terminal-overhead.svg",
+      "sha256": "f7a9fd74512fe5167831ece358abf6312c38eebb50edbc867fb3c0f67a488d9b",
+      "bytes": 70904,
+      "title": "V4 cumulative measured boundary-hook fraction",
+      "description": "Six cumulative boundary measurements, approximately 3.4 percent of loop time; terminal 3.400852925025956 percent. The existing limit is 10 percent. Full checkpoint/evaluation hooks included, model load excluded. Overlapping totals are not per-interval durations. No guard-wall or GPU-kernel claim.",
+      "input_file": "assets/v4-terminal-tranche1/cumulative-overhead.json",
+      "input_sha256": "828f7c8544572f3d1b02403c88968a09160fcdf46226321722e6b25bdcdc8bc3",
+      "passive_svg_profile": {
+        "tags": [
+          "clipPath",
+          "defs",
+          "desc",
+          "g",
+          "path",
+          "rect",
+          "svg",
+          "title",
+          "use"
+        ],
+        "attributes": [
+          "aria-labelledby",
+          "clip-path",
+          "d",
+          "fill",
+          "height",
+          "href",
+          "id",
+          "role",
+          "stroke",
+          "stroke-dasharray",
+          "stroke-dashoffset",
+          "stroke-linecap",
+          "stroke-linejoin",
+          "stroke-width",
+          "transform",
+          "version",
+          "viewBox",
+          "width",
+          "x",
+          "y"
+        ],
+        "nodes": 643
+      }
+    }
+  ],
+  "observation_count": 7,
+  "new_saved_checkpoints": 6,
+  "regressions_preserved": [
+    1705,
+    3409
+  ],
+  "separate_panels": true
+}

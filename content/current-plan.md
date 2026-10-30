@@ -1,3 +1,19 @@
+Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. No checkpoint has established that capability.
+
+**Recorded snapshot: 30 October 2026, 03:54:02 UTC.** The first V4 slice completed 111,462,468 valid labels over 3,409 updates. Terminal CFR development perplexity is 37.7860 on 7,057 labels: below parent 39.7762, above checkpoint 2,841's 37.3159. This terminal regression remains visible. Cumulative measured checkpoint/evaluation overhead is 3.40085%; model loading is excluded. Read [the completed-slice post](/model-training-journal/2026/10/30/a-completed-slice-and-an-uneven-loss-curve/) for separate quality/timing panels and aggregate downloads.
+
+The second V4 slice launched at 03:39 UTC. Its 03:54:02 UTC snapshot contains 81 completed updates/2,648,353 valid labels/2,654,208 processed positions. Its finite target is 111,430,307 valid labels over 3,408 updates. No new scored saved checkpoint has appeared in this slice; an existing parent baseline is not a new checkpoint. These progress counters do not advance the first slice's quality score.
+
+The before-and-after format diagnostic stopped at a CPU readiness gate because of an incompatible device-visibility setting. A source-only repair is prepared; no successful replacement run or reasoning improvement is claimed. The diagnostic remains blocked by a stage-eligibility mismatch after continuation moved to the second slice; the mask fix alone does not resolve it. Broader-panel and fixed32 results stay separate, with no new V4 score; historical fixed32 remains interface-confounded. Original control and sealed holdout remain untouched.
+
+The installed training cutoff remains 31 October 2026 at 04:12 UTC, an execution guard setting rather than a fixed research deadline. Runs, diagnostics and budgets still require separate review. Retained historical failures, resource protections and the distinct stage/lineage/physical clocks remain in force. This AI-assisted journal publishes reviewed aggregates; an open reproducible recipe remains a goal, not a release claim.
+
+---
+
+## Preserved dated snapshot: 30 October 2026, 00:59:43 UTC
+
+The prior plan follows unchanged as dated history. Its status statements describe that snapshot; the current entry above supersedes them.
+
 Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. No checkpoint has yet established that capability.
 
 **Recorded snapshot: 30 October 2026, 00:59:43 UTC.** The guarded one-pass stage continues. Its fourth saved and scored checkpoint is update **2,273**, with **74,319,147 completed phase-local valid labels** and CFR development perplexity **38.1737** on the same **7,057 labels**. The matching repeated parent is **39.7762**; checkpoint 1,705's small regression to **38.5456** remains in the history. The checkpoint receipt observation is **00:55:32 UTC**; exact creation time is unavailable.

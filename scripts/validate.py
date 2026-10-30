@@ -28,7 +28,8 @@ CHART_SVG_NAMES = frozenset({"checkpoint-perplexity.svg", "broader-panel.svg",
                              "v4-569-checkpoint-perplexity.svg", "v4-569-broader-lm.svg",
                              "v4-569-throughput.svg", "v4-569-overhead.svg",
                              "v4-1137-cfr-perplexity.svg",
-                             "v4-2273-cfr-perplexity.svg"})
+                             "v4-2273-cfr-perplexity.svg",
+                             "v4-terminal-cfr-perplexity.svg", "v4-terminal-overhead.svg"})
 CHART_SVG_FILES = {f"{prefix}/{name}" for prefix in ("assets/charts", "docs/assets/charts")
                    for name in CHART_SVG_NAMES}
 MAX_BYTES = 1_000_000

@@ -1,0 +1,24 @@
+{
+  "schema": "sanitized_continuation_snapshot_v1",
+  "observed_utc": "2026-10-30T03:54:02.034136+00:00",
+  "completed_stage": {
+    "valid_labels": 111462468,
+    "processed_positions": 111706112,
+    "updates": 3409,
+    "status": "completed",
+    "terminal_cfr_perplexity": 37.7860145783434,
+    "scored_tokens": 7057
+  },
+  "next_stage": {
+    "launched_utc": "2026-10-30T03:39:44Z",
+    "state": "running",
+    "completed_updates": 81,
+    "completed_valid_labels": 2648353,
+    "completed_processed_positions": 2654208,
+    "target_valid_labels": 111430307,
+    "target_processed_positions": 111673344,
+    "target_updates": 3408,
+    "new_scored_saved_checkpoint": null
+  },
+  "caveat": "Progress counters do not imply a new quality measurement; no new scored saved checkpoint in this stage. The existing parent baseline is not a new checkpoint."
+}

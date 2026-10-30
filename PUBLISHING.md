@@ -81,7 +81,9 @@ with byte-identical copies under docs/assets/charts/. The frozen V4 checkpoint
 1,137 chart `v4-1137-cfr-perplexity.svg` is also allowed in those two directories
 under the same passive profile. The frozen V4 checkpoint
 2,273 chart `v4-2273-cfr-perplexity.svg` is also allowed in those two directories
-under the same passive profile. The earlier four shared
+under the same passive profile. The frozen terminal V4 charts
+`v4-terminal-cfr-perplexity.svg` and `v4-terminal-overhead.svg` are allowed
+in those same two directories under that unchanged passive profile. The earlier four shared
 chart assets and historical captions remain unchanged in this update. Other SVG
 paths remain excluded. Each chart must be UTF-8, no larger than 1,000,000 bytes,
 and pass the same privacy scan as every other public file. Its XML must use the
