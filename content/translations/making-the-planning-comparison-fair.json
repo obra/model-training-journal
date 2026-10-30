@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-making-the-planning-comparison-fair.md",
+  "source_sha256": "0b82f7233a4ea1b2ccc53d1ec1ac06d2bf7a2cf0e9877a2be3efcea1b6b2005b",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "1e43988e84d1f9f6627cd27ece8346ef91fb7816a71515871ef860ca3512f422",
+      "source_kind": "p",
+      "text": "While base training continued on 26 October 2026, CPU preparation checked what the later planning comparison would measure. At this historical stage, no learned-model development or final test had run."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "6d046936da716e433436ccefe975819b08efddf2c9b6bea70c89eed685bd2147",
+      "source_kind": "p",
+      "text": "Both task-training branches would share model design, tokenizer, conversations, seed, order, and training settings. Only starting weights differ: random values versus the verified base save. Both reset optimizer and schedule state."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "daea333d7a983e736df5ecb2cf232536681d0360dc92a1b8496aa6fd86aab915",
+      "source_kind": "p",
+      "text": "The random-weight control still uses the tokenizer learned from the text corpus. This isolates pretraining of model weights, not all prior exposure to text."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "5ab3597021fe37e86d3b38098c7f2c2a5a12547fe7128d03031d00c25ac3cf89",
+      "source_kind": "div",
+      "text": "CPU counting found 946 complete conversations and 149,365 assistant targets per distinct pass. A requested two-million-target budget allows 1,999,931 complete-conversation targets in 12,672 steps, leaving 69 unused."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "55c00ab2ea7cfd935062e858ec27a7aa0ef610f388f8565f07a4f7a304240338",
+      "source_kind": "p",
+      "text": "That is about 13.39 passes. Actual counts and stream positions must match before comparing results. These were calculations, not finished training."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "928d33d3cefda287be4c651c7361f255def3dab02ba91c39e23f8f8c38fe4182",
+      "source_kind": "p",
+      "text": "The earlier phrase-based script's 0/80 was not enough as the only hand-written comparison. A separate reference planner reads supported public constraints and mock state, then calculates intervals with an independently tested solver. It gets no scenario IDs, hidden initial-state object, or correct answers."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "64756c745acfc61d59a98cdbbe9385a0bba65f7069e8e300dd60f16dfdc1277c",
+      "source_kind": "p",
+      "text": "The reference scored 80/80 development successes in both raw and guarded modes, with 160/160 valid tool actions per mode. Its parser was deliberately developed using training and development language. This shows the supported tasks can be executed, not that it understands unseen language."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "4a1e4f9e6aa160b73a2ebfd7cf0e022c55592c989e46ee769563024b26691161",
+      "source_kind": "p",
+      "text": "Independent review records 21 passing reference tests, including 300 comparisons with a separate exhaustive interval solver. Familiar-training calibration was a different population: 1,156/1,200, with 44 grounding-proxy failures retained. No human ratings were done."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "c7f3a2437450d7079e3a6773bb57c46adca2dd98cdcb33145870c73ec9943a21",
+      "source_kind": "p",
+      "text": "A static checker found all 80 development cases consistent. Its training audit passed 1,178/1,200 supported cases and left 22 unverified because their language rules exceeded its parser. Unverified means neither impossible nor passed. Since this checker can inspect expected constraints, it is not model input or an agent-performance baseline."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "9708f5c0b72512badf5cd09821e8a86dbe859531ca3a9c8ad3b2b63d95b976f1",
+      "source_kind": "p",
+      "text": "Review found the old final-state scorer could accept a permitted write without the earlier read the prompt required. A separate transcript-policy report now measures that without changing old scores. The raw reference had zero violations in 80 write attempts. This checks a successful prior read in the same collection, not freshness or every possible natural-language permission."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "3247acd6c1fd39f3b43f65a425b81c935aca95a95305ab7c2f846d74cc8cf6e2",
+      "source_kind": "p",
+      "text": "Reserving 128 tokens for replies would reject 20/80 successful reference histories in each mode, even though their full conversations fit. Exact counts found a maximum prompt of 923 tokens and full conversation of 976."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "2dc6a0c224c7391bb83a4421d2347656d938485085cdb0d5e98544531e4aef7f",
+      "source_kind": "p",
+      "text": "The shared reply cap became 96 tokens: 923 plus 96 is 1,019, within context 1,024. This was chosen before testing learned models and applied to both branches and modes. No input was cut, JSON repaired, or scenario weakened. Longer generated histories could still exceed the limit."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "8256f4e1e2824401abf87dd31cdfc036b4e535c203fa2a5670c9a3d5a4dcf0a9",
+      "source_kind": "p",
+      "text": "The next post records how these conditions entered the limited comparison. This AI-assisted summary separates preparation, hand-written reference checks, and future model results."
+    }
+  ]
+}

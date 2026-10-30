@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300" role="img" aria-labelledby="chart-title chart-description">
+<title id="chart-title">Scientific prose · CFR text prediction</title><desc id="chart-description">Scientific prose · CFR text prediction. Usable training targets within this stage; Perplexity · lower is better. Every recorded row is retained. Missing values are gaps, not zero. Exact values and timestamps are in the accompanying table. The vertical scale may not start at zero.</desc>
+<rect x="0" y="0" width="760" height="300" fill="#faf9f6"/>
+<path d="M 75 238.00 L 735 238.00" stroke="#c9cec7" stroke-width="1" fill="none"/>
+<text x="65" y="242.00" text-anchor="end" font-size="12" fill="#59615c">186.52</text>
+<path d="M 75 185.50 L 735 185.50" stroke="#c9cec7" stroke-width="1" fill="none"/>
+<text x="65" y="189.50" text-anchor="end" font-size="12" fill="#59615c">247.78</text>
+<path d="M 75 133.00 L 735 133.00" stroke="#c9cec7" stroke-width="1" fill="none"/>
+<text x="65" y="137.00" text-anchor="end" font-size="12" fill="#59615c">309.03</text>
+<path d="M 75 80.50 L 735 80.50" stroke="#c9cec7" stroke-width="1" fill="none"/>
+<text x="65" y="84.50" text-anchor="end" font-size="12" fill="#59615c">370.28</text>
+<path d="M 75 28.00 L 735 28.00" stroke="#c9cec7" stroke-width="1" fill="none"/>
+<text x="65" y="32.00" text-anchor="end" font-size="12" fill="#59615c">431.53</text>
+<text x="75.00" y="262" text-anchor="middle" font-size="12" fill="#59615c">20.92M</text>
+<text x="240.00" y="262" text-anchor="middle" font-size="12" fill="#59615c">41.82M</text>
+<text x="405.00" y="262" text-anchor="middle" font-size="12" fill="#59615c">62.72M</text>
+<text x="570.00" y="262" text-anchor="middle" font-size="12" fill="#59615c">83.62M</text>
+<text x="735.00" y="262" text-anchor="middle" font-size="12" fill="#59615c">104.52M</text>
+<text x="380.0" y="290" text-anchor="middle" font-size="13" fill="#232e2d">Usable training targets within this stage</text>
+<text x="75" y="17" font-size="13" fill="#232e2d">Perplexity · lower is better</text>
+<path id="series-line-1" d="M 75.00 48.32 L 240.13 79.32 L 405.00 175.19 L 570.13 204.57 L 735.00 217.68" stroke="#205e56" stroke-width="2.5" fill="none"/>
+<rect x="72.50" y="45.82" width="5" height="5" fill="#205e56" stroke="#205e56" stroke-width="1"/>
+<rect x="237.63" y="76.82" width="5" height="5" fill="#205e56" stroke="#205e56" stroke-width="1"/>
+<rect x="402.50" y="172.69" width="5" height="5" fill="#205e56" stroke="#205e56" stroke-width="1"/>
+<rect x="567.63" y="202.07" width="5" height="5" fill="#205e56" stroke="#205e56" stroke-width="1"/>
+<rect x="732.50" y="215.18" width="5" height="5" fill="#205e56" stroke="#205e56" stroke-width="1"/>
+</svg>

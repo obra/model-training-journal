@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-validation-sensitivity-probes.md",
+  "source_sha256": "d1a128bf86ca835d224759f1f129ae285cc8d43a9c478f2b47b7744b78df2dc6",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "08ae3a13a9c7527cb94b84f68afd90ffeac2b1533303616ab166b98c4aa0d00c",
+      "source_kind": "p",
+      "text": "Two filtered versions of textbook validation were tested on the preserved 100-million-token base, finishing at 07:36 UTC on 26 October 2026. They show how scores change after removing detected word overlap. They are not independently sourced validation, and neither alone justifies more pretraining."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "e438b4920431cf9d900a1e2cb8ff340a082c95b185d29c888ff7a76533c3729c",
+      "source_kind": "div",
+      "text": "The original broader check scored 900,000 targets at loss 3.8606707. Removing strongly flagged documents leaves 550 documents and 808,644 targets, at 3.9216265. Removing their book groups leaves 433 documents and 595,978 targets, at 4.0027060. Lower loss is better, but these are different samples."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "f4378c56d6c74f930240c231a7c5d5e57d330e50ea68fdd0dd7fb14bad1823e1",
+      "source_kind": "p",
+      "text": "The original 65,536-target prefix stays separately recorded at 4.0205829. The samples differ in difficulty, sources, packing, and nearby context. They cannot form one learning curve or isolate overlap as the cause of a score change."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "8c342410ad3e1103f7e2b019f30593a2e7f755738cf5510c3b5d3728137af881",
+      "source_kind": "p",
+      "text": "The document filter removes 42 validation documents and 107,895 tokens including end markers. It includes both strong-overlap categories, even when only a shorter training passage had high overlap."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "317e4ea0977ab135eb992c214dc5af4b993ec1fbb6b6ab0bef62baf53c52839e",
+      "source_kind": "p",
+      "text": "The stricter filter removes 159 documents across ten existing book keys, or 320,612 tokens including end markers. Those keys are existing grouping rules, not certified independent works. Shared access-request boilerplate does not cause unrelated books to be grouped together."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "ea39af1fa2fe77a36ecd1fe7b4dd1f68635e483b25dc9a442eb1559c92d89d51",
+      "source_kind": "p",
+      "text": "Both versions keep document order and the original tokenizer, with one end marker per document. They record included and excluded IDs, fingerprints, coverage, and positions. The main record was fixed before new scoring. Original source records and scores were kept."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "64fa2e0445a80cbd4cd7534776805740b4dde6b36baeaad6de69b45caee761af",
+      "source_kind": "p",
+      "text": "The normal scorer can loop through data, so these checks explicitly requested only one verified non-repeating pass, with context 1,024 and batch size one. Targets across document ends and at each block's final position are excluded. Incomplete final blocks are discarded."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "e59f3bf9fd7cc25a8de2622b86224673864295b37fceb79deea352c2434b747a",
+      "source_kind": "p",
+      "text": "The document-filtered check used 791 full blocks, left 660 raw tail tokens unscored, and scored 808,644 targets in 13.81 seconds. The book-filtered check used 583 blocks, left 935 tail tokens, and scored 595,978 targets in 9.97 seconds."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "f60706eecc8660494e0b7430591a6f2f248a9daf7e8b55633a6f4a51fffd03ed",
+      "source_kind": "p",
+      "text": "Both used BF16 calculations and the same preserved model. No training update occurred. The builder passed 12 focused tests, including a real-tokenizer example. Independent review also checked 98,280 small capacity cases."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "1ab5fbe729b61460c9ed95358396772bb1a6e60a780164d5a2e2059f92ae7232",
+      "source_kind": "p",
+      "text": "Loss rose on the filtered samples, but removing content changes more than overlap alone. These remain limited checks with some overlap risk. Further pretraining still needs independently sourced or source-family-separated validation, alongside real behavior results."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "6f0a8d9c18e2f01419755eadb9b6fd9a09896b8119a3f69c72096bc4214b2579",
+      "source_kind": "p",
+      "text": "The next training study instead focused on broader original planning lessons. Candidate news text stayed out of training. None of these language scores led to promoting a model."
+    }
+  ]
+}

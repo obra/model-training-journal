@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-canonical-2m-results.md",
+  "source_sha256": "bf17fa34895f120deba53161aee74cd2e2cc79fbda33ab340e1754741cc10e27",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "6bf9335d8d3faf3270cc735ddf6769f00248da11fd4277946e9f3e1f112a99ba",
+      "source_kind": "p",
+      "text": "The two-million-target standardized run, four development checks, and unchanged 64-case familiar-data check finished on 26 October 2026. Longer training reproduced familiar examples better, but showed no correct completed plans on either development suite."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "0afd6b67fe1d591a422d672d9b46330174015d27f6b8077c8e2a45998427a0c4",
+      "source_kind": "p",
+      "text": "Training finished at 10:27:07 UTC with 1,999,982 targets in 13,509 steps and 976.4949 seconds, about 2,048 targets per second. Development checks finished at 10:34:05 and the fit follow-up at 10:36:34."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "8b1f50f8c6d2578b7493810976c37d8dc900d6db80567999c6ee7eb1a40376be",
+      "source_kind": "p",
+      "text": "The run restarted from the same base and unchanged 3,000 standardized conversations. Model, tokenizer, order, seed, context, and optimizer settings matched the 500,000-target run. Exposure and learning-rate schedule length changed together. The 444,537-target distinct-pass inventory was seen about 4.5 times; no new distinct data was added."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "1ca94733693908cc08a58584b8f58008616c46dc844565caab44a8e57e7b403a",
+      "source_kind": "div",
+      "text": "From 500,000 to two million targets, accepted familiar outcomes rose 38/64 to 50/64; exact histories and fully correct teacher-forced conversations rose 34/64 to 48/64. Wrong targets fell from 43/9,601 to 18/9,601, and mean loss from 0.01306820 to 0.00550383. These are training-fit gains, not unseen-task scores."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "6588e70ea1f28e7908316721d61e392a9e0f92188df285fce1ccf8eb56c49495",
+      "source_kind": "p",
+      "text": "All 16 nonexact histories first differed in assistant output, with no environment-prefix mismatch. This is better fit to exposed examples, not proof of transfer."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "94bcac0e091de636fa9ec3332a494e1e06aa6510cc40c5fa91f7ee038d7b997d",
+      "source_kind": "p",
+      "text": "The two nonexact accepted cases are different. One still suggests the wrong duration without booking. The other recovers from a rejected reversed interval and books correctly. The 50 accepted outcomes are therefore 48 exact histories, one correct recovery, and one wrong-duration suggestion. Calling both nonexact cases equivalent would hide that distinction."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "dcfc371694d6d7f7dbdafc018c76cdc541434abec86c1526a26d317e3e0de151",
+      "source_kind": "p",
+      "text": "All 14 remaining failures concern calendar intervals and end with false generic completion claims despite genuine write receipts. Two now overlap known commitments, although their earlier wrong intervals did not. Better overall fit does not mean every behavior improved."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "47fadb33839a81d6a1ce31179691af30cefe8c9c71c89ac0e92e25721741627f",
+      "source_kind": "p",
+      "text": "Raw and guarded histories match within each suite, so they are related views, not independent repeats. The old suite uses context 1,024; the newer one 1,536."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "33b9c5069a074b0f3b48bf41d619cec8a144fc43471d7c6b725a45225cc7f804",
+      "source_kind": "div",
+      "text": "On the old development suite, accepted states fell from 12/80 to 1/80. On the new suite, they fell from 11/80 to 10/80. Each result applies separately to raw and guarded views, not to a doubled test count."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "79254aca653ef33d0707ad1a4b9a13a6618af451e588b9d80cbcee8ecc15a001",
+      "source_kind": "p",
+      "text": "The only old-suite pass acknowledges a real unavailable-tool error after a wrongly specified booking attempt. It is not a correct event, correction, or requested heads-up. Needless questions rise from eight to 37. False completion claims fall from 25 to six while fewer outcomes are attempted, so that does not prove better truthfulness."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "91fdb697ab409486c2f517ce8ca664da6366aef474ad187b39458fb060dd4406",
+      "source_kind": "p",
+      "text": "All ten new-suite passes respect withdrawn permission but suggest the wrong date. All ten intervals now have positive length, and five have the right duration, but none is a correct full plan. Of 28 questions, 27 are redundant. False completions fall from 20 to 12, largely because 20 distractor-task cases end with invalid updates and no final answer. Fewer spoken claims must not hide more unfinished conversations."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "55a902553bdf6fde374ac44b71deb4759972cc369e3dc44092d8b29bc69ec9a2",
+      "source_kind": "p",
+      "text": "No dedicated peak memory measurement exists for training. Inference-only readings cannot fill that gap. Final tests remain reserved."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "a950dc01b68bb5ee8643a8a205da7f53604157f4ce81088d4955ab3155726046",
+      "source_kind": "p",
+      "text": "Next we selected a paired comparison of saved models under changes to year, wording, target ID, item order, and calendar shape. It is development-informed, not blind. No GPU probe result is claimed at this cutoff; the paired-results post follows."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "50bb4a55e5b4d55749490fe34398bebbe33b8f3969e6764982866e112a665d29",
+      "source_kind": "p",
+      "text": "This AI-assisted account was checked against the exact budget, fixed-64 summary, and independent development, fit, and claim reviews. These results did not promote the model."
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-paired-transfer-probe-results.md",
+  "source_sha256": "9b9ac7b584d71401c0cb51a23a5c0522d0066f82582d64b6e00a42c26f42011c",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "1bb388188f82b9363a43a5f0ce8ba8dfa9302eece20d9cb479247ebf9b39acf7",
+      "source_kind": "p",
+      "text": "The paired check finished at 10:57 UTC on 26 October 2026. It compared saved models given about 500,000 versus two million standardized assistant targets. No training happened during the check."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "52d08c8bb53e296f2f79bca993d938a2f8f3e4ae5b5cc9de08a40bf6541fffee",
+      "source_kind": "p",
+      "text": "The question was specific: after the model solves a request, can it still solve it when one controlled detail changes?"
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "551589119d578f643abc0c38bfd8abead37a96aa2d437e9665c2e80bfa0fad70",
+      "source_kind": "p",
+      "text": "Each model got 80 episodes in 40 pairs. A pair changed year, wording, target ID, returned-item order, or the end of a calendar conflict. Sixteen base cases were reused across changes. These are related, development-informed probes, not a blind generalization test."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "2100002c8d12040493ab0e596088ac5d1843e0f7839732a0e00991fd4c8e70a9",
+      "source_kind": "p",
+      "text": "Both used the same decoder, which chooses the most likely next piece without extra output rules. They used BF16 calculations and a 1,536-token context. Limits were six assistant turns and 96 tokens per reply."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "34807b1c5d253e10cd48cf311baeb205cb19b6a1dbd71d3cfedf07b85c8b4240",
+      "source_kind": "p",
+      "text": "Exact final states rose from 40/80 to 43/80. A stricter measure requiring a successful read and exactly one write attempt rose from 40/80 to 42/80. The difference was real recovery: the longer-trained model tried an invalid interval, got rejected, reread the calendar, and booked correctly. Its final state and completion claim were right, but it failed the one-attempt rule."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "326b755267a114c3d9f4c044c87bd7627bf6c00ecd86bbe9e54df13589a50485",
+      "source_kind": "p",
+      "text": "The table uses that stricter rule. Each fraction counts successful changed requests out of the controls that the same saved model solved."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "7c15535a2db0071b1a039744ebd932cc88d759107b53f76c579db7078d944fa9",
+      "source_kind": "div",
+      "text": "The table compares the 500,000-target and two-million-target models. Year transfer was 0/5 for both; ID transfer was 0/8 for both. Item-order transfer was 5/8 versus 7/8. Wording transfer was 5/5 versus 4/5. Calendar-shape transfer was 0/2 for both. Each denominator counts the controls that model solved."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "07e66dea6e078ddbaad55992c25bd4454a207831729b2e93fa698f06125943e1",
+      "source_kind": "p",
+      "text": "The solved controls are not always the same. Four task controls are shared for year and wording; all four keep wording success but lose year transfer. ID and order tests share the same eight solved controls. Calendar-shape tests share no successful strict control, so those fractions cannot show matched improvement or decline."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "f5559fded70c8554fa764dc59832029399ffa479456c7b94b938a4669943f473",
+      "source_kind": "p",
+      "text": "The failures differ too. The longer-trained model kept a familiar year after the requested year changed. Renamed targets led it to update a familiar ID that was absent. Item-order failures were not simply always choosing the first item; some earlier successes chose the second correctly. Interval errors remained with unchanged year and ID."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "c5b44ee77eb36a0dca7191c15be60a9235374c0479e52359f1879bec26a1fb82",
+      "source_kind": "p",
+      "text": "False completion claims rose from 23 to 28. Of the 28, 25 followed wrong writes that succeeded and three followed rejected writes. Fewer missing final answers did not mean more truthful reporting."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "9a4d2bac99930d7c7a69593fa25b8105fe1ff17b414691638a65885dccc0699e",
+      "source_kind": "p",
+      "text": "One worker's full output files were recovered and validated after a registration failure, but its exit status remained unknown. The record keeps that distinction: valid output does not prove a successful process exit."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "c96f3cd07b502a862661cd52d70c28247af0714577a5a97e527c460af6b577c1",
+      "source_kind": "p",
+      "text": "The next selected study varied years in training. Binding IDs and calculating intervals remained separate problems. The hidden final behavior test stayed reserved, and these results promoted no model."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "7f9641ff501508c4e12fe4d0e30b9da094b80f187d61c5e9553c4f0a129b5960",
+      "source_kind": "p",
+      "text": "This AI-assisted account was checked against the fixed test metadata and independent paired comparison. Raw conversations and evaluation contents are not published."
+    }
+  ]
+}

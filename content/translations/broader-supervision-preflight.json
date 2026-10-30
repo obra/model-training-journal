@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-broader-supervision-preflight.md",
+  "source_sha256": "f7ba879d28997c0ac9c0f5ae1508f3dbb4529b5cccf53c7d5c30750aaacf56f1",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "9c074ab1f928c33e7b0d4ebe949742f7c4b6846ae26b57fe31bd7e25059a52e2",
+      "source_kind": "p",
+      "text": "This records preparation at 08:14 UTC on 26 October 2026, before the second comparison had a model result. In the first comparison, both models solved 0/80 structural-development tasks. On familiar training cases, the base-trained model reproduced 64/64 and the random model 14/64. Next we asked whether more varied lessons would help on different cases."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "613de497d19899a687524c3dcfad92a2864420b7de01923c88aa8366200261be",
+      "source_kind": "p",
+      "text": "The new program-written collection, recorded as original CC0 material, has 3,000 complete training conversations and 80 development cases. One distinct training pass has 444,537 assistant targets. Twelve components cover scheduling, missing details, corrections, unavailable tools, withdrawn permission, stale state, notes, and grounded replies."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "29d215c008b7f1646f28f1c2e4e55c50969f27e8f420c027d5ba217941109f22",
+      "source_kind": "p",
+      "text": "All 3,080 candidates were kept. No initial user prompt matched exactly across splits, but examples share operations and JSON structure. They are generated, not human conversations. Their authoring program was informed by development work, so success would not prove independent generalization. The new test was frozen before training; the old one became a known, unchanged diagnostic. Final tests stayed reserved."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "07185ee2089bd94a8bd0ba2fb87d1b029dd3e30cf31ee22360e4227b9210a129",
+      "source_kind": "p",
+      "text": "The pilot would compare the old 946-conversation lessons with the broader set. Both restart from the preserved 100-million-token base and reset the optimizer. Model, tokenizer, seed, precision, and nominal 500,000-assistant-target limit are matched. Equal targets mean about 3.35 old-data passes versus 1.12 broader passes, not equal passes. Stopping between conversations may leave a little budget unused."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "708be2cfbaa368f24574f4307ae375a0ae4e58e16fa0e89f0bb080f07bd58da3",
+      "source_kind": "p",
+      "text": "The first build did not fit context 1,024. Twenty complete development conversations needed 1,044–1,049 tokens, and another 20 exceeded the prompt-plus-answer allowance. Both branches moved to context 1,536 so difficult examples and histories stayed complete. The longest accepted conversation is 1,055 tokens, prompt 1,002, and assistant payload 89 within a 96-token answer reserve."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "4e3f53aa47300d8d19400d23cd53c2e3ff3ee5612a7fbc9d42e98ca284fa4dd2",
+      "source_kind": "p",
+      "text": "Only the context allowance changed; all other design fields and positional frequencies stayed fixed. CPU and GPU checks verified agreement on shared prefixes and valid longer-sequence execution. A process-local device-visibility setting first caused aborts. After correction, all 27 context/conversation checks passed. That proves compatibility, not long-context reasoning."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "7bd133af3a59b8ef440f6299cc416099b8584ad87f278697109be47f152b3033",
+      "source_kind": "p",
+      "text": "An added checker replays completed fictional conversations and compares completion claims with the latest request and actual state. A genuine write receipt can still refer to the wrong item, date, or correction."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "57be8b1e1f71791bb792aba6330932b41fe177cfd402811ec84255f612f06b9e",
+      "source_kind": "p",
+      "text": "Its 37 focused tests passed. On the earlier random-model familiar-case check, it found 41 state contradictions and three skipped required clarifications: 44 unsupported covered completions, including 38 missed by the receipt check. Unrecognized wording still needs manual review. These limited checks do not certify broad truthfulness."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "e8322503dc532813e4f6be82b41e5b5a2471e99e71bcd08e3ec2bf942474abe1",
+      "source_kind": "p",
+      "text": "Next came an isolated small test, then paired pilots and both development suites. The completed pilot post records the outcome. This AI-assisted account was checked against the fixed inputs, budgets, and code reviews. Conversation data and raw logs are not published."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300" role="img" aria-labelledby="chart-title chart-description">
+<title id="chart-title">Broader text · a different development panel</title><desc id="chart-description">Broader text · a different development panel. Retained model-lineage targets; Perplexity · lower is better. Every recorded row is retained. Missing values are gaps, not zero. Exact values and timestamps are in the accompanying table. The vertical scale may not start at zero.</desc>
+<rect x="0" y="0" width="760" height="300" fill="#faf9f6"/>
+<path d="M 75 238.00 L 735 238.00" stroke="#c9cec7" stroke-width="1" fill="none"/>
+<text x="65" y="242.00" text-anchor="end" font-size="12" fill="#59615c">8.93</text>
+<path d="M 75 185.50 L 735 185.50" stroke="#c9cec7" stroke-width="1" fill="none"/>
+<text x="65" y="189.50" text-anchor="end" font-size="12" fill="#59615c">23.65</text>
+<path d="M 75 133.00 L 735 133.00" stroke="#c9cec7" stroke-width="1" fill="none"/>
+<text x="65" y="137.00" text-anchor="end" font-size="12" fill="#59615c">38.37</text>
+<path d="M 75 80.50 L 735 80.50" stroke="#c9cec7" stroke-width="1" fill="none"/>
+<text x="65" y="84.50" text-anchor="end" font-size="12" fill="#59615c">53.08</text>
+<path d="M 75 28.00 L 735 28.00" stroke="#c9cec7" stroke-width="1" fill="none"/>
+<text x="65" y="32.00" text-anchor="end" font-size="12" fill="#59615c">67.8</text>
+<text x="75.00" y="262" text-anchor="middle" font-size="12" fill="#59615c">133.41M</text>
+<text x="240.00" y="262" text-anchor="middle" font-size="12" fill="#59615c">258.26M</text>
+<text x="405.00" y="262" text-anchor="middle" font-size="12" fill="#59615c">383.12M</text>
+<text x="570.00" y="262" text-anchor="middle" font-size="12" fill="#59615c">507.97M</text>
+<text x="735.00" y="262" text-anchor="middle" font-size="12" fill="#59615c">632.82M</text>
+<text x="380.0" y="290" text-anchor="middle" font-size="13" fill="#232e2d">Retained model-lineage targets</text>
+<text x="75" y="17" font-size="13" fill="#232e2d">Perplexity · lower is better</text>
+<path id="series-line-1" d="M 75.00 48.32 L 735.00 217.68" stroke="#205e56" stroke-width="2.5" fill="none"/>
+<rect x="72.50" y="45.82" width="5" height="5" fill="#205e56" stroke="#205e56" stroke-width="1"/>
+<rect x="732.50" y="215.18" width="5" height="5" fill="#205e56" stroke="#205e56" stroke-width="1"/>
+</svg>

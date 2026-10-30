@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-year-diversity-experiment.md",
+  "source_sha256": "69d443089423d714c669f954501134ecd54581c4face2ae8f974985d8acc9b16",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "30fa89bdee08c62f97ec28b0b1126b01ce8d7c1ae39781407fd1c38c2f5f487f",
+      "source_kind": "p",
+      "text": "Preparation finished at 11:22 UTC on 26 October 2026 for a focused response to date failures. The idea was that lessons using only 2028 might teach the model to repeat that familiar year rather than follow the date requested."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "eb0b25248bf29a8f7d9215dae76e9ec3b0f41162104f8d785a625ee1791a8e12",
+      "source_kind": "p",
+      "text": "This was more task training on the same 97,536,768-value base model, not additional general-text training or a larger model."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "eb1b854e979f2c1165c262047f43e9958b53375b6774173e6ac386d6fe9bfe7d",
+      "source_kind": "p",
+      "text": "The change varied years in the same 3,000 original CC0 conversations. Of 2,000 dated records, 667 used 2028, 667 used 2032, and 666 used 2036. The other 1,000 records were unchanged byte for byte. Both this model and its canonical comparison restarted from the preserved 100-million-token base with fresh optimizers."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "fd741e2da02b265d5599028d57c562d348599efd46ec3e0a3799da934e5ef5fe",
+      "source_kind": "p",
+      "text": "Model design, tokenizer, seed, order, context, optimizer, and nominal two-million-target schedule stayed fixed. An earlier 2024 version was rejected before freezing because the tokenizer gave it a different length."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "1c54afb281a34a9115a5afb06ffb5c036adfb835b7944ec8a542654617a90ef6",
+      "source_kind": "p",
+      "text": "The transformation passed checks for date meaning, reversing the change, unchanged non-date values and permissions, and replaying saved tool histories. All 3,000 complete conversations kept the same token and assistant-target counts as their originals. None was filtered or cut short. One distinct pass still contained 444,537 assistant targets; the longest conversation was 995 tokens within a 1,536-token context."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "b82d19fb979d44193da3e22b5abe9b17baef765dc75ee266ccfd6bebfffef53d",
+      "source_kind": "p",
+      "text": "Equal token counts remove one possible source of unfair comparison. They do not prove changing years has no other effect, or that one random seed establishes the general benefit of this approach."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "30d2c717137635959d4ac456bf4eeb5a4372400f762a8beb3a1547d59d4f40c9",
+      "source_kind": "p",
+      "text": "The new test had 48 cases: 16 base cases, each in a 2028 control form and otherwise-matched 2000 and 2044 forms. It covered scheduling, stale writes, repairing an existing task, and creating then correcting one. Both old canonical and new models would get the same cases."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "a384c28c641403073d9e0c06a59f0b74d33986a7366982f2e75ba6d4d7dbdfe1",
+      "source_kind": "p",
+      "text": "Overlap checks covered prompts, states, goals, and histories, including overlap hidden by renamed IDs or changed years. These remained development-informed cases in familiar grammar, not the reserved final test. The unseen-year strings could also tokenize differently; those lengths were recorded."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "c75419bc30e4b87d6c7d1d580e7ce5efbb92c75e75d8614ffc112efd9c8dd260",
+      "source_kind": "p",
+      "text": "Separate fixed sets of 64 cases were planned to test fit to changed-year lessons and retention of their original forms. Correct format, requested outcomes, and false completion claims would stay separate."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "0a4db188cc7dbde55012d0e98ce820e761ea5f10122e73d0b10bb4cae2fd93c2",
+      "source_kind": "p",
+      "text": "The limited run began at 11:35:50 UTC. Preparation specified exactly 1,999,982 assistant targets in 13,509 steps, leaving 18 of the nominal budget unused to avoid cutting a conversation. The trainer had a 3,600-second limit inside a 3,780-second guard, plus the unchanged 31 October 2026 at 04:12 UTC deadline."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "953b527762a91dea4757b441725b20dcc19ebe72c0a4de807029eed996377dbd",
+      "source_kind": "p",
+      "text": "This launch records method and budget, not success. The results post gives the outcome. No external AI teacher, new source text, or third-party model weights were added."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "b14ced41f645deb610d6cb886e581506398ac8394f5d5a1f669e76ab6acc4816",
+      "source_kind": "p",
+      "text": "This AI-assisted summary was checked against the fixed training record, test metadata, measured budget, and preparation and launch records."
+    }
+  ]
+}

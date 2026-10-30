@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-counterfactual-binding-results.md",
+  "source_sha256": "1fb50f23ca24a463b726faf2d56befcebc274053e3ead068f607a468f9c0127f",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "c3939fd0583ea6d33838c28655a956761606698a71fcf765c0f7a9dcaf28c089",
+      "source_kind": "p",
+      "text": "Both training branches and all 18 checks finished by 14:25:53 UTC on 26 October 2026. The binding study improved some fields and handling of item order, but worsened other outcomes. Neither model was promoted."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "713d2a2a4cc46e7bc95b28c084ca0cc681a207c8e295b4f4a33594a3abf56801",
+      "source_kind": "p",
+      "text": "The 1,284 evaluated episodes include related raw/guarded views and probes. They are not 1,284 independent tasks."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "aab40c8f93e58eb02d3cd4c99929fc6b230e8102127e212e2b9851e9dcae6c16",
+      "source_kind": "p",
+      "text": "Both branches started from the same preserved base, kept standard task lessons, and added 500 repair rows. Repetition had 3,100 distinct histories; varied values had 3,500."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "052a4cae3363ed380f10cece0228f36b944c4daa5e2151e76cc1e044fbcf24e3",
+      "source_kind": "div",
+      "text": "Repetition completed 1,999,908 assistant targets; varied values completed 1,999,822. Both made 13,338 updates. Process wall times were 976.796 and 977.160 seconds. These are measured exposure and runtime, not success scores."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "bc6d6865305c9f50dc886e561484eae4a0b2ccb0d0372468b40bf1043d8df7d1",
+      "source_kind": "p",
+      "text": "On selected added-training examples, repetition reproduced 50/50 histories, but those were only ten distinct histories repeated five times. Varied values reproduced 49/50 distinct histories. Both solved the ten shared controls. These measure fit to taught examples, not new-case performance."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "688b14688663d6481763767e7065f5289f654ff7163e3a59673c686032654e48",
+      "source_kind": "p",
+      "text": "The new check combined eight repair base cases with six versions each and eight create/update pairs. An independent checker used visible requests and reads to verify the requested final state, unchanged unrelated objects, intermediate actions, and claims."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "683f05392a7ccdf5ff83c41799acf1f202ee24cc7092999e84e73c67bc1901e7",
+      "source_kind": "div",
+      "text": "Per 64-case mode, exact requested successes rose from three to nine. But false completions rose from 28 to 40, and cases with wrong-object writes from 21 to 29. Unknown final wording fell from four to one; missing answers from 29 to 14. More answers and more successes came with more harmful errors."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "21800aa8faa447838483b78d87dde5a0d02aa5c9da8c234593706337823a0c52",
+      "source_kind": "p",
+      "text": "Raw and guarded histories matched within each branch, so they are not independent repeats. The runtime allowed updates in general, but updating the wrong object still exceeded the requested scope. A successful receipt did not prove the requested action succeeded."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "f12402a24f12096a83fd9b02fb0f23997d71e957beb74c4aea6bc0a58c6d9580",
+      "source_kind": "p",
+      "text": "Neither branch solved any of the eight repair controls. The denominator for transfer from a solved control was therefore zero, including shared controls. The nine total successes cannot be described as transfer from working repair controls."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "569bc8f221a6ef0710f30dc13e73270a6cff8b896d79053b04fa640f5bff8872",
+      "source_kind": "p",
+      "text": "The varied branch improved some date fields but more often chose a distractor object. Of its 40 false completions, 38 followed writes that succeeded with wrong results, and two followed rejected calls. Missing answers and unfamiliar noncompletion wording stayed separate."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "3d5d100561e47301abebe1a43ce6967940b32dcb8360d5ae9b4ac32db284258f",
+      "source_kind": "p",
+      "text": "On the original 64 familiar cases, exact histories fell from 48/64 for the standardized two-million-target model to 42/64 for repetition and 40/64 for varied values. Correct bookings fell from 9/23 to 4/23 and 2/23. These runs restarted from the base and reduced exposure to standard lessons. Calling the change forgetting during continuation would be misleading."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "4c45ac67ad9b449c08b9f78faf814c88742abc87c077ef84825104a162d7e7af",
+      "source_kind": "p",
+      "text": "The old 80-case suite gave nine and ten proxy passes, but no correct requested plan or correction. The broader 80-case set gave ten proxy passes each, all invalid suggestions. Fewer false completions there came with unsupported failure explanations and more abandoned work. That is not demonstrated recovery."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "9b51f39d932cc17716b1466e2047871ed291a85382d9abf17f87937a023cf036",
+      "source_kind": "p",
+      "text": "On a separate paired 80-case regression check, exact states rose from 39 to 42. Transfer under changed item order rose 0/8 to 8/8, but year transfer fell 4/5 to 0/5 and ID transfer stayed 0/8. False completions rose 22 to 31. Do not pool these with the fresh 64 cases."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "be62ce9f7c9a84801d667559e50045d09cb72bb20481b6371174a8b6af7b0659",
+      "source_kind": "p",
+      "text": "The follow-up would compare more distinct repair base cases with repetition while exactly matching standard-example targets, tokens, and masks. Its decision rule would count missing answers and unsupported failure explanations along with correct outcomes and damage."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "c19b02a2d5894c1de2be30b0badb1e68e3858dcdaff4f9580ff413d6e4bf3fa1",
+      "source_kind": "p",
+      "text": "The hidden final test stayed reserved. These fictional-world results prove neither a useful assistant nor broad safety. This AI-assisted account was checked against finished training and independent outcome, fit, retention, and regression reviews."
+    }
+  ]
+}

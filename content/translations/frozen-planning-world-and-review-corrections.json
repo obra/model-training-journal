@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-frozen-planning-world-and-review-corrections.md",
+  "source_sha256": "f25a273bc862323d2e2adc1a540bc6eefd19b7e3ff9a6fc1e16aacfd214e3511",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "919b20a7cea7a446039e01482c1b063665cc5fbd2b6535edfdb528f9093ec353",
+      "source_kind": "p",
+      "text": "Before task tuning, the fictional calendar, task, and note simulator received code review. To make results meaningful, it needed to check actual state changes, separate raw model output from guarded behavior, and preserve a hidden evaluation."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "db6cf950e674f9e580f1c2eb9ac360d2e079808d2139ef693fc0ee5bebfca42c",
+      "source_kind": "p",
+      "text": "This records the revised test freeze at 04:48 UTC and runtime checks around 04:55 UTC on 26 October 2026. The simulator changes only fictional in-memory data. No learned conversation model had been tested, and the 100-million-token base run was still going."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "2e25ffa910ea4ca6bdaa12b5c37c60e32c7ed170201ba9c9a18e6693685f523a",
+      "source_kind": "p",
+      "text": "Review found that a real tool receipt could hide an unrelated false completion claim from the old checker. The revised checker splits positive claims into clauses and relates them to receipt types, quoted identities, and explicit times within its defined vocabulary."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "d861d8ddfe78a3a4110478e0dc9e97bd25e88d0d485679ae362cb8f139d36a61",
+      "source_kind": "p",
+      "text": "The fix addresses a demonstrated problem in the tested grammar. It does not solve understanding arbitrary meaning. Zero covered false-completion flags cannot prove any possible prose is truthful. Broader claims require a recorded review of saved conversations."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "a56347757c4d59bc2cf188b1cfc92da3452608d7654361b663d1f15d4b26e7f1",
+      "source_kind": "p",
+      "text": "Raw output and guarded behavior stay separate. A guard may block a mock action without making the model's attempted action appropriate. Strict parsing also does not repair malformed output before scoring it."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "e911a744027a347a12acf1096bdf4cbb8f7e0825241037e856e9dfd569c6b281",
+      "source_kind": "p",
+      "text": "The original final suite mostly changed wording around common templates. Different family labels did not prove structurally different requests."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "12bb38d4fa0f7d95a1c847465b57fdca8a203824eec7c328d32314236ec30cde",
+      "source_kind": "p",
+      "text": "The revised final-v2 suite changes request grammar, constraint order, and follow-up references across splits. Its freeze record is dated 04:48:27 UTC, before the revised lessons were exported. The old suite is preserved."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "0c801ed3d019e52ce3eda227fbb2302e316dae81b34b62a8a2020b78c8fbd662",
+      "source_kind": "div",
+      "text": "The table records 1,200 training cases before removing duplicates, 80 development cases, and 160 frozen final cases. These are prepared case counts, not model scores."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "df7e7f46482215f0012805ecd51635dba52eb747e2c2a65adf3f1b8b86fed3eb",
+      "source_kind": "p",
+      "text": "These are still narrow, program-generated scenarios from the same authoring system. Both logic and language change across splits, so failure cannot isolate which change caused it. The split does not prove broad language transfer. No final test had run."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "0938ba7feb6980af04a8ba7e42519a9b77987430b16efc9c6fb8825536099543",
+      "source_kind": "p",
+      "text": "A recorded run of the script that saw only public inputs had 0/80 successes. It produced 80 correctly formatted clarification messages and attempted zero tools. With no attempted tool calls, tool-call format validity has a zero denominator and is undefined, not zero percent."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "647259145bfcfe2f6a31622561ed43e1348c47993ec24fbd2f48996cb7cc7f68",
+      "source_kind": "p",
+      "text": "The adequacy and meaning of this baseline are still under review. The result does not settle a parser-limit explanation, prove learned models are better, or show safety through successful tool use. It stays in the record; any revised baseline needs its own results and explanation."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "aa8e44947ab83f0715ec09d6cdf06c74d94f521673516da8bd8b1f9c8f2078cf",
+      "source_kind": "p",
+      "text": "The program-written lessons are recorded as original CC0 text. Removing 254 duplicates left 946 complete conversations. Exact counts with the real tokenizer rejected none for length. The longest was 700 tokens, below the 1,024-token context."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "4e47eb17145535a68f0fb4f6d186a3f2e8480646d2b2fcbc50980d64255505c3",
+      "source_kind": "p",
+      "text": "No user constraint or permission was cut off to shorten a conversation. The set includes six silence situations and six grounded acknowledgments. That is limited coverage, not proof of broad initiative or humane conversation. No human ratings were collected or invented."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "e92b455cd1f7d8ddec84b4f7dcfe109eb8f0c9b67e9d1ebf82666a79438c257c",
+      "source_kind": "p",
+      "text": "The export uses training records, not hidden final answers. This journal publishes neither conversation data nor held-out scenarios and correct-answer text."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "eb7ba232dae0d3a37fe6cc4d03a77da04a6e7cb5db76e34266c1035e0caab856",
+      "source_kind": "p",
+      "text": "Linux runtime records show 22 world tests and 19 task-training interface tests passed, with none skipped. They cover strict parsing, permissions, stale state, refusal of oversized context, assistant-only next-token loss, source-history boundaries, and exact interrupted CPU task-training restart."
+    },
+    {
+      "id": "passage-016",
+      "source_text_sha256": "77339e01b0fe670254502f366391473b0a33cc78cc2e0766815919b9d1361a8d",
+      "source_kind": "p",
+      "text": "Restart checks tie the shared trainer code to the save. Starting from the base requires a recognized general-training origin with matching source, tokenizer, and text-stream evidence. Task-trained or unknown models cannot simply be relabeled as the base control."
+    },
+    {
+      "id": "passage-017",
+      "source_text_sha256": "2790934fad85ed6e47f61de0f69ce7a1a7ccd3e33001764f646346fbcb5298bb",
+      "source_kind": "p",
+      "text": "These test software and restart behavior, not useful conversation learned by a model. A fair later comparison must match actual trained assistant-target counts, not just configured budgets, and preserve raw output and separate guarded results."
+    },
+    {
+      "id": "passage-018",
+      "source_text_sha256": "9995a255fd8574c842f4ab3098ed42caf33202715dea6cc5229e246c292d83fc",
+      "source_kind": "p",
+      "text": "This AI-assisted summary was checked against freeze/export records, code reviews, and runtime tests. The unsettled baseline, limited completion-check grammar, and narrow generated data remain limitations."
+    }
+  ]
+}

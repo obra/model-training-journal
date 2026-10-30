@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-deadline-guard-and-frozen-evaluation.md",
+  "source_sha256": "c556c3fc1389d938939d0aab63d51df4e570ced547eb02ed24e92ea4a4fce385",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "b3c945e97dd020b200a2dcaf0ae929d99648be2eb44c9ce6980460427c4a964e",
+      "source_kind": "p",
+      "text": "The 120-hour plan required a reliable stop time. Before a long run, we tested whether jobs could be registered, saved, and stopped by a fixed deadline without sending stop signals to unrelated processes."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "a319da1d1440e97c93f154b4396bbdbb9eaeb2899af8d37f4eca51b48a6eb093",
+      "source_kind": "p",
+      "text": "All eight guard tests passed on Linux in 8.774 seconds. A separate short dummy job saved a placeholder after receiving a save signal and exited successfully. These tested safeguards, not model training."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "90e602d7b18f40e42ccd71f7279b852c72de4eaee6e92976640a896f45227263",
+      "source_kind": "p",
+      "text": "This post records checks around 04:39 UTC on 26 October 2026. It does not show useful conversation skills or a trained assistant."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "3d6201d91131c0ec7ba719bef67ffe5022b4da4ec661aed0a37e7f8cc2907896",
+      "source_kind": "p",
+      "text": "The system pairs a supervisor for limited jobs with a separate local watcher. Its stored deadline is 31 October 2026 at 04:12 UTC. Later configuration may shorten it but cannot extend it."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "d03ae5fd9a7f67a4431eecc3b7f3d0dc3312aec1627130d64ca5dff7578d6415",
+      "source_kind": "p",
+      "text": "Before signaling a process group, the guard checks project ownership, process identity and start time, group and session identity, and project markers. A job cannot start until its registration is safely recorded. Cleanup also finds marked child processes if their original leader has exited."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "79c28c5c153a7c9d49d3ce62e49343ce70bc0356db84a0b8eaafe9bd921669f5",
+      "source_kind": "p",
+      "text": "These checks help prevent a reused process number or lost supervisor from causing an unrelated job to be stopped. If identity cannot be confirmed, the guard refuses to signal rather than guessing."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "2098ffbeb4cee204b900221a8279d8fc44b118a6df72f1bce06bcc07446c0d8f",
+      "source_kind": "p",
+      "text": "The eight tests covered different failure boundaries, listed next."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "ed9035c13c842fb91c6186a08371338fa311b89d1f58f528dd74e0bbda508743",
+      "source_kind": "ul",
+      "text": "The tests covered saving before a hard stop while an unrelated process stays alive. They checked stale identities and enforcement after a supervisor is lost. They held startup until registration and cleaned up children after their leader exited. They refused late or low-storage launches, blocked deadline extensions, and kept newer status and training metrics intact."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "e5b49ec0a8b310460439acfb0f51238aa97c53020ea2db6e5f5d4aaad2f52d1d",
+      "source_kind": "p",
+      "text": "An earlier macOS test passed seven checks but skipped one Linux-only orphan-process test. The later Linux run passed all eight with none skipped. The Linux result is the relevant evidence for the training machine."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "18ab911b21bfa7ece8e7be73b9fe4a01b13b2171df2dabafb12e590e073368a9",
+      "source_kind": "p",
+      "text": "The separate dummy job had a ten-second limit. It started at 04:39:03 UTC, got its save signal at 04:39:08, and exited successfully at 04:39:09. Its placeholder file recorded a successful save after the signal."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "a25fc2975a25bacc9517105a5f83b07ecef3e896276291ef73d58a6ce91ff69d",
+      "source_kind": "p",
+      "text": "The job ended before using the full budget. It neither trained a model nor tested saving a real model's state. The watcher still reported that it was watching afterward. That one snapshot does not prove every counter had caught up or every possible failure was handled."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "abab86c7aaa47094093c42270c67e2a205a71e8dbdd9bc18eb6e439ca6a1a04d",
+      "source_kind": "p",
+      "text": "The reported setup keeps at least 15 GiB free, plus a 2 GiB reserve for model saves, and limits additional project storage to 50 GB. It requests a save before cutoff and stops slightly early to allow for ordinary scheduling delays."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "33c59e4221006bf0035bf12fb91340888ae64e810430554a2c3e06c58d483250",
+      "source_kind": "p",
+      "text": "The temperature stop is set no higher than 95°C or five degrees below the sensor's critical limit. This check did not stress the hardware or measure long-run heat. Low-storage refusal was tested, but that does not cover every storage or hardware failure."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "6a297ac0ce56a3cdd67c0299c255dda72ad698753c09499c594fb8f365ed7f78",
+      "source_kind": "p",
+      "text": "The notebook says it prepared a fingerprinted final behavior test of 160 scenarios, with separate correct-answer files, plus 80 development scenarios before task tuning. Those counts and the frozen status come from the notebook. This post did not independently inspect those files, and they are not published."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "4d2f5b5ce3ea22cf74cb7b496c64aa1787e3311e199ef435ae6b35d933f811ed",
+      "source_kind": "p",
+      "text": "No behavior test had run. Having a test suite is not a model score. The earlier diagnostic still showed only working machinery, not conversation skill. Data review and trainer preparation were separate requirements before the next run."
+    },
+    {
+      "id": "passage-016",
+      "source_text_sha256": "cfba0006ee9507b77c73eaf200dbad5dcd6ae5bde99689bc92cb9050de7667a2",
+      "source_kind": "p",
+      "text": "The public account was checked against the notebook, deployment log, earlier implementation report, and status snapshot. The tests support the specific shutdown and identity cases they exercised. They do not prove universal safety, uninterrupted operation to the deadline, or recovery from a kernel process that cannot be killed."
+    },
+    {
+      "id": "passage-017",
+      "source_text_sha256": "cd99895fbe2bcb644c45d4fcc91695d3a189b895594b82abb63c9c98959024ff",
+      "source_kind": "p",
+      "text": "This AI-assisted summary leaves out raw logs, process IDs, private machine details, source commands, training text, and held-out test contents."
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-27-recovering-the-first-299m-pretraining-phase.md",
+  "source_sha256": "ebd4cb7c42ba80b45746213aa709ae49d6e435862592cce37e3b14933b598bfe",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "f4061f9f38bd3ccae320bae1ca8ced67b0c968f22e9384691df7850a35f8a98f",
+      "source_kind": "p",
+      "text": "This 27 October post was updated in place from saved records at 00:54:54 UTC on 28 October 2026. That is a review time, not live machine status. Recovery and both sets of saved-model checks have finished. Text prediction improved on a fixed regulation-text development set; the separate logic check still had no correct answers. The next arXiv run is prepared locally but has not run."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "c424c8c2fc5df9b1d76ef3feb3672981992fa2281190e4a4b2a79fe81b630e4d",
+      "source_kind": "p",
+      "text": "The first production run of the randomly initialized 299,414,528-value model stopped at 05:18:12 UTC on 27 October, after 355 completed training steps. A resource-monitor subprocess reported CalledProcessError, and the guard stopped the worker. The records do not explain why that subprocess failed. We cannot name a missing file, memory shortage, or model problem as the cause."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "440b87ecf1f4c24fe7264437b1eaf08e44cf4e58f2dbfb9f242f4c368c5143e7",
+      "source_kind": "p",
+      "text": "The latest retained model was saved at step 274. Its file and record fingerprints were checked separately after the stop. The original run, both saved models, and their costs remain preserved. A successful recovery does not make the interrupted first run a success."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "6e8b9558b37edcd89d30149c4d6a86227983e9432b09d7f59cd1fb9f74cf4707",
+      "source_kind": "div",
+      "text": "The table separates work saved in the model, work completed before the stop, and work already charged to the budget. Step 274 retained 8,962,077 predictions and 8,978,432 input IDs. Step 355 completed 11,612,290 and 11,632,640. Charges reached 11,620,471 and 11,640,832 because some work had been reserved before it finished."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "3228a584f23b7a2c0cba19b6532bf43aa98a8f6ec3e44df4547c8346785c5dc5",
+      "source_kind": "p",
+      "text": "The last small batches were charged before computation, and we do not know exactly how far they got. Their charges stay counted. Recovery charges repeated work again. Restarting from an older save does not refund work that was lost."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "5bf009902d458d6a6fdebae3506fba9d62fe940c8d5111cdaabf46a3bf26abf3",
+      "source_kind": "p",
+      "text": "The resource monitor was repaired by the recorded 15:58:05 UTC snapshot. Before recovery, the corrected Linux check passed all 91 tests, including all six required native checks, with none skipped. The saved model, complete Adam training state, and native random-number state passed validation. Failure records for the project and storage were reconciled without removing earlier charges or reservations."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "1b3f7844929f510afd94218e4053200f3f34735f28ea3063387018b8b46c6779",
+      "source_kind": "p",
+      "text": "Recovery started at 16:21:15 UTC on 27 October, restoring step 274 and continuing the exact remaining source text from the original run. The first version of this post reported 24 recovery steps at 16:24:25. That startup snapshot is now replaced by final evidence."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "4b38900c4cc75cf7e8508982814f5895ce83e8aecef93b33a33cac5db1e0b25c",
+      "source_kind": "p",
+      "text": "The final record confirms 547 recovery steps, 17,898,474 usable predictions, 17,924,096 input IDs, a successful exit, and a verified final save. Saves were planned at recovery steps 1, 8, 274, and 547. All four later completed the development check below."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "6b9ce77238278ceef64188f119b9eac426276e27566a1afe2a9afb1abead5c48",
+      "source_kind": "div",
+      "text": "The table shows three different counts. Recovery itself finished 547 steps. The model's retained history reaches 821 steps. All physical work reaches 902 finished steps because interrupted and repeated work still counts. The prediction and input totals use those same distinct scopes."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "f253ff0477032e59a9f2e117c7f8cda6c7debda6542a373852f2e87bded1ffa1",
+      "source_kind": "p",
+      "text": "The retained model history combines step 274's saved state with recovery. Physical accounting keeps all original charges, the uncertain partly finished step, and all repeated work. Recovery repeats 2,658,394 predictions that were already charged. The learning-rate schedule follows retained model steps; charges measure resources used. These are different counters."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "a8d7c9d0a9555cc472a933d6cc23b5a81d048d3557dbcc5ec0ffb47213ee858e",
+      "source_kind": "p",
+      "text": "Recovery had a 9,000-second limit and had to end by 18:51:15 UTC on 27 October. That is a limit, not a measured finish time. It used the already-approved text stream, which still has a known risk of near-duplicate text. The separate new arXiv selection below was not used."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "842afc9286f7698f63eccc1f2da3e9b1cffc044ea009366547d2f1054c68798a",
+      "source_kind": "p",
+      "text": "Every saved model ran the same 32-case development check: 16 cases in each of two logic groups. It chose the most likely next piece and allowed at most 128 new pieces. The baseline is the 299-million-value model at step 274 before recovery, not a random model or the older 97.5-million-value comparison model. The hidden final test was not used."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "7f65da05404e42d2739b2499ed3c731e72614fbf1666aae17798d713f14ec1b8",
+      "source_kind": "div",
+      "text": "The table compares the pre-recovery model with all four recovery saves. Every row is 0/32 correct and 0/32 in the required format. Model steps include the retained work before recovery, so recovery step 547 is model step 821."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "94ba408aaf38bbaff2da6c5e5ef9cba4dc80f84089616b0b1852640e76de8600",
+      "source_kind": "p",
+      "text": "Both scores changed by zero at every save. This check shows no progress. But since no answer followed the required format, wrong exact answers cannot isolate reasoning limits from output-format trouble. Finishing recovery and verifying model files do not prove logic that transfers to new settings."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "04fa0b96920c609a9d51befaff84b320fedce70f7e2b49ad84ab3cc11d17bdd4",
+      "source_kind": "p",
+      "text": "All five models also ran a separate text-prediction check on the same 32 sections of 2025 US administrative regulations, Title 5. Each scored 7,057 targets. The data, text-splitting rules, model design, scoring code, and FP32 numerical precision stayed fixed. Average negative log-likelihood measures prediction loss in nats per token; perplexity is calculated from it. Lower values mean better prediction of this selected text."
+    },
+    {
+      "id": "passage-016",
+      "source_text_sha256": "c99a5e2641496a5463c1ae6fa37a90457e5ec689bdee586a2156ca927eb0f487",
+      "source_kind": "div",
+      "text": "The table shows the same five model versions on the regulation-text check. The loss and perplexity columns both improve when lower. The first recovery save is slightly worse than the starting model. Later saves improve, ending at loss 5.895244 and perplexity 363.3055."
+    },
+    {
+      "id": "passage-017",
+      "source_text_sha256": "4c71143fa9d486ae6d646b02b1a36394194e4f98adde66e9edf07fe186a9fb5b",
+      "source_kind": "p",
+      "text": "From start to finish, average loss fell 6.49% and perplexity fell 33.57%. The first recovery step got slightly worse, so improvement was not steady at every save. These are narrow regulation-text results, not proof of better reasoning or broad language skill."
+    },
+    {
+      "id": "passage-018",
+      "source_text_sha256": "5273f28c78ffc243189840e3f7a6980545299f9b679ba99b1370adeb8727c3f1",
+      "source_kind": "p",
+      "text": "The earlier word-overlap scan checked the actual fixed Pressbooks training text and its old validation set. It found no observed word overlap with this selected material. That limited result does not prove all source families are unseen, exclude similar meanings or paraphrases, cover other regulation editions, or establish unknown model histories. The hidden final test was not used."
+    },
+    {
+      "id": "passage-019",
+      "source_text_sha256": "4072f4ff9a0b5cedc4ea3a0e7084f17c48db332fce7883b78db1feeacbfb8abc",
+      "source_kind": "p",
+      "text": "The small native CPU check passed both tests. All five limited language-evaluation jobs exited with success code 0, and final cleanup was verified. These checks support trusting execution of the measurements, not a claim about model skill."
+    },
+    {
+      "id": "passage-020",
+      "source_text_sha256": "3427f2cbbfd5326dfd4b45793f00b5ca501bb5fcd80866f50d1c0117d65b5f5a",
+      "source_kind": "p",
+      "text": "A fixed review of 30 public Pressbooks samples verified which samples they were and found readable English. It also found navigation-heavy text, missing equations, broken mathematics, and a damaged table. One chapter described republication by permission, leaving downstream rights unresolved. The samples relied on archive license labels without stored chapter-level confirmation. A readable excerpt did not certify a whole document."
+    },
+    {
+      "id": "passage-021",
+      "source_text_sha256": "83bcee2fa98fbfc4bab582ac64c98afefaceb87db8619ba6296f6356b2c48de6",
+      "source_kind": "p",
+      "text": "Issues from the same undergraduate research journal series appeared in both the proposed training group and reserved validation group. Different book-part IDs therefore did not prove the source families were separate. This did not prove exact duplicate text, but it blocked accepting the split as independently checked."
+    },
+    {
+      "id": "passage-022",
+      "source_text_sha256": "371fb21bde149f66e93d0296677fa3ec61cf9b55823ce8f8a6062a71f3ab8306",
+      "source_kind": "p",
+      "text": "That follow-on Pressbooks pool is still unapproved, with zero accepted data. Its 3,326 documents unique after exact text normalization and 12,308,819 stored IDs are candidates, not accepted distinct training targets. Rights, whole-document quality, repeated passages, and source-family separation still need review. None was added to recovery."
+    },
+    {
+      "id": "passage-023",
+      "source_text_sha256": "fe5c74dd99404e144ccf81a197cc8b405df1cce943e36cfd4668c9fd3a703031",
+      "source_kind": "p",
+      "text": "A later selection of complete papers from a fixed Common Pile arXiv archive was approved for local training only: 99 training papers with 2,032,000 content IDs, plus 10 reserved development papers with 224,896. It has produced zero new training exposure and has not been scored by the model. Its approval does not clear the unrelated Pressbooks problems."
+    },
+    {
+      "id": "passage-024",
+      "source_text_sha256": "dcc0eb37b7020afb687b75b14a5725366550543428a7a49ee907a696e5b5108c",
+      "source_kind": "p",
+      "text": "The source record links an exact archive version and compressed-file fingerprint to original rows, text fingerprints, and tokenized outputs. Original notices and archived per-paper CC BY 4.0, CC BY 3.0, or CC0 labels are kept. Known overlaps, held-back quality problems, and negative controls remain excluded. The fixed split groups observed related works and normalized author connections. Reserved development works and their known author groups must remain out of future training."
+    },
+    {
+      "id": "passage-025",
+      "source_text_sha256": "00435db22bc00b5ed1fcdb8d94829dc9c965cb41ce22fb1d9c06688645e83fb6",
+      "source_kind": "p",
+      "text": "This review is limited to what the archive reveals. The exact converter build, original arXiv versions, source-package files, and unseen publication aliases are unknown. Work IDs group observed works; cleaned-up author names cannot prove every identity or find every alias. Approval covers these exact files and known families, not every legal, privacy, accuracy, or meaning-level novelty question. A later conflicting rights exception or sensitive story requires holding back the entire work for fresh review."
+    },
+    {
+      "id": "passage-026",
+      "source_text_sha256": "3e96523c215d9d3bd94cbbe78e36826eb6ab6057423d4a266097241fbe906610",
+      "source_kind": "p",
+      "text": "The prepared next run would restore the recovered model and its training and random-number states, keeping the model design and text-splitting rules. One pass without repeating data would take 62 steps, 2,029,534 usable predictions, and 2,031,616 input IDs. These differ from the source's 2,032,000 content IDs: end markers are separate, and the full-step schedule leaves 483 stored IDs unused."
+    },
+    {
+      "id": "passage-027",
+      "source_text_sha256": "fcd13b2c1dc973d93c48dcadb0455cebad07d2dee479205c6345738bba072f63",
+      "source_kind": "p",
+      "text": "Saves are planned at steps 16, 31, and 62, with a 30-minute limit. The fixed plan runs the 32-case logic check between training steps at each save. Language-model scoring is switched off. Earlier completed standalone language checks do not promise a future scoring schedule."
+    },
+    {
+      "id": "passage-028",
+      "source_text_sha256": "26c7a8c6b74beafaabd8d783bbbc97187d22bce940c20a5bdd32bddb8f1f8543",
+      "source_kind": "p",
+      "text": "This next run has not been transferred, installed, or launched. It still needs deployment approval, proof that the reviewed code, data, and starting model match, and fresh checks of native execution, resources, storage, accounting, and exclusive use of the accelerator."
+    },
+    {
+      "id": "passage-029",
+      "source_text_sha256": "684dbac4d33d92611be95ba6ac53dd2cd64bd5e7c2969a61503984be490c92dc",
+      "source_kind": "p",
+      "text": "The data allowance is 800 GB. The last recorded hard cutoff is still 31 October 2026 at 04:12 UTC. This historical review neither extends it nor gives a new live guard status. The project limit is one billion usable predictions; processed inputs are counted separately. Storage, memory, temperature, and free-space safeguards remain required."
+    },
+    {
+      "id": "passage-030",
+      "source_text_sha256": "dde17cdd860acc5b4f17a72ee69e15b69dfb574e2880efbcc998f520239129c0",
+      "source_kind": "p",
+      "text": "The goal remains an open, repeatable recipe for logic that works beyond convincing conversation. This stage uses no paid computing, proprietary model APIs, or private trace inputs for training and data preparation. Earlier comparison models and failures are preserved, and the hidden final test stays reserved. This AI-assisted journal shares summary methods and results, not raw training text or private logs. The current plan gives the latest reviewed decision."
+    }
+  ]
+}

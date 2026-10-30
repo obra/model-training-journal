@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-autonomous-mission-and-120-hour-budget.md",
+  "source_sha256": "dc183f8cded6318448d13bc885d115d537627069891671a5ed6d2010a341ef64",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "31bddd2604740cae744408b9fe93317216ce55dd496897ef8d84b44b279faf0a",
+      "source_kind": "p",
+      "text": "The first GPU test showed that a model with about 97.5 million adjustable values could train briefly and pass mechanical checks. The harder question was whether a small model starting from random values could become useful for a narrow set of conversational planning tasks."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "ad459697a0b6914e2dfd9440390283d7c15bf8c11a40368d2c466d3a54e46793",
+      "source_kind": "p",
+      "text": "This is the plan at 04:20 UTC on 26 October 2026. No production-length run or production evaluation had started. There was no production save or measured production-token speed. The short diagnostic did not show conversation skills."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "9f0ad1794156a535689c4157a56ef83a976b9c2384ca521f0cc61aa06db2d95b",
+      "source_kind": "p",
+      "text": "The original budget was 120 hours of real elapsed time, from 26 October 2026 at 04:12 UTC to 31 October at 04:12 UTC. Pauses or disconnected sessions would not extend that deadline."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "bc5f0847f1ae4f65f865444ca1e703485b06c5a6dda3b1ca3fc2e0ff5bb19baf",
+      "source_kind": "p",
+      "text": "Before a long run, we planned to test a deadline safeguard and a supervisor for limited jobs. If possible, the system would safely finish writing a model save before stopping the experiment's registered processes at the deadline. This was something to build and test, not an existing proven feature."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "76fc9b1d2109b5a0c4456970c9a9093b405d783b120e86c33d83c3116356c1dd",
+      "source_kind": "p",
+      "text": "The aim was a small useful model that could plan in conversation, take appropriate initiative, acknowledge what it really knew, and disagree respectfully. Tool actions would use fictional calendars, tasks, and notes. A clear negative result would still be useful research. Five days did not promise a useful assistant."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "a8a1290d03a9034fb7a1770b0b92d20bbf24d283fbe8b2b7f43a4e87422599be",
+      "source_kind": "p",
+      "text": "The table lists proposed release targets for these narrow tasks, not measured results."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "09c07dacf3f5372d3d396fa50727a853b4ce9b7fecdeb9068da997260a03201d",
+      "source_kind": "div",
+      "text": "The goals were at least 80% successful task outcomes, at least 95% correctly written raw tool calls, zero observed unauthorized mock actions, and zero observed false completion claims in release tests. These numbers were targets only."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "22d9981c3139fc131547723c3337dec9f93b682a4b1475935f025e5e5894d2d4",
+      "source_kind": "p",
+      "text": "No scores, test counts, or uncertainty estimates were available. Even “zero observed” in a future test would mean no such error in that finite sample, not proof the model could never make it."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "7d82c7a9608c3274ee1afd20f4c334872faae80cd545d905c719445572f0ef0f",
+      "source_kind": "p",
+      "text": "Before tuning behavior, we planned to prepare development examples and freeze a separate final test. Results would include test counts and uncertainty. We would report human conversation ratings only if people actually supplied them."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "21562c69e16c9fb816e3a5f4fa42c1babe0f597b4a13069be5ab3f6e88b70cea",
+      "source_kind": "p",
+      "text": "We planned to test the model both alone and behind a guard that controlled mock actions. That would separate the model's own ability to choose and format actions from mistakes prevented by surrounding software."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "0ce746558df077e24f47a6d8630cfd7f0dad3434c060e4de8b1dddfb35169c7f",
+      "source_kind": "p",
+      "text": "The planned comparison had three options: a random model trained on example tasks, a model given general text training before the same task training, and a hand-written program. No results existed yet. This would test whether general text training helped and whether a learned model beat a simpler script."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "ec47e5728ef71cff50c80d0277cb52532da0b4e8c5f0c8a681012bf34140c358",
+      "source_kind": "p",
+      "text": "Marin's catalog and fixed recipes were a proposed place to look for data. Each source and document still needed source-history and rights review. Permission to train and permission to republish would be recorded separately. A catalog listing alone established neither."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "cd2adebe81a8f42ff7bf28febf3ba040167f566dd939cb4b27df51ff7533fd95",
+      "source_kind": "p",
+      "text": "We planned to train a new 16,000-entry BPE tokenizer, which learns common text pieces, instead of the diagnostic's byte mapping. The first limited general-text target was about 100 million tokens. Measured learning and tests would guide later spending within the same deadline."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "ba3f7a2377f7ff3a701aa14cef0730ffe137fd08da0d7e9a3598d59569b9d33a",
+      "source_kind": "p",
+      "text": "The byte-based test speed could not be treated as real-token speed. A learned tokenizer changes what is counted, and data processing, model saves, and tests add work absent from the short diagnostic."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "bcee998c9affc3ae26afcb43881c86c387298e7a604878b31cb1474cbdeb093b",
+      "source_kind": "p",
+      "text": "Next came testing the deadline guard, fixing the final test set, reviewing the first text batch, and preparing training that could resume. Conversation skill, reliable raw tool calls, guarded task success, and all release targets remained untested."
+    },
+    {
+      "id": "passage-016",
+      "source_text_sha256": "26d9d15034b5a6ce07dbd8e63ff2f58e526097e520452340f6e3646b192199c2",
+      "source_kind": "p",
+      "text": "This AI-assisted post records that planning state without private details. It republishes no training data or third-party excerpts. Later results must be compared with these goals, not assumed from them."
+    }
+  ]
+}

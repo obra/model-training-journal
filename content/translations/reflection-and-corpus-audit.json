@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-reflection-and-corpus-audit.md",
+  "source_sha256": "b5af64fccfc8f49f197abd050b281807d2340104d880f399e32cb4f604d0a0d6",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "9a5796aa5b342eca28d4cf739a07c9dff93b128cd16f97ff674962c6f3d73d53",
+      "source_kind": "p",
+      "text": "This records 17:07 UTC on 26 October 2026 after the reflection and broader-training plan. The 97,536,768-value replay model gave no useful diagnosis of three saved mistakes. Independent review found 0/9 complete requested outcomes with follow-up help. Three candidate source files were downloaded and inspected, but zero records were approved for training or validation. Later developments are in the current plan."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "183d53e8932a0eb85b382b72cb673375681caeced262ffc4363848471a9195a1",
+      "source_kind": "p",
+      "text": "The selected mistakes were changing the wrong task, suggesting the wrong duration after booking permission was withdrawn, and claiming a task was created after only reading. These are three known failures, not a representative or hidden sample."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "e4e0019ca1d8d0476dcca568a83343894ef8f6853fc6e4b7580c5966ae15c6b6",
+      "source_kind": "p",
+      "text": "Each reflection kept the observed history and supplied the verified mistake. The question asked about visible errors and helpful information; an answer would not reveal the model's internal cause. It used unconstrained most-likely-token decoding, BF16, context 1,536, and limits of 96 new tokens and 30 seconds, with no format repair."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "71db8948fe7be6f8e6d72c653b7d23cd1f5b01ef65d14fba6ec1d7815bf59c59",
+      "source_kind": "p",
+      "text": "All three outputs used valid action syntax. Two used the requested message type but asked an irrelevant duration question. The third requested a calendar read; it was recorded but never executed. None explained the error or gave an actionable correction, so no model-suggested follow-up ran."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "51c8a7493395e2fc3841104a42f444f20aa7af1b13ace0c80ac69390faf3d134",
+      "source_kind": "p",
+      "text": "Each fictional world was reset for baseline, a fixed generic recheck instruction, and an independently written procedural hint. Hints gave methods, not answer IDs, dates, or durations. One explained a possible later correction that was never delivered because the first write never happened. These are helped, development-informed tests, not generalization evidence."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "ad520c04b6b26c39518a55e8ca260f779dc5b11aa0347d8265a13b0f473bbd58",
+      "source_kind": "div",
+      "text": "For wrong-task changes, all three conditions still changed the wrong object. For a requested 35-minute suggestion, baseline and generic recheck gave 20 minutes; the hint gave 30. For creation, all only read and then falsely claimed completion. None achieved the full request."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "bf9414c1a022cfdd29e7277fed3342bc7221a5b31f13ddc6fefb071b6242594e",
+      "source_kind": "p",
+      "text": "All three baseline histories exactly reproduced the saved failures. Across nine runs, all 24 generated action envelopes parsed. Independent state comparison found six false completion replies and three wrong time suggestions. All three applied writes changed the wrong object; the other six worlds stayed unchanged."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "0a6be36dd6e7f59f0346aca5f8b5409530de08a340ab378da6715359df02c30c",
+      "source_kind": "p",
+      "text": "The duration cases respected withdrawn permission and truthfully said nothing was booked. Their proposed intervals were still wrong. Moving from 20 to 30 minutes did not satisfy a 35-minute request."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "1a1bbb849cafca07a7486e77ffe2eb72919cc08d73f65ff380e87995f27d4ab7",
+      "source_kind": "p",
+      "text": "The completion failures need two checks. Three cited genuine successful receipts for changing the wrong object. Three invented receipts after read-only interactions. Receipt validity alone missed the wrong-object errors. Correctness also needs the requested change and preservation of unrelated objects. Parseable output does not prove that."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "04410040286053908a73b37646a00b46355de12a78cc41c4c8ef53d279bda324",
+      "source_kind": "p",
+      "text": "A separate probe fixed three plain-text continuations for both the original 100-million-token base and replay model, plus three chat prompts for replay: nine samples total. Original CC0 prompts were sampled once with most-likely-token decoding, no tools, repairs, or retries."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "5db3c1831ca8ca2b69effbc2337edda663ec2265ecddf83f30c6827aee70a31f",
+      "source_kind": "p",
+      "text": "Plain continuations used a beginning marker and text without chat roles. Chat prompts asked for direct answers without tools. The base context was 1,024 and replay 1,536, but the short prompts fit both."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "0de18b2c386bd37fc90add2bc4f12a994ddc04db92b9434677f72a6850c20e89",
+      "source_kind": "p",
+      "text": "The base produced readable fragments alongside repetition, strings of punctuation, and failure to follow a supplied story. Replay continuations included irrelevant learned templates. All three replay chat samples claimed fictional changes with nonexistent receipts, even when the answer was in the prompt. This describes those outputs, not a representative language score or model-size limit. No weights changed, and no reflection became a training target."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "3f0882f2260ee12c5192bc3b0cdad57a8e2de8edf8422d119c3d2ee3dc6a4328",
+      "source_kind": "p",
+      "text": "The three downloaded files totaled 575,638,607 bytes: one plain JSON and two compressed archives. Fixed versions, sizes, and fingerprints were checked. Compressed data was read as streams without saving expanded copies. Download success establishes inventory, not eligibility."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "ee304ed6a902a31fe13b93d5e18278e8e1b6233e5e55c0f291a6199ef754c6e7",
+      "source_kind": "ul",
+      "text": "Taskmaster had 5,507 conversations and 133,597 utterances. Its recorded CC BY 4.0 statement did not clear individual records; the entire family stayed out of training pending privacy, source, and overlap review for validation. DOAB had 31,034 records labeled 30,995 CC BY and 39 CC BY-SA, but article rights differed from stricter compilation rights, so labels did not clear whole extracted books or fragments. Hansard had 4,022 written answers and 542 Senedd records, none matching the original debates-only filter. Written answers needed revised rules and section review; Senedd remained excluded."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "90b60387c3036919c1b6cc4b330d00b91c19908ee6a7bd23aa1c4de3bbdb8bab",
+      "source_kind": "p",
+      "text": "Next was data approval. A possible continuation from the preserved base was capped at 200 million additional usable targets, pending eligible distinct-token yield, rights/privacy review, and independent validation separated by source family. Exact and near-duplicate checks against actual old training and reserved validation were still needed and would not prove total independence. Broader training had not started, no diversity-study model was promoted, and the final test stayed unused. The cutoff remained 31 October 2026 at 04:12 UTC."
+    }
+  ]
+}

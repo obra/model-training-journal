@@ -1,5 +1,21 @@
 Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. No checkpoint has established that capability.
 
+**Recorded snapshot: 30 October 2026, 17:39:43 UTC.** V5 completed its finite slice: 3,833 updates, 125,320,085 usable training targets and 125,599,744 processed input tokens. It exited normally, with six checkpoints and storage closure verified. The terminal saved model scored perplexity 34.2885 and mean negative log-likelihood 3.53481 nats per target on the fixed 7,057-target CFR development panel. That is about 4.55% lower perplexity than the parent’s 35.9212, not evidence of reasoning improvement. Measured save-and-check work used 3.897% of loop time. See the [updated checkpoint post](/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/#ledger-correction-and-terminal-update) and [measurement dashboard](/model-training-journal/dashboard/).
+
+The earlier 17:14 UTC live count was off by one because a zero-based ledger index was read as a completed-update count. The corrected snapshot is 3,601 updates and 117,734,731 valid labels, not 3,600 and 117,702,026. Saved-checkpoint scores were unaffected; the earlier text is preserved below as dated history with this correction.
+
+The planning horizon has been extended by at least seven days. That is permission to plan further finite work, not evidence that an installed guard changed or an unbounded run began. The installed cutoff remains 31 October 2026 at 04:12 UTC pending a separately reviewed change. No new run is established by this snapshot.
+
+The broader 130,209-target language panel and fixed-32 task check have not been rerun on V5. The last fixed-32 check, on an earlier V3 model, had 0/32 correct and 0/32 format-valid answers. BLiMP remains unrun. The format diagnostic stopped before its trial at a CPU readiness check. The sealed final holdout remains untouched.
+
+---
+
+## Preserved dated snapshot: 30 October 2026, 17:14:12 UTC
+
+The earlier snapshot below is superseded by the completion update above. Its live-counter error is corrected above; its checkpoint scores remain valid.
+
+Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. No checkpoint has established that capability.
+
 **Recorded snapshot: 30 October 2026, 17:14:12 UTC.** The second V4 slice completed 111,430,307 valid labels over 3,408 updates. Its terminal CFR development perplexity is 35.9212 on 7,057 labels, versus repeated parent 37.7860. V5 was still running at 3,600/3,833 updates and 117,702,026/125,320,085 planned valid labels. Its latest scored checkpoint, update 3,195, reached 34.5556 on that same narrow panel; terminal quality was unavailable. Read [the checkpoint post and chart](/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/) for the separate stage-local curves and retained regression.
 
 The broader 130,209-label language panel remains a separate older result and has not been rerun for these checkpoints. Historical fixed32 remains 0/32 correct and 0/32 protocol-valid, confounded by output-interface failure. No new V4/V5 reasoning result or sealed-holdout result is claimed. A standard BLiMP zero-shot grammar benchmark is being assessed but has not run; it would complement, not replace, a reasoning test.

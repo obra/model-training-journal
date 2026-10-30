@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-30-fourth-checkpoint-on-the-next-corpus-slice.md",
+  "source_sha256": "0a996df7ddbcc04e2ae361ed3e392cdfa1668b436dfad5dd39fe2d92f1e629e6",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "8315101c4408e29365ea51c7f65a6c1023f84f40eb3e54b2c000eacc3774cd72",
+      "source_kind": "p",
+      "text": "The fourth saved model is from step 2,273, after 74,319,147 usable next-piece predictions in this stage. Its federal-regulation (CFR) text-prediction score is 38.1737. Its average prediction loss is 3.642146 nats per target. Lower is better for both measures. The perplexity score is 4.0289% below the starting model's and 0.8794% below step 1,137's. Step 1,705 got a little worse; we kept that result."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "6b32b0036e68b707ff870fa92d2649b6c94416df7a036d351f234b57b7c117d4",
+      "source_kind": "div",
+      "text": "Each row is a check of the starting model or a model saved during this stage. The middle column counts usable predictions since this stage began. The last column is perplexity, a text-prediction score where lower is better. The table retains all five values, including the rise from 38.5124 to 38.5456 at step 1,705."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "8e6897ca216589f845a5345448d27d446ab49a743bd2b9e08773f6a199b3243a",
+      "source_kind": "p",
+      "text": "All five checks used the same 7,057 prediction targets and the same text-splitting and scoring rules. The starting row repeats an existing model at zero new predictions. We saw step 2,273's test records at 00:55:32 UTC on 30 October; we do not know the exact save time. The model began from random values and has about 299 million adjustable values, a 16,000-piece vocabulary, and room for 1,024 text pieces at once. This limited, guarded run aims to use 111,462,468 targets once, without looping back through the data."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "c33c356a60f34e0c46eb668f529402c73a34e888d63e606af9f6303d832736b1",
+      "source_kind": "figure",
+      "text": "The chart uses the same narrow, 7,057-target CFR check throughout. The empty circle is the starting model. Left-to-right distance counts work within this stage. The narrowed vertical scale makes small differences easier to see. This is a development check we revisit, not a hidden final-test result."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "c531dd80d974ace933cd445dba3dcb548c5d4139fb96a8f03e059a5f75f5e9dd",
+      "source_kind": "p",
+      "text": "Through step 2,273, the training loop took 13,874.969 seconds. That includes 464.881 seconds saving models and 6.839 seconds testing them: 3.3998% combined. Without those tasks, 13,403.250 seconds remain. Speed was 5,356.35 usable predictions per second of loop time, or 5,544.86 without the measured save-and-test work. Full save-boundary tasks are included; model loading is not. These are running totals that overlap earlier totals, so do not add them. Whole-job and worker speeds were not measured here. None of these is GPU-only speed."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "b385be0a35a8ca8bfebd080afe61c789bfff5809088973c7aa5284c7e819a276",
+      "source_kind": "p",
+      "text": "The separate progress file stops at 00:59:43 UTC. It records 2,369 finished steps and 77,458,076 finished predictions, while the budget had been charged for 77,490,776 predictions. Charged work includes a partly finished training step. Later progress does not update a saved model's test score. Counts for this stage, work retained in the model, all work actually run, and charged work stay separate. The physical-work count includes repeats and interruptions."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "608425d8c83414a5cf677fbbb51566bbc9f08ed4e45d72b497cbdbbe0e6e4813",
+      "source_kind": "p",
+      "text": "There is no new broader-text, fixed-32-task, or reasoning score for step 2,273. The older starting model scored 14.6312 on 130,209 broader-text targets; that belongs to its own model and test. The old task result is still 0/32 correct and 0/32 in the required format. This format failure does not cleanly test reasoning or the model's limits. Earlier charts keep their original scope and data."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "8200a419560321667ac8614825674d032e2c81c53778785918e6af5675fa38b9",
+      "source_kind": "p",
+      "text": "The goal is logic that transfers to new situations, beyond plausible conversation. This narrow score has no universal passing mark and proves no such skill. The planned before-and-after format check has not run. The original roughly 97-million-value comparison model and hidden final test remain untouched. This AI-assisted journal shares reviewed summaries, not source passages or raw training data."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "90ed8991d6ec9361c7547c564cb4156ff8148a03c85db0058475b915e2d10477",
+      "source_kind": "p",
+      "text": "The downloads contain the five chart points, full 40-row score history, four running timing totals, and separate speed, progress, stage, and saved-model records. JSON nulls and empty CSV cells mean missing or not run, never zero. The full history keeps older rows, separate test groups, and missing values."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "61a3fc13d9fc5c4a6bbf2ec513c71b361c41848efa7b7d4413bce601788826ae",
+      "source_kind": "p",
+      "text": "The named Python command rebuilds this fixed chart with the existing plotting software versions. It reads only the summary JSON data and uses the existing checks that keep the SVG image passive."
+    }
+  ]
+}

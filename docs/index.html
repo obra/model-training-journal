@@ -17,19 +17,20 @@
     <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
     <nav aria-label="Main navigation">
       <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/dashboard/">Dashboard</a>
       <a href="/model-training-journal/experiments/">Experiments</a>
       <a href="/model-training-journal/current-plan/">Current plan</a>
       <a href="/model-training-journal/about/">About</a>
     </nav>
   </header>
-  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-30T17:14:12Z" data-deadline="2026-10-31T04:12:00Z">
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-30T17:39:43Z" data-deadline="2026-10-31T04:12:00Z">
   <div class="progress-top"><p class="progress-model"><strong title="299,414,528 trainable parameters">299.4M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
   <dl class="progress-facts">
-    <div class="progress-state"><dt>Experiment state</dt><dd>Recorded 30 Oct 17:14 UTC: second V4 slice completed 111,430,307 valid labels/3,408 updates; V5 running at 3,600/3,833 updates and 117,702,026 valid labels.</dd></div>
-    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/">Second V4 slice terminal CFR perplexity 35.9212; V5 checkpoint 3,195 scored 34.5556 on the same 7,057-label development panel. No new broader or reasoning result; V5 terminal not yet evaluated.</a></dd></div>
-    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>0d 10h 57m remaining at snapshot</strong><span class="progress-deadline">Cutoff <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+    <div class="progress-state"><dt>Experiment state</dt><dd>Verified 30 Oct 17:39 UTC: V5 completed 3,833 updates, 125,320,085 valid labels and 125,599,744 processed input tokens. Six checkpoints and storage closure verified.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/">V5 terminal CFR perplexity 34.2885 on the same 7,057-label development panel, about 4.55% below its parent. No new broader-panel or reasoning result; BLiMP unrun.</a></dd></div>
+    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>0d 10h 32m remaining at snapshot</strong><span class="progress-deadline">Cutoff <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
   </dl>
-  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-30T17:14:12Z">30 Oct 2026, 17:14:12 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-30T17:39:43Z">30 Oct 2026, 17:39:43 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
 </section>
   <main id="main">
 <section class="intro" aria-labelledby="journal-title">
@@ -37,10 +38,18 @@
 <p>An engineering journal about training a small language model from scratch. The questions, the experiments, and what the evidence actually supports.</p></div>
 <aside><strong>A record of the work</strong><p>AI-assisted notes, curated from a local experiment notebook. Completed diagnostics and future plans are kept distinct.</p><a href="/model-training-journal/about/">About the journal</a></aside>
 </section>
+<section class="dashboard-summary" aria-labelledby="dashboard-summary-title">
+<div class="section-heading"><h2 id="dashboard-summary-title">What the measurements say</h2><a href="/model-training-journal/dashboard/">Full dashboard →</a></div>
+<div class="metric-cards">
+<article><p class="metric-kicker">Text prediction · V5 terminal</p><p class="metric-value">34.2885</p><p>Perplexity on the same <strong>7,057</strong>-target CFR development check. Lower is better; this is not a reasoning score.</p><a href="/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/#ledger-correction-and-terminal-update">Read the evidence</a></article>
+<article><p class="metric-kicker">Latest completed slice</p><p class="metric-value">125.32M</p><p><strong>Completed</strong> usable training targets in 3,833 updates. More training is not itself a quality result.</p><a href="/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/#ledger-correction-and-terminal-update">125,320,085 exact targets</a></article>
+<article><p class="metric-kicker">Last completed task check · earlier V3</p><p class="metric-value">0/32</p><p>Correct answers; <strong>0/32</strong> met the output format. That failure prevents a clean reasoning test. No V5 task result.</p><a href="/model-training-journal/2026/10/29/two-stages-terminal-evaluations/">Keep the test’s limits in view</a></article>
+<article><p class="metric-kicker">Proposed grammar check</p><p class="metric-value metric-status">Not run</p><p>BLiMP has no score. A proposal is not a result, and grammar alone would not prove transferable logic.</p><a href="/model-training-journal/dashboard/#not-run">What remains unmeasured</a></article>
+</div></section>
 <section aria-labelledby="entries-heading"><div class="section-heading"><h2 id="entries-heading">Journal entries</h2><span>Latest first · 44 entries</span></div><ol class="entries"><li class="entry">
 <div class="entry-meta"><time datetime="2026-10-30">30 Oct 2026</time><span>Finite continuation: measured language loss</span></div>
-<div><h3><a href="/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/">A second completed slice and five V5 checkpoints</a></h3>
-<p>The second V4 slice completed 111.43M valid labels; V5 is running. Same-panel CFR perplexity fell across both slices, with one retained checkpoint regression. Reasoning improvement remains unproven.</p><a class="read-link" href="/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/">Read entry · 3 min</a></div></li><li class="entry">
+<div><h3><a href="/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/">A second completed slice and V5 completion</a></h3>
+<p>The second V4 slice and V5 both completed. Same-panel CFR perplexity fell across both slices, with one retained checkpoint regression. Reasoning improvement remains unproven.</p><a class="read-link" href="/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/">Read entry · 3 min</a></div></li><li class="entry">
 <div class="entry-meta"><time datetime="2026-10-30">30 Oct 2026</time><span>Finite continuation: completed first V4 slice</span></div>
 <div><h3><a href="/model-training-journal/2026/10/30/a-completed-slice-and-an-uneven-loss-curve/">A completed slice and an uneven loss curve</a></h3>
 <p>The first V4 slice completed 111.46M valid labels. Terminal CFR perplexity 37.7860 is below the parent but worse than the preceding checkpoint. The next slice is running; a format diagnostic stopped at its CPU readiness gate.</p><a class="read-link" href="/model-training-journal/2026/10/30/a-completed-slice-and-an-uneven-loss-curve/">Read entry · 4 min</a></div></li><li class="entry">

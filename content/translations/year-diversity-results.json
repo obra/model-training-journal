@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-year-diversity-results.md",
+  "source_sha256": "7e688819f241052629f068f68769e27be8e37ce1e6492e7941473638b073e2d3",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "b4c19721dee5fc03f6a77dd92487083d8f3aff3021bde8d122a53884c8b411ff",
+      "source_kind": "p",
+      "text": "Year-varied training and the main development tests finished at 12:08 UTC on 26 October 2026. Separate fit and retention checks finished at 12:13. The model was not promoted."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "1e1f3fd66825c8155b630a4b96f0869864c923ecb56e5139a874a3caacea799a",
+      "source_kind": "p",
+      "text": "The matched change varied years while keeping the model, tokenizer, seed, conversation order, and training schedule fixed. It completed 1,999,982 assistant targets in 13,509 steps and 976.672 seconds, about 2,047.75 targets per second including process overhead."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "59c54698c16b8d8cdf271785f43ea8d4e4d00ea80b0fc06eb6892f52cfeea89b",
+      "source_kind": "p",
+      "text": "The 48-case test used 16 base cases at three years each. They were fixed before training but used familiar grammar and related cases. They were not the hidden final behavior test."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "b5310d7f3ea5e6c0134a09636051a40f929642627f45997a417cd679781bc2cc",
+      "source_kind": "div",
+      "text": "The canonical model reached the exact requested state in 10/48 cases; the year-varied one in 8/48. All successes were 2028 controls: 10/16 and 8/16. Neither transferred any successful control to 2000 or 2044. False generic completion claims were 38/48 and 40/48. These measures stay separate from formatting."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "5edfc1ede5e17f6dcb28029b5683585eddea17a8ea8cf4b976b2ef4fc2957a04",
+      "source_kind": "p",
+      "text": "Both models solved eight of the same controls, but neither solved either unseen-year version of those eight. On the 32 unseen-year targets, the new model used 2032 in 29 and 2036 in three, never the requested 2000 or 2044. That fits a preference for trained years, but does not prove how the model works internally."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "e1a954ae15c71c9ddb582921d2a81ed5198913b6dfcc289e1f6b5b56aeed12ca",
+      "source_kind": "p",
+      "text": "Some individual fields improved while complete outcomes worsened. Unseen-year task month/day matches rose from 5/16 to 16/16. On 2028 calendar controls, earliest-start matches rose from 4/8 to 8/8, but duration matches fell from 2/8 to zero. Two previously correct calendar controls were lost. Both models still used valid protocol envelopes throughout."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "fffc1f1c8a22b2e7ebeb7a1391bd731a26be2c51b6a365a761428e9e015cbf2c",
+      "source_kind": "p",
+      "text": "On the original 80 cases, both raw and guarded tests scored 0/80. On the broader 80, both kept ten proxy passes, but all ten suggested plans were invalid. The new model also overwrote unrelated tasks in all 20 relative-task cases. False generic completion claims rose from 12 to 25, even though the old receipt checker flagged zero. A real API receipt did not prove the requested action was correct."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "965bc556c16463e8a299baddec9b09b0682bdd7cb6254be2ae990e57f4035ff7",
+      "source_kind": "p",
+      "text": "Raw and guarded histories were identical within this study, so they are related views, not independent repeats. Do not pool the fresh 48-case score with either 80-case development score."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "fd69945f9f2380e085ed363abbef93356b7a97ac5cc54d22c197ab448019580c",
+      "source_kind": "p",
+      "text": "The fixed-64 checks separate fit to changed-year lessons from retention of their original forms. Neither is a held-out test."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "36e6eb7d5d74584f6799562a9795c4b023a1e88de28bb92d16f414b722d1f0a0",
+      "source_kind": "div",
+      "text": "Exact reference histories were 48/64 for canonical training, 42/64 for year-varied fit, and 42/64 for original-form retention. Wrong predicted targets out of 9,601 were 18, 29, and 31. Correct calendar bookings were 9/23, 5/23, and 5/23. Equal totals do not imply the same successful cases."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "122ec4fa9d6089a22c97572567c7827c6c00a28a088bfb9e55f5909a7549668a",
+      "source_kind": "p",
+      "text": "In each new group, all 22 nonmatching histories first went wrong at an assistant output, without an earlier environment mismatch. A small number of prediction errors still caused important wrong arguments. Equal fit and retention totals hid different successes."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "5bb7d6447463ca3771ac534c6d7ad346d932d5c1753101ec090c8144bebfe726",
+      "source_kind": "p",
+      "text": "The next direction was to teach binding from input to action with a repeated-example control, not more year-only cycles or a larger model. More general-text training stayed deferred pending independent validation. The final test remained unused, and fictional-world checks supplied no human conversation rating."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "8600af3cae165168abf619dd96ab5a7c31f2435d2e7ff17356517a6b93ebea03",
+      "source_kind": "p",
+      "text": "This AI-assisted account was checked against the requested-outcome audit, independent development reviews, and finished fit and retention summary."
+    }
+  ]
+}

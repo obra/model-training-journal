@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-29-checkpoint-metrics-at-scale.md",
+  "source_sha256": "37b3e6c7e6a54a1dc15bf48fd97aff7dcc10973aaa668692cc670aa9593325ef",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "a45a5b289bd58566880b7b0aab9e4fabd5a7f9dbd4348f12ec19ecdbd1764222",
+      "source_kind": "p",
+      "text": "This snapshot is from 18:31:32 UTC on 29 October 2026. One stage has finished; the second is running, with a model saved at step 3,316. This work follows the earlier 99-paper setup trial."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "8338415c70efe6654890f29286de7caf424a5f3fe694e922265997cae63b9a5a",
+      "source_kind": "p",
+      "text": "The model has 299,414,528 adjustable values and started from random values. The goal is logic that works in new settings, beyond convincing conversation. Better text prediction alone does not prove that."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "59494aa76d41a5da489ce83079a5611ef67c4f7fb7f20eb67270240119864c0e",
+      "source_kind": "p",
+      "text": "This page was updated from the 16:31 snapshot to saved evidence seen at 18:31:32 UTC. The first published version keeps the earlier text and table. This page and its linked charts describe the later snapshot."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "dde7a447274ce67ea306db3ded50ca34d4abc158ae78529b2eed6a22414f889d",
+      "source_kind": "p",
+      "text": "At 19:36 UTC on 29 October 2026, the four shared charts were updated with the finished-stage tests and timings. The story and tables below still describe 18:31:32 UTC. The charts therefore cover a later point than the text. The fixed earlier publication keeps the old text and charts. The linked final-results post explains what happened when the stage finished."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "882220adbc4292766da9055488851917fe696e68a85f825bf4ecbd8db9dedda8",
+      "source_kind": "p",
+      "text": "A missing measurement is not zero. The historical tables keep the values known at their own snapshot."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "9bc41ba523d841a5cab492e345d5af02ba6f8f8b0b659fca9c8325c944676c11",
+      "source_kind": "figure",
+      "text": "The CFR chart checks 7,057 targets per report. Its updated final-stage figure includes 32 CFR rows for 28 distinct saved models, within a 35-row text-score download. The left panel counts millions of predictions retained in the model's history; the right counts predictions within each phase. Empty markers are repeat starting-model checks. The left plots 27 observations and omits five unknown positions; the right plots 31 and omits one. The final 39.7762 is worse than the previous 39.6483 but better than the starting 43.7761. There is no universal passing score. Comparisons need the same text-splitting rules, test items, and scoring method. Better CFR scores do not prove transferable logic."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "0bceffe3c08bcbcaef0b7b5761448bad9eba6f5b326dc8c1d9d3f06d7410dba6",
+      "source_kind": "figure",
+      "text": "The separate broader-text check uses 130,209 targets. It now has three overall model scores and nine source-group scores. The science-phase model scored 62.1032 after 133,411,556 retained predictions; the later model scored 14.6312 after 632,823,676. Several phases lie between them. This does not isolate the last phase or prove reasoning."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "6259bf37f5f996932a745e919674b7f6d3d65a5957ea4d5e013b3a07c25b8eaf",
+      "source_kind": "figure",
+      "text": "The speed chart shows five finished runs and 13 measured rates, in thousands of usable predictions per second. Whole-job, worker, and loop time are different measures. The science phase lacks whole-job timing; the filtered phase lacks worker timing. These are not GPU-only rates."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "bf40e24e47fa8b85524020f72427907f09e7a9de5fb5a104708e095059befd89",
+      "source_kind": "figure",
+      "text": "For five finished runs, saving and testing took about 1.330%, 1.391%, 0.989%, 1.923%, and 2.120% of their own loop times. The 10% line is an engineering limit. Time reserved against the project budget is not measured save-and-test time."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "b00c535566ca6dacd3b6a96f08b61d5eafeae2e92683d8f277daf063e82f6a95",
+      "source_kind": "p",
+      "text": "Three larger phases finished: 104,521,471 usable predictions on scientific text, 96,012,838 in a filtered follow-on run, and 143,221,104 in a Wikipedia/Stack Exchange expansion. Their recorded final CFR scores were 210.2344, 70.6064, and 51.4214 under the test rules used then. These counts measure training exposure, not distinct text or reasoning skill."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "df1088a7b68f2524f9a49b0a663619cd50aefc31b6c9a67faa2a5a8955508655",
+      "source_kind": "p",
+      "text": "The finished stage added 130,072,908 usable predictions, processed 130,351,104 text-piece IDs, and made 3,978 training steps without restarting the data. Final checks confirmed a successful exit, no worker processes left running, six verified pairs of model files and records, and closed save storage. Next is a separate later portion of the source data."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "60782c26ae06e10f4e8fb42e135527f8b06e3b5debb40f171e4ab5e60ee826db",
+      "source_kind": "p",
+      "text": "The fixed check scores 7,057 targets from 32 sections of US administrative regulations. Average negative log-likelihood measures prediction loss in units called nats. Perplexity is calculated from that loss with an exponential. Checks run on the model already in memory, between training steps, and restore its random-number state afterward."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "1ab5c56907206f9e3e9503aa8c9660555fbd10b18d163a0446278ed6a04343e7",
+      "source_kind": "div",
+      "text": "Each row is the starting model or a saved version from the finished stage. The count column is usable predictions added in this stage. The two score columns show average prediction loss and perplexity; lower is better for both. All seven rows are retained, including worse scores at steps 1,327 and 3,316."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "6daf1db253fc6164fa4390abd8446b3cb868fecec199afd6811ffb238d702cd0",
+      "source_kind": "p",
+      "text": "Stage one's score got worse at two points before improving again. Its starting row is a repeat check of an existing model."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "f19d67fe5a1ac30c669fc0729bdfb4e237daba2050b8ef25f49c27b1172cf12e",
+      "source_kind": "p",
+      "text": "The guard's whole-job clock ran for about 7 hours 6 minutes. The worker measured 25,395.229 seconds, and its training loop measured 25,338.614 seconds. Saving and testing used 1.9226747% of loop time. Whole-run clocks, reserved budgets, GPU-only speed, and measured save tasks are different things."
+    },
+    {
+      "id": "passage-016",
+      "source_text_sha256": "baf5921d23acb605352d0d271ae1865360bff1984b547a10ddda1fa1db9dbcf7",
+      "source_kind": "p",
+      "text": "The linked score history and timing files keep each test group and kind of count separate. Broader-text scores are a different series and must not be attached to the CFR curve."
+    },
+    {
+      "id": "passage-017",
+      "source_text_sha256": "6bd02a173df444c636d11d3d5d0922a9468b827f1f289af216064bcd88a9f9aa",
+      "source_kind": "p",
+      "text": "Stage two began at 12:40:54 UTC. Its target is 130,105,270 usable predictions and 3,979 steps, with a 10-hour limit. We saw the latest saved evidence at 18:31:32 UTC; a separate guard check at 18:42 showed training still running. The planned final save at step 3,979 remains. This snapshot does not establish completion."
+    },
+    {
+      "id": "passage-018",
+      "source_text_sha256": "a46751c9a8e7ca65a68a2b48b4c87bb9337c54f5db0b55fd63504af48f508930",
+      "source_kind": "div",
+      "text": "These are the starting model and five saves from the still-running stage. Counts cover only this stage. Lower average loss and perplexity mean better text prediction on this check. The table has no final result yet and preserves the worse score at step 1,990."
+    },
+    {
+      "id": "passage-019",
+      "source_text_sha256": "200139efd65595c4de58754b135111afe9b8628da125856fe86b0d5fae03fc3c",
+      "source_kind": "p",
+      "text": "Step 1,990 got worse than step 1,327: perplexity rose from 41.6422 to 42.5430, though still below the starting 43.7761. Later saves reached 40.7566 and 39.6483. The setback stays in the record. Step 3,316 contains 108,426,641 usable predictions and 108,658,688 processed IDs in this phase. All project work totals 613,803,441 predictions, 18,767 steps, and 614,965,248 IDs. Work retained in the model totals 611,145,047 predictions, 18,686 steps, and 612,302,848 IDs. These are saved counts, not live readings or proof of completion."
+    },
+    {
+      "id": "passage-020",
+      "source_text_sha256": "d6a876a77531006b1c44949a0ca65dc1847c3ea585f2596d63dc536b8136843a",
+      "source_kind": "p",
+      "text": "New broader-text and reasoning scores are marked not evaluated, with null values. The old fixed-32 result is 0/32 correct and 0/32 correctly formatted. That reused development check had an output-format failure; it is not a clean capacity test or fresh final evidence. A 130,209-target broader-text check and a 32-case logic-and-format check are ready for the final model, after review of source exclusions. Neither has run. The CFR curve supplies no result for them."
+    },
+    {
+      "id": "passage-021",
+      "source_text_sha256": "9148b13d76c40be1939b04ae2dcba8762eee8863f05849e5b78f3ff2cc6e5b2c",
+      "source_kind": "p",
+      "text": "All work charged to the project stays separate from work retained in the model. An earlier restart repeated already-charged work, leaving a gap of 2,658,394 predictions and 81 steps. Those costs are not refunded. Documents, content fingerprints, processed inputs, and prediction exposures are different counts."
+    },
+    {
+      "id": "passage-022",
+      "source_text_sha256": "402fbd738c875d22aa527ff2c4ec1bf2cb39389a5f796c30bcd42af00dc2a28c",
+      "source_kind": "p",
+      "text": "Two approved batches are already stored locally: 268,840 documents with 222,892,775 usable predictions, and 269,543 documents with 215,100,897. No download is needed. The final batch would use the longest uninterrupted starting portion that fits complete steps: 126,366,365 predictions, leaving 88,734,532 unused. If the intervening stages finish, the forecast is 984,741,210 consumed plus 15,240,080 reserved for failed work, or 999,981,290 charged. This is a forecast, not finished work. Starting-model, transfer, and data-entry checks are still unresolved."
+    },
+    {
+      "id": "passage-023",
+      "source_text_sha256": "bb59d0f8f2f90e889e89a8305de03c355c13a772a0d76c4ab62d585b5097184d",
+      "source_kind": "p",
+      "text": "The filtered Wikipedia/Stack Exchange batches retain fixed source records, credit information, duplicate removal, source-family and development-data exclusions, and holds for rights or privacy concerns. An earlier overlap check whose outcome is unresolved stays excluded; we do not call it checked or cleared. A limited quality review cannot certify all rights and privacy questions."
+    },
+    {
+      "id": "passage-024",
+      "source_text_sha256": "ca57b1a223eccdcdf9b6a026f5d0dfd79a7cc2fd58acb06511dc7c716f3b8ceb",
+      "source_kind": "p",
+      "text": "The 800GB data allowance and storage, memory, and temperature safeguards are unchanged. The installed cutoff remains 31 October at 04:12 UTC, and the expired interface stays stopped. The original roughly 97-million-value comparison models, failures, and hidden final test are preserved. This AI-assisted journal shares summary evidence. An open, repeatable recipe is still a goal; code and trained model files are not claimed to be released."
+    }
+  ]
+}

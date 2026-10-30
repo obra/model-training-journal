@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-27-larger-model-qualification-and-phase1.md",
+  "source_sha256": "8a31e50ae48f42f22282504b1b89fa32d5b9edadf9d3846dfd1d48ed6f25de4e",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "0aa72109f4872073e7bcd1d73805c02ede6be56b9be9e8f3d9b8d2e01cd0a722",
+      "source_kind": "p",
+      "text": "The next direction is a larger model with 299,414,528 adjustable values, trained from random values, and much more text practice. The original 97.5-million-value model and comparisons are preserved. The goal is an open recipe others can repeat that produces logic useful in new situations, beyond convincing conversation. Planning tasks are just one of several checks."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "2d5f71c030bd3720dc1981197f97fd529bf85ec40f066325e934929fa711d01d",
+      "source_kind": "p",
+      "text": "The first production phase started at 04:42:54 UTC on 27 October 2026. It was still running at the checked 04:47:51 snapshot. Its first step completed 32,704 usable predictions from 32,768 input IDs. The first saved model and its matching record were independently fingerprinted and matched. Those counts belong to that first save, not later live progress. Startup success does not prove the phase will finish or the model has useful skills."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "91a2189f66ab0720c5007c460dab603769fcf5541cc8ebdb901dda52e4d3345a",
+      "source_kind": "p",
+      "text": "The larger model finished a short eight-step trial using 65,386 usable next-piece targets from 65,536 input IDs. Training took 14.40 seconds, or 4,542 usable predictions per second. Peak reserved accelerator memory was 7.01 GiB. The starting and ending model files were saved and verified."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "31a0ceb950cd01e4c518682669c31e12e1cc50348c0bb89c1511b92bfd561db2",
+      "source_kind": "p",
+      "text": "The model has 22 transformer layers, a width of 1,024, a gated feed-forward part 2,816 values wide, and 16 attention heads. These describe how its processing is arranged. It keeps the 16,384-piece vocabulary and 1,024-piece context window. All weights started randomly; it contains no pretrained model weights."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "2a351bfb342050875590545027955921237710d4930a8cd024fb45142a8e965f",
+      "source_kind": "p",
+      "text": "This was a short execution test. It does not show long-run speed, conversation quality, or transferable reasoning. A small loss check used more blocks from the training source, so it was not an independent test of learning that carries to new data."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "e5be7f3c348bf110f21a7c4a853a7f9a7dfd2454fd8ff8ea2bdef2b82d2d949f",
+      "source_kind": "p",
+      "text": "The Linux preparation check passed all 97 named tests, with none skipped. It covered model saving, storage accounting, and candidate scanning. The later production-integration check passed all 81 tests, also with none skipped, including saving and reloading native CPU tensors. That supports trying a limited run, not approval of more text or proof a long run will stay stable."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "e19dba483fda7e5a0ee2fe1d938005a5156d015f8e988bac675f4c836b10f695",
+      "source_kind": "p",
+      "text": "The phase uses the existing text stream once, without restarting from the beginning. Known near-duplicate text remains, so we do not call its 26.86 million targets distinct. There are 26,908,211 stored IDs, including end markers. Complete blocks process 26,902,528 IDs and leave 5,683 unused. Excluding targets that should not be learned leaves 26,860,551 usable predictions over 821 steps. Stored IDs, processed inputs, and usable targets are kept as separate counts."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "972b02b42244a59c56a9c619349f83a8f2ef243ba8ec22dfc25d3b3802646777",
+      "source_kind": "p",
+      "text": "The phase has a 9,000-second limit and four planned saved-model-and-record pairs; the first is verified. The larger project limit is one billion usable predictions, with a separate input limit. That does not mean a billion suitable new targets exist or that we will repeat a small source to spend the budget. Later phases require approved data, verified recovery, and a fresh time estimate."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "86260d27c9fd17167c73638f35da8132fbf4b9d0fa2dac48769cfba78bafde80",
+      "source_kind": "p",
+      "text": "The old language-validation set has known overlap with training. It remains a limited diagnostic, not clean evidence of generalization. New validation must separate related works and duplicate passages before a broader-data result can support a claim about new data."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "32cb67d9e245523d1e9fbd7ec89a9a787e7cb97074083f8eda96b85e3a45b774",
+      "source_kind": "p",
+      "text": "A limited scan checked all 54,455 records in the fixed textbook archive and found zero candidates because every license field failed the parser. A metadata-only check found why: the archive records specific collector labels followed by license URLs, while the parser expected URLs alone."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "9ae8167d5602bea9a7ca7fb3cf6976f3525e905d2320b052577086507341c47b",
+      "source_kind": "p",
+      "text": "The failed scan is kept. The new parser accepts only the two exact observed eligible formats for CC BY 4.0 and CC0 1.0. It still rejects negated, restrictive, conflicting, or extra-text claims. Independent review passed 40 named tests and more rejected-format checks before another limited scan."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "6a027262cfab9eff6f75ee1425b308e05d9e99cc6ed7bff4793d24633c192763",
+      "source_kind": "p",
+      "text": "The corrected scan took 184.57 seconds. It initially kept 35,414 documents after record checks, then removed 13,129 by holding back whole books. That left 22,285 candidates containing 237,077,890 text bytes across 971 recorded book groups. In all, 909 book groups were held back. All six output files were fingerprinted again, and the original archive fingerprint was unchanged."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "07be37a74741a184e89ca3cf565477a446ba036438d50c2c42eea2785ead7857",
+      "source_kind": "p",
+      "text": "These are candidate document counts and bytes, not approved distinct training tokens. Automatic rights and privacy filters can miss problems or reject harmless material. Related works, repeated passages, independent review, and tokenizer measurement still need checking. Sampled passage fingerprints do not prove all duplicates were found."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "11824f22f42a72bff5a62b4e05564028070bbfdf9167764ae6d8be1d9f9540e8",
+      "source_kind": "p",
+      "text": "Two more fixed archives from government and parliamentary collections were downloaded and verified, totaling 789,507,600 compressed bytes. They remain in private quarantine, not opened or approved for training. The finished download released its storage reservation. Document rights, privacy, quality, and source-family separation still need review. Download size and catalog size will not be called usable training-token yield."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "70f37155f136f16e90c3a0a8e6009d1ecd26088a1f8d5518030023b91ce6c3ea",
+      "source_kind": "p",
+      "text": "The immediate questions are whether this limited run finishes safely with verified saves, and how much truly distinct, eligible text the candidate review produces with this tokenizer. Exact duplicates, related works, repeated passages, and old validation families must be resolved before fixing a new split. Correct format, correct answers, fitting familiar examples, and solving new structures stay separate measurements."
+    },
+    {
+      "id": "passage-016",
+      "source_text_sha256": "4b90108d9951052168a5d05038752880852f6b4f02240997ce06d1e357dc675e",
+      "source_kind": "p",
+      "text": "The dedicated data volume allows 800 GB. Free-space, memory, temperature, and model-saving safeguards remain active. The installed training cutoff is 31 October 2026 at 04:12 UTC. The separate interface session expires on 27 October at 17:02:37 UTC. These are execution limits, not a claim that the research ends then. This update changes neither limit."
+    },
+    {
+      "id": "passage-017",
+      "source_text_sha256": "aeb8455f246104feda237a6d3edf16e47e71af575ac20fb64525005b3bb7cc48",
+      "source_kind": "p",
+      "text": "Older posts describe their own budgets and plans. The larger-model direction and finite phase budgets replace the former 200-million-additional-token comparison plan. Its failures remain in the record. Original comparison models and the hidden final test are preserved. This stage uses no proprietary services or private trace inputs."
+    },
+    {
+      "id": "passage-018",
+      "source_text_sha256": "e1b36ada277e2cca29afa71820d05330653fd4520749f78978d9edd444ab1fb1",
+      "source_kind": "p",
+      "text": "This is an AI-assisted engineering record. The current-plan link provides the latest reviewed snapshot."
+    }
+  ]
+}

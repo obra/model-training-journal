@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-goal-clarification-and-storage.md",
+  "source_sha256": "fbd6928da19f01604101a84b5cbc1b0d691dd43e2680136341f4c95fb71e0824",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "dbb6aba29ada57669bfd7e63a3c89cf26ab60dbff21c7c1087826bcefa40fdc7",
+      "source_kind": "p",
+      "text": "Stage evidence was verified at 00:08:07 UTC on 27 October 2026. This is an AI-assisted engineering record. The research program has been delivered and approved implementation is underway. No new production-model training has begun."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "dee01570c6420f8483f780081f8ea82e861594d0d0ae838665bfc353d3e1caf2",
+      "source_kind": "p",
+      "text": "The goal is a model trained from scratch that uses logic in new settings, beyond convincing conversation. Planning tasks were one check of that goal. Earlier planning and reflection failures remain in the record; clarifying the goal does not change them."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "1d764934d5435be4b7d2496359ce9b90e4a0636baa6f1bc6be6359713fd9bfe9",
+      "source_kind": "p",
+      "text": "The research starting point remains the 97,536,768-value model trained from random values on 100 million usable targets. Its original save and tokenizer are preserved. Later task-trained models and the model served by the interface are tracked separately."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "b69e7e609add0dd4ea4692321fa8bd7e99df6afc7efbb971b69b81e3ea0cf02f",
+      "source_kind": "p",
+      "text": "The first implementation step is a small public development check of typed facts with ordered corrections and finite unary logic. An independently written reference agreed with a separate checker on 3,316 cases. Another 800 generated-label comparisons agreed with it. That checks the measurement code, not a model's reasoning."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "8dd947a85c143d205d067e930aa0f908b0ee32597c3090077b7399614a8ac881",
+      "source_kind": "p",
+      "text": "A fixed public development set has 32 cases: 16 binding tasks and 16 logic tasks. With the original tokenizer, full prompts take 550–685 input pieces. Each fits the 768-piece input limit and the 1,024-piece total context with 128 pieces reserved for answers."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "3ffd037b9f62321b2581750be4db0861faf365f73b0298735346f5dc853d14f2",
+      "source_kind": "p",
+      "text": "The first guarded control job finished successfully at 00:03:20 UTC. Correct controls scored 32/32, deliberately wrong controls 0/32, and an always-abstaining control 3/32 overall and 0/26 on answerable cases. These check the test itself, not model skill. A brief timing race occurred while recording exit. Read-only checks confirmed that same job's results, and its record was fixed without rerunning it. The hidden final planning test remains untouched."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "e3a4d4806775e08c04c3e0a96091438b875b42395797ebb3bdde04f0c5ae06df",
+      "source_kind": "p",
+      "text": "The current Gutenberg-derived text stays held back, and that approval effort is stopped. No encoding-repair batch or new source download is continuing on that branch."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "3198f90e73c9395c441a8a3db79fcca4a4cbadfcd3e66c760a34104ac578746c",
+      "source_kind": "p",
+      "text": "The limited PMC download finished 240 more XML responses; saved sizes and fingerprints were verified. Initial extraction, including earlier fixtures, produced 231 candidate records. Known extraction and context problems blocked approval. Further independent review is now blocked by a platform restriction, so no repaired collection is cleared. We are not fetching more or using another route to continue that review."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "c98cb1717126a8a8bf1e0fe849bfbca95f0024facf5b0577b76352a4eaa3c49f",
+      "source_kind": "p",
+      "text": "No new records or tokens are approved. Download and candidate counts do not establish usable training data. The earlier fixture review does not clear the larger collection."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "d371003d9f9bb5eab61649d6b98dee0a6729571143e77a8f3d4ed84d35ec2dfd",
+      "source_kind": "p",
+      "text": "The dedicated data allowance is 800GB in decimal units and counts total usage. After local writer and accounting checks, all 170 Linux integration tests passed without skips at 00:01 UTC. They covered restart, budget charges, and guards. Earlier device-visibility and import-packaging failures remain recorded with the passing attempt."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "806485051bdbd0822dcc12d64f410f55b493331cbd0b33b9d656678ceef7b846",
+      "source_kind": "p",
+      "text": "A guarded, unchanging 47-byte test file was staged successfully at 00:04:55 UTC. Its fingerprint and accounting matched, with no reservations left outstanding. This is a small staging check, not a test of trainer storage or data migration. Existing filesystem protections remain active."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "29c5ad11ff6796fc07b5238339865c909300377dd7796ef1b58b214e731660fb",
+      "source_kind": "p",
+      "text": "A 4,096-target engineering check is being prepared, with 8,192 physical tokens reserved. It has not launched. It stays within the existing 200-million-additional-target limit. Preparing it neither raises the cap nor approves blocked text."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "6a62c082956b5e19bc5f09dc87097d9f1c87bcbdb5585888689ed8e618939106",
+      "source_kind": "p",
+      "text": "Data approval stays closed while review is blocked. The project deadline remains 31 October 2026 at 04:12 UTC; the separate interface cutoff remains 27 October at 17:02:37 UTC. Neither is extended. The time above marks verified stage evidence, not live resource readings."
+    }
+  ]
+}

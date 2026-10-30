@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-bounded-news-candidate-audit.md",
+  "source_sha256": "2d0dddbf0c61be36e72754a9d823993cf2e5846a6860630e5eb77cbf03f671c9",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "3fb015f6945302bfd253a030dc058451316d3ca66c56314c9c902b8d00cb6748",
+      "source_kind": "p",
+      "text": "While the first base model was still training, a separate CPU-only audit checked a possible later text source. It finished at 05:59 UTC on 26 October 2026. It changed neither active training text, tokenizer, nor model history. No candidate document was approved for training."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "3853cf36590c07d4a4e0554f6360a69f7b5ebaca12deed08c5e7e56e38462310",
+      "source_kind": "p",
+      "text": "A fixed CommonPile News archive matched its expected fingerprint. The completed limited scan produced the table's counts."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "844d07dee5a4ee4f432b4ed42f6d19da8e5bf0c18e3c501ea56e7bb61dda754d",
+      "source_kind": "div",
+      "text": "The archive was 98,092,770 compressed bytes and expanded to 312,694,827 bytes of processed JSON. The scan checked 126,673 records and found 1,426 360info candidates representing 8,286,830 text bytes. Of those, 65 lacked an archived author field. Candidates are not cleared training articles."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "8870a4add2ab498336a3e151f5137daeb814324cd66f233b082ec9bc3f3d44cb",
+      "source_kind": "p",
+      "text": "The other 125,247 records were from other sources and outside this batch. No exact normalized-text or URL duplicates were found among the candidates. Near-duplicate checking remained unresolved."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "ce40a5d5665470ec2d69da950cf75391a880430055c8eed4f144f78eee41eb01",
+      "source_kind": "p",
+      "text": "The audit saved fingerprints and limited credit information, not a training-text collection. Its declaration screens raised no flags. That does not establish permission, full credit, or English-language quality."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "0aadd1ecc52e2ce023d517a08c428081aac2ac88bd829d7c62094c6b7b5fea7d",
+      "source_kind": "p",
+      "text": "The review recorded 360info's terms as allowing CC-BY-4.0 reuse with credit and exceptions for third-party material. Three sampled live pages matched archived authors and showed reuse notices. A separate image credit had a different license, showing why text and media rights need separate checks."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "ba7218db7d5c00cd4941753516680f8063c52d4f142898b08f52adaf9544173e",
+      "source_kind": "p",
+      "text": "For the three samples, 98.13%, 99.17%, and 95.68% of unique archived five-word sequences appeared on the current pages. That is a sign of correspondence, not proof of the exact old version or clearance of every embedded passage. Only those three pages were fetched; no images or externally linked resources were downloaded."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "d04c5613b4a3214a74f2d8acc50b9e28db4a18788ddf0843082c64fc1bb24c17",
+      "source_kind": "p",
+      "text": "Missing credit information, article-specific exceptions, and the filtered dataset's exact transformation history remained unresolved. The candidate count must not be called the cleared-article count."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "a329ca12127435af290de650efaa4b45f6f7edcd956301d6145b2dfb54406f87",
+      "source_kind": "p",
+      "text": "Review found problems with changed archives, damaged compression, repeated JSON keys, and partly written output. After fixes, the focused checks passed 26 tests."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "98c198c9d059fe8f898b62d530ea884a29606afb63897091fc6862cca3b0f604",
+      "source_kind": "p",
+      "text": "The auditor checks the whole input fingerprint, ordinary file changes, input/output size limits, and whether output is complete, partial, or failed. Those are software-integrity checks, not a rights certificate."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "54559f0618dac8781c3445f0877768d558aa5b64ec1afe5436f1bfe557bd1b04",
+      "source_kind": "p",
+      "text": "Any later data choice still depended on learning and behavior results. Even full approval of this small source pool would support only a limited exposure test, not endless repetition. This summary contains no article text or raw audit records."
+    }
+  ]
+}

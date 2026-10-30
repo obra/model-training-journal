@@ -12,6 +12,9 @@ import xml.etree.ElementTree as ET
 import markdown
 import yaml
 
+from legibility import render_translations
+import dashboard
+
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "/model-training-journal"
 ORIGIN = "https://obra.github.io"
@@ -94,6 +97,12 @@ def load_posts():
         meta["url"] = f"{BASE}/{meta['path']}"
         meta["html"] = markdown.markdown(body.strip(), extensions=["tables", "fenced_code", "toc"])
         meta["html"] = meta["html"].replace("<table>", '<div class="table-scroll"><table>').replace("</table>", "</table></div>")
+        meta["source"] = source.relative_to(ROOT).as_posix()
+        companion = ROOT / "content/translations" / (meta["slug"] + ".json")
+        if not companion.is_file():
+            raise ValueError(f"Missing plain-language companion: {source.name}")
+        meta["parallel_html"] = render_translations(
+            meta["html"], json.loads(companion.read_text()), source.read_bytes(), meta["source"])
         meta["read_minutes"] = max(1, round(len(body.split()) / 220))
         posts.append(meta)
     posts.sort(key=lambda post: (post["date"], post.get("order", {"Setup": 1, "Diagnostic": 2}.get(post["phase"], 3)), post["slug"]))
@@ -102,8 +111,29 @@ def load_posts():
     return posts
 
 
+def reading_terms():
+    terms = {
+        "Model and parameters": "The model is the program being trained. Parameters are the adjustable numbers it learns; more parameters do not by themselves prove better skills.",
+        "Token and tokenizer": "A token is a piece of text, which may be a word, part of a word, or punctuation. The tokenizer decides how to split text into these pieces.",
+        "Valid label or target": "A next-piece prediction the training or scoring rules actually count. Some positions are excluded, so processed input tokens and valid targets can differ.",
+        "Update and checkpoint": "An update changes the model after some training examples. A checkpoint saves the model and, when available, the state needed to resume training.",
+        "Loss and perplexity": "Two measures of text-prediction error. Lower is better on the same test under the same rules. Neither is a reasoning score or has a universal passing mark.",
+        "Development panel and holdout": "A development panel is a fixed set used while making decisions. A sealed holdout is kept aside for a final check. Repeated development checks are not fresh final tests.",
+        "Baseline, control, and transfer": "A baseline or control is a reference for a comparison. Transfer means a learned skill still works when the task or setting changes.",
+        "Supervised fine-tuning (SFT)": "Training on example answers or actions after, or instead of, general text training. Fit to those examples is separate from success on new requests.",
+        "Protocol, tool, and receipt": "A protocol sets the required output format. A tool is an action the surrounding software can run. A receipt records a tool result, but does not prove it acted on the right object.",
+        "Guard and budget": "A guard enforces limits such as time or storage. Passing a guard check is evidence about the software, not the model’s intelligence. Reserved work and completed work are different counts.",
+        "BF16 and FP32": "Number formats used for computation and stored state. FP32 keeps more precision. Different calculation settings can affect whether measurements are strictly comparable.",
+        "Hash and provenance": "A hash is a fingerprint of exact file contents. Provenance records where data or a model came from. These help trace evidence; they do not by themselves prove quality or rights.",
+    }
+    return '<details class="reading-terms"><summary>Terms used in this journal</summary><dl>' + ''.join(
+        f'<dt>{escape(key)}</dt><dd>{escape(value)}</dd>' for key, value in terms.items()) + '</dl></details>'
+
+
 def build():
     posts = load_posts()
+    evidence = dashboard.load_dashboard(ROOT, posts)
+    dashboard.write_assets(ROOT, evidence)
     progress = load_progress()
     progress_header = render_progress(progress)
     template = Template((ROOT / "templates/layout.html").read_text())
@@ -127,6 +157,7 @@ def build():
             description=escape(description, quote=True), canonical=canonical,
             body=body, base=BASE, progress_header=progress_header,
             journal_current=' aria-current="page"' if section == "journal" else "",
+            dashboard_current=' aria-current="page"' if section == "dashboard" else "",
             experiments_current=' aria-current="page"' if section == "experiments" else "",
             about_current=' aria-current="page"' if section == "about" else "",
             current_plan_current=' aria-current="page"' if section == "current-plan" else "",
@@ -145,13 +176,20 @@ def build():
 <p>An engineering journal about training a small language model from scratch. The questions, the experiments, and what the evidence actually supports.</p></div>
 <aside><strong>A record of the work</strong><p>AI-assisted notes, curated from a local experiment notebook. Completed diagnostics and future plans are kept distinct.</p><a href="{BASE}/about/">About the journal</a></aside>
 </section>
+{dashboard.render_summary(evidence)}
 <section aria-labelledby="entries-heading"><div class="section-heading"><h2 id="entries-heading">Journal entries</h2><span>Latest first · {len(posts)} entries</span></div><ol class="entries">{''.join(entries)}</ol></section>
 ''')
+
+    render("dashboard/", "Measurement dashboard", "Text prediction, task checks, training work and cost: separate evidence, exact tables and clear limits.", dashboard.render_dashboard(evidence), section="dashboard")
+    for panel in dashboard.chart_definitions(evidence):
+        if len(panel["rows"]) > 50:
+            body = f'<article class="page dashboard"><h1>{escape(panel["title"])}</h1><p>{escape(panel["note"])}</p><p><a href="{BASE}/dashboard/#{panel["id"]}">Back to the chart and dashboard</a></p>{dashboard.chart_table(panel)}</article>'
+            render("dashboard/data/" + panel["id"] + "/", panel["title"], panel["note"], body, section="dashboard")
 
     for i, post in enumerate(posts):
         prev = f'<a href="{posts[i-1]["url"]}">Earlier: {escape(posts[i-1]["title"])}</a>' if i else f'<a href="{BASE}/">All journal entries</a>'
         next_link = f'<a href="{posts[i+1]["url"]}">Next: {escape(posts[i+1]["title"])}</a>' if i + 1 < len(posts) else f'<a href="{BASE}/experiments/">Experiment index</a>'
-        body = f'''<article class="page"><header class="article-header"><h1>{escape(post['title'])}</h1><p class="dek">{escape(post['summary'])}</p><p class="article-meta"><time datetime="{post['date']}">{post['date']:%d %B %Y}</time> · {escape(post['phase'])} · {post['read_minutes']} min read</p></header><div class="prose">{post['html']}</div><nav class="post-nav" aria-label="Article navigation">{prev}{next_link}</nav></article>'''
+        body = f'''<article class="page translated"><header class="article-header"><h1>{escape(post['title'])}</h1><p class="dek">{escape(post['summary'])}</p><p class="article-meta"><time datetime="{post['date']}">{post['date']:%d %B %Y}</time> · {escape(post['phase'])} · {post['read_minutes']} min read</p></header><div class="reading-guide"><p><strong>Two ways to read the same record.</strong> The technical original is preserved beside a plain-language version. Matching numbers connect each passage. On a narrow screen, the plain-language version follows its original. Dates and plans describe the post’s own snapshot.</p><p><a href="#plain-passage-001">Start with the plain-language version</a> · <a href="{BASE}/dashboard/">See the measurement dashboard</a></p>{reading_terms()}</div><div class="prose parallel-prose">{post['parallel_html']}</div><nav class="post-nav" aria-label="Article navigation">{prev}{next_link}</nav></article>'''
         render(post["path"], post["title"], post["summary"], body)
 
     for filename, title in (("experiments", "Experiment index"), ("about", "About this journal"), ("current-plan", "Current plan")):
@@ -185,7 +223,7 @@ def build():
         if not path.endswith("/404/"):
             ET.SubElement(ET.SubElement(sitemap, "url"), "loc").text = path
     ET.ElementTree(sitemap).write(output / "sitemap.xml", encoding="utf-8", xml_declaration=True)
-    print(f"Built {len(posts)} posts and 4 index/info pages in docs/")
+    print(f"Built {len(posts)} translated posts and {len(paths) - len(posts)} dashboard/index/info pages in docs/")
 
 
 if __name__ == "__main__":

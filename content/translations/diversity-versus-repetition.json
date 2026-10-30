@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-diversity-versus-repetition.md",
+  "source_sha256": "cab68f5b1b2e256fb2a54bd500028591b8fd0e284cd09c6ac507ff832c0ac5da",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "976d80daecbbb76162d4293240443203b6ba853fa8404f105b203feb58ed9c98",
+      "source_kind": "p",
+      "text": "The new lessons were frozen at 15:04:57 UTC on 26 October 2026. After mixed binding results, the idea was to try more distinct base examples when selected repairs fit but unfamiliar targets fail, while keeping exposure to standard examples fixed."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "c5de662839e0b147a054544d3719e492bc5dad99b745a347bbb50a3fea8e48d1",
+      "source_kind": "p",
+      "text": "This post records preparation, launch, and the verified 15:58 UTC training milestone. Later test status belongs on the dated current-plan page. Finishing training is not a result about skill."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "707c4f857014899d56db9ef48010014abb5a831109571c954167b2bae158553f",
+      "source_kind": "p",
+      "text": "Both branches restarted independently from the same self-trained roughly 97.5-million-value base. They shared tokenizer, grammar, optimizer, and 1,536-token context. Each prepared file was one finite pass of 13,338 conversation occurrences and 1,999,822 assistant targets."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "b828b0d5d494aaf755dad1937e034b6156885c255350eea811388c023358c9c3",
+      "source_kind": "p",
+      "text": "The 11,422 standard conversation occurrences had identical messages, tokens, and target masks. Assistant-target counts matched at every position, so cumulative exposure and learning-rate schedules matched too."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "8e3e015d2acb14f8e57bd72f0fe7762ae9c99f808bd3973f8f24fd0856af6000",
+      "source_kind": "div",
+      "text": "Both branches had 1,916 repair occurrences. Replay reused 500 repair histories from 100 base examples; fresh used 1,916 distinct histories and base examples. Total distinct histories were 3,500 and 4,916. Full-pass inputs were 8,047,747 and 8,048,075 tokens. The table separates distinct examples from repeated appearances."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "9f87e832e0ffbb063b0b789f0558a4980f4f2a600e9182d5d21c84e4616d5f1f",
+      "source_kind": "p",
+      "text": "The fresh branch used a separately generated base example at every repair occurrence, matched by target count and change recipe. That changed both variety and within-example repetition. Rejecting examples by length also affected accepted values. Input totals differed by 328 tokens. Both used a new shared shuffle unlike the earlier study. This tests a declared package of changes, not variety alone in all settings."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "41fe0f1cb04ce7d62e337f93db238456f84e530b9d7996e8ec16789d7165b1d0",
+      "source_kind": "p",
+      "text": "All added text was recorded as original CC0 material. No outside text collection, AI teacher, or third-party weights were added."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "b2e2c3be862fc1d67254520eb7092754b33416c3f8d563f9c2e6204ac6b49281",
+      "source_kind": "p",
+      "text": "The new test had 64 core and 32 stress cases. Core cases recombined familiar taught pieces. Stress cases changed IDs, years, combinations, or wording. “Unseen” meant absent from audited task lessons, not necessarily absent from earlier general-text training."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "1b72ff3d968f543e6a7e163fb0e22b18f4b1e8dae9a6ec6b48b392dc57527076",
+      "source_kind": "p",
+      "text": "Each branch also had a fixed sample of 50 distinct histories from its own actual training set. These were different populations, not identical prompts. Older fit and development sets stayed as known regression checks. Raw/guarded views and shared base cases are related, not independent. The hidden final test stayed out of training and unused."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "6fbbd3d13bbc41eaa5ee4ac70a30eaf9e25226c64bdc8e4515c47c2f616a910b",
+      "source_kind": "p",
+      "text": "The decision rule requires more correct requested outcomes without more wrong-object damage, false completion claims, unsupported failure explanations, or worse retained behavior. Missing and unknown answers remain visible. Doing nothing cannot count as success merely because it avoids false claims."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "64d419742dc223b3598fdddfec48591ab2ae08fb311a00066d3f13b1283fbadc",
+      "source_kind": "p",
+      "text": "Preparation first stopped because an older 32 MiB reader rejected training files of about 40.75 MB. The fix applied the already-planned 256 MiB limit only to the two declared inputs, keeping protections against symlinks, excessive size, and file replacement. Fixed data and deadline guards were unchanged. The repaired preflight passed before launch at 15:21:40 UTC."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "4477dde5805852de2b7d5dddf4d1bc93799053c7e80678e99d804c4c4f3fe185",
+      "source_kind": "p",
+      "text": "Verified records show replay finished at 15:39:16 UTC and fresh examples at 15:55:56. Each completed exactly 1,999,822 targets in 13,338 steps, with one pass and no restarting the data. Combined task-training exposure was 3,999,644 targets, not that many distinct examples."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "e0a521e9cecb231eaff7cfc4286eb7522d03d8bae6a69986aa8cfc66c406047b",
+      "source_kind": "p",
+      "text": "At 15:58:11 UTC, both model files were verified and tests were still running. No planning model was promoted. The absolute deadline stayed 31 October 2026 at 04:12 UTC. This AI-assisted account was checked against fixed inputs, the preflight fix, exact counts, and the training milestone."
+    }
+  ]
+}

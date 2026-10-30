@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-recovery-and-corpus-preparation.md",
+  "source_sha256": "4b7f26c6eeee127ef27b355b507da602b7c553a919c9303019e6635ecba5e375",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "0127d4f1b07ab55e1d5f7cbf5111c89c5a4f222b9f403ea5a453cf88650f7f42",
+      "source_kind": "p",
+      "text": "This verified snapshot is from 21:12:54 UTC on 26 October 2026. Main training is idle. Text preparation continues within the original deadline."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "37610edbb4520b4aac7ffe7cfbda5cdfccecfe0e49ef3ef066b8d4b7141016ac",
+      "source_kind": "p",
+      "text": "A fresh inspection found work finished since the previous public snapshot. The small dialogue check had completed, and all 25 responses in the limited primary-source pilot were saved. Neither job needed repeating."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "a2f96ca6ed5283cba3104b8e60a0783c6fc76abee8299e76361ca28c4115351d",
+      "source_kind": "p",
+      "text": "The model remains the same 97,536,768-value base trained from random values on 100 million usable targets. Its final save and tokenizer matched preserved fingerprints. No broader pretraining has started, no new candidate text is approved, and no planning model is promoted."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "c33272af4c57e496a48dae720035a94f64e6e218ca4d7752ab67173d51b5528e",
+      "source_kind": "p",
+      "text": "The reviewed 19 Taskmaster conversations were frozen and scored before the interruption. The two-model scoring sequence finished at 18:18:12 UTC, using the same 7,355 usable targets for each."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "60b99b6cf27630760e56ad3315254bbf89903d921691babbee2a1cb6d466be8e",
+      "source_kind": "div",
+      "text": "The original 100-million-exposure base scored average dialogue loss 3.7929. The standardized two-million-target task-trained model scored 13.0719. Lower is better on this particular text-prediction check. These are language losses, not task-success scores."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "15b4fd265921007e18ab4fd8e11e9ba6899a113e1a19f69e301ed54168bcd356",
+      "source_kind": "p",
+      "text": "The scorer predicts both speakers, role labels, separators, and end markers, with the same 1,024-token context and BF16 calculations for both models. The task-trained model gave this dialogue text lower probability. That does not isolate why, measure planning outcomes, or establish broad English skill."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "ebe7299d51f0e7423e7cf491c664f3328da0accfabd0246fc89661a9a33cf6c8",
+      "source_kind": "p",
+      "text": "The sample is tiny and selected: 19 complete conversations, 438 turns, six groups. Earlier word-overlap checks found no concerning copies under their limited rules, but short phrases, paraphrases, and unknown source links remain gaps. All Taskmaster-derived text stays out of training. Any new training material needs its own overlap check against this reserved text. Independent prose validation is still needed."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "e2b965965b97d087fdf128acde6acf1e3f214dd28b8e1539fb3250b2fc3acd61",
+      "source_kind": "p",
+      "text": "All 25 exact-version arXiv HTML responses were saved by 18:26:19 UTC. Sizes and fingerprints match the retained files, totaling 6,856,792 bytes. That is downloaded HTML, not approved prose or token yield."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "03f757da8fc63db075536d8ca17df28fadd81408bd6c522aa0b755b5e1992a82",
+      "source_kind": "p",
+      "text": "Raw responses and earlier extraction failures are kept. Offline review checks parser compatibility and conservatively selects prose. If a paragraph depends on a removed equation or excluded structure, the whole paragraph is omitted. A favorable metadata label does not clear unclear rights or damaged text."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "fa96627781e67b2aa31ae5d8623695f852ce1261c11395a04c0c4c5f0fb63743",
+      "source_kind": "p",
+      "text": "The first eight-excerpt selection stays separate. More review produced 16 article excerpts with 40,729 UTF-8 bytes and 8,901 content tokens under the original tokenizer. One more excerpt lacked complete author credit and was rejected; 20 repeated whole headings were removed. Adding one end marker per excerpt would add 16 tokens. These are not counts of packed training targets."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "2f8e4b621f1731ea8a6af37b3b4a3c4987fe47d57716eb216aeb68bd055b6d3e",
+      "source_kind": "p",
+      "text": "All 16 remain unapproved. No normalized duplicate document or paragraph remains inside this candidate. A historical word scan checked ten fixed inputs, 59,928 records, and 82 candidate document/paragraph views. It found no exact normalized matches. The highest shared five-word coverage with one historical view was 5.714%. Independent review of all 43 views with nearest matches found common wording, technical terms, or citation numbers, not concerning copied passages within that scope. This does not prove independent origin or exclude paraphrases."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "4807a11b17f3c170f6d9dc8427208933211055709485901d9e48a411549d515e",
+      "source_kind": "p",
+      "text": "The first scan stopped before processing because its 250MB total-input limit was below the catalog's exact 285,319,045 bytes. A reviewed 300MB limit allowed the same ten files, retaining 200MB per-file and 1,200-second limits. The failed attempt is kept. A separate check of the 16 excerpts against 457 reserved-dialogue views found no matches under its rules. Input fingerprints stayed unchanged in both checks. Even a clean result for this small science sample would not justify repeating it to reach 200 million tokens."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "82766c8f4a82c9ef9b096adf694b53eb7194ae1bc5e0691efe21e66581316d2f",
+      "source_kind": "p",
+      "text": "A separate limited attempt to save official Commons material stopped at the first HTTP 403 denial, saving no bytes. There was no retry or substitute route. That attempt has not supplied the missing independent prose-validation evidence."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "5ec4f0bd069a2f6e27f9f1cbd64c4842994c8b60baca8a053cda293a9783c2d1",
+      "source_kind": "p",
+      "text": "Two previously identified IntechOpen chapter pages were saved, totaling 1,906,717 raw HTML bytes. Their identities and chapter-specific notices were reviewed. Of 20 body paragraphs, ten were kept and ten rejected. The two candidates, including intact abstracts, have 8,929 text bytes and 1,824 content tokens. Whole chapters and compilations are not cleared. Dependencies on figures, credited outside passages, and rights exceptions require exclusions. This tiny check makes no collection-wide rights claim."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "89d06fdbbd01b09be6e018d71b692b799534a1bb369fa16849781125280f6f55",
+      "source_kind": "p",
+      "text": "Together the candidates are 18 works, 49,658 text bytes, and 10,725 content tokens, with zero approved records. One optional end marker each would add 18 tokens; these are not packed targets. There are no normalized duplicate documents or paragraphs across them. The chapter history scan used the same ten inputs and 59,928 records, found no exact normalized matches across 17 candidate views, and reached at most 4.2553% five-word coverage. Review found ordinary wording in every chapter match and two short dialogue matches; the sole cross-candidate five-word phrase was generic. These checks found no substantive copying in inspected overlaps, but prove neither meaning-level independence nor approval."
+    },
+    {
+      "id": "passage-016",
+      "source_text_sha256": "27bde2ae6a4e27744efb35d0bc2e33661c844d654d4688ba19c503c672c46327",
+      "source_kind": "p",
+      "text": "The continuation code now separates starting a new run from resuming the same run. It verifies the exact original base, imports its weights, and starts fresh optimizer, schedule, random state, data position, and counters. A strict restart instead preserves the new run's own state and source history."
+    },
+    {
+      "id": "passage-017",
+      "source_text_sha256": "eb7bf49b44448a00f20931966c3c8377be588e26ce2dd62566b1f4a76b1f17d5",
+      "source_kind": "p",
+      "text": "The code caps a continuation at 200 million additional usable targets across all restarts. It preserves the original parent identity through later task training and rejects unknown or conflicting ancestry. Both eventual comparison branches must use the same fixed task-training code, settings, and tests."
+    },
+    {
+      "id": "passage-018",
+      "source_text_sha256": "2245a6ff42e370181a23f12a273000fda56d247377a82ac0ee2e4fa26d6e23ee",
+      "source_kind": "p",
+      "text": "Twenty-six focused CPU tests passed for continuation, restart, and task-training compatibility. These are small code fixtures, not a production run, data approval, or evidence of better model skill. No broad-suite pass is claimed."
+    },
+    {
+      "id": "passage-019",
+      "source_text_sha256": "33ebcd370bf37c554e5b724be39ec542b95fb074219d091dd5fe245b3d492a80",
+      "source_kind": "p",
+      "text": "Next is a source-level feasibility count of the existing IntechOpen-labeled DOAB inventory, not endless tiny paper selections. Its 20,105 records include fragments and front matter, not 20,105 distinct chapters. A limited offline pass would reconstruct whole-work identities, keep each notice and author credit, exclude unresolved rights or quality cases, and count new tokens with the original tokenizer. It would stop after 20 minutes or 100MB of output and approve no training data."
+    },
+    {
+      "id": "passage-020",
+      "source_text_sha256": "333418332ae5fa33ba02f806f518c56a3eb7cafdcd0538e1d420e29b998fbb0a",
+      "source_kind": "p",
+      "text": "The chosen feasibility screen is one million measured provisional distinct tokens from at least 100 complete DOI-linked works, with full source and rejection records. This is an engineering choice for this route, not a user minimum or theoretical sample requirement. Failure to recover clear works, resolve rights, or reach the screen would reject this scale proposal for now. Passing would justify independent process review, not training. Further downloads need a separate limited manifest; completed captures stay cached."
+    },
+    {
+      "id": "passage-021",
+      "source_text_sha256": "439beff0d4d7302c7dba1f5ec3f32b8b24400cae6b2d7086f216ef30f165c945",
+      "source_kind": "p",
+      "text": "The gap is large. At measured byte/token ratios, 50 million tokens need about 229–245MB of clean new text. The two-chapter selection averages 912 tokens per work. Even wrongly assuming all 20,105 records were distinct works gives only about 18.3 million tokens at that size. This motivates testing whole-work yield, not forecasting that many eligible tokens."
+    },
+    {
+      "id": "passage-022",
+      "source_text_sha256": "dfc33ef176e17741d640c14191b7ffb964420aa4a2da0c5d9e447333b9fe4d0f",
+      "source_kind": "p",
+      "text": "No reviewed combination has shown the earlier proposed 50 million eligible distinct new tokens across at least two new source families. That was an operational choice, not a user minimum or theoretical rule. IntechOpen and its DOAB derivatives count as one linked family. A smaller study could be considered if its question, eligible data, independent validation, budget, and common task lessons were fixed first. None is selected or launched. The current 10,725-token sample does not justify filling a large budget by repetition. The current continuation execution budget is zero, and independent prose validation is missing."
+    },
+    {
+      "id": "passage-023",
+      "source_text_sha256": "90f761e5a56aaa386fa24cac34ba8b29b4507f4405f6b9f06ee6f54952705b52",
+      "source_kind": "p",
+      "text": "If enough eligible material passes those checks, we would train a separate copy of the original base within the approved cap and compare it with the untouched base using identical later lessons and outcome checks. New data, more tokens, and more optimization change together. This is not breadth alone. No extra control branch or larger-model run has been selected."
+    },
+    {
+      "id": "passage-024",
+      "source_text_sha256": "cbecdeb2f0f4c13fc91525b722f0233d1df02c955db7183f3c5ee9c25fa22c42",
+      "source_kind": "p",
+      "text": "The hidden final planning test remains out of training and unused. The hard deadline stays 31 October 2026 at 04:12 UTC. The current plan gives current evidence and launch requirements; old posts preserve what was known then."
+    }
+  ]
+}

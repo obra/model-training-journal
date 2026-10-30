@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-reflection-then-broader-pretraining.md",
+  "source_sha256": "605bacf1f19aa2facb87fdce57e7cd0197fbee90350d41adc186319349db409b",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "0cb50c59c35fa35f5a1ce73c04b522df881e9005ae8ea1b8825483483d9bb62a",
+      "source_kind": "p",
+      "text": "After the variety study finished, the next sequence recorded on 26 October 2026 was a short failure-reflection check followed by a broader-pretraining comparison. The old evaluation queue was done and reflection code was being checked. No reflection result, broader download, or extra pretraining run was claimed yet."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "fd448bd7819737338b03c9d14f9fabe15b805c0117d25212fc64b1bdb4ed4253",
+      "source_kind": "p",
+      "text": "The sequence asks two questions: can explicit feedback and instructions repair selected failures, and can a broader language foundation improve later task behavior? Neither promises a useful assistant."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "6544ebe2d683f3f2ec1f5a9aee1d76ead5109de1396bcef2d2c5d3c33e0200a5",
+      "source_kind": "p",
+      "text": "The first check selects three observed errors. One updated the wrong task. Another suggested 20 minutes when 35 were requested, after permission had been withdrawn. The third claimed completion without a write."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "7fdffd777265a7cf8da25c167ba71eeddfb8637a2642571abfea6495084253fe",
+      "source_kind": "p",
+      "text": "Each reflection keeps exactly the history delivered to the model, including tool results. Later corrections it never received stay hidden. If the prompt identifies an error, that is supplied feedback, not an error the model discovered on its own."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "e1feb764266fd55e0ca82d485340b19838794969b31b7a9833a6d6d6d2001b51",
+      "source_kind": "p",
+      "text": "The model will be asked why its answer may be wrong and what information or instruction could help. It may give nonsense or a plausible story. An explanation alone does not prove the internal cause. Unsupported stories will not become training targets."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "339c447b68ad747e3de9ea1b572b4fc6c538a692e64e1e65cfb184ed8315fb7a",
+      "source_kind": "p",
+      "text": "Three short reflections will be followed by limited checks on the same cases: baseline, generic rechecking, independent procedures, and model-suggested changes only if they are coherent and actionable. Raw output, format validity, correct outcomes, and unsupported completion claims will be recorded separately."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "dde8ea84c6386667c6bef2443d22ebf836e6ac0bed500a3b967566f23e373cb3",
+      "source_kind": "p",
+      "text": "If help supplies the answer, success is a correction result, not transfer to fresh cases. Fresh tests and the final holdout stay reserved. The initial combined check has a 900-second guard and no training step."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "b09eb8b113f4ddaaeb141e090876c78902b812e456c2f3f264004c716294402b",
+      "source_kind": "p",
+      "text": "The proposed next training comparison keeps the roughly 97.5-million-value design. It would compare the preserved 100-million-exposure base with a separate continuation of up to 200 million more targets on broader reviewed text. Both would then get identical conversation lessons and fixed task tests."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "410eafe474fab9ab074601ebac789b90bde4a71e0c23cc225f89714b90068d12",
+      "source_kind": "p",
+      "text": "This keeps a reference for the whole continuation change. Existing failures cannot separate model-size limits from weak general-text training, narrow sources, lesson gaps, or optimization. No one-billion-value run is selected."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "bbb47c318a6f24fa432a4d73c83970ef86ca458a2595efa5dc5a6bcead4fa137",
+      "source_kind": "p",
+      "text": "The original 100 million exposures came from about 26.91 million unique corpus tokens. Repeating that text would not make the sources broader."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "1346bebc7fc79c934b9d38b1cf3f9b72803dc886e298dc2d68de5a837dca9c41",
+      "source_kind": "p",
+      "text": "The first limited audit proposes Taskmaster simulated dialogue for independent language validation only, plus DOAB books and a Hansard file as possible training sources. Rights, credit, source history, family separation, overlap, and usable tokens must be checked before approval. Candidate metadata is not blanket training or republishing permission. No candidates had entered training."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "ddecabf9a7eae7bac1a27484aa4b8ffb599fd93b29799e29f9bda60befaf2262",
+      "source_kind": "p",
+      "text": "A full 200-million-target continuation calls for at least 100 million eligible distinct new tokens, with at most two passes per document. Less approved data must shrink the run or leave a recorded data shortage. The cap is conditional, not a promise to spend every token regardless of quality or rights."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "69c9c5b1afa433826bcdb3136e431444ce6ce10d905b918599f0a8420af3cfbc",
+      "source_kind": "p",
+      "text": "The small base-language check was fixed but unmeasured. The separate single-fact-learning study was still only a proposal. The project stop remained 31 October 2026 at 04:12 UTC."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "97ed568a52ce29794337fe37ad7c38a9fec87c055ee32f93a4a77d8b89e4e0f2",
+      "source_kind": "p",
+      "text": "The dated current plan gives later measurements and decisions. This AI-assisted account preserves the preparation-stage record and excludes private messages, runtime details, raw conversations, and candidate source text."
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-first-real-text-gpu-run.md",
+  "source_sha256": "029e3737c649267822f8f66b6ae619275e43eaddba82f85c10f73582bb70f56c",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "dc07b0cf163b83fbd636c897831e616c7e99e5be0a088ccd91930ae7e51025f1",
+      "source_kind": "p",
+      "text": "The first real-text trial finished 2,000,000 usable training targets at 04:51 UTC on 26 October 2026. It used the newly trained BPE text-piece converter and limited textbook collection, not the earlier byte mapping."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "79d8f215d56269ccfe76e3f2097628a75b665596b88e794048a8b0fccb9492a0",
+      "source_kind": "p",
+      "text": "The trial tested whether loss stayed valid, how fast real tokens trained, how much memory was observed, and whether a saved model could reload. Lower loss on a small reserved textbook sample would support continuing, not prove instruction following or useful conversation."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "f0c98b22689823a645efea747a56c1acaea877ebf2fb333a817585e9bdc77c99",
+      "source_kind": "p",
+      "text": "The model has 97,536,768 adjustable values: 12 layers, width 768, 12 attention and key/value heads, a SwiGLU part of width 2,048, shared embeddings, and a 1,024-piece context. It handled one sequence at a time and combined eight small batches before each update."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "b3508fa7bbf81639029106b2af82c71f4a1c2e976fb0c2df7036910eaba55485",
+      "source_kind": "p",
+      "text": "The run used BF16 calculations on an AMD Radeon 8060S with PyTorch 2.14.0 and ROCm 10.1.0. AdamW's peak learning rate was 3e-4. The rate warmed up over two million tokens, then was set to follow a cosine schedule over 100 million total tokens. The trial stopped just as warmup ended, keeping that longer schedule for continuation."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "5a6d8715f689df731764299535396afe469d9ca578ae88a48dd008d1587de822",
+      "source_kind": "p",
+      "text": "The model started from random values. It was not an existing pretrained model adapted to these books."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "8965c08ee760bd5f0824d5d3bbd51508c193f367594ee75b2a035936908c4bb4",
+      "source_kind": "div",
+      "text": "The table reports 2,000,000 usable targets and 245 updates in 137.238 seconds, including validation and saves: 14,573.2 targets per second. A fixed 16,384-token validation sample improved from loss 9.831619 to 6.235447. End-of-run memory observations were 1.639 GiB allocated and 2.594 GiB reserved."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "cdf1b2cb47634192c728bfc961386df54f382b11eb72b36d6795ab6813ebf41d",
+      "source_kind": "p",
+      "text": "The lower loss shows better prediction of this particular held-out sample. It is small and comes from the same textbook family as training. It is not a general capability test."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "555337d4b225db0d70d0393153756491d285e5bfcda79bd278794830ce96045d",
+      "source_kind": "p",
+      "text": "Memory was observed at the end, not measured as a peak. Final GPU temperature was 42°C, while sampled logs reached 55°C. Neither is a complete peak-temperature measurement. No invalid loss or hardware error was reported. A short trial does not show long-run heat behavior."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "ab59b6bc7e0301955e0dcc308afa310fe13532203275f288701f4b33bb5048fc",
+      "source_kind": "p",
+      "text": "The safely written model file and its fingerprint record reloaded on CPU. Checks confirmed FP32 stored model values and optimizer state. The two-million-token learning-rate position and exact place in the text stream were preserved too."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "2df5be42de9b797a9679b51eab898c52c424e7aa523b8420879e425f00657c89",
+      "source_kind": "p",
+      "text": "The save format includes the optimizer, rate schedule, random-number state, and data position. Earlier tests included exact interrupted CPU restart. Reloading this trial file on CPU does not prove a later GPU run restores everything correctly; that later run needs its own evidence."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "c3c56d628c4fdc53137ac75a65921262c360f58a9f40630800ae81fdd4790758",
+      "source_kind": "p",
+      "text": "The continuation aims for 100 million usable targets in total, including the trial's two million, not 100 million more. At the publication snapshot of 05:04:35 UTC, it was still running. This post does not claim the full run finished."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "7dcbf7773efd9845f61d578166d07683a457321d1dd156484f0ee7493b4baaa7",
+      "source_kind": "p",
+      "text": "The continuation keeps the optimizer and learning-rate schedule. Saves are planned every five million tokens or 900 seconds. Validation grows from 16,384 to 65,536 targets and runs every five million training tokens and at the end. Later losses therefore use a different sample size and are not an unchanged measurement."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "dc592f9e8c1010a6b48d3fc9903a1cd829e4badcd52438226ec8e40927b5915c",
+      "source_kind": "p",
+      "text": "The collection contains 26.91 million stored training tokens. A 100-million-target budget is about 3.7 passes, not 100 million distinct tokens. Dividing by the trial's speed gives about 1.91 hours, but sustained speed, testing, and saving can change that estimate. The job is limited to four hours and the project's absolute deadline."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "c4c6b196a6144f37ab58aac2b7bfa3f70c7657df5f1e97bbafd045ce249f2f69",
+      "source_kind": "p",
+      "text": "No learned conversation behavior had been tested. The next comparison remained a random model plus task training versus a base-trained model plus the same task training, using matched fictional planning examples and test conditions."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "757c147b973178e822e7fee3058cb6773000316707d58db92cae604d03972ec8",
+      "source_kind": "p",
+      "text": "This AI-assisted account was checked against event logs, results, reload records, and both run configurations. It publishes no model file, training text, raw logs, or private runtime details."
+    }
+  ]
+}

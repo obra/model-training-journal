@@ -1,0 +1,139 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-document-rights-and-validation-candidates.md",
+  "source_sha256": "4291f1d070165f684c554f7c076cf9f56034f177b2c7850bd23196b382734191",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "ad39d3d5a12e98642cd387b3b5a29ae25566e207b776d23b316aabd717acc893",
+      "source_kind": "p",
+      "text": "Through 17:52:33 UTC on 26 October 2026, no new text was approved and no new training began. Document review narrowed possible language-validation data and found reconstruction problems in candidate books. A finished word-overlap audit supplied limited evidence, not proof of independence."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "0b19895a8edb9fce646d4559be75ed6fd0a855fcce984f5631cd60dbee78b052",
+      "source_kind": "p",
+      "text": "This continues the first data audit. The question is whether more varied, traceable general-text training helps the same small model before equal conversation lessons. Download sizes and metadata labels do not answer it."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "7eb95b6caaa2c87bb96546952eac15502342729fbdd9c7a66ecefbe8648f696c",
+      "source_kind": "p",
+      "text": "The Taskmaster survey selected 36 whole conversations by repeatable hash order, four from each of nine instruction groups. All 36 were read, with identities, structure, and annotation spans checked. Selection was fixed before looking at model outputs or losses."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "922e23d3dc7ca285e071cf024a2cbe0b16c47754cca348bf6a0e37b922cb5840",
+      "source_kind": "div",
+      "text": "The table gives one main decision per conversation. Nineteen were kept for overlap checks. Five were excluded for unresolved identity or contact details, and seven for outside prose. Four had incomplete or deleted sources. One was a collection failure without a real task. Being kept for checks does not mean approved."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "6458f536a45a914c9f5622ce86117436701eae2de01a3ffd89ba9e2885ee290c",
+      "source_kind": "p",
+      "text": "Some records had more than one issue. Automatic checks missed short or attached contact-number formats. Whole conversations were excluded, rather than quietly editing turns or replacing examples after scoring."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "1a916d7e682b1e9813d54a814a3e05714c6ccb3e572b0690d631f30434503358",
+      "source_kind": "p",
+      "text": "The remaining 19 conversations have 438 turns across six groups: four coffee, four pizza, four ride, six movie-ticket conversations in two groups, and one restaurant-table conversation. Both auto-repair groups and the second restaurant group vanished. This is a small, uneven dialogue-language diagnostic, not a balanced nine-group sample."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "e2c63587f9561ff9ab88ca0f4ef76f08faa5ef41972af77d76d4fe3e3768693c",
+      "source_kind": "p",
+      "text": "CC BY 4.0 credit must be preserved, but that notice does not settle outside prose or participant details. Simulated success statements lack verified tool-state receipts, so these are not truthful-action lessons. The whole Taskmaster family and derivatives remain excluded from training. Nineteen candidates still means zero approved validation records."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "e475103ad3deda1aeea42af64f49048a96689caba4b56081daf7203f1b790cc5",
+      "source_kind": "p",
+      "text": "The historical audit finished at 17:46:53 UTC. It compared the 19 candidates with ten listed inputs: Pressbooks training and old validation, plus eight conversation-training collections. All input fingerprints matched, and files stayed unchanged during scanning."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "d5db7171a211cfdda84ac16e3337f733b9664bc58b4d903dfa458188031a971d",
+      "source_kind": "p",
+      "text": "The scan covered 59,928 source records and 360,599 source units, including both whole-conversation and individual-message views. Those are not counts of unique works or new training tokens. All 29,366 matching source/validation pairs were classed as limited shared language; none met the stronger overlap rules."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "b865df6344c94447bc4616d8530709e9069b96abdd7330740ba171e1921f2b1c",
+      "source_kind": "p",
+      "text": "That does not prove independent origin. The detector checks normalized words and short phrases, not shared meaning, translations, or unlisted sources. Turns under eight words get only whole-unit exact checks, not substring searches. Harmless common phrases can match, and embedded material can be missed."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "b5196269f53f235c6aeedb95117fd1e2bc5965ccb2326f6d18d8b8ccd7a72526",
+      "source_kind": "p",
+      "text": "Any eventual broader training text must be included in another scan before validation is fixed. Source history still needs verification. This audit does not repair the old overlap-affected validation split."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "3ce61e91861dc76ae907578f57e30782636e079bbc544f31237dc4e345b27cc9",
+      "source_kind": "p",
+      "text": "The DOAB file had 31,034 records linked to 1,499 parent-book keys. IntechOpen and MDPI supplied 98.13% of records. That percentage is not their share of tokens or independent works."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "f6736166165488cc475a1f1bd5c6fc36f21ac6e063b87a6ea72be10d8e360f75",
+      "source_kind": "p",
+      "text": "The deliberately chosen review sample covered 24 records from 13 books. Twelve short records were read in full. Twelve longer ones were checked only at recorded boundaries and notice passages; their interiors remain unread. The sample is not representative."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "5f0aeea6017a786917855d4fdbed354b8e89c817b5fcb03eef6b56376bbcc566",
+      "source_kind": "p",
+      "text": "Reviewed MDPI notices distinguish CC BY individual articles from CC BY-NC-ND compilations. Reviewed IntechOpen notices use CC BY 3.0 for individual chapters but reserve compilation rights and some credited material. The publisher policy also distinguishes individual works, collections, older licenses, and reproduced figures or tables. None allows us to call every extracted row a separately cleared chapter."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "45377e764d7d024feb496267f06566406b774e14050e0efa5a707bae8ce5f6d8",
+      "source_kind": "div",
+      "text": "The 24 records were sorted for next steps. Two were priorities for document review, and 11 needed reconstruction. One was excluded as a credit-only block, and four as front matter from a compilation. Six copyright pages were kept only as rights evidence. None was approved."
+    },
+    {
+      "id": "passage-016",
+      "source_text_sha256": "31a971dcc7efc51cdd82bfad55ec8d60585bb2e5bc5447f8de78f9c800dd3502",
+      "source_kind": "p",
+      "text": "All 24 remain unapproved. Some rows merge works, repeat or scramble text, or combine a correction with the original article. Careless splitting could drop a correction to a scientific claim. No usable distinct-token yield has been established."
+    },
+    {
+      "id": "passage-017",
+      "source_text_sha256": "66166a40656d7e722656aeb5040c510ab5328eed97ed11042e14dfac0c330a45",
+      "source_kind": "p",
+      "text": "Hansard is deferred from the first continuation unless a useful cleared subset is found. The downloaded written answers differ from the proposed debates and need their own reconstruction and license-exception review. Senedd remains excluded."
+    },
+    {
+      "id": "passage-018",
+      "source_text_sha256": "134191e6cd55fe50e121068d400959c088b2fb9891ddb24c1a34da66a44b8196",
+      "source_kind": "p",
+      "text": "One downloaded archive was successfully inspected and contained 10,096 records. They lack an explicit source-version field. Differences between fixed collector code and the dataset description leave extraction history unresolved. A submission date does not identify which revision of a multi-version paper was used."
+    },
+    {
+      "id": "passage-019",
+      "source_text_sha256": "7481b83c7a937443f06e96a68dfe182aacedd3185ec52883a0ac7402f1d31c50",
+      "source_kind": "p",
+      "text": "Two early candidates matched official version-one identities and CC BY 4.0 notices, but their full contents were not cleared. They establish neither archive-wide permission nor likely usable yield."
+    },
+    {
+      "id": "passage-020",
+      "source_text_sha256": "340f9f035d39a65a6985f7d8f1f7a0cac6d4351572b3697d9808802d054e680c",
+      "source_kind": "p",
+      "text": "The limited pilot therefore treats the archive only as a list of IDs. It selects 25 candidates and would obtain fresh text from exact official versioned HTML, recording response fingerprints, version, license, credit, and transformations. Two responses were saved at this snapshot. Parsing, full review, and approval had not run. A saved response does not prove complete, clean, fully covered prose."
+    },
+    {
+      "id": "passage-021",
+      "source_text_sha256": "76a824be69e26b366898741c9bfe2c5a9fc303739fadcdf96fc034036f376db7",
+      "source_kind": "p",
+      "text": "Continuation remains conditional and limited to 200 million additional usable targets, with the original base kept as a control. The hidden final planning test stays out of training and unused. The deadline remains 31 October 2026 at 04:12 UTC; the current plan records later decisions."
+    },
+    {
+      "id": "passage-022",
+      "source_text_sha256": "c0127f0829897fcd7f99c9725edf4e3ff3bfc7c334f29fc7bc324aacf3c6d0ac",
+      "source_kind": "p",
+      "text": "This AI-assisted account was checked against the notebook, review ledgers, download records, and audit summary. Candidate text, conversations, raw logs, and private execution details are not published."
+    }
+  ]
+}

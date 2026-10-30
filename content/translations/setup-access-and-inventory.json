@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-setup-access-and-inventory.md",
+  "source_sha256": "7e7c37cd96d383e7ef6645caa8368aec18895ee363adaded03babed894aa085e",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "9e139fb4d94ec7aa68fbd453b66e46aadc138579a1a142d944ce9c2f3299298f",
+      "source_kind": "p",
+      "text": "This is the first record of an AI-assisted experiment: can we train a model with roughly 100 million adjustable values from scratch on an AMD Strix Halo computer? First we only checked access, available resources, and problems to solve before computation."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "f604becd792d5938854de8e1ce392ab7a581e5b613c537f55767432a1884df47",
+      "source_kind": "p",
+      "text": "This post records setup at 03:43 UTC on 26 October 2026. There was no training, benchmark, GPU stress test, software installation, or model or data download in this phase. The next post covers the later setup and completed test."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "af23aa5807adc6606a2bee5200e6d81389c4a781ffe7b660e6f43bfbc9456dfe",
+      "source_kind": "p",
+      "text": "Could this machine support a small training experiment, and what still needed checking?"
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "4bdefe87c91cc5b45bb875254216ce4590ac991642e3c14cb4bd67f7551dc6e0",
+      "source_kind": "p",
+      "text": "The hardware specifications were not enough. GPU memory might already be in use, Python might lack suitable training software, and available storage might not be writable. We made a limited inspection of the operating system, driver, memory, storage, and selected software without changing them."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "c7963ef9667a8c195a96f23ef3fa9d762cde982600d32e52cc7a35a02aab9d08",
+      "source_kind": "div",
+      "text": "The table lists the observed hardware and software, not a passing training test. The CPU had 16 cores and 32 threads; the listed GPU was a Radeon 8060S. The checked Python 3.14.4 could not load PyTorch. We found no ROCm version in the locations checked. Exact operating-system and driver identifiers remain in the table."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "af8600958dd29149d3b20a8a749fa821b884c09f0f301c3d108a61b908938cc5",
+      "source_kind": "p",
+      "text": "We established only that this particular Python environment lacked PyTorch. Other environments or containers might have it. Seeing a GPU in the operating system did not yet show that PyTorch could use it."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "87477c5b6e248bbad66cb76af4944d3a2628f5a3267c77673b460527480b3f0a",
+      "source_kind": "p",
+      "text": "Linux reported 30.48 GiB of system memory, with about 27 GiB free. The GPU had a reported 32 GiB allocation budget, but about 31.44 GiB was already assigned. Only about 575 MiB remained in that pool."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "d6c8eae4a6565f11f2d156e12dcde9ca53ec55208e097dbbfb8a86d03923b6f4",
+      "source_kind": "p",
+      "text": "The GPU reported 0% activity at that moment. A processor can be idle while its memory is still reserved, so idle did not mean ready for training."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "e8dd710b14854e01fd918872f637b29d8385ac12a33e9127a7079c6e0221e9fd",
+      "source_kind": "p",
+      "text": "The driver also reported 15.24 GiB of GTT, a pool that overlaps system memory. It is not extra memory to add to the totals. The split looked consistent with a 64 GB machine, but we did not independently verify physical memory. The operating system denied access to firmware memory details, and we did not seek higher privileges."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "ad1f7be7e372282304dea284cc381656ddd2203abdcb927f71a12e2cf9f20ea7",
+      "source_kind": "p",
+      "text": "Storage appeared large enough for a small test, but we had not chosen a writable place for training data. Free capacity and permission to write were separate questions."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "be2f9a40b0ef1a9753b7a629e6d212ba1f233e2aa639af8675dfa96ac3fc0bf8",
+      "source_kind": "p",
+      "text": "The failed PyTorch load was useful evidence. A working GPU driver alone was not enough; we needed compatible training software before testing the model."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "91950a0518392cc08d8621c33adfc0a1b9dafc920858ef3d18e9af25e9759384",
+      "source_kind": "p",
+      "text": "The first script for creating the notebook failed with a Python syntax error before reaching the remote machine. It changed nothing there and was fixed before the notebook was created."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "fcd2f6d20f1378207a1cef896da301f927769cbd09e6acb9fe76c8a98a322267",
+      "source_kind": "p",
+      "text": "We did not yet know for sure what held the GPU memory, and this setup phase did not try to free it. The later diagnostic post records releasing memory and the environment that passed tests."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "d327ef7b341a49e257a38a7d6d81cdcd2e6a3476d95c648d101d537d1b1e7675",
+      "source_kind": "p",
+      "text": "We still needed to choose the model design, text-splitting rules, licensed training text, budget, and tests. Next came freeing GPU capacity, choosing an isolated software environment, and trying a small, limited workload before estimating a longer run."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "28cbafa31e1aa8329e0499e9b7181d8af56755fb924c88f984d832df41499096",
+      "source_kind": "p",
+      "text": "This inspection gave us a starting point and a list of unknowns. It produced no trained model or evidence of model quality."
+    },
+    {
+      "id": "passage-016",
+      "source_text_sha256": "93cafab00758c8a3a4cdf6ec67c4283a7b9eb101304ee767e73ae9742014c0e1",
+      "source_kind": "p",
+      "text": "This AI-assisted summary keeps useful observations and their limits while leaving out private machine names, access details, unrelated services, and raw logs. The times describe a historical snapshot, not current machine status."
+    }
+  ]
+}

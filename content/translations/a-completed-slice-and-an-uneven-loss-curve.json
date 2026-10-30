@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-30-a-completed-slice-and-an-uneven-loss-curve.md",
+  "source_sha256": "6522ef6d1930f2b95b411ab907e1fed1bb08574f0226fd7907e0300aa1ec658f",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "b6bfd1a1183338a1a38f5bef500d0372f8182c3cc58337ee33780678ba4715e6",
+      "source_kind": "p",
+      "text": "The first V4 batch is finished: 111,462,468 usable next-piece predictions, 111,706,112 text positions processed, and 3,409 training steps. On the same 7,057-item federal-regulation (CFR) check, the final saved model scored 37.7860. Its starting model scored 39.7762. Lower is better, so the final score is 5.0035% better than the start. But it is 1.2598% worse than the 37.3159 score at step 2,841. The last model was not the best one we measured. The chart keeps that setback."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "02251b2e1d27ed61b0385e38d5919c3f81829d80c1b2bd1edd434768fe4ae83a",
+      "source_kind": "div",
+      "text": "The table follows the saved models from the start through step 3,409. The middle column counts usable predictions in this batch only. The right column is the text-prediction score, called perplexity. Lower is better. The starting model adds zero new training. Scores rose at steps 1,705 and 3,409; those worse results are kept alongside the improvements."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "18db61e3dc54575cbb7d6cf6cd7f25b10633bbf2239ce191c8f44df43fde9ed3",
+      "source_kind": "figure",
+      "text": "All points use the same 7,057 prediction targets and the same text-splitting and scoring rules. The empty marker repeats the starting model at zero new predictions. The vertical scale is narrowed to make small changes visible. Reusing this development check is not the same as passing a hidden final test. It also does not show that the model can use logic in new situations."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "94dc233dcda46dd3127fc8410eb88a9173b9aa1503e51c8a1696d52e9b9acb7b",
+      "source_kind": "p",
+      "text": "The final average prediction loss was 3.631939 nats per target. This is another way to measure how poorly the model predicts the next piece of text; lower is better. We checked that the run finished separately from checking the saved model's score. We copied the final records at 03:47:48 UTC and matched them to fresh completion records at 03:49:55 UTC on 30 October. The last actual live progress sample was at 02:45:48 UTC. These are times we saw records, not exact times the model was saved. A process stopping would not, by itself, prove success."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "0072a4ec9286f16c250e459eb20a643351f6686fefc4529d34e81381d99003d2",
+      "source_kind": "p",
+      "text": "Saving models took 698.850 seconds, and checking them took 9.251 seconds, out of 20,821.276 seconds in the training loop. Together that was 3.40085% of loop time. Removing those tasks leaves 20,113.175 seconds. Loading the model is not counted here. Each saved-model boundary reports a running total, so adding the totals would count some time more than once. These are not whole-job, worker-startup, or GPU-only timings. The download keeps them under its existing in-progress timing format; separate records confirm that the stage finished."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "cbd603724683ef6c83a43d33636763f9e02a1be8e2cc9cebd2d9ae06edebb9ea",
+      "source_kind": "figure",
+      "text": "This chart shows the running share of training-loop time spent saving and checking models. It includes the full work at each save boundary but excludes model loading. The scale starts at zero. The final share was 3.40085%, below the existing 10% limit."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "a4bb834134f5bd65e24252b34ba0638083b7f278a3f7425dceeb917e898aae03",
+      "source_kind": "p",
+      "text": "The counts describe different things. This batch completed 111,462,468 usable predictions, 111,706,112 positions, and 3,409 steps. The work retained in the final model's history totals 744,286,144 predictions, 745,734,144 positions, and 22,758 steps. All work the project actually ran totals 746,944,538 predictions, 748,396,544 positions, and 22,839 steps, including repeated and interrupted work. Do not swap these counts. Earlier failed work still counts against the budget when a new stage begins."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "f96346e325cb8b0361012c21a5f0094122bafd2ce8ce65cd4c70585a7100e51b",
+      "source_kind": "p",
+      "text": "The second V4 batch started at 03:39 UTC. At the checked 03:54:02 UTC snapshot it had finished 81 steps, 2,648,353 usable predictions, and 2,654,208 text positions. Its set limit was 111,430,307 predictions, 111,673,344 positions, and 3,408 steps. We had not yet scored a new saved version from this batch. Rechecking the starting model does not count as a new version. Training progress is not a new quality score, and these counts do not belong on the first batch's chart."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "ad275e2cc81754d56a8b71a19aca239a40025961ab1d8648ee43809f9da7062c",
+      "source_kind": "p",
+      "text": "The format check stopped before its real trial. A setting that controls which devices the program can see failed its CPU setup check. That tells us about a setup problem, not formatting or reasoning skill. A code fix is prepared, but this snapshot has no successful replacement run or better diagnostic score. The next attempt needs separate approval and a passing setup check. Its permission check still refers to the first V4 batch, while training has moved to the second. Fixing device visibility alone will not fix that mismatch, so the diagnostic remains blocked."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "652571f45992024f295cffd13a42c6684474afdbc0409834b12df028c799578d",
+      "source_kind": "p",
+      "text": "These V4 saved models have no new score on the broader text panel, the fixed 32 tasks, or reasoning. The older broader-panel score, 14.6312 on 130,209 predictions, stays separate. The historical task result is still 0/32 correct and 0/32 in the required format. That output failure prevents a clean measure of reasoning ability or model size limits. Earlier charts keep their original data and meaning. A blank or null value means missing, never zero."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "7f0578610f580bc36aed70fb8c6bff4694a14aec73b8de0e12e32d769173cf89",
+      "source_kind": "p",
+      "text": "The aim is still logic that works in new settings, not just convincing conversation. This model started with random values. It has about 299 million adjustable values, a 16,000-piece vocabulary, and room for 1,024 text pieces at once. Those specifications do not prove assistant skills. There is no single perplexity score that makes a model useful. The original comparison model and hidden final test have not been touched. We share reviewed summary results, not source text, private logs, data, passwords, or a claim that code and model files have been released."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "a8cd9945eef56865ab4b8b485304ccb79da9cec57fbcb0f1a6e3b7df0d2ae720",
+      "source_kind": "p",
+      "text": "The links provide the seven chart points, the full 42-row score history, running totals for timing, first-batch progress and speed records, saved-model records, and separate progress for the next batch. JSON is structured data; CSV is a table format. Use each file's stated scope rather than combining different kinds of counts."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "e6c707077785981f431c816616f28b43eb3e2a32e02115a5ecdf59f3d1eaa6b7",
+      "source_kind": "p",
+      "text": "The named Python command rebuilds the new charts using the already-fixed plotting software versions. It reads only cleaned summary data. It does not train the model, fetch live status, or run tests."
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-30-a-second-completed-slice-and-v5-checkpoints.md",
+  "source_sha256": "b2c6585b6c3d1a7116b9dcc8d586190559709ab1d952557d018c9b3f93b3f6e9",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_kind": "p",
+      "source_text_sha256": "092060bd4f56f5bbc2a94ea6ece3b6c6046d52b66a571ef9a4f826d3cb00e4d2",
+      "text": "The second V4 batch of text is finished. The model practiced 111,430,307 next-word-piece predictions in 3,408 training steps, using each approved piece of data once. On a fixed check of 7,057 predictions from federal regulations (CFR), its final saved version scored 35.9212. The starting version scored 37.7860. This score, called perplexity, is better when it is lower: a 4.94% drop here. The score briefly got worse at step 2,841. We kept that result in the record."
+    },
+    {
+      "id": "passage-002",
+      "source_kind": "p",
+      "source_text_sha256": "2629e403bf9512e14a4974d3d692cb3b23fcce0ec85c78ed08e6c238687e94b3",
+      "text": "At 17:14 UTC, the next batch, V5, was still running. It had finished 3,601 of 3,833 steps and 117,734,731 of 125,320,085 planned predictions. The most recent version we had actually tested was saved at step 3,195, after 104,460,450 predictions in this batch. Its score was 34.5556, down 3.80% from the starting score of 35.9212 on the same check. Doing more training does not tell us its new test score. We had not tested V5's final version."
+    },
+    {
+      "id": "passage-003",
+      "source_kind": "div",
+      "source_text_sha256": "f6a03f4012904ea4601992ce9e70a389dac76976178aabdc46a9d03e67ea2600",
+      "text": "Read each row as one saved version. “Checkpoint update” is the training step where it was saved. “Stage-local valid labels” counts usable predictions in that batch only. “Repeated parent” is the starting model, tested again before new work. The last column is the text-prediction score; lower is better. The table keeps every reported value, including the rise from 36.0421 to 36.1805 in the second V4 batch."
+    },
+    {
+      "id": "passage-004",
+      "source_kind": "figure",
+      "source_text_sha256": "bdbdfa74a9aa15473341f7eb81c82a1c19c00f591198bbeafe10eba4b5d9aeb0",
+      "text": "Blue shows the finished second V4 batch. Green shows V5 through step 3,195. Empty starting markers are repeat checks of the starting model, not new training. Left-to-right distance counts predictions within each batch, not across the whole project. The vertical scale runs only from 34.0 to 38.2, making small changes easier to see. Every point uses the same 7,057-item development check. We have looked at this check many times, so it is not a secret final test or a general target for model quality."
+    },
+    {
+      "id": "passage-005",
+      "source_kind": "p",
+      "source_text_sha256": "a3362e1f9e6b99f803c664db01d7cb756cda153afcaf1e9e8814cdbb8b8ea63d",
+      "text": "The model is getting better at predicting this kind of text. We have not shown that it can reason in new situations or work as a chatbot. An older, broader text check used 130,209 predictions; we did not repeat it for these versions. The last 32-task check still had 0/32 correct answers and 0/32 answers in the required format. That format failure means the test cannot separate trouble expressing answers from trouble solving tasks. A planned before-and-after format check stopped during CPU setup and produced no successful trial. We are considering BLiMP, a grammar check that compares pairs of sentences without extra task training. It has not run. Neither BLiMP nor CFR alone would show that the model can use logic in new settings."
+    },
+    {
+      "id": "passage-006",
+      "source_kind": "p",
+      "source_text_sha256": "13d3f623d9a1309f9022beac160d7e119b80e3a1a2bf94cc6dd4927f5dea4e26",
+      "text": "These saved versions use the same rules for splitting text into pieces, the same model design, and the same test items. The linked public data contains the exact scores and counts for each batch. The named Python command rebuilds the chart without running training or tests. This AI-assisted journal shares summary results and failures, not raw training text, private records, passwords, or a claim that the trained model files are public."
+    },
+    {
+      "id": "passage-007",
+      "source_kind": "p",
+      "source_text_sha256": "5274d61b1f722cf96d6117902767da8c58decddf835a43516478dcc8ce2b2ed2",
+      "text": "The earlier 17:14 UTC report was one completed step short. It counted 3,600 updates and 117,702,026 predictions because the ledger numbered steps from zero. The correct counts at that same time are 3,601 finished updates and 117,734,731 usable predictions. This correction does not change any saved-model score or the fixed chart above."
+    },
+    {
+      "id": "passage-008",
+      "source_kind": "p",
+      "source_text_sha256": "8ff250226536357a5567da1b1cb4406b97923176dac43687800c641368a1f925",
+      "text": "V5 was verified finished at 17:39:43 UTC on 30 October 2026. It completed 3,833 steps, 125,320,085 usable predictions, and 125,599,744 input tokens. It exited successfully with code 0, without a forced TERM or KILL stop. Six saved models and closure of their storage were verified. The final model scored 34.2885 perplexity and 3.53481 nats of prediction loss on the same 7,057-target CFR check. Its starting score was 35.9212, so perplexity fell about 4.55%. Saving and checking took 3.897% of training-loop time. This is the time we verified completion, not an exact model-save time. There is no new broader-text or reasoning result, and BLiMP has not run. The dashboard includes this later result; the old chart keeps its earlier snapshot."
+    }
+  ]
+}

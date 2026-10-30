@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-canonical-serialization-results.md",
+  "source_sha256": "be02855f16a9d012ba2b493176c57d878129ef8f5f6ac273b04f48f57e817f05",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "8fbd4de423667a5d840855f23a8554ec858e54cd983e17df3461e276672d8973",
+      "source_kind": "p",
+      "text": "The standardized 500,000-target training and development pipeline finished at 09:57:23 UTC on 26 October 2026. The fixed training check finished at 10:00:59. Matching tool-message format removed a known input mismatch but did not produce reliable planning."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "9e1803a0f99a524bf193359191b0c42911b6cd9e6ecb932384d7528660e7443f",
+      "source_kind": "p",
+      "text": "The run used the same 3,000 original conversations, answer targets, order, tokenizer, model, seed, schedule, and settings as the broader trial. Only tool-message representation changed. Training restarted from the preserved 100-million-token base with a fresh optimizer."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "75a43d68ec5d864cdbecfe6ddaf7fcaa45b09931e3e03277484fb268fd615fa5",
+      "source_kind": "p",
+      "text": "It completed 499,839 assistant targets in 3,368 steps and 246.5126 seconds, about 2,028 targets per second including saves. That is about 1.12 exposures per distinct-pass target inventory, not newly obtained data."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "c3f1f8ee170320d4492df08455cd6b385960fb4bc15aaef70bfc8aed61042580",
+      "source_kind": "p",
+      "text": "The same 64 training conversations were reused without choosing a new sample."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "e8eabce214ce51caa25c526e4ab0adb42ba1ee6c389874f7ea0ee2ed0f1b2b56",
+      "source_kind": "div",
+      "text": "The familiar-case check had 38/64 accepted states but only 34/64 exact histories. With correct earlier answer tokens supplied, 34/64 conversations had every target correct; 43 of 9,601 targets were wrong. Mean assistant-target loss was 0.0130682. These measure different kinds of fit."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "5b59ac6563ca21afb2ed717b4f8ca5d3be977460def0661738d5c503d65d5067",
+      "source_kind": "p",
+      "text": "All 30 nonexact histories first differed in the assistant output, not the environment format. The earlier 38/64 had the same total but was affected by tool-prefix mismatch. Removing that issue makes the remaining failure to fit familiar examples clearer."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "f6c31cb9eafabde13b6920908bd91bbe6b33f82fde5cd10d3d6c16a4d1bade52",
+      "source_kind": "p",
+      "text": "Four accepted cases still suggest the wrong duration without booking. Their no-write claims are valid, but they are not four correct plans. All 23 sampled calendar cases fail. One task correction improves while one grounded item reference worsens. These familiar training cases are not a hidden test."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "f008404aa8c7562cd58e0531d261d64ca872f6be5bd15f19ce1269e94e65be8b",
+      "source_kind": "p",
+      "text": "Raw and guarded modes each scored 12/80 accepted states on the old suite and 11/80 on the newer one. Context remained 1,024 for the old and 1,536 for the new. Neither is a fresh holdout."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "bc963bf51d3380f9f1e1918038944e388703e7d6f9fcda71496d5d60ce910b69",
+      "source_kind": "p",
+      "text": "The rise from ten to 12 old-suite passes does not prove better planning. The two extra passes claim a tool failed without calling it. Reviewed false completion claims rise from 10 to 25. No correct scheduled event, completed correction, or requested proactive heads-up is shown."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "7c32f8a236b72632b63bced1237d0c0b3b0c39ce3eff2107cdda2d6a005db430",
+      "source_kind": "p",
+      "text": "The same 11 withdrawal cases pass the newer suite's old checker, but every suggestion is invalid. Two use impossible months; every readable interval has a wrong date and duration. Relevant missing-duration questions improve from three to seven, and formatting improves, while false generic completions rise from 11 to 20. Nine more tool-failure explanations follow only successful reads, with no observed failure. Better syntax can accompany worse factual output."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "a6a3b6cb04a309ea31544af0f97357b3cb68b3853763d6d649c61eb18f54bfeb",
+      "source_kind": "p",
+      "text": "Next came a fresh two-million-target standardized run to test a larger training budget. Its longer target also changes the cosine learning-rate schedule, so it cannot isolate number of updates alone or be called continuation of the current optimizer."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "7117c13336162c2eff23d746540174ce7dc6c62b7b6ea46993c4bf136c967839",
+      "source_kind": "p",
+      "text": "The observer's maxima are sampled whole-device readings, not isolated process measurements or guaranteed full-run peaks. Final tests stayed reserved. More general-text training stayed deferred until independent validation was available."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "310f413c2003f9fcf0e9d8c4948ef197a33838dae98493119d1f74c4bbab9c96",
+      "source_kind": "p",
+      "text": "This AI-assisted account was checked against exact budgets, fixed-64 reports, independent behavior and claim reviews, and resource observations. The longer-fit study records the next change."
+    }
+  ]
+}

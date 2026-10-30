@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-first-100m-token-base.md",
+  "source_sha256": "681e9084b6f7947a6aded160881af5ba960d2af5d370df2f389088052ceac95d",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "9bbfea15a8c026b9ed0a8dbecd9e5e4eda3a7de7d9bb0673e5e9288ccb9f3ab1",
+      "source_kind": "p",
+      "text": "The 97,536,768-value model finished 100,000,000 usable training targets at 06:41:47 UTC on 26 October 2026. That includes the two-million-token trial and 98-million-token continuation. It is a training milestone, not a useful assistant or a release decision."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "9eecb81edc014212b21a910ccf1d72beade033c4c77eb6f63e0b53d4b7fdbdd3",
+      "source_kind": "p",
+      "text": "The two runs took 6,698.56 seconds altogether, about one hour 51 minutes, excluding the pause between them. The continuation averaged 14,936 usable targets per second, including startup, validation, and saving."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "47f579808943b453b69baa545d35fb3a63971e6b3b3c1243614622d3abc32498",
+      "source_kind": "p",
+      "text": "The text inventory had 26,908,211 raw tokens. The budget therefore gives roughly 3.7 passes, not 100 million distinct tokens. Some targets are excluded from loss, so raw inventory and usable training exposure are slightly different counts."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "27b54243b568b678aeec1e105d21ce13235d5bcd112395d971186a7ebd6e4127",
+      "source_kind": "div",
+      "text": "The table contains two different checks. The reused 65,536-target prefix scored loss 4.02058 and perplexity 55.73. A separate broader 900,000-target probe scored 3.86067 and 47.50. Lower is better, but the samples differ, so these are not two points on one learning curve."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "1c50388db61ac7d11b26ce1819daae8c55ece4a308fc88190f6ef30c4c66fefa",
+      "source_kind": "p",
+      "text": "The broader check took 15.42 seconds. It used a partial single pass without restarting the data: 902,144 of 918,539 available raw validation tokens. It did not test the same sample as the repeated prefix."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "61dd77e89d3e3f4eecdc3fdc5dce581883e93ba56c44d2e5924c78011276b6dc",
+      "source_kind": "p",
+      "text": "On the repeated prefix, loss fell from 5.69779 at about seven million training tokens to 4.02058 at the end. Some intermediate scores worsened; they remain in the record. Do not join results from different test populations into one curve."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "6126a38c6c1911a78a5570d65c12f06d9b0add764e963ac15cf254536723ae50",
+      "source_kind": "p",
+      "text": "A later word-overlap audit found related content across the textbook split. These scores remain useful historical diagnostics, but not proven tests on independent works. Lower loss alone cannot prove planning transfer or justify more general-text training."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "612c2a9a2c47c163308177bf05aec3132f555c7380a5f286fe2b2ba6b15454d0",
+      "source_kind": "p",
+      "text": "The final save records 12,227 training steps. Review checked fingerprints, matching records, finite numeric values, code/tokenizer/data history, and recoverable training state. Stored model values and Adam state used FP32; calculations used BF16. A separate copy preserved this base model for later comparisons."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "7ac7f128641728226fa202db7577fc760a5163a7021bd66b700ea2e95006f7e8",
+      "source_kind": "p",
+      "text": "A small isolated task-training test then finished 9,976 assistant targets in 66 steps. Its low batch loss checked machinery, not held-out behavior. Neither matched comparison branch started from its weights."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "7591e726144432ff1014191d1dce0343d141af11b29636c7c3495cfa1b699ff9",
+      "source_kind": "p",
+      "text": "The next question was whether general text training helped when both models got the same fictional planning lessons. That required equal actual assistant-target budgets, separate raw and guarded tests, and reading failed outputs. The next comparison post gives that result. The hidden final behavior test had not been used."
+    }
+  ]
+}

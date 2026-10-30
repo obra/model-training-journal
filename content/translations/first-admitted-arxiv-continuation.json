@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-28-first-admitted-arxiv-continuation.md",
+  "source_sha256": "486999ff5a6edee337402b878375c75afe18519bb61693a0572cbceb68c30980",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "d98787b5a91a0bcb34f0456da8b38a7948efcff92aab4f0573075e0f1c249967",
+      "source_kind": "p",
+      "text": "This is a review of saved records at 02:39:23 UTC on 28 October 2026, not a live machine reading. The trial finished 62 training steps. All three saved models and their records were verified, all three logic checks ran, and the process exited successfully. This small approved batch tested the machinery, not the main pretraining program. Review of more training text continues separately."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "fedb5de7218f30af07554dcb56874a5534b438c7fce981ab1f64bc9f29fce9ad",
+      "source_kind": "p",
+      "text": "The model has 299,414,528 adjustable values and began from random values. Its first production run failed after 355 finished steps, leaving step 274 as the saved restart point. Recovery restarted there and finished 547 more steps. The recovered model reached step 821, with 26,860,551 usable predictions and 26,902,528 processed text-piece IDs retained in its history."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "3d6922e1eb676ab7023324a566a31110a71b73ad7fc1780e13f482757f631ae0",
+      "source_kind": "p",
+      "text": "After recovery, the physical-work records still counted 902 finished steps, 29,518,945 charged usable predictions, and 29,564,928 charged input IDs. That includes partly finished and repeated work. The original failure and its costs remain recorded. The arXiv phase starts after those totals; it does not call repeated work new material."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "60b0d9f7eaee03cd7efdcc7f56c10ff1cb38f05055d2c6d2326d816de256ced8",
+      "source_kind": "p",
+      "text": "The previous post keeps the original failure history and the five-model test results. This trial checks training, cost counting, model saving, and tests run between training steps on more approved science text. It keeps the same model design and text-splitting rules."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "3b305c6ddf819712305bdde58aeaf60cec23d08ac7ad41a3f6f77d4798ed05d2",
+      "source_kind": "p",
+      "text": "The trial used 99 complete papers with 2,032,000 content-piece IDs. They came from a limited review of 128 papers in a fixed Common Pile arXiv archive. Another 10 papers, with 224,896 IDs, were reserved for development checks and kept out of training. The 99-paper result describes only this review group. It is neither approval of the whole archive nor an extraction failure. Broader data review continues; this setup trial does not set the main program's size."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "a4bbb39b4f584f4ed069ecbe14973fdb11b6d09ac5ba35545656ee4d6851279a",
+      "source_kind": "p",
+      "text": "The approval record ties the exact archive version and compressed file to selected records, original-text fingerprints, and tokenized outputs. It preserves original notices and archived per-paper CC BY 4.0, CC BY 3.0, or CC0 labels. Known related works and normalized author names define the fixed split. Earlier overlap exclusions, negative-control examples, and held-back low-quality sources remain excluded."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "3c99583a0119f817351ca28b1a071cc0565075b58c4b2439b059c5211f65e3f9",
+      "source_kind": "p",
+      "text": "This limited decision covers the exact reviewed files and known source families. The precise upstream conversion software, original arXiv versions, and unknown author or publication aliases are still unknown. It does not certify every rights, privacy, accuracy, or meaning-level novelty question. The separate unresolved Pressbooks pool remains unapproved; this decision does not fix its extraction, rights, or source-family problems. No source passages are published here."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "aeb12daed6482495d30520c0cbdacd5beba45ffb48f2de17af877113c4f746f3",
+      "source_kind": "p",
+      "text": "The trial restored the recovered final model, its full training state, and its random-number state. It started at 02:17:09 UTC on 28 October. The guard recorded success at 02:32:18, about 909 seconds later. The worker's own timer measured 884.43 seconds. Its 30-minute limit would have stopped it by 02:47:09."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "5238b5b23bfe22d10e2e88d882cd7c303f138be03a42aec1a47a591ef34c9cb6",
+      "source_kind": "p",
+      "text": "The run finished 62 training steps, 2,029,534 usable predictions, and 2,031,616 input IDs across 1,984 small batches. The source had 2,032,000 content IDs plus separate end-of-document markers. The complete-step schedule left 483 stored IDs unused. Source size, processed IDs, and usable targets therefore differ. The data was used once, without looping back, invented repair examples, or a second pass."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "e622eaec9dc142ed100456bb1f465ad762e18a8371fb9e6ca9090d161e2c4b61",
+      "source_kind": "p",
+      "text": "Final review checked all three model files and matching records, their counts and test links, successful exit, and no workers still running. Save storage was closed afterward. The table reports the saved models and their fixed 32-task checks."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "bf323c14e87f0c1ea36c7eda9ed3993fd685caf1a02c8e3ca552a32f9a45c613",
+      "source_kind": "div",
+      "text": "The rows are saves after 16, 31, and 62 new steps. “Model step” follows work retained in the model; “physical campaign step” also includes earlier lost and repeated work. Every saved model scored 0/32 correct and 0/32 in the required format. The final row is the completed trial, not a planned result."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "fad1203e4579d43dcc7bdfb2ad9c1bf22eb489c52aebe1adcd9faa2e02f95684",
+      "source_kind": "p",
+      "text": "The first save added 523,750 usable predictions from 524,288 input IDs. The final model's retained history reaches 883 steps, 28,890,085 predictions, and 28,934,144 input IDs. All physical work reaches 964 finished steps, 31,548,479 charged predictions, and 31,596,544 charged IDs."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "12fa2c3fe223a64d051bae5b641a9fa66df07e6b5d8e196e34527e4140138ce1",
+      "source_kind": "p",
+      "text": "Model steps track the work that survives in the current model. Physical steps also count the original interruption and repeated work. Physical token totals keep earlier partly finished work. These counts describe different histories, not the amount of distinct source text."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "285766eef354cdf7620226acad28381671d2754da966c057f9e80b511db9324c",
+      "source_kind": "p",
+      "text": "The fixed development test has 32 cases, 16 in each of two logic groups. At all three saves, it produced 0/32 correct answers and 0/32 answers in the required format. Because none met the format rules, we cannot separate reasoning limits from trouble expressing the answer correctly. No skill gain is shown."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "64ec4405313dfdb223da31fd1e8cb17b6a7c89aab80bf0d92ffe0a3cea6fcd69",
+      "source_kind": "p",
+      "text": "All three checks used the same fixed rules and BF16 numerical precision on the model already in training memory. They chose the most likely next piece, stopped at 128 output pieces, and made no output repairs. Training paused while each check ran for 150.56, 150.88, and 150.95 seconds. Earlier 32-task checks loaded models separately. Their scores can be described side by side, but the different execution settings prevent strict matched comparisons. No invented examples were added to train for this test. The hidden final test remains untouched."
+    },
+    {
+      "id": "passage-016",
+      "source_text_sha256": "4eb1cb36c21b31e7f4dc0b1abe9e04ddf9ea1a912b99470b782e143e8e0488d1",
+      "source_kind": "p",
+      "text": "Language-model scoring was switched off at all three saves, so these new versions have no measured text loss or perplexity. The older standalone regulation-text check remains historical: from model steps 274 to 821, loss fell from 6.304254 to 5.895244 nats per token, and perplexity from 546.8935 to 363.3055. That used the same 32 sections and 7,057 targets. The drops were 6.49% and 33.57%. They describe a narrow development check, not reasoning or this new run."
+    },
+    {
+      "id": "passage-017",
+      "source_text_sha256": "a96c629549e4df221207f069ce22779fbb08ec2f8b0b7794d1106c70880ea314",
+      "source_kind": "p",
+      "text": "The earlier word-overlap audit covered only the fixed Pressbooks training text and old validation set. It did not prove all source families were unseen, rule out matching meanings or paraphrases, cover other regulation editions or unknown model histories, or examine this new arXiv phase. Its conclusions cannot silently carry over to the new saved models."
+    },
+    {
+      "id": "passage-018",
+      "source_text_sha256": "0130a44cd6409c3a006329752b0f18b04933eaab5ca42fc6a7caeeb9d0769ba8",
+      "source_kind": "p",
+      "text": "The data allowance remains 800 GB. The project limit remains one billion usable predictions, with processed input IDs counted separately. The last recorded installed cutoff is 31 October 2026 at 04:12 UTC. Reviewing saved records does not extend it or give a fresh live machine status. Storage, memory, temperature, free-space, and saving safeguards still apply."
+    },
+    {
+      "id": "passage-019",
+      "source_text_sha256": "5045cf6be82ddf44fa1dd722df465648a67cc4e3d43855e91f24c54e5fec9abc",
+      "source_kind": "p",
+      "text": "Finishing this trial shows that the limited training-and-testing process worked on this batch. It does not prove transferable logic or replace wider data review and training. The goal is still an open, repeatable recipe for logic beyond convincing conversation. This stage uses no paid computing, proprietary model APIs, or private trace inputs for training and data preparation. This AI-assisted journal shares summary methods and results. The current-plan link gives the reviewed snapshot."
+    }
+  ]
+}

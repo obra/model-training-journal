@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-contrastive-binding-plan.md",
+  "source_sha256": "cd1b0a0558ce57328256b42c6798b7e8f209be4f16c887919ad03be2a60cc24d",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "74f90f2bd680134ef64b9bee77b4a97aa6c5fa844839b60326b358829e84fe93",
+      "source_kind": "p",
+      "text": "After the unsuccessful year-variety study, the next study selected on 26 October 2026 focused on connecting visible requests to the right task and values. New training had not begun at this planning stage."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "ddb387f14188b4af5bf1e147c9d5e7590c1a6076b3449ae4c778afe5af89543a",
+      "source_kind": "p",
+      "text": "The reason was specific: selected task lessons already fit, yet changed IDs and dates failed on development cases. Calendar fit was still weak, so the first change would target task repair while keeping calendar and operation-choice checks."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "ef7cb74fe2c1460dc55f6e4029d8fd4125fa49053a7a56ccdfd3a878c317119a",
+      "source_kind": "p",
+      "text": "Both branches would restart independently from the same preserved 100-million-token base and retain the 3,000 standard conversations. Each would add 500 original CC0 rows."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "0f4697ec72ab6f82de281da8a7c76be82ec2ebfcef80d14d766da1e3275b18b1",
+      "source_kind": "p",
+      "text": "The repetition branch would repeat 100 new repair base cases five times. The varied branch would use each base case plus changed-year, title, target-ID, and returned-order versions. This compares taught values and repetition. It adds no new contrastive-loss formula and cannot prove pairing itself is necessary."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "2d227297d07f775f51c4be333a92137cdbf780b43983701ad9ea712c8c7c0521",
+      "source_kind": "p",
+      "text": "The intended budget was two million assistant targets per branch. Actual whole-conversation exposure, unused budget, and the added examples' share would be measured before launch. Equal row counts would not be assumed to mean equal token lengths or variety."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "f5322caa5c76dccf49024a95d192614ce954dd5f13d1d4d6cb63f9c08ae63102",
+      "source_kind": "p",
+      "text": "The proposed fresh test combined eight repair base cases with six versions each and eight create-versus-update pairs, for 64 cases. A separate checker would identify the requested target from visible requests and actual reads, require the right final values, and verify unrelated objects stayed unchanged."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "40171472ce208b03fe69a5affb85e67a3c7414aec090afcece540b8b001df9d5",
+      "source_kind": "p",
+      "text": "Wrong-object writes and unsupported completion claims would count even if a later reply sounded plausible. Branch-specific fit samples would separate repeated controls from distinct histories. Old development, calendar, and paired tests would check regressions. The final behavior test would stay reserved."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "2f3ddb2aab7dfbd77c121c57b8b5cd59d74e84df3f396b7156955d04c95f7b89",
+      "source_kind": "p",
+      "text": "A narrow gain in choosing tasks would not justify a model that damaged other behavior. The decision needs correct requested outcomes and truthful reporting, not merely executable calls or fewer visible errors because the model does nothing."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "9326a3736f423903f1cfff5b3fde86bfc69ff8942e98c0b3ac5e9dae255a615c",
+      "source_kind": "p",
+      "text": "A separate limited terminal-interface test finished around 12:26 UTC using the preserved standardized model. The wrapper worked, but the model created a task with the wrong title and date, then falsely claimed completion after genuine mock receipts. A later reply was malformed. All effects stayed in a fictional in-memory world."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "d169bfa69ed4b570b6dda36b78ef1e2347d491003f75e35b7ed945549a3d3e16",
+      "source_kind": "p",
+      "text": "This showed the interface could run the model and record its failures. It did not show useful planning or access a real task service."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "b27978439540d34e50742fc2fa30c3ca6235bffd4e8f197fa30a4d99c57eca05",
+      "source_kind": "p",
+      "text": "The later launch post gives fixed counts and measured budgets. Planned limits stayed 3,600 training seconds per branch, a 3,780-second outer guard, and the 31 October 2026 at 04:12 UTC cutoff."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "ef491bd30083c7b5cfdccdd07497df8f634139b69e42aa85ec7e5793cc8e224e",
+      "source_kind": "p",
+      "text": "This AI-assisted plan was checked against the experiment brief and recorded interface result. No outside text collection, teacher, or third-party weights were proposed."
+    }
+  ]
+}

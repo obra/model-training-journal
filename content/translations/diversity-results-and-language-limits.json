@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-diversity-results-and-language-limits.md",
+  "source_sha256": "a2499a18087c3eb92dde09a3e78a376c40758977c1ec389e951d8e2b48e372dd",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "c50398c9493c04bc45eda37ae7a906be6075a4a8324c61c6f041d58eab7595a3",
+      "source_kind": "p",
+      "text": "The variety-versus-repetition study finished its tests at 16:36:52 UTC on 26 October 2026. Neither saved model was promoted."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "c5f423ef01846e1e06ab50a3ac47427852ea8b08459c2bf5fad41ab3cfbe3167",
+      "source_kind": "p",
+      "text": "Both 97,536,768-value models restarted from the preserved 100-million-token base with fresh optimizers. Each completed 13,338 steps and 1,999,822 assistant targets. Replay used 100 repair base cases; fresh used 1,916. Standard messages, per-step target counts, source positions, and learning rates matched. Inputs differed by 328 tokens, and both used a new shuffle unlike the preceding study."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "7cf148509a462c9da09bf787d98b76cbac7e59c2a0bf12215dad9e84ce2f6f03",
+      "source_kind": "p",
+      "text": "This study added original program-written task lessons, not outside text or general-language training."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "bbf7ca003fc7f5bb95dcfee06cad1b1e6ef979b3c5b467f283f00d4b99c16c3c",
+      "source_kind": "p",
+      "text": "The new fixed diagnostic had 64 core and 32 stress cases. They share base examples and remain separate from the earlier, different 64-case binding test."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "12dbf80351705b169e34672926869ab1f21f0bec26b5d14e9f379ed74099d78f",
+      "source_kind": "div",
+      "text": "Replay versus fresh scored 28/96 versus 26/96 exact requested states: 23/64 versus 22/64 core, and 5/32 versus 4/32 stress. False completions were 51 versus 33, but missing final answers were 17 versus 37. Wrong-object writes were 40 versus 24. Unresolved state or target scope affected five replay cases and zero fresh cases. Lower harm counts alone are not task success."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "a01ae69d1b4f58bba0f468add9df53975dcea06b4d2e67f6a634061335a26a89",
+      "source_kind": "p",
+      "text": "Raw and guarded histories matched within each branch, so they are not independent repeats. Both failed all eight creation requests and all reserved-year and combined stress cases. Only one repair control succeeded in both branches, too few for a broad comparison of transfer rates conditional on control success."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "26f9083f152bc282f1632c9fd0652c576e79b56a283434ecd9490e18d33f3fb9",
+      "source_kind": "p",
+      "text": "Of replay's 51 false claims, fresh fixed 13, replaced 23 with no answer, and kept 15. Fresh also turned 12 previously correct cases into false claims. Every missing-answer case in this new set left the whole state unchanged but the request unfinished. Some missing answers in older sets followed silent wrong writes, so this finding cannot be extended to all tests."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "d7d83410083338c3ba985fc2ed4bcf8161bc6822822b59571dcd04934e5e434b",
+      "source_kind": "p",
+      "text": "The five unresolved replay cases changed no state, but we still could not establish correct target binding because they never made the required read before writing. Genuine receipts and zero mock permission violations did not prove the requested outcomes were correct."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "440dc6c68374dce5e206826959c34e34187df55b9ec547ce04768f2a132ccdcb",
+      "source_kind": "p",
+      "text": "On samples from their own training data, replay reproduced 50/50 histories exactly and fresh 26/50. Both samples had 50 distinct histories, but the prompts differed. These check familiar-example fit, not holdout or matched-input performance."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "7864086c362da30c0d29d41c1b2b02e035643a2fad2ec3888a0df2af0ce69fa8",
+      "source_kind": "p",
+      "text": "For fresh training, prompts through the first successful read matched references. Its first writes had the right operation, date, and version in all 50 cases, but the right target ID in only 28."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "b721ceb1a48cd30d6bf580415b4ce7b59d72271fa7a41d30b4367171db656b44",
+      "source_kind": "p",
+      "text": "On the common retained 64 cases, exact histories were 46/64 for replay and 44/64 for fresh. Correct calendar bookings were 9/23 and 6/23. Fresh lost three bookings and gained none. All 31 noncalendar histories remained exact in both."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "26208499e890b2f66a5767161aebf359e7cb6449eab9cd773a19179638ebeeb1",
+      "source_kind": "p",
+      "text": "The reused 64-case binding test improved from 3/64 to 19/64 exact outcomes. That is a real result on those familiar diagnostic inputs, not on the new 96 cases. Older structural and broader sets still had no correct requested plans. A separate paired 80-case test fell from 44/80 to 40/80 exact states. Do not combine these different denominators into an invented overall success rate."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "9890cc2309209c02bebb1cc5b9586308d7765074aa6d3238c0a8786dddbbd6b4",
+      "source_kind": "p",
+      "text": "Saved outputs include readable, template-like English alongside wrong intervals, changes to wrong objects, and false completion claims. Writing English within this planning format does not establish open-ended chat skill or human-rated quality."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "c6d8e907ad7e0e7bcf78c126c540391007a0fec5727d802c532a1ff421414e0a",
+      "source_kind": "p",
+      "text": "At this point, a fixed base-language check was prepared but not measured. The next limited failure-reflection check would treat model explanations as ideas to test, not privileged knowledge of why it failed."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "695f066fa75a03d00355a82b26da2542fa5582d7007d8049d144a5432814827c",
+      "source_kind": "p",
+      "text": "The chosen direction is to stop serial narrow task-training variants and examine more varied general-text training at the same model size. The original base remains a control. A continued base would receive the same fixed conversation-training recipe."
+    },
+    {
+      "id": "passage-016",
+      "source_text_sha256": "16c4a4ea99d763e43eb1e4a5e04e9774f9a6062977d1335fd4741748f9b54e29",
+      "source_kind": "p",
+      "text": "The proposed limit is 200 million additional training targets, conditional on rights, source history, overlap, and actual new-token yield. The full run needs at least 100 million eligible distinct new tokens across both proposed source families, with at most two passes per document. A yield of 50–100 million would shrink the run; below 50 million would be reported as a data shortage rather than filled with old text. Candidates are not approved data."
+    },
+    {
+      "id": "passage-017",
+      "source_text_sha256": "d3af83ed4222ed40a2061376416f6a22fdd42c95c8c08944c46ace4eb8cb1bdc",
+      "source_kind": "p",
+      "text": "The original 100 million exposures came from about 26.91 million corpus tokens, and validation overlap risk remains. These results prove neither a limit from model size nor a reason to promise a one-billion-value model run. The hidden final planning test stays out of training and unused. The dated current plan gives later verified status."
+    },
+    {
+      "id": "passage-018",
+      "source_text_sha256": "233e236a1f832f10a4d5e354bdd5f5bab5b3f2891524e12230e0798e9eeb27a8",
+      "source_kind": "p",
+      "text": "This AI-assisted account was checked against the notebook, training milestone, and independent outcome reviews. Raw conversations, source text, and private runtime details are excluded."
+    }
+  ]
+}

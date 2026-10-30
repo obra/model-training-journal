@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "verified_at_utc": "2026-10-30T17:39:43Z",
+  "history_source": "assets/v4-terminal-tranche1/checkpoint-history.json",
+  "later_slices_source": "assets/v4-v5-cfr-checkpoints.json",
+  "terminal_v5": {
+    "status": "completed",
+    "verified_at_utc": "2026-10-30T17:39:43Z",
+    "checkpoint_time_utc": null,
+    "checkpoint_sha256": "4c360e42b06444178b892294c4bf3a0342e2dad5611f888878cbff874af22b51",
+    "updates": 3833,
+    "valid_labels": 125320085,
+    "processed_input_tokens": 125599744,
+    "perplexity": 34.2885,
+    "mean_token_nll_nats": 3.53481,
+    "scored_labels": 7057,
+    "checkpoint_plus_evaluation_percent_of_loop": 3.897,
+    "source_url": "/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/#ledger-correction-and-terminal-update",
+    "precision_note": "Terminal scores are recorded at the precision verified in the completion report, not inferred from rounded earlier values. Completion verification time is not checkpoint creation time."
+  },
+  "unrun": [
+    {"id": "blimp", "title": "BLiMP grammar pairs", "status": "not_run", "value": null, "note": "Proposed complementary grammar check; no run or score. Not a reasoning benchmark."},
+    {"id": "format-trial", "title": "Before-and-after format diagnostic", "status": "blocked_before_trial", "value": null, "note": "Stopped at CPU readiness; no successful before-and-after trial. Infrastructure failure, not a format or reasoning result."},
+    {"id": "sealed-holdout", "title": "Sealed final planning holdout", "status": "not_run", "value": null, "note": "Reserved and untouched. Development scores are not final-holdout results."},
+    {"id": "v5-broader", "title": "V5 broader language panel", "status": "not_run", "value": null, "note": "No new V5 result on the separate 130,209-label broader panel."},
+    {"id": "v5-reasoning", "title": "V5 task and reasoning checks", "status": "not_run", "value": null, "note": "No new V5 task or reasoning result. The historical 0/32 task and format scores belong to earlier checkpoints."}
+  ]
+}

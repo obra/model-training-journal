@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-canonical-serialization-experiment.md",
+  "source_sha256": "ac33cedc5357ed61aa75927a9af96b7f2791a9aac68e672119969ea96306f66e",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "59a898b6256099fe7e2e97cbba9316ce8feb7af7e652e2d722e49d80434b8d2d",
+      "source_kind": "p",
+      "text": "The limited standardized-format run started at 09:44:58 UTC on 26 October 2026. This post preserves the launch plan and early progress. Finished results are in a separate post."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "4eb6befe574cc6f8c02c3f1100df9a7758c3d640ba45165781ecc4e3b4409b3b",
+      "source_kind": "p",
+      "text": "Only the order of keys in training tool messages changes, to match the fixed runtime format. The earlier broader trial's settings, preserved 100-million-token base, fresh optimizer, seed, example order, tokenizer, 1,536-token context, and precision stay the same. All 3,000 conversations passed replay and token-limit checks. Assistant targets stayed unchanged, and no records were discarded."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "823ef537d55a899af58118248177c2a6a57c9f337febf4642b0826d27b3733a7",
+      "source_kind": "p",
+      "text": "The plan is exactly 499,839 assistant targets over 3,368 steps. Stopping between conversations leaves 161 targets unused below the 500,000 limit. A distinct pass still has 444,537 targets, so this repeats the same material rather than adding new data."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "f270c063cf0569d244915df229d3ee013478a4efe1a2aa47e536bf5505f3adfd",
+      "source_kind": "p",
+      "text": "The trainer has a 3,600-second limit within a 3,780-second job limit. Saves are planned every 100,000 targets or 300 seconds. The separate project cutoff stays 31 October 2026 at 04:12 UTC. This run does not extend it."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "31fb4376162afe30fd9d87371178d9b05bea52ef2a04211d963f744bdc1d7c99",
+      "source_kind": "p",
+      "text": "Four evaluations on the two known development suites follow training. Old accepted-state scores stay separate from format, requested outcomes, and suggestion/date checks. The same 64 training IDs support a familiar-example fit check. No hidden final test is included."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "51ad287036f66653ceb0ae7e48e55a2a8b258d7249438e264bd309eb98b5d81c",
+      "source_kind": "p",
+      "text": "At 09:46:23 UTC, the run had processed 162,906 targets at about 1,953 per second of process wall time and saved its first 100,000-target model. These are progress counts, not final fit or transfer results."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "b739fede1ddcb4b278969f1222ee2b34ec851fdbd60798814b4fc7d8621aacbf",
+      "source_kind": "p",
+      "text": "A corrected passive memory observer started during training after an earlier device-selection bug. Earlier maximum memory use remains unknown. Later whole-device samples cannot establish tensor-allocator peaks or measure work before observation began."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "226e79628f4b7fb63ce0dbae3171f3a988bc47a4e9847a7086b83cdbd0c14384",
+      "source_kind": "p",
+      "text": "The idea is narrow: removing a known difference in input token order should make remaining fit failures easier to interpret. It does not predict reliable planning. This AI-assisted launch account was checked against launch records, matched budgets, settings, and the standardized-data record."
+    }
+  ]
+}

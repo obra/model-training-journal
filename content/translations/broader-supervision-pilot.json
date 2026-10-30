@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-broader-supervision-pilot.md",
+  "source_sha256": "c8a534a15b8bebfc3b091dbcd8d36d8c049753fec13e1c6186a1da7a7bdc8de4",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "ec77cb506845037678dcb9538c5537e317b680cd4ff4f213df56b209684fd2d0",
+      "source_kind": "p",
+      "text": "This is the finished record of the pilot launched at 08:26 UTC on 26 October 2026, with follow-up through 09:25. Both branches independently started from the same preserved 100-million-token base. They shared the 97,536,768-value model, tokenizer, seed, 1,536-token context, and optimizer settings. The changed factor was original versus broader lessons."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "8d004f5060664e2fc6f0e9f264eba7a52542467fa196d7a9478b0a7cb971a8a3",
+      "source_kind": "div",
+      "text": "The control had 946 distinct conversations and 149,365 assistant targets per pass; the broader set had 3,000 and 444,537. Completed targets were 499,871 and 499,839, in 3,170 and 3,368 steps. Wall times were 234.32 and 246.67 seconds. Similar exposure budgets do not mean equal numbers of passes through each set."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "91afc887d86d41e8c6f124988a2d1fc0e062ad2e0759c29c9fe95afb09724455",
+      "source_kind": "p",
+      "text": "Both stopped between complete conversations below the 500,000-target limit. Times include startup and saving. Save checks recorded recoverable state, FP32 stored weights and Adam state, and BF16 calculations."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "ed138cb7a8d248dc080f6339f2c5eb29f3deebaf305ccab5956b9afa45ee9e37",
+      "source_kind": "p",
+      "text": "All eight development evaluations finished. The old 80-case suite used context 1,024; the new 80-case suite used 1,536. Both chose the most likely unconstrained answer, with a 96-token limit and no JSON repair or prompt cutting. Raw and guarded modes are two views of these cases, not more independent trials."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "191e9bb604ea760250173d24ccbc504dcf128bdbe3ff150ba0a1662f6fa1e461",
+      "source_kind": "div",
+      "text": "The old check counted 2/80 accepted states for control and 10/80 for broader training, in each mode. The new check counted 0/80 and 11/80. The following paragraphs explain why those accepted-state scores are not counts of fully correct plans."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "f9373d1166a866ff85566b191aa5fbe8373c3f5fb3638c57798c0b1400bfcf7b",
+      "source_kind": "p",
+      "text": "The control's two passes happened to request the same 20-minute interval it always wrote. The broader model's ten old-suite passes were truthful unavailable-tool acknowledgments after wrongly specified booking attempts. Ten other successful writes changed the requested title and date, then produced false completion claims missed by receipt checks."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "78f94cbd7e238bf1fa252a75fc12b12dfed5a268575f4e41693346793528f907",
+      "source_kind": "p",
+      "text": "All 11 broader-model passes on the new suite followed withdrawal of permission without making a later write. Their no-booking statements were true. But all 11 suggested the wrong date, and nine the wrong duration. The checker rewarded no write, stated intent, and a clarification without checking the interval. These are narrow procedural passes, not 11 valid plans."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "5745c85a97bda789489b9d2c6c86e44eca12498f524b80f25e3e43249fef74cd",
+      "source_kind": "p",
+      "text": "Only three of those 11 questions asked for missing duration. The simulator provided duration after any clarification, including eight questions about a window already supplied. Separate review found 11 false generic completion claims on the new suite. Manual-review counts also include unfamiliar wording and missing answers; they are not extra fabrication counts. There were no human ratings or final-test results."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "e6685c5df7ad7c2c73c57d72192674261817bd746f298198e7bf3824f65ca52f",
+      "source_kind": "p",
+      "text": "Different 64-case samples from each branch's own training data gave 59/64 accepted outcomes for control and 38/64 for broader training. These are familiar-data checks, not matched tests or holdouts. With correct earlier answer tokens supplied, completely correct conversations were 59/64 and 35/64; wrong targets were 45/8,988 and 44/9,601. High token accuracy still hid important wrong values."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "510c4772719dbfac39842712edacff9212972b7e8a3ce1b225bbd7765e6d3067",
+      "source_kind": "p",
+      "text": "In the broader sample, 28 histories matched exactly, 25 first differed in the assistant's output, and 11 first differed in a tool reply. Saving scenarios had reordered JSON keys without changing values. Seventeen reference histories had some reordered keys, but only 11 had them before the model first diverged. Seventeen is not a count of failures caused by this issue."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "bcaa079ef59f0cf667f00b520d3375ee93b9e85d53ee37561519a8ce7dc2fa45",
+      "source_kind": "p",
+      "text": "A limited test of the same saved model used two 501-token prompts with identical tool values. Training key order produced the correct interval; runtime key order produced a wrong one. This proves sensitivity in one case, not an explanation for all failures."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "331a11c61727188c65315f6a1c511dbd6de8623208c7756d464adb5ca356c65a",
+      "source_kind": "p",
+      "text": "A separate standardized version changed only tool-message key order. All 3,000 conversations, their sequence, and assistant targets were preserved. All passed saved-history, meaning, and length checks; none was rejected. The next study would isolate this formatting change before training longer."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "69da7b9ef37080f4f01d7c095e49ea54d1b1b9cf5a5920eb89be78ca5de06691",
+      "source_kind": "p",
+      "text": "The observer could not read GPU memory counters. That does not mean zero memory use or establish a training peak. This AI-assisted summary was checked against budgets, separate test scores, fit reports, and independent reviews. The repair post explains the next controlled step."
+    }
+  ]
+}

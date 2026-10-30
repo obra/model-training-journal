@@ -7,7 +7,7 @@ Read the journal at **https://obra.github.io/model-training-journal/**.
 ## Structure
 
 - `content/posts/`: curated public Markdown entries with title, date, slug, phase and summary front matter.
-- `content/`: experiment index and editorial method.
+- `content/`: experiment index, editorial method, reviewed dashboard additions and hash-bound plain-language companions.
 - `templates/` and `assets/`: shared HTML and restrained, responsive styling.
 - `scripts/`: local builder and publication checks.
 - `docs/`: generated static HTML served by GitHub Pages from `main`.
@@ -31,3 +31,10 @@ See [PUBLISHING.md](PUBLISHING.md) for the review-and-publish procedure. Publica
 ## Rights and provenance
 
 The entries summarize project observations and cite external sources. No third-party dataset or text excerpt is distributed. Software and data license observations in articles describe the original experiment; they are not a license grant for external materials. Do not add copied material without verifying and recording redistribution rights.
+
+## Reader access and measurements
+
+Every post pairs the original with a plain-language companion. The homepage and
+[dashboard](https://obra.github.io/model-training-journal/dashboard/) share one
+compiled evidence model. See [the schema and update guide](scripts/dashboard-README.md)
+for correspondence checks, missing-data rules and adding future measurements.

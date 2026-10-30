@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-29-second-checkpoint-on-the-next-corpus-slice.md",
+  "source_sha256": "60856db1bd4a6158ac07dc666ef7a67431e33d04d9e020365ba9fd7edb07bfbe",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "a16cf63d0764ba5629c5529193a0258fd1673398757e5282f558d16ab6b903c8",
+      "source_kind": "p",
+      "text": "The second saved model comes from step 1,137, after 37,175,835 usable next-piece predictions in this batch. Its score on federal-regulation (CFR) text is 38.5124. The starting model scored 39.7762, and step 569 scored 39.4730. Lower is better: this is a 3.1774% drop from the start and a 2.4336% drop from the first save. Average prediction loss is 3.650979 nats per target."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "313060d2310a26d77ebe932c865125d7e419494df2d19e830658e6147f7270bc",
+      "source_kind": "p",
+      "text": "All three checks used the same 7,057 prediction targets, text-splitting rules, and scoring program. The starting point rechecks an existing model before any new work in this stage. We saw step 1,137's records at 22:55:46 UTC on 29 October; the exact save time is unknown. The model still has about 299 million adjustable values, a 16,000-piece vocabulary, and room for 1,024 pieces at once. The same uninterrupted run aims to use 111,462,468 targets once."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "59fd00077754ec7d9697bc706e6fde8a1e1a3aab171073426f4383465a95c1b1",
+      "source_kind": "figure",
+      "text": "The chart shows the starting model and two saved versions, all checked on the same 7,057 targets. The empty circle is a repeat check of the starting model. Left-to-right distance counts usable predictions within this stage. The vertical scale is narrowed so the small change is visible."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "894d4f36b5e099bcb89c05f4d107a7ae36a8f03f998c3a924bdca0bec2063a5e",
+      "source_kind": "p",
+      "text": "Through step 1,137, the loop had taken 6,935.874 seconds. Saving models took 232.004 seconds and checking them took 4.461 seconds. Together they used 3.4093% of loop time; removing them leaves 6,699.408 seconds. These counts include the full save-boundary tasks but not model loading. They are running totals that overlap earlier totals. Do not add them as separate save times or treat them as GPU-only measurements."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "3a7650c9a590eb7182cb3ba65f53ee026536905581e719d5cc08348b5ab3921c",
+      "source_kind": "p",
+      "text": "This is a narrow development check that we reuse. This saved model has no new broader-text, 32-task, or logic result. No CFR score alone proves logic that works in new settings. The old 32-task result is still 0/32 correct and 0/32 in the required format. That format failure means it cannot cleanly measure reasoning or the limits of the model."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "4a6c5f6aec209055348bfc85ce5f3ac61ae6b7400baff9d12348f7d6a8c8ad1b",
+      "source_kind": "p",
+      "text": "The small before-and-after format and logic check has been approved and installed, but not run. Neither its model trial nor its CPU setup check has happened. It must wait until this stage truly finishes, and it will preserve the original model before task training. This AI-assisted journal shares summary measurements, not held-out prompts or raw training text."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "a5e10e330f6e52e8b21f1cae5591ff61f0e72117c46eecf330ed148c746d580c",
+      "source_kind": "p",
+      "text": "The downloads give the three chart points, running timing totals, and a cleaned 38-row score history. Blank fields mean missing, not zero. These files and this chart are fixed to this post's snapshot. Earlier charts are unchanged."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "275b8429d28913579ccfd7574f4bfca377f5f779139c60805ba166ad5f3e1bfb",
+      "source_kind": "p",
+      "text": "The named Python command rebuilds this chart from the project folder using the already-fixed software versions. It reads only the summary JSON data and uses the existing checks for safe, passive SVG images."
+    }
+  ]
+}

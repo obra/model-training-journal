@@ -1,15 +1,15 @@
 ---
-title: "A second completed slice and five V5 checkpoints"
+title: "A second completed slice and V5 completion"
 date: "2026-10-30"
 slug: "a-second-completed-slice-and-v5-checkpoints"
 phase: "Finite continuation: measured language loss"
-summary: "The second V4 slice completed 111.43M valid labels; V5 is running. Same-panel CFR perplexity fell across both slices, with one retained checkpoint regression. Reasoning improvement remains unproven."
+summary: "The second V4 slice and V5 both completed. Same-panel CFR perplexity fell across both slices, with one retained checkpoint regression. Reasoning improvement remains unproven."
 order: 46
 ---
 
 The second V4 corpus slice completed **111,430,307 valid next-token labels** in **3,408 updates**, consuming its admitted data once. Its terminal checkpoint scored **35.9212 perplexity** on the same frozen **7,057-label CFR development panel**, versus **37.7860** for the repeated parent. That is a **4.94% lower** perplexity on this narrow panel. The history includes a small regression at checkpoint 2,841; we did not discard it.
 
-The next finite slice, V5, was **still running at the 17:14 UTC observation**. Its ledger had completed **3,600 of 3,833 updates** and **117,702,026 of 125,320,085 planned valid labels**. Its fifth saved checkpoint, update 3,195 at **104,460,450 stage-local valid labels**, scored **34.5556 perplexity**, versus **35.9212** for its repeated parent: **3.80% lower** on the same development panel. Later token progress is not a later quality measurement. V5's terminal checkpoint had not been evaluated in this snapshot.
+The next finite slice, V5, was **still running at the 17:14 UTC observation**. Its ledger had completed **3,601 of 3,833 updates** and **117,734,731 of 125,320,085 planned valid labels**. Its fifth saved checkpoint, update 3,195 at **104,460,450 stage-local valid labels**, scored **34.5556 perplexity**, versus **35.9212** for its repeated parent: **3.80% lower** on the same development panel. Later token progress is not a later quality measurement. V5's terminal checkpoint had not been evaluated in this snapshot.
 
 | Slice | Checkpoint update | Stage-local valid labels | CFR perplexity |
 |---|---|---|---|
@@ -35,3 +35,10 @@ The next finite slice, V5, was **still running at the 17:14 UTC observation**. I
 This is evidence of improved likelihood on one narrow text distribution, **not yet evidence of transferable reasoning or chatbot competence**. The older 130,209-label broader language panel remains a separate historical result; it was not rerun for these checkpoints. The last completed 32-case task diagnostic remains **0/32 correct and 0/32 protocol-valid**. Its output-interface failure prevents interpreting that score as an isolated capacity test. A proposed before-and-after format diagnostic stopped at CPU readiness and has no successful trial result. A standard zero-shot [BLiMP](https://github.com/alexwarstadt/blimp) minimal-pair evaluation is being assessed as a complementary grammar measure; **it has not run**. Neither BLiMP nor this CFR panel alone would prove the project's transferable-logic goal.
 
 The frozen tokenizer, model configuration and evaluation population are shared across the charted checkpoints. Exact saved-checkpoint metrics and stage-local label counts are in the [sanitized chart data](/model-training-journal/assets/v4-v5-cfr-checkpoints.json); the passive SVG is reproducible with `python3 scripts/build_v4_v5_cfr_chart.py`. This AI-assisted journal publishes aggregate results and documented failures. It does not publish raw training text, private records, credentials, or a claim that model weights have been released.
+
+
+## Ledger correction and terminal update
+
+**Correction, 30 October 2026:** the earlier version of the 17:14 UTC snapshot reported 3,600 updates and 117,702,026 valid labels. Those counts used a zero-based ledger index. The correct completed counts at that same snapshot are **3,601 updates and 117,734,731 valid labels**. Saved-checkpoint scores and the frozen chart above are unaffected.
+
+**Terminal update, verified 30 October 2026 at 17:39:43 UTC:** V5 completed **3,833 updates**, **125,320,085 valid labels**, and **125,599,744 processed input tokens**. It exited successfully with code 0, without a TERM or KILL stop; six checkpoints and checkpoint-storage closure were verified. The terminal checkpoint scored **34.2885 CFR perplexity** and **3.53481 nats per label** on the same fixed **7,057-label development panel**, compared with the repeated parent's **35.9212 perplexity**: approximately **4.55% lower**. Measured checkpoint-plus-evaluation overhead was **3.897% of training-loop time**. The timestamp verifies terminal status; it is not an exact checkpoint-creation time. No new broader-panel or reasoning result is established, and BLiMP remains unrun. The [evergreen dashboard](/model-training-journal/dashboard/) includes this later result; the historical chart above remains frozen to its earlier snapshot.

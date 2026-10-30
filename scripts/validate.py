@@ -15,6 +15,8 @@ import re
 from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
 
+from dashboard import DASHBOARD_CHART_NAMES
+
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "/model-training-journal"
 ROOT_FILES = {"README.md", "PUBLISHING.md", "requirements.txt", ".gitignore", "PRODUCT.md", "DESIGN.md"}
@@ -31,6 +33,9 @@ CHART_SVG_NAMES = frozenset({"checkpoint-perplexity.svg", "broader-panel.svg",
                              "v4-2273-cfr-perplexity.svg",
                              "v4-terminal-cfr-perplexity.svg", "v4-terminal-overhead.svg",
                              "v4-v5-cfr-perplexity.svg"})
+CHART_SVG_NAMES = CHART_SVG_NAMES | DASHBOARD_CHART_NAMES
+DASHBOARD_SVG_FILES = {f"{prefix}/{name}" for prefix in ("assets/charts", "docs/assets/charts")
+                       for name in DASHBOARD_CHART_NAMES}
 CHART_SVG_FILES = {f"{prefix}/{name}" for prefix in ("assets/charts", "docs/assets/charts")
                    for name in CHART_SVG_NAMES}
 MAX_BYTES = 1_000_000
@@ -95,6 +100,10 @@ def _svg_attribute(tag: str, key: str, value: str, name: str,
         valid = bool(ids) and all(re.fullmatch(SVG_ID, item) for item in ids)
         if valid:
             references.extend((item, {"title", "desc"}) for item in ids)
+    elif key == "text-anchor":
+        valid = value in {"start", "middle", "end"}
+    elif key == "font-family":
+        valid = value == "sans-serif"
     elif key == "role":
         valid = value == "img"
     elif key == "version":
@@ -142,6 +151,8 @@ def _svg_attribute(tag: str, key: str, value: str, name: str,
             valid = valid and numbers[0] >= 0
             if tag == "svg":
                 valid = valid and numbers[0] <= 10_000
+        elif key == "font-size":
+            valid = valid and 8 <= numbers[0] <= 32
         elif key == "stroke-miterlimit":
             valid = valid and numbers[0] >= 1
         elif key in {"opacity", "fill-opacity", "stroke-opacity"}:
@@ -179,25 +190,30 @@ def validate_svg(text: str, name: str) -> None:
     root = parser.root
     if root.tag != "{" + SVG_NAMESPACE + "}svg":
         raise ValidationError(f"{name}: exact SVG namespace/root required")
+    attributes = dict(SVG_ATTRIBUTES)
+    text_tags = {"title", "desc"}
+    if name in DASHBOARD_SVG_FILES:
+        attributes["text"] = {"id", "x", "y", "fill", "font-size", "font-family", "text-anchor"}
+        text_tags.add("text")
     ids: dict[str, str] = {}
     references: list[tuple[str, set[str]]] = []
     for node in nodes:
         prefix = "{" + SVG_NAMESPACE + "}"
         tag = node.tag.removeprefix(prefix)
-        if not node.tag.startswith(prefix) or tag not in SVG_ATTRIBUTES or (tag == "svg" and node is not root):
+        if not node.tag.startswith(prefix) or tag not in attributes or (tag == "svg" and node is not root):
             raise ValidationError(f"{name}: unexpected SVG element")
         if tag not in {"svg", "g", "defs", "clipPath"} and len(node):
             raise ValidationError(f"{name}: chart geometry and descriptions must be leaf elements")
         if tag == "clipPath" and any(child.tag not in {prefix + "rect", prefix + "path"}
                                      or "clip-path" in child.attrib for child in node):
             raise ValidationError(f"{name}: only nonrecursive path/rect clips are allowed")
-        if ((tag not in {"title", "desc"} and node.text and node.text.strip()) or
+        if ((tag not in text_tags and node.text and node.text.strip()) or
                 (node.tail and node.tail.strip())):
             raise ValidationError(f"{name}: SVG text is limited to title/desc")
         hrefs = 0
         for attribute, value in node.attrib.items():
             key = "href" if attribute == "{" + XLINK_NAMESPACE + "}href" else attribute
-            if key not in SVG_ATTRIBUTES[tag]:
+            if key not in attributes[tag]:
                 raise ValidationError(f"{name}: unknown SVG attribute: {attribute}")
             hrefs += key == "href"
             _svg_attribute(tag, key, value, name, references)

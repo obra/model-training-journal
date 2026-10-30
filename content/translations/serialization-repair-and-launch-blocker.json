@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-serialization-repair-and-launch-blocker.md",
+  "source_sha256": "f34d885c51a289fa006664e423f9bb8325e500da1e7ce4363a19ea19c2d5d99b",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "2f3773fc80080d4d95dfe87e33060dfb868f037d9b7af97d614ef8d05283ba5e",
+      "source_kind": "p",
+      "text": "At 09:38 UTC on 26 October 2026, the next limited run was ready but had not launched. Completed work was a verified data-format fix and stronger measurement, not a new model result. The later launch post records the run."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "46f6833cb65ab9114b159c4124f392274a992281606fc670f9e97b306f7015c0",
+      "source_kind": "p",
+      "text": "The earlier trial found a mismatch between stored training tool messages and runtime messages. Their JSON values matched, but key order differed. In one test of the same model, two 501-token prompts with the same meaning produced different scheduling answers: training order gave the correct interval; runtime order did not."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "2f130c62bf13f38a0e553606967f8bb97268eb7001fd66bc066017dd4ae24f01",
+      "source_kind": "p",
+      "text": "The fix is a separate new version of the same original CC0 conversations. It replays stored assistant outputs against saved and reloaded scenarios. All 3,000 passed exact-history, unchanged-assistant-bytes, tool-value, and real-tokenizer checks. None was rejected."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "3fa139e0ecc1a87c6a5f7b82c52c9e8151107d7e3a47351e735ad7fc9588435f",
+      "source_kind": "p",
+      "text": "Only tool key order changed, in 875 messages across 750 conversations. Example order and 444,537 assistant targets per distinct pass stayed unchanged. No external AI teacher, text collection, or pretrained weights were added. This isolates an avoidable input-format mismatch without changing earlier results."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "97aefd68c92b70ab5e88ef5934c91dfbbb08afa66f3fc457bfdddcaacec7815b",
+      "source_kind": "p",
+      "text": "The added suggestion/date audit passed 58 focused and related tests and rechecked four completed new-development reports. In each broader-model mode, all 11 original proxy passes had wrong dates, nine wrong durations, and one a backward interval."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "362e9f63ca9532bed8d11bb790437a2a75d9f0448787d96c71cfeaf054146f8e",
+      "source_kind": "p",
+      "text": "The auditor uses only information available before each output. It cannot use a later clarification or withdrawal the model had not seen. Unrecognized wording and missing evidence stay unknown. These checks explain limits of the old score; they do not invent a new overall success score or certify safety."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "7044bd5ff57b1605660fac583a7e298de5f297b1967ee8ecb473a34da907545c",
+      "source_kind": "p",
+      "text": "The prepared formatting study keeps the earlier broader branch's exact settings, model, tokenizer, seed, 1,536-token context, and learning-rate schedule. It restarts from the same base with a fresh optimizer. Complete conversations give 499,839 targets in 3,368 steps, leaving 161 unused below the 500,000 cap."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "75bd1d3efe0b62238bf7de031531d4aed11bdca3ce910b18290b182020e821df",
+      "source_kind": "p",
+      "text": "Four known-development checks and the same 64 training-fit IDs were planned. Final tests stayed reserved. By this post's cutoff, preparation showed neither finished training nor better planning."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "c08be56c05576c256e2ae1616d301c13de4580ac9774993ce43979ca8f2d859f",
+      "source_kind": "p",
+      "text": "This AI-assisted account was checked against the standardized-data record, matched budget, suggestion audit, and code review. Data, conversations, and operational details are not published."
+    }
+  ]
+}

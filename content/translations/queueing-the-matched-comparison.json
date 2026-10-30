@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-queueing-the-matched-comparison.md",
+  "source_sha256": "77a7b3a8f06cd3f652a787f0b9754af81b7ecf8ecac0c2559ca2fbd85e3fb4dd",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "4830bbb9e96c279e0c7235f4ed399fa32de8b3c971ae2c79918cf20f3de6a32f",
+      "source_kind": "p",
+      "text": "This records the comparison queue on 26 October 2026 while the original base run was still active. A CPU coordinator waited for it, rather than restarting it or competing for the GPU. The listed stages were queued plans, not completed model results."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "db6a2701bf8521dfd10ae628cf3fac8ceffa9e8e117bf2b666b77258387368b8",
+      "source_kind": "p",
+      "text": "The goal was to carry out the matched comparison without blurring what each measurement meant."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "8dfb2fecbe4f3a76dd1035c115e1b03cb6228db0eee3a627bba9429362a9a7c7",
+      "source_kind": "p",
+      "text": "Independent review found two bugs beyond the first passing tests. The short task-training smoke test inherited a warmup longer than its entire run. Also, one recovery case could leave status pointing to a finished job."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "f96da89f3c84bbab916dac40ee816a10debe57fc4301281a9be605fa96bf6d09",
+      "source_kind": "p",
+      "text": "The smoke-only schedule was fixed to a 1,000-target warmup within a 10,000-target requested budget. Recovery could clear stale status only for that exact finished job after a fresh check showed its process group was gone. A different, live, or uncertain job blocked progress."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "e156d3053e53710bf0c7464418dfb0c2896019d19fe02a32ca9391c61e0cf525",
+      "source_kind": "p",
+      "text": "The notebook records 38 passing comparison tests on Linux and a CPU preflight that built both schedules using the actual tokenizer and budgets. Independent review also records 38 passes. These check coordination and preparation, not conversation skill."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "bc692a25726ded771cb29030c0e28de77e8be694ca1d2521b43df3726bf6f178",
+      "source_kind": "div",
+      "text": "The isolated small test plans 9,976 complete-conversation targets in 66 steps. Each matched branch plans 1,999,931 in 12,672 steps. These are planned actual counts, not rounded budget caps."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "0117200d16d4cd16175c3282e72babdb2d8eabbde4546b9435a320bd6c102ab1",
+      "source_kind": "p",
+      "text": "Leaving some targets unused keeps conversations whole instead of cutting constraints or permissions."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "c7320c153e3a097d4cfc6e037ad674d121a929e54a45b418f92bbb75dc51a576",
+      "source_kind": "ol",
+      "text": "The sequence first requires clean completion at 100 million usable targets and verification of the saved model, fingerprints, finite values, FP32 state, and restart data, with a separate base copy. Then a ten-minute-bounded language check scores 900,000 targets using 902,144 of 918,539 raw validation tokens in one partial pass. Next is an isolated small task-training check, limited to three trainer minutes and six outer minutes; its model cannot initialize either branch. The two branches train sequentially, each within four hours, and must match actual targets, steps, and stream positions. Finally, both run all 80 development cases raw and guarded, each within one hour, using the same 96-token greedy policy, no hidden answers, and separate read-before-write reporting."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "412727a3ccd3588d461289b3c94a7e44d5f6f09bd3ce2d1f9a72ee6421dd19c2",
+      "source_kind": "p",
+      "text": "The hidden final test is not in this sequence. Every GPU stage remains under the independent guard and absolute cutoff of 31 October 2026 at 04:12 UTC."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "0a7922e7c91874b7812e38bede9e4c1751966ac7ababb4d20047b3f0842425c3",
+      "source_kind": "p",
+      "text": "Changed fixed inputs, uncertain launches, failed save checks, incomplete evaluations, or an unhealthy watcher stop progress for inspection. Partial conversations stay labeled partial. The pipeline does not blindly retry or launch duplicate jobs."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "03ada44c3402b7b6a1c0388581a3432aeea033e4a8f995d9165a9739dd584df0",
+      "source_kind": "p",
+      "text": "This AI-assisted record describes the intended queue. Real development results and failure review were still needed before any model could be judged useful or promoted."
+    }
+  ]
+}

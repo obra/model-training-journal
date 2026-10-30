@@ -2,11 +2,11 @@
   "schema": 1,
   "model_parameters": 299414528,
   "initialization": "from scratch",
-  "experiment_state": "Recorded 30 Oct 17:14 UTC: second V4 slice completed 111,430,307 valid labels/3,408 updates; V5 running at 3,600/3,833 updates and 117,702,026 valid labels.",
+  "experiment_state": "Verified 30 Oct 17:39 UTC: V5 completed 3,833 updates, 125,320,085 valid labels and 125,599,744 processed input tokens. Six checkpoints and storage closure verified.",
   "latest_result": {
-    "summary": "Second V4 slice terminal CFR perplexity 35.9212; V5 checkpoint 3,195 scored 34.5556 on the same 7,057-label development panel. No new broader or reasoning result; V5 terminal not yet evaluated.",
+    "summary": "V5 terminal CFR perplexity 34.2885 on the same 7,057-label development panel, about 4.55% below its parent. No new broader-panel or reasoning result; BLiMP unrun.",
     "url": "/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/"
   },
-  "verified_at_utc": "2026-10-30T17:14:12Z",
+  "verified_at_utc": "2026-10-30T17:39:43Z",
   "deadline_utc": "2026-10-31T04:12:00Z"
 }

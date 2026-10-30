@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300" role="img" aria-labelledby="chart-title chart-description">
+<title id="chart-title">V4 first slice · cumulative save-and-check share</title><desc id="chart-description">V4 first slice · cumulative save-and-check share. Completed training update; Percent of training-loop time. Every recorded row is retained. Missing values are gaps, not zero. Exact values and timestamps are in the accompanying table. The vertical scale may not start at zero.</desc>
+<rect x="0" y="0" width="760" height="300" fill="#faf9f6"/>
+<path d="M 75 238.00 L 735 238.00" stroke="#c9cec7" stroke-width="1" fill="none"/>
+<text x="65" y="242.00" text-anchor="end" font-size="12" fill="#59615c">3.4</text>
+<path d="M 75 185.50 L 735 185.50" stroke="#c9cec7" stroke-width="1" fill="none"/>
+<text x="65" y="189.50" text-anchor="end" font-size="12" fill="#59615c">3.4</text>
+<path d="M 75 133.00 L 735 133.00" stroke="#c9cec7" stroke-width="1" fill="none"/>
+<text x="65" y="137.00" text-anchor="end" font-size="12" fill="#59615c">3.41</text>
+<path d="M 75 80.50 L 735 80.50" stroke="#c9cec7" stroke-width="1" fill="none"/>
+<text x="65" y="84.50" text-anchor="end" font-size="12" fill="#59615c">3.41</text>
+<path d="M 75 28.00 L 735 28.00" stroke="#c9cec7" stroke-width="1" fill="none"/>
+<text x="65" y="32.00" text-anchor="end" font-size="12" fill="#59615c">3.41</text>
+<text x="75.00" y="262" text-anchor="middle" font-size="12" fill="#59615c">569</text>
+<text x="240.00" y="262" text-anchor="middle" font-size="12" fill="#59615c">1.3k</text>
+<text x="405.00" y="262" text-anchor="middle" font-size="12" fill="#59615c">2.0k</text>
+<text x="570.00" y="262" text-anchor="middle" font-size="12" fill="#59615c">2.7k</text>
+<text x="735.00" y="262" text-anchor="middle" font-size="12" fill="#59615c">3.4k</text>
+<text x="380.0" y="290" text-anchor="middle" font-size="13" fill="#232e2d">Completed training update</text>
+<text x="75" y="17" font-size="13" fill="#232e2d">Percent of training-loop time</text>
+<path id="series-line-1" d="M 75.00 48.32 L 207.00 92.25 L 339.00 189.76 L 471.00 213.63 L 603.00 217.68 L 735.00 200.04" stroke="#205e56" stroke-width="2.5" fill="none"/>
+<rect x="72.50" y="45.82" width="5" height="5" fill="#205e56" stroke="#205e56" stroke-width="1"/>
+<rect x="204.50" y="89.75" width="5" height="5" fill="#205e56" stroke="#205e56" stroke-width="1"/>
+<rect x="336.50" y="187.26" width="5" height="5" fill="#205e56" stroke="#205e56" stroke-width="1"/>
+<rect x="468.50" y="211.13" width="5" height="5" fill="#205e56" stroke="#205e56" stroke-width="1"/>
+<rect x="600.50" y="215.18" width="5" height="5" fill="#205e56" stroke="#205e56" stroke-width="1"/>
+<rect x="732.50" y="197.54" width="5" height="5" fill="#205e56" stroke="#205e56" stroke-width="1"/>
+</svg>

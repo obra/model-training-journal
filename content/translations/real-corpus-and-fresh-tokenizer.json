@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-real-corpus-and-fresh-tokenizer.md",
+  "source_sha256": "e801fac9323591433a912fbc481789e02f1e2e41d18300b3f9a358d449ccc3df",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "00d57a3919f2c41485ecec6e1ed97b85b01cefa2e69edd8d8c36b5b1ff82602e",
+      "source_kind": "p",
+      "text": "The first real text collection and tokenizer were prepared around 04:44 UTC on 26 October 2026. This moved beyond the tiny byte-based sample in the first test. It did not yet show conversation skill."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "1f2bb97b7035a4e3859b06098f9af17018259c5f3d05a2f2b1efc8448ec9402e",
+      "source_kind": "p",
+      "text": "The idea was modest. A limited, traceable set of textbooks could test the training system. We would check whether a fresh model learned to predict reserved English text before adding fictional planning lessons."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "0c411b73d4402cbc11348682a5ff368c713ccbb59a118f64a27d447e1578aaec",
+      "source_kind": "p",
+      "text": "The source followed a fixed Marin recipe to common-pile/pressbooks_filtered. The linked dataset card identifies where that collection came from."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "0ec2531e9e6d1193cb9049a9b1007d8912a589c762ef7041a4c9d86dc4ea004c",
+      "source_kind": "p",
+      "text": "We downloaded one compressed file of 191,725,499 bytes and verified its fingerprint. Selection stopped at the 120-million-byte accepted-text limit, giving 119,991,158 accepted bytes from 1,019 canonical book URLs."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "8560f59b92a2e70e92f7e3279d0dd1ec29e9d1e1db10e0de68312a850d7a9049",
+      "source_kind": "p",
+      "text": "These were the first qualifying records in source order, not a random sample. They come from one family of English educational books, filtered by catalog language and a light character check. They are not a balanced general-purpose collection, nor was every document independently verified as English."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "e1f555dc02fe41ace437f82709465cd6bc2db896736dae60b59489903311d7de",
+      "source_kind": "p",
+      "text": "The selection policy accepted explicit archived CC-BY-family or CC0 claims. It excluded share-alike, noncommercial, no-derivatives, unknown, and unclear public-domain labels, along with detected restrictive conflicts and declared outside AI-generated text."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "d9322a1a91aac48189c2cf91e959f6d81780952f6c2441bcef2e8839061cab35",
+      "source_kind": "p",
+      "text": "The fixed collector copies directory-level book licenses into chapter records and normalizes their labels. That does not independently verify chapter exceptions, embedded third-party material, or every original license version."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "f4d99aa9bfb405737ca1d59359cdd8436cd637a9986c864e45f50c80f7160053",
+      "source_kind": "p",
+      "text": "Limited live checks found 13 matching license observations, 19 unavailable sources, and 987 books not checked live. The latter two groups relied on archive evidence. We did not independently verify licenses live for all 1,019 books."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "b5cd5ec00ad07f6e4c63abb422c62c78fbb361c67d432e98f03405c8a2cbbe76",
+      "source_kind": "p",
+      "text": "The recorded review accepted this limited subset for local training with those limits. Training and republishing were considered separately. This journal shares summaries of metadata, not source text."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "4af2710428c24cbc87727cbccff4e13b347d309fcb1a066f8dfb922eb14c7dce",
+      "source_kind": "div",
+      "text": "The table separates training from validation. Training has 15,714 documents, 116,118,363 text bytes, and 26,908,211 BPE tokens. Validation has 592 documents, 3,872,795 bytes, and 918,539 tokens. Tokens are text pieces chosen by the new tokenizer, not words or bytes."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "c798fe3ec6cd06734a34698c37fed6a9109e42c9a56e3b03bcb00ab3c30e61c4",
+      "source_kind": "p",
+      "text": "All chapters with the same canonical book URL stayed together. The audit found no shared book URLs or exactly matching normalized text between training and validation. It did not fully detect near-duplicate editions, so it cannot rule out all leakage."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "9a4c26797e997f06ab0669f210118eb9d5aa830830c6dab3ef54fafb8147ef12",
+      "source_kind": "p",
+      "text": "A new 16,384-entry BPE tokenizer learned text pieces from training data only. No pretrained tokenizer or model weights were used. Each document ends with a special marker, and prediction across that marker is excluded from loss. But the attention system can still see earlier packed documents; it does not isolate them."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "4ec81e95c75818541de3dede96fdb153c5aca0f0778af8bbe63b5bb5760f73e1",
+      "source_kind": "p",
+      "text": "The local review records 17 passing data tests and nine passing trainer tests, including interrupted restart and changed-code checks. Those test the implementation, not model quality."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "080a80f7b6629aa2dc499b61f05d4a4a019ac38a7b055fe00063e4f1141835d6",
+      "source_kind": "p",
+      "text": "The stored training text contains 26.91 million tokens. The planned run would practice 100 million usable targets, about 3.7 times that inventory. Repeating text does not create 100 million distinct tokens. Excluding some targets from loss also makes stored tokens and learned targets slightly different counts."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "122d4da25d96c10fe0e893f82bc17fef62f33b72f7387546b7d01d7aac689c6e",
+      "source_kind": "p",
+      "text": "Next was a limited two-million-token trial to measure real-token speed, loss, memory, and saving. The first real-text GPU-run post records its result."
+    },
+    {
+      "id": "passage-016",
+      "source_text_sha256": "29e4a2acb869fc8dd8a0f8cf1956e188ddcc1f9eddeb952c0fc3b95a4369394d",
+      "source_kind": "p",
+      "text": "This AI-assisted summary was checked against the corpus summary, approval record, composition audit, and token list. Training code, data, and raw logs are not published here."
+    }
+  ]
+}

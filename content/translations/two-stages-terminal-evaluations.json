@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-29-two-stages-terminal-evaluations.md",
+  "source_sha256": "b6fe4df86c9e87bab2c8da63791c014f6a0b91626961cbd70857aedf8e6452fa",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "4d953632aacdc5b2646923a704a36156baa1c9885decc548b63792a605e11836",
+      "source_kind": "p",
+      "text": "The limited two-stage run is finished. Stage two added 130,105,270 usable next-piece predictions in 3,979 steps. The work retained in the model now totals 632,823,676 predictions. All work actually run totals 635,482,070 predictions in 19,430 steps. The difference keeps track of earlier repeated work instead of counting it as new work retained in the model."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "9adc2e4e1ad042d932a5a3e09aa7ce34e3fafa0db87a0493d89af94b3c79fb50",
+      "source_kind": "p",
+      "text": "On the narrow, 7,057-target federal-regulation (CFR) check, the final model scored 39.7762 perplexity and 3.68327 nats of average prediction loss. Lower is better. The perplexity score improved from the starting model's 43.7761 but worsened slightly from the previous saved model's 39.6483. We kept the final model as the planned endpoint. These results do not claim a hidden-test win or success on entirely unseen source types."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "e2bb7ff03f1ad3893f981bcc1554008273ca7ec867f6382b3207fd0ad848e77e",
+      "source_kind": "p",
+      "text": "A separate, broader development check used 130,209 targets. It scored 14.6312 perplexity and 2.68315 nats of average loss. By source, perplexity was 17.8869 for arXiv's 45,516 targets, 7.07635 for Stack Exchange's 38,590, and 22.0390 for Wikimedia's 46,103. The same panel had scored 62.1032 after 133,411,556 retained training predictions; the current model has 632,823,676. Many training phases lie between those models, so this does not measure the final phase alone. The check covers limited development data, not general skill or proof that no test-like text entered training."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "d0341151d73e301678175cf0bf1feb1b7e5a3b5ce129ecb66a5bb51dd4b72d8a",
+      "source_kind": "p",
+      "text": "The fixed 32-task development check had 0/32 correct answers and 0/32 in the required format. Each of its two 16-task groups scored zero on both. Choosing the most likely next piece each time produced 4,096 pieces in 239.63 seconds. With no correctly formatted answers, we cannot separate reasoning trouble from trouble producing the required output. Empty language-model fields in this task-check report do not cancel the separate completed CFR and broader-text checks."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "51f29da22cd8b93c038869e00d1a5905144b9e39f0b90092a887fe3115738204",
+      "source_kind": "p",
+      "text": "Stage two's loop speed was 5,442 usable predictions per second: 130,105,270 predictions divided by 23,907.43 seconds. That includes saving and testing. Saving took 498.45 seconds and testing took 8.39 seconds, together 2.12% of loop time. The whole worker ran for 23,981.84 seconds. These are end-to-end rates, not GPU-only rates."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "95da9996c687642a42b6bd13b1ad98799fd4beebf9f9e7d3b93dfde711a0e505",
+      "source_kind": "p",
+      "text": "The broader text scoring itself took 29.92 seconds. Restoring the model and scoring together took 127.79 seconds; the guard's cautious elapsed-time count was 129.82 seconds. The task check took 239.63 seconds, or 241.32 by the guard. The full reserved budgets of 180 and 420 seconds remain charged. We do not know the exact time the final model was saved, so we do not substitute the time we saw its records."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "f0683915e33e8584de66d118c518178d7b96c082791bf2b0e5804a08ff573f28",
+      "source_kind": "p",
+      "text": "Preparation for the next approved batch is underway. This snapshot records neither a data transfer nor a training launch for it. The installed stop time remains 31 October 2026 at 04:12 UTC. This AI-assisted journal shares summary evidence, not released model files or a claim that logic has transferred to new situations."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "ff2f722b5dc783df70fb1c0468aaea1558a75d544511ecf2726bf0387d447799",
+      "source_kind": "p",
+      "text": "All four charts use the same downloadable public history. The CFR and broader-text checks use different test items and must not be joined into one curve. Earlier post text stays a dated snapshot, while these shared charts now include the finished-stage tests and timings."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "fe4de41081da57cb904266be02540f7232181428e810b723b3f36aa6046a3623",
+      "source_kind": "figure",
+      "text": "The CFR chart has 32 score rows for 28 distinct saved models. Unknown positions are omitted, and repeat checks of starting models remain separate. The final score, 39.7762, is slightly worse than the previous 39.6483."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "94bc0ccabcb2dfff22b4eca18b54c534f4eb8e29ad6cf09a397d2c3b507b05f2",
+      "source_kind": "figure",
+      "text": "The broader-text chart shows three overall model checks and nine source-group scores on the same 130,209-target panel. The change spans several training phases, so it cannot show the final phase's effect by itself."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "91c968581335587abfdcce5c9d54d8266fb308924ef72ee78cb28c6ca12312c2",
+      "source_kind": "figure",
+      "text": "The speed chart covers five finished runs. Whole-job, worker, and training-loop rates stay separate. Missing values are left out rather than set to zero. These are not GPU-only speeds."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "0043d030336fc8dc214ef07118204e6681652452581443f6cd84c93ce84689b0",
+      "source_kind": "figure",
+      "text": "The chart divides measured saving and testing time by each run's own loop time. The last stage used 2.120%. The 10% line is a planning limit, not a test result."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "beb3668f1c117cf7f41480ffa595b27555a356e2ffb41f2a3fd8d250d0c7633d",
+      "source_kind": "p",
+      "text": "The downloads provide cleaned model-score history and finished-run timings. They retain the different kinds of work and time counts. Unknown model-save times remain null, meaning unavailable."
+    }
+  ]
+}

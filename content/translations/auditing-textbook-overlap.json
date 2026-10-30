@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-auditing-textbook-overlap.md",
+  "source_sha256": "2150d8d1d4489e23a0044e48072d6dc74e41e696ad11bfb6d42ad12612ed0335",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "36656a998e2127e149f68481e888e6e63622e6135c943321b4d253d87662bfc2",
+      "source_kind": "p",
+      "text": "After the first 100-million-token run, a word-overlap audit found adapted chapters and repeated standard text on both sides of the training/validation split. Earlier checks had found different book URLs and no exact normalized-text copies. Those checks had not proved the content was independent."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "21616aad89d340a5cd2509d8a019fb06a463047c0606e92110a7132e6865d0d4",
+      "source_kind": "p",
+      "text": "The original scores stay unchanged: loss 4.02058 on the fixed 65,536-target prefix and 3.86067 on a separate 900,000-target check. Neither is now described as proven validation on independent works."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "a1637829fa9fcb70777d54782bceee81e7eef5c8766f1db2d0f721b311cc92e1",
+      "source_kind": "p",
+      "text": "The audit standardizes Unicode words and uses repeatable fingerprints of five-word groups to find candidate pairs. It then checks the actual shared phrases and measures how much of each document they cover. These word-based measures flag cases for review; they do not prove equivalent meaning or automatically delete documents."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "450489bc3677d5a762b8e9a01e4297fe5db167bcd3a6185080e92a581ece8fa1",
+      "source_kind": "p",
+      "text": "The completed scan covered 15,714 training documents and 592 validation documents. It checked 5,537 candidate pairs in 27.80 seconds."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "9f1331acf137750af7f5d6f3b67979c7f189f89b3471ffbfdb673e852d69d7f3",
+      "source_kind": "div",
+      "text": "The table groups pairs by shared text. It lists 58 possible near-whole copies and 14 pairs with high overlap in one direction. Another 178 had limited shared passages, and 5,287 had small overlaps. These are review categories, not automatic findings of copied whole documents."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "8e5cf872cacd4686eb4ef287eb02ddbf1784d8e5e9c4f0afcb6d211850390856",
+      "source_kind": "p",
+      "text": "The 72 strongly flagged pairs involve 42 validation documents. High overlap in only one direction can mean a short training passage sits inside a much longer validation document. It does not mean most validation text was seen. Metadata review also separated repeated access-request boilerplate from related textbook chapters."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "dd5006a393c7d2feff804d4a22cad0d0ea5de5bb34018bfce944166f6365ef90",
+      "source_kind": "p",
+      "text": "The first audit hit its 2,000-pair limit before scanning all training text. That partial result was kept. A second run raised the limits to 15,000 pairs overall and 600 per training document, while keeping a 300-second limit and a 32 MB report cap."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "f67d5d4f86b61cc25d259d772ed86654761bc8a318efcc1827be9c99d79f42ce",
+      "source_kind": "p",
+      "text": "The expanded run verified file fingerprints and ordinary file stability. The reviewed code passed 19 focused tests. It still uses a shortcut to choose pairs, skips very common fingerprints, and can miss short passages inside long documents. Finishing the configured scan does not prove every overlap was found."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "261413fc1b766eed01b685694d619f407ac5f20a535583292822c84064af928f",
+      "source_kind": "p",
+      "text": "The next plan was to freeze two new validation views: remove all 42 flagged documents, then make a stricter view removing their book groups. Both would keep the same tokenizer and record coverage before scoring."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "2f0ee2f4ff6689f2ff4d83fdd6d45e83e55ed5958121e3401bfe08420e35d5a7",
+      "source_kind": "p",
+      "text": "These are changed diagnostic samples, not replacements for the old learning curve or proof of complete cleanup. The audit did not change training input, model weights, or the hidden final behavior test. The next post reports the resulting scores."
+    }
+  ]
+}

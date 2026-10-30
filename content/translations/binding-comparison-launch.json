@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-binding-comparison-launch.md",
+  "source_sha256": "13781725eb26e1a4497bf3dc7ad1f86d76b7483b28ac4c3d5b77dfded524e176",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "58e67242de108b5d9e3c08a31b0f6d06dea8a6cfa67724a2bb687a131b9cb4a4",
+      "source_kind": "p",
+      "text": "The two-branch binding study launched at 13:04 UTC on 26 October 2026 after data checks and limited-run preparation. This post records launch, not the separate finished results."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "0ed698f3e47219e3ea396e9764c2bc04cec355e213dac69cfb2b283ff35374ae",
+      "source_kind": "p",
+      "text": "The idea was that more varied taught values might help choose the requested object and date. Both branches kept 3,000 standard conversations and restarted from the same self-trained 100-million-token base with fresh optimizers. Each added 500 task-repair rows."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "a49ef0f0c910b677a7dccb2f88167b59b0232be6afa97affb07cb6049b20dcf4",
+      "source_kind": "p",
+      "text": "The control repeated 100 base cases five times. The varied branch used a control plus changed requested year, changed title, renamed target, and reordered returned items for each. Half changed only the deadline; half explicitly renamed and updated the task. Stored dates did not change in year variants. Old and new titles were sampled independently to avoid an easy fixed-prefix clue."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "6bc201041cf15754964b051a0b7bd5fb351ec78bd819141a5a21686eb415ec70",
+      "source_kind": "div",
+      "text": "Both branches had 3,500 rows, but repetition had 3,100 distinct histories and varied values 3,500. One row pass had 524,402 versus 524,382 assistant targets. Planned complete-conversation totals were 1,999,908 versus 1,999,822, both in 13,338 steps. Equal rows did not give identical exposure."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "e8ba59cda2489975c9880ddb5fa8955c2f94a49c9a5927bfb63daf437d3e18bc",
+      "source_kind": "p",
+      "text": "Added rows supplied about 15.23% of targets in each branch. Equal row counts did not mean equal distinct histories or target counts. This tests a stated package of value changes, not a new loss rule or pairing alone."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "a97177dff276b093d51e9e808969a4eec2c29262ac48950c2ec3f602ef61cd0f",
+      "source_kind": "p",
+      "text": "The first production build stopped because a test title already appeared in retained training. No final input record was committed and training had not started. The fix changed test-title number sampling, not training, while keeping exact title and history exclusions. It happened before model results existed."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "c4d11c6d4b637e350d099dc6bf639d3668de727b370fe344413c0bca29cf4d7c",
+      "source_kind": "p",
+      "text": "The successful build passed 44 focused CPU tests and replayed saved old and new conversations. It found no exact test-title or complete-history matches with training. The longest full training conversation was 995 tokens, below context 1,536. Cutting examples short was not allowed."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "e6a80e78738dddd218b3209a6bef47725d11878c8f99870dadc8cdb66f94204e",
+      "source_kind": "p",
+      "text": "All added text was recorded as original CC0 material. No outside teacher, general-text collection, or third-party model weights were added."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "2efe0189003077b8bc851e630a2982ecfc7db248ffeb7ff7024cb68a1f3f174e",
+      "source_kind": "p",
+      "text": "The model still had 97,536,768 values, using BF16 projection calculations and FP32 stored weights and Adam state. Each branch had a 3,600-second trainer limit and 3,780-second outer guard. Saves were scheduled every 100,000 targets or 300 seconds. The absolute cutoff stayed 31 October 2026 at 04:12 UTC."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "7395ce9985f318931bb4151baf73476dc2c5fb7c410a210680fcd91827da1877",
+      "source_kind": "p",
+      "text": "Eighteen limited evaluation jobs were planned: the new 64 cases, branch-specific fit, original calibration, known development sets, and paired checks. Raw/guarded views and related base cases were explicitly treated as correlated. The control's 50-row added-training sample contained only ten distinct repeated histories; the varied sample had 50 distinct histories."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "547a0f3de82b1c6eb2c13016b5608d4ac0bb3e2ce347f35d9e3e8f446efcfb04",
+      "source_kind": "p",
+      "text": "Resource observation had failed and partial attempts, leaving early and middle training gaps. This launch record cannot establish full-run peak memory. Launch success gives no quality result or reason to promote a model."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "d6ebf17fe19efa3f120932a90b84984d6896ecb7deb42e8882148680690980a7",
+      "source_kind": "p",
+      "text": "This AI-assisted summary was checked against the fixed production inputs, preflight reviews, budgets, and launch records. Private runtime identities and raw logs stay out of the journal."
+    }
+  ]
+}

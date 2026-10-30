@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-canonical-two-million-label-fit-study.md",
+  "source_sha256": "9c12273f3f4d2318e27a7bb98e8fa3ece71665e15a7a2e9bfae4d033498b7711",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "ae91cf7ff725a5c87d34b06de5e18f7dbabc213ab1bda02f782422900de7e244",
+      "source_kind": "p",
+      "text": "This launch record is from 10:10:39 UTC on 26 October 2026. The new standardized-format run was underway; its final results are separate."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "a8310675d24e09868485e84ac8903895bde2939e4800717901131d3d3c6be3c5",
+      "source_kind": "p",
+      "text": "The previous formatting fix aligned training and runtime inputs but did not yield useful development planning. Only 34 of 64 familiar training histories matched exactly. All 30 failures began with model output after matching prompts. This incomplete fit motivated a limited longer-training study rather than trusting low token loss."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "30a81049a20b65f1f463c8660f7e3c81a3824ea27cfdaff0183a36475eeba7e7",
+      "source_kind": "p",
+      "text": "The run restarts from the same preserved 100-million-token base. It keeps the standardized 3,000 conversations, tokenizer, design, context, seed, order, precision, and optimizer settings."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "dfb8023a5c0176dc986583912b6793c8e8f03568ae375e46185be2c8ae728fcf",
+      "source_kind": "p",
+      "text": "The nominal target rises from 500,000 to two million assistant targets, and the cosine-decay schedule length grows with it. This changes both exposure and schedule, not update count alone. It does not continue the old optimizer."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "8ee2aeeb945abfc05143b8f56cce33edaaf2a44f63490c058592634425cd78a4",
+      "source_kind": "p",
+      "text": "Complete-conversation preparation gives 1,999,982 targets in 13,509 steps, leaving 18 unused. A distinct pass still has 444,537 targets, so this is about 4.5 passes over the same text. No new collection or external teacher is added."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "c34f2405d5f1529bd57b9969f7f1293e6cbc730fa12ea9323a5538a726bd877c",
+      "source_kind": "p",
+      "text": "Trainer and outer-job limits remain 3,600 and 3,780 seconds. Saves are planned every 100,000 targets or 300 seconds, within the fixed 31 October 2026 at 04:12 UTC deadline."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "195578c26b81b73f5d4162285abbe7cf972888a6171a799074b1e4b5ced4cd23",
+      "source_kind": "p",
+      "text": "The limited queue tests the same two known development suites, raw and guarded. Format, requested outcomes, completion claims, and suggestion/date checks remain separate. The same 64 training IDs support later fit checks. Final tests stay reserved."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "c37b6dc32e04edd9d17dbda70658bb90c16412e9696e85b72dd7662e2f3ca226",
+      "source_kind": "p",
+      "text": "At 10:13 UTC, the snapshot showed 279,144 targets and a saved 200,000-target model. That proves execution, not a final outcome. Selection requires better values, plans, and claims alongside fit to familiar examples. Lower loss alone will not select a model."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "a41629f7ac723ed4898ab5aee75ff02811d323acfebb97dcbeb379df032d19d2",
+      "source_kind": "p",
+      "text": "This AI-assisted account was checked against the exact budget, configuration, launch records, and handoff. Private operational identities and raw logs are omitted."
+    }
+  ]
+}

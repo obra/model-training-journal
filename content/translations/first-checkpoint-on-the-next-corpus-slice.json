@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-29-first-checkpoint-on-the-next-corpus-slice.md",
+  "source_sha256": "a4c786d9d7fd04b91cd0bb7cb7f97ab263b24ec5b0967aeaf6e3bf5db4a1cab5",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "b0120feafb6ca6334cd83194fee7437e375f618bd7995b33faac80ab5e7e25f4",
+      "source_kind": "p",
+      "text": "The next limited batch of text has its first saved and tested model. At step 569, it has practiced 18,604,156 new next-piece predictions. Its score on federal-regulation (CFR) text is 39.4730, compared with 39.7762 for the starting model. Lower is better, so that is a drop of 0.30325, or 0.7624%. Average prediction loss fell from 3.683269 to 3.675616 nats per target."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "7ec56d0be38cde65ae91752c1bb6211996d555dbc4853c12a1c1fb4cc0e42e61",
+      "source_kind": "p",
+      "text": "Both checks use the same 7,057 targets and the same text-splitting and scoring rules. Rechecking the previous final model does not create a new saved model; the new save adds one. Work retained in this new model totals 651,427,832 usable predictions. All work actually run totals 654,086,226 predictions over 19,999 steps. The difference from earlier repeated work stays separate."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "9130171667b262a7660b00e701155ce758456c0d12c39f37188337d5ecf88162",
+      "source_kind": "p",
+      "text": "This small improvement is encouraging, but it comes from a development check we have used before. It is not a hidden final test, a test of wholly unseen source types, or proof of logic in new settings. The earlier model's broader-text score of 14.6312 and task scores of 0/32 correct and 0/32 correctly formatted still belong to that earlier model. Neither check has run on this new save. The earlier format failure also prevents a clean test of reasoning. There is no single passing perplexity score for those questions."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "05fc485ce21da53ed6d385559fe11cb6ff37c3d8780e322c409843aa92260de6",
+      "source_kind": "p",
+      "text": "We saw the saved model's records at 21:58:47 UTC on 29 October. We do not know its exact save time. A separate live reading at 22:01:03 showed 612 finished steps and 20,010,132 usable predictions. The budget had been charged for 20,027,502 predictions in 19,601 small batches, including a partly finished step. Those later counts do not update the saved model's test score. This run allows 111,462,468 predictions in 3,409 steps. It was still running, with the next save planned for step 1,137."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "c15f69f59a31949db998f1ad498e148beb99af3a7c73abc0880b8ad008edbb94",
+      "source_kind": "p",
+      "text": "Through step 569, the training loop took 3,471.963 seconds. Saving models used 115.920 seconds; checking the starting model and new save used 2.569 seconds. Together they took 3.41275% of loop time. Removing that work leaves 3,353.474 seconds. These are in-progress measurements, include all save-boundary work, and exclude model loading."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "2cef32ea25bcbed98366abf7a3683cf384db4975833b520979aaab9facbd6210",
+      "source_kind": "p",
+      "text": "The same 18,604,156 predictions give two speeds: 5,358 per second including save-and-test work, or 5,548 without it. A different reading includes startup and divides all charged predictions by the guard's elapsed time: 4,941 per second at 22:01:03. The latest 30-second window charged 5,586 per second. These rates count different work over different times. None is GPU-only speed or a finished-run rate."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "50406d54ad238434c8b1d60a0eb3125404d94806f5954bcca590ed1a1d5632ac",
+      "source_kind": "p",
+      "text": "The goal is still logic that works beyond the training tasks. A revised check is approved and prepared, with eight complete samples planned after a safe stopping point. It has no result yet. This AI-assisted journal records the measurements and what they cannot tell us."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "bc3e18ec26c344dcd80e8e18d1cbf11219dd8e6199c75dc00a07722866e54b57",
+      "source_kind": "p",
+      "text": "These charts and downloads are fixed to this post. Earlier shared charts and captions are unchanged. The CFR check, broader text check, live progress, and timing stay separate because they measure different things."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "9afb05e542e39abf6d6aed5fbce4c00bd4ab41d36c2769731db04edc63cb8ce1",
+      "source_kind": "figure",
+      "text": "This chart contains 34 CFR score rows for 29 distinct saved models. The small V4 panel repeats the starting model and adds one new save after 18.604 million predictions in this phase. Points with unknown positions are left out rather than guessed."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "0a5a4d35e53a58e69eb40736153334d0ab5f4a0a26427c07650f267e9bde02b0",
+      "source_kind": "figure",
+      "text": "These are older, fixed results: three overall model checks and nine source-group scores on a separate 130,209-target text panel. The newest score belongs to the previous starting model, not step 569."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "3525e222fe3f4f3fa7f8ef8d334547405553710f7c95091b9f31bf922751410e",
+      "source_kind": "figure",
+      "text": "This chart compares five finished phases with V4's in-progress reading at step 569. Full loop time and time without measured save-and-test work stay separate. Unknown whole-job and worker times are omitted. Live speeds that include startup are in the separate progress download."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "0020fa552df65781067c1374459cb8f3cd4cd597d8d305451d0c68f6ccf2ddbd",
+      "source_kind": "figure",
+      "text": "Through step 569, saving and testing took 3.413% of loop time. Testing includes the starting model and saved version; model loading is excluded. The 10% line is a planning limit, not another measured result."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "de312ed29ea4a7abb3cdb428491237b4a9fea13eeb4246f0a47ca47fa765f50e",
+      "source_kind": "p",
+      "text": "The downloads include cleaned score history, timing at the save boundary, and observed progress. Blanks mean missing or not run, never zero. File fingerprints and stage names identify which models were measured. The trained model files are not included."
+    }
+  ]
+}

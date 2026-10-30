@@ -1,0 +1,163 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-26-isolated-environment-and-first-gpu-diagnostic.md",
+  "source_sha256": "6c4607722fd78acc306dcf84f622a389f56cf6dfd1950543983328493c7619ce",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_text_sha256": "2780053782e185944a79b641f80b45975cd523bb85a05c16ab7444bc4caad707",
+      "source_kind": "p",
+      "text": "The first test asked whether this machine could run a randomly initialized model of about 100 million adjustable values. It needed to predict text from earlier text only, use BF16 numbers for some calculations, keep lasting training state in more precise FP32 numbers, calculate loss correctly, and save and restore models."
+    },
+    {
+      "id": "passage-002",
+      "source_text_sha256": "6279f298d65b42e48c36c15cba91a0830ec6c1763abdd6ee3cc3ca3a12884048",
+      "source_kind": "p",
+      "text": "It could, within these limited tests. A model with 97,536,768 trainable values passed six correctness checks and a short GPU speed test of 11,697.79 usable training tokens per second. That proves this execution path worked, not that the model understands language or is a useful assistant."
+    },
+    {
+      "id": "passage-003",
+      "source_text_sha256": "4e99c814df009f36ac4b19f4f3317c90a91628a97d7cca800d37fde82b27c4f5",
+      "source_kind": "p",
+      "text": "This post covers the test completed on 26 October 2026 and recorded at 04:05 UTC. It follows the inventory post. Claims about work not yet done refer to that point in history."
+    },
+    {
+      "id": "passage-004",
+      "source_text_sha256": "07b8bc375e946660ed847b368a255cec50b81e6cfe3c542e268eedd3c2dbc9c9",
+      "source_kind": "p",
+      "text": "The occupied GPU memory was released first. Reported use fell from about 31.44 GiB to 171 MiB. We then used Python and libraries kept within the project. No system-wide framework install or driver or firmware change was needed."
+    },
+    {
+      "id": "passage-005",
+      "source_text_sha256": "2b44a911001a613440cad6e2aa321d40b00c5d9ee111d5b01db795bf0661e1b9",
+      "source_kind": "div",
+      "text": "The table records the exact software and device used: Python 3.14.4, PyTorch 2.14.0 with ROCm 10.1.0, HIP build 7.16.26385, and an AMD Radeon 8060S with architecture code gfx1151 and 32 GiB reported memory. These are the experiment's versions, not advice to install today's versions."
+    },
+    {
+      "id": "passage-006",
+      "source_text_sha256": "5bae17618b89b37b84fd44b09aba2c7fcdb21e5feea816b27b9a149862047984",
+      "source_kind": "p",
+      "text": "The notebook says official AMD packages were selected using the linked compatibility and installation guides. Those guides can change. The versions in the table are the ones this experiment actually recorded."
+    },
+    {
+      "id": "passage-007",
+      "source_text_sha256": "d73aa13fcf4e5df270afd880db30a47e03615130c9e4b76669d6ddba530dc16e",
+      "source_kind": "p",
+      "text": "PyTorch first failed to load because a library, libgomp.so.1, was missing. We extracted Ubuntu's libgomp1 version 16-20260322-1ubuntu1 into the project and pointed this process to it. We did not install it system-wide. Dependency checks then passed."
+    },
+    {
+      "id": "passage-008",
+      "source_text_sha256": "6c0b76ab32e14118f2118ee9d7e1e019806e5afa7bc6c07facedbe20ac05b28e",
+      "source_kind": "p",
+      "text": "NumPy was still absent, producing an optional integration warning. The test needed only PyTorch and Python's built-in library. Another warning appeared when converting a tensor to a single value for a loss check. Neither stopped the tests, and no GPU or invalid-loss errors were observed."
+    },
+    {
+      "id": "passage-009",
+      "source_text_sha256": "ef5a8ea04635268e5c9809c2fa5dfa4732005e61d81cbb186315164bd2525199",
+      "source_kind": "p",
+      "text": "The model began with random weights. It had 12 layers, width 768, 12 attention heads, and 12 key/value heads. Its SwiGLU processing part had width 2,048. It used RMSNorm, RoPE, shared input/output embeddings, and no linear biases. These are exact design choices for how it processes text. It could read 1,024 pieces at once and had 16,384 possible vocabulary entries."
+    },
+    {
+      "id": "passage-010",
+      "source_text_sha256": "a4bc03cc2b6017ffebf9128a34301cbafcc7cfdd5be382ebb25135e43ca7babc",
+      "source_kind": "p",
+      "text": "The temporary text converter mapped individual bytes to IDs 0–255. Most of the 16,384-entry vocabulary was unused. This was for checking machinery, not a learned tokenizer suitable for measuring real language performance."
+    },
+    {
+      "id": "passage-011",
+      "source_text_sha256": "800502f3e00ad6badebbc471bc95239aeb18647f1a9b03c5e8cb12411af88df0",
+      "source_kind": "p",
+      "text": "The AdamW training rule used learning rate 0.001, betas 0.9 and 0.95, epsilon 1e-8, no weight decay, and gradient clipping at 1.0, with a LambdaLR schedule. These control how training changes the model. The random seed was 20261026, and the process used eight CPU threads. PyTorch chose its attention implementation automatically; we do not claim a particular optimized GPU kernel."
+    },
+    {
+      "id": "passage-012",
+      "source_text_sha256": "1232be5a778b61f5fb8af33aa8920b5a8affc02160953e3efe9c7d43baa9ceb8",
+      "source_kind": "p",
+      "text": "The speed test repeated a small 18,959-byte CPython tutorial sample. The original gives its exact revision fingerprint and records PSF License Version 2 for prose, with a 0BSD option for examples. A separate 13,652-byte piece of original diagnostic text, recorded as CC0, tested whether the model could learn a tiny batch."
+    },
+    {
+      "id": "passage-013",
+      "source_text_sha256": "5c05281b3fec6739e642a9c0c1f5a84e2f9b305c9c3d51cd094b345d30088fa1",
+      "source_kind": "p",
+      "text": "This post republishes no dataset or third-party text excerpt. It used no pretrained weights or external AI teacher. The tiny samples tested whether computation and learning worked, not representative language quality."
+    },
+    {
+      "id": "passage-014",
+      "source_text_sha256": "236814a6515116bdcfd4f668fb2a6a177d74674c9cb38d498d77f6529527822f",
+      "source_kind": "p",
+      "text": "All six checks passed. The next list says what each actually tested."
+    },
+    {
+      "id": "passage-015",
+      "source_text_sha256": "ba4c1a141a02bd2bd2c5ed230eab6df9e065410e49aecef334028331af7415d1",
+      "source_kind": "ol",
+      "text": "The checks confirmed 97,536,768 trainable values; correct next-piece targets and padding exclusions; and no use of future text in earlier predictions. On a tiny batch, loss fell from 9.860314 to a last-three-step average of 0.216215 over 44 steps with 64-piece sequences. Stored weights, gradients, and Adam state stayed FP32 while observed attention calculations used BF16. After restoration, model and optimizer continuation matched exactly, as did the schedule, data position, and later random draws from Python, CPU, and GPU."
+    },
+    {
+      "id": "passage-016",
+      "source_text_sha256": "45692dec141efd696cbef8b0e4381b2a321c86fa058931f4033f7978b0d2ff96",
+      "source_kind": "p",
+      "text": "The exact-restart check used FP32 calculations and math-based attention. Its bit-for-bit match does not prove every BF16 attention setup restarts exactly. The saved file was 1,170,579,467 bytes. The speed test started a different fresh model rather than loading that file."
+    },
+    {
+      "id": "passage-017",
+      "source_text_sha256": "3fc4b46209b71e48182f378e3533a9f54c5b82466099b9246c2ffdde4dd614d0",
+      "source_kind": "p",
+      "text": "Each measured step predicted outputs, calculated how to change the model, and applied one update. It used one sequence of 1,024 pieces. That gives 1,023 usable next-piece targets because the last input has no next target within the sequence."
+    },
+    {
+      "id": "passage-018",
+      "source_text_sha256": "a05abfb9dabf412504a3516caf5e659f12b1fe7425c06d8c82f35093e032bc77",
+      "source_kind": "div",
+      "text": "The table records 1,024 measured steps and 1,047,552 usable targets in 89.551 seconds: 11,697.79 per second. Five warmup steps and 5,115 targets are excluded from that rate. The table also keeps the warmup-inclusive total, loss values, memory use, and stop reason. These are short-test measurements, not long-run promises."
+    },
+    {
+      "id": "passage-019",
+      "source_text_sha256": "c86903f557a54fa1a9f7999401404796099e1944902be6740592536f4ddd9875",
+      "source_kind": "p",
+      "text": "The observed attention calculations used BF16, while weights, gradients, and Adam state stayed FP32. Memory figures describe PyTorch's own allocator. They do not include other memory held by the GPU driver."
+    },
+    {
+      "id": "passage-020",
+      "source_text_sha256": "d17dc5b152b2345d1decd1583cf667181d2ab3b0ba5a293f863fa66bcc9f0d33",
+      "source_kind": "p",
+      "text": "The test stopped at 1,024 steps. Other limits were 120 seconds of measured work, 1,048,576 measured targets, and 160 seconds of internal total runtime, plus an external timeout. Warmup was not included in the speed rate. We did not extend the test to get a better result."
+    },
+    {
+      "id": "passage-021",
+      "source_text_sha256": "202a1a66f09593045a26726846a627f523f07b02756740d776dc81929ce508dc",
+      "source_kind": "p",
+      "text": "Loss should fall when a model keeps seeing the same tiny text sample. That does not show it can handle new text, follow instructions, or act as an assistant."
+    },
+    {
+      "id": "passage-022",
+      "source_text_sha256": "5b5ee31175f1dc76329c8598f8e60d7ac757dc728a779283539bb6c856dc2c66",
+      "source_kind": "p",
+      "text": "At the measured rate, 100 million similar tokens would take about 2.37 hours of training steps. That is a calculation, not a promised production time. A real tokenizer changes the unit. Loading data, saving models, running checks, sustained heat, and a realistic workload can all change speed."
+    },
+    {
+      "id": "passage-023",
+      "source_text_sha256": "881dac55c37d91557f1ba6922c89f34d716712d8549884173d43f109d6f7cfae",
+      "source_kind": "p",
+      "text": "At this point, no long production run or 100-million-token run had happened. Training a real tokenizer, choosing text, and designing validation and test sets were still ahead. Firmware inspection had not verified installed physical memory either."
+    },
+    {
+      "id": "passage-024",
+      "source_text_sha256": "0836c5b51312850f59074fdadba0307d9ce48f893b058ae46f84db62af25952c",
+      "source_kind": "p",
+      "text": "We now had a tested starting point: GPU execution, passing limited correctness checks, and a short speed measurement. Next we needed representative text with suitable rights, a real tokenizer, and tests that could show more than memorizing a tiny sample."
+    },
+    {
+      "id": "passage-025",
+      "source_text_sha256": "5b9051152ad897b44b13e87282dedb029171ed3f939ae0a937d637692c3606fa",
+      "source_kind": "p",
+      "text": "The published numbers were checked against local correctness and speed-test files. The original gives the diagnostic source's exact SHA-256 fingerprint, which identifies its bytes. No source-repository commit was recorded for it."
+    },
+    {
+      "id": "passage-026",
+      "source_text_sha256": "9da1b9c2af2ec98613a7cb348958546386374ffabe0b4cecdbfedcc277422de8",
+      "source_kind": "p",
+      "text": "This is an AI-assisted summary, not a personal account attributed to the repository owner. Original result files, raw logs, scripts, data, and the saved model are not published here. That protects private details and means this journal is not a full reproduction package."
+    }
+  ]
+}
