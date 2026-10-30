@@ -1,0 +1,53 @@
+{
+  "schema": "sanitized_reproducible_static_chart_v1",
+  "input_file": "assets/v4-fourth-checkpoint-2273/cfr-checkpoints.json",
+  "input_sha256": "b7f2ca385dd037aa28571fdb1b3b4683452eacb4ffe74c8a6ef965276d2d5b12",
+  "builder_file": "scripts/build_v4_fourth_checkpoint_chart.py",
+  "builder_sha256": "6cfd7a4ae517cbdc4ca11d8f06b2c556615190de833cc65d6036a7cfafa2503a",
+  "file": "assets/charts/v4-2273-cfr-perplexity.svg",
+  "bytes": 69518,
+  "sha256": "48f050e20dddb383e855af3515bb0b5382717714a4961ad865e9f1c10e1dbead",
+  "title": "Fourth V4 checkpoint: narrow CFR development perplexity",
+  "description": "Five observations on the same 7,057-label CFR development set. Stage-local completed valid labels and perplexities: repeated parent baseline 0, 39.776214231484126; checkpoint 569 at 18,604,156, 39.4729645509789; checkpoint 1,137 at 37,175,835, 38.51235059861212; checkpoint 1,705 at 55,747,334, 38.54555845078176; checkpoint 2,273 at 74,319,147, 38.17367341486999. The small regression at checkpoint 1,705 is preserved. Hollow circle is the repeated parent baseline, not a new checkpoint. The y-axis is restricted to show small changes. Repeated development evaluation is not sealed holdout or evidence of transferable logic.",
+  "counts": {
+    "observations": 5,
+    "repeated_parent_baselines": 1,
+    "new_saved_checkpoints": 4,
+    "scored_labels_per_observation": 7057,
+    "checkpoint1705_regression_preserved": true
+  },
+  "passive_svg_profile": {
+    "tags": [
+      "clipPath",
+      "defs",
+      "desc",
+      "g",
+      "path",
+      "rect",
+      "svg",
+      "title",
+      "use"
+    ],
+    "attributes": [
+      "aria-labelledby",
+      "clip-path",
+      "d",
+      "fill",
+      "height",
+      "href",
+      "id",
+      "role",
+      "stroke",
+      "stroke-linecap",
+      "stroke-linejoin",
+      "stroke-width",
+      "transform",
+      "version",
+      "viewBox",
+      "width",
+      "x",
+      "y"
+    ],
+    "nodes": 682
+  }
+}

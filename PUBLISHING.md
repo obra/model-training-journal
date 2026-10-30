@@ -79,6 +79,8 @@ assets/charts/, plus the four frozen V4 checkpoint569 chart names:
 `v4-569-throughput.svg`, and `v4-569-overhead.svg` in the same directory,
 with byte-identical copies under docs/assets/charts/. The frozen V4 checkpoint
 1,137 chart `v4-1137-cfr-perplexity.svg` is also allowed in those two directories
+under the same passive profile. The frozen V4 checkpoint
+2,273 chart `v4-2273-cfr-perplexity.svg` is also allowed in those two directories
 under the same passive profile. The earlier four shared
 chart assets and historical captions remain unchanged in this update. Other SVG
 paths remain excluded. Each chart must be UTF-8, no larger than 1,000,000 bytes,

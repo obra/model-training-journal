@@ -1,5 +1,23 @@
 Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. No checkpoint has yet established that capability.
 
+**Recorded snapshot: 30 October 2026, 00:59:43 UTC.** The guarded one-pass stage continues. Its fourth saved and scored checkpoint is update **2,273**, with **74,319,147 completed phase-local valid labels** and CFR development perplexity **38.1737** on the same **7,057 labels**. The matching repeated parent is **39.7762**; checkpoint 1,705's small regression to **38.5456** remains in the history. The checkpoint receipt observation is **00:55:32 UTC**; exact creation time is unavailable.
+
+The separate recorded progress snapshot is **2,369 completed updates / 77,458,076 completed labels**, with **77,490,776 charged labels**. Charged work includes unfinished accumulation. The stage's one-pass target remains **111,462,468 valid labels over 3,409 updates**. Saved checkpoint quality does not advance with these later progress counters. Stage-local, retained lineage, physical and charged-cap clocks remain separate; historical interrupted work and replay charges remain preserved.
+
+Through checkpoint 2,273, cumulative measured checkpoint/evaluation hooks use **471.719 of 13,874.969 loop seconds (3.3998%)**. Loop throughput is **5,356.35 completed labels/s**, or **5,544.86 labels/s excluding measured hooks**. Full boundary hooks are included and model load is excluded; guard-wall and worker rates are unavailable. Read [the fourth-checkpoint post](/model-training-journal/2026/10/30/fourth-checkpoint-on-the-next-corpus-slice/) for the frozen five-point chart and complete aggregate downloads. Earlier dated posts and chart bytes remain preserved.
+
+No new broader-panel, fixed32 or reasoning evaluation has run here. The earlier broader score **14.6312 on 130,209 labels** is a separate older panel; historical fixed32 **0/32 correct / 0/32 protocol-valid** is interface-confounded and does not isolate capacity. The fixed before-and-after format diagnostic has **not run**. CFR is a repeated development measure without a universal target or proof of transferable logic.
+
+The installed training cutoff remains **31 October 2026 at 04:12 UTC**, an execution guard setting rather than a fixed research deadline. Finite runs and their budgets require separate review. Original controls, historical failure charges, resource protections and the untouched sealed final holdout remain in force. This AI-assisted journal publishes aggregate evidence; a fully open reproducible recipe remains the goal, and code and weights are not claimed released.
+
+---
+
+## Preserved dated snapshot: 29 October 2026, 23:04:51 UTC
+
+The prior plan follows unchanged as dated history. Its status statements describe that snapshot; the current entry above supersedes them.
+
+Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. No checkpoint has yet established that capability.
+
 **Recorded snapshot: 29 October 2026, 23:04:51 UTC.** The current one-pass stage continues. Its second saved and scored checkpoint is update **1,137**, with **37,175,835 completed phase-local valid labels**. CFR development perplexity is **38.5124** on the same **7,057 labels**, versus the matching parent **39.7762** and first checkpoint **39.4730**. The parent repeats the preceding terminal weights at zero labels in this stage. Receipt capture was observed at **22:55:46 UTC**; exact checkpoint creation time is unavailable.
 
 The separate live observation records **1,242 completed updates / 40,608,907 applied valid labels**, with **40,616,058 charged labels** across **39,751 microbatches**. Charged work includes unfinished accumulation; these live counters do not advance the saved checkpoint's measured quality. The finite stage permits **111,462,468 valid labels over 3,409 updates**; its next scheduled checkpoint is **1,705**.

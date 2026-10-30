@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fourth checkpoint on the next corpus slice · Model Training Journal</title>
+  <meta name="description" content="Checkpoint 2,273 scores CFR perplexity 38.1737 on the same 7,057-label development set. All four saved checkpoints remain visible, including checkpoint 1,705&#x27;s small regression. No new broader or logic score has run.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/30/fourth-checkpoint-on-the-next-corpus-slice/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-30T00:59:43Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="299,414,528 trainable parameters">299.4M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Recorded 30 Oct 00:59 UTC: finite one-pass pretraining continues; 2,369 updates / 77,458,076 completed phase labels. Checkpoint 2,273 is saved and scored.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/2026/10/30/fourth-checkpoint-on-the-next-corpus-slice/">Checkpoint 2,273: CFR perplexity 38.1737 on the same 7,057 labels, versus parent 39.7762. Checkpoint 1,705&#x27;s small regression is preserved. Cumulative measured hook overhead 3.400%. No new broader or logic score; transferable logic remains unestablished.</a></dd></div>
+    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>1d 3h 12m remaining at snapshot</strong><span class="progress-deadline">Cutoff <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-30T00:59:43Z">30 Oct 2026, 00:59:43 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>Fourth checkpoint on the next corpus slice</h1><p class="dek">Checkpoint 2,273 scores CFR perplexity 38.1737 on the same 7,057-label development set. All four saved checkpoints remain visible, including checkpoint 1,705&#x27;s small regression. No new broader or logic score has run.</p><p class="article-meta"><time datetime="2026-10-30">30 October 2026</time> · Finite continuation: fourth saved checkpoint · 3 min read</p></header><div class="prose"><p>The fourth saved checkpoint contains <strong>74,319,147 completed stage-local valid next-token labels</strong> at update <strong>2,273</strong>. CFR development perplexity is <strong>38.1737</strong>, with mean negative log-likelihood <strong>3.642146 nats per label</strong>. That is <strong>4.0289% below the matching parent baseline</strong> and <strong>0.8794% below checkpoint 1,137</strong>. Checkpoint 1,705 had a small regression; this update preserves it.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Observation</th>
+<th>Completed stage labels</th>
+<th>CFR perplexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repeated parent baseline</td>
+<td>0</td>
+<td>39.7762</td>
+</tr>
+<tr>
+<td>Checkpoint 569</td>
+<td>18,604,156</td>
+<td>39.4730</td>
+</tr>
+<tr>
+<td>Checkpoint 1,137</td>
+<td>37,175,835</td>
+<td>38.5124</td>
+</tr>
+<tr>
+<td>Checkpoint 1,705</td>
+<td>55,747,334</td>
+<td>38.5456</td>
+</tr>
+<tr>
+<td>Checkpoint 2,273</td>
+<td>74,319,147</td>
+<td>38.1737</td>
+</tr>
+</tbody>
+</table></div>
+<p>All five reports score the same <strong>7,057 labels</strong> under the same tokenizer and evaluator contract. The parent repeats existing weights at zero labels in this stage. Checkpoint 2,273's receipts were observed at <strong>00:55:32 UTC on 30 October</strong>; exact checkpoint creation time is unavailable. The from-scratch <strong>299M-parameter model</strong>, <strong>16K vocabulary</strong>, and <strong>1,024-token context</strong> continue in the same guarded, nonwrapping stage, with a one-pass target of <strong>111,462,468 valid labels</strong>.</p>
+<figure class="metric-chart">
+<img src="/model-training-journal/assets/charts/v4-2273-cfr-perplexity.svg" alt="Five CFR observations: parent 39.7762, checkpoint 569 at 39.4730, checkpoint 1137 at 38.5124, checkpoint 1705 at 38.5456, checkpoint 2273 at 38.1737; the small checkpoint 1705 regression remains visible">
+<figcaption>The same narrow 7,057-label CFR development contract throughout. Hollow circle: repeated parent baseline. The x-axis counts completed labels within this stage; the y-axis is restricted to show the small changes. This is repeated development evaluation, not a sealed-holdout score. <a href="/model-training-journal/assets/charts/v4-2273-cfr-perplexity.svg">Open full size</a>.</figcaption>
+</figure>
+
+<p>Measured timing through checkpoint 2,273 is <strong>cumulative and intermediate</strong>: <strong>13,874.969 loop seconds</strong>, including <strong>464.881 seconds of checkpoint hooks</strong> and <strong>6.839 seconds of evaluation hooks</strong>. The combined fraction is <strong>3.3998%</strong>; subtracting those hooks leaves <strong>13,403.250 seconds</strong>. Completed valid-label throughput is <strong>5,356.35 labels/s over loop time</strong>, or <strong>5,544.86 labels/s excluding measured hooks</strong>. Full boundary hooks are included and model loading is excluded. These totals overlap earlier checkpoint totals and are not separate durations to add. Guard-wall and worker rates at this boundary are unmeasured; none of these figures is GPU-kernel throughput.</p>
+<p>The separate progress download is frozen at <strong>00:59:43 UTC</strong>: <strong>2,369 completed updates / 77,458,076 completed labels</strong>, versus <strong>77,490,776 charged labels</strong>. Charged work includes unfinished accumulation. Later progress does not advance the saved checkpoint's quality measurement. Stage, retained model-lineage, physical campaign, and charged-cap clocks remain separate; physical work retains historical replay and interrupted work.</p>
+<p>There is <strong>no new broader-panel, fixed32, or reasoning score</strong> at checkpoint 2,273. The earlier parent's broader perplexity <strong>14.6312 on 130,209 labels</strong> belongs to a separate checkpoint and panel. Historical fixed32 remains <strong>0/32 task-correct and 0/32 protocol-valid</strong>: an output-interface failure that does not isolate reasoning or model capacity. The earlier <a href="/model-training-journal/assets/charts/v4-569-broader-lm.svg">broader panel</a>, <a href="/model-training-journal/assets/charts/v4-569-throughput.svg">throughput</a>, and <a href="/model-training-journal/assets/charts/v4-569-overhead.svg">overhead</a> figures keep their original frozen scope and bytes.</p>
+<p>The goal remains transferable logic beyond plausible conversation. No universal perplexity target or capability claim follows from this narrow measure. The fixed before-and-after format diagnostic is planned and has <strong>not run</strong>. The original 97M control and sealed final holdout remain untouched. This AI-assisted engineering journal publishes reviewed aggregate evidence without source passages or raw training data.</p>
+<p>Downloads: <a href="/model-training-journal/assets/v4-fourth-checkpoint-2273/cfr-checkpoints.json">five-point chart JSON</a>, <a href="/model-training-journal/assets/v4-fourth-checkpoint-2273/cfr-checkpoints.txt" download="v4-2273-cfr-checkpoints.csv">chart CSV</a>, <a href="/model-training-journal/assets/v4-fourth-checkpoint-2273/checkpoint-history.json">complete aggregate history JSON</a>, <a href="/model-training-journal/assets/v4-fourth-checkpoint-2273/evaluations.txt" download="v4-2273-evaluations.csv">40-row evaluation history CSV</a>, <a href="/model-training-journal/assets/v4-fourth-checkpoint-2273/intermediate-timing.txt" download="v4-2273-intermediate-timing.csv">four cumulative timing boundaries CSV</a>, <a href="/model-training-journal/assets/v4-fourth-checkpoint-2273/throughput.txt" download="v4-2273-throughput.csv">separate observed throughput CSV</a>, <a href="/model-training-journal/assets/v4-fourth-checkpoint-2273/progress.txt" download="v4-2273-progress.csv">progress CSV</a>, <a href="/model-training-journal/assets/v4-fourth-checkpoint-2273/stage.txt" download="v4-2273-stage.csv">stage snapshot CSV</a>, and <a href="/model-training-journal/assets/v4-fourth-checkpoint-2273/saved-checkpoints.txt" download="v4-2273-saved-checkpoints.csv">saved-checkpoint CSV</a>. JSON nulls and empty CSV fields mean unavailable or unrun, never zero. The complete history preserves every older row, all separate panels, and their missing values.</p>
+<p>Reproduce this frozen figure with the existing pinned chart environment: <code>python3 scripts/build_v4_fourth_checkpoint_chart.py</code>. The builder reads only the aggregate chart JSON and reuses the existing passive SVG sanitizer.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/29/second-checkpoint-on-the-next-corpus-slice/">Earlier: Second checkpoint on the next corpus slice</a><a href="/model-training-journal/experiments/">Experiment index</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>
