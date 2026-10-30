@@ -1,7 +1,7 @@
 /* Only the reader's local clock changes this display. Snapshot data never refresh. */
 (() => {
   "use strict";
-  const DEADLINE_UTC = "2026-10-31T04:12:00Z";
+  const DEADLINE_UTC = "2026-11-07T04:12:00Z";
   const DEADLINE_MS = Date.parse(DEADLINE_UTC);
   const STALE_AFTER_MS = 60 * 60 * 1000;
 

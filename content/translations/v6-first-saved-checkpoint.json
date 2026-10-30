@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-30-v6-first-saved-checkpoint.md",
+  "source_sha256": "b2ae01caeee3172856082b20863d7bee61667afc57eda1255b6e46919e96ea2f",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_kind": "p",
+      "source_text_sha256": "789a270d12070f4068062d78040df1b97d3ef6582dec10fc444e987bb43fcba1",
+      "text": "V5 finished 3,833 training steps and 125,320,085 next-token predictions. Its final saved version scored 34.2885 perplexity on the same 7,057-prediction check of federal regulations. Lower perplexity is better on that text check. This is V5’s measured score, not a score for V6. The linked completion record and dashboard keep the earlier results, including times when scores got worse."
+    },
+    {
+      "id": "passage-002",
+      "source_kind": "p",
+      "source_text_sha256": "214b8d954b9915777514b4b74a39144e54239bef8646a5ae84e65f86f26e69bf",
+      "text": "V6 began on 30 October at 20:44:02 UTC, using V5’s final saved version. We verified its first new save at 21:17:29.743755 UTC, after 229 steps and 7,487,125 usable predictions in V6. We have not tested its perplexity. The long SHA-256 number identifies the exact saved file. Saving proves we can recover this training progress; it does not prove the model got better."
+    },
+    {
+      "id": "passage-003",
+      "source_kind": "div",
+      "source_text_sha256": "59e4c1b5c3319a68f9de6c1adf7a449bcef3c768f0676359d04b41002cfb6aff",
+      "text": "The table keeps three facts separate: V5 finished with 3,833 steps, 125,320,085 predictions and a measured score of 34.2885 on 7,057 targets. V6’s first save holds 229 steps and 7,487,125 predictions. At 21:18:13 UTC, V6’s live record had reached 236 steps and 7,716,009 predictions. Neither V6 row has a quality score. The later live count is not another saved version."
+    },
+    {
+      "id": "passage-004",
+      "source_kind": "p",
+      "source_text_sha256": "2e051374ae12fc83016a121e2477665cc6736f1c0f688629a85b6baca95187d7",
+      "text": "Each run starts its own count. The two V6 rows are earlier and later views of the same work, so adding them would count some work twice. The dashboard shows the dated table. Older score charts keep their original checks and run boundaries. We do not draw a made-up score for V6."
+    },
+    {
+      "id": "passage-005",
+      "source_kind": "p",
+      "source_text_sha256": "b72e47af9f54da072fa04b1f9ca21f83aef4668187a811f941a154126c8bbd98",
+      "text": "The project’s installed stop time was separately extended to 7 November at 04:12 UTC. This V6 run has an earlier stop time: 31 October at 02:44:02 UTC. More time for the project does not mean this run can continue without a limit, or that it has finished."
+    },
+    {
+      "id": "passage-006",
+      "source_kind": "p",
+      "source_text_sha256": "4a2c057b27716124851f1aed1691c3edeb6651ae8e69dcae72c08e76befd1b18",
+      "text": "No new reasoning test has run. This snapshot has no V6 score for regulations, broader text, tasks or reasoning. BLiMP, a grammar check, is still unrun. The earlier format experiment stopped before its trial. The sealed final planning test remains unused. An older V3 task check had 0 of 32 correct answers and 0 of 32 answers in the required format; that format failure limits what it tells us about reasoning. More training does not erase those failures or prove reasoning skill. This AI-assisted journal shares reviewed totals and the developing method, not training text or released model weights."
+    }
+  ]
+}

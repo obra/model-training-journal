@@ -119,8 +119,9 @@ each evaluation population separate. Record the UTC verification timestamp,
 actual experiment state, one qualified result, and the next decision. Planned
 work must not be presented as launched or completed.
 
-The currently installed training cutoff is `2026-10-31T04:12:00Z`; neither content
-nor the local clock script may change it. This is an installed guard setting, not
+The currently installed training cutoff is `2026-11-07T04:12:00Z`; content and the local clock script must match this reviewed installed setting.
+The prior 31 October cutoff is preserved in dated history. A later project cutoff
+does not extend the separate finite guard of an active run. This is an installed guard setting, not
 a fixed user deadline for the research. Research proceeds through finite runs
 with measured progress and separately reviewed run budgets. The browser updates only countdown and snapshot age. It
 shows a stale warning after 60 minutes and never fetches training telemetry. With

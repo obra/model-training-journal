@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = "/model-training-journal"
 ORIGIN = "https://obra.github.io"
 TITLE = "Model Training Journal"
-DEADLINE_UTC = "2026-10-31T04:12:00Z"
+DEADLINE_UTC = "2026-11-07T04:12:00Z"
 
 
 def utc_timestamp(value):
@@ -38,7 +38,7 @@ def load_progress(path=None):
     if progress["initialization"] != "from scratch":
         raise ValueError("This journal records training from scratch")
     if progress["deadline_utc"] != DEADLINE_UTC:
-        raise ValueError("The fixed 120-hour deadline must not move")
+        raise ValueError("The installed project cutoff must match the reviewed setting")
     utc_timestamp(progress["verified_at_utc"])
     result = progress["latest_result"]
     if not isinstance(result, dict) or set(result) != {"summary", "url"}:
@@ -73,7 +73,7 @@ def render_progress(progress):
   <dl class="progress-facts">
     <div class="progress-state"><dt>Experiment state</dt><dd>{escape(progress['experiment_state'])}</dd></div>
     <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="{escape(result['url'], quote=True)}">{escape(result['summary'])}</a></dd></div>
-    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>{remaining_at_snapshot(verified)}</strong><span class="progress-deadline">Cutoff <time datetime="{DEADLINE_UTC}">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>{remaining_at_snapshot(verified)}</strong><span class="progress-deadline">Cutoff <time datetime="{DEADLINE_UTC}">7 Nov 2026, 04:12 UTC</time></span></dd></div>
   </dl>
   <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="{progress['verified_at_utc']}">{verified:%d %b %Y, %H:%M:%S} UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
 </section>'''

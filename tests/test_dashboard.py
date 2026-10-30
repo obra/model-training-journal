@@ -32,7 +32,7 @@ class DashboardTests(unittest.TestCase):
 
     def test_all_historical_rows_survive_without_pooled_panels(self):
         d = self.model()
-        self.assertEqual(len(d['tables']), 41)
+        self.assertEqual(len(d['tables']), 42)
         self.assertEqual(len(d['history']['evaluation_points']), 42)
         self.assertEqual(len(d['history']['v4_progress_observations']), 594)
         self.assertEqual(len(d['history']['stage2_observations']), 22)

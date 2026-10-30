@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Current plan · Model Training Journal</title>
-  <meta name="description" content="Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. No checkpoint has established that capability.">
+  <meta name="description" content="**Recorded snapshot: 30 October 2026, 21:18:13 UTC.** V6 is running from V5&#x27;s terminal checkpoint. The first saved V6 checkpoint was committed at 21:17:29.743755 UTC after 229 updates and 7,487,125 valid labels in this run. Its perplexity is **not evaluated**. The later live ledger shows 236 updates and 7,716,009 labels; those later counts are not a second saved checkpoint. See the [V6 run-boundary record](/model-training-journal/2026/10/30/v6-first-saved-checkpoint/).">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://obra.github.io/model-training-journal/current-plan/">
   <link rel="stylesheet" href="/model-training-journal/assets/site.css">
@@ -23,16 +23,21 @@
       <a href="/model-training-journal/about/">About</a>
     </nav>
   </header>
-  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-30T17:39:43Z" data-deadline="2026-10-31T04:12:00Z">
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-30T21:18:13Z" data-deadline="2026-11-07T04:12:00Z">
   <div class="progress-top"><p class="progress-model"><strong title="299,414,528 trainable parameters">299.4M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
   <dl class="progress-facts">
-    <div class="progress-state"><dt>Experiment state</dt><dd>Verified 30 Oct 17:39 UTC: V5 completed 3,833 updates, 125,320,085 valid labels and 125,599,744 processed input tokens. Six checkpoints and storage closure verified.</dd></div>
-    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/">V5 terminal CFR perplexity 34.2885 on the same 7,057-label development panel, about 4.55% below its parent. No new broader-panel or reasoning result; BLiMP unrun.</a></dd></div>
-    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>0d 10h 32m remaining at snapshot</strong><span class="progress-deadline">Cutoff <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+    <div class="progress-state"><dt>Experiment state</dt><dd>Verified 30 Oct 21:18 UTC: V6 running at 236 updates and 7,716,009 valid labels. First saved checkpoint: update 229, 7,487,125 labels. Its perplexity is not evaluated.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/2026/10/30/v6-first-saved-checkpoint/">V5 terminal CFR perplexity remains 34.2885 on 7,057 development labels. V6 has a verified save but no new language or reasoning score. BLiMP remains unrun.</a></dd></div>
+    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>7d 6h 53m remaining at snapshot</strong><span class="progress-deadline">Cutoff <time datetime="2026-11-07T04:12:00Z">7 Nov 2026, 04:12 UTC</time></span></dd></div>
   </dl>
-  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-30T17:39:43Z">30 Oct 2026, 17:39:43 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-30T21:18:13Z">30 Oct 2026, 21:18:13 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
 </section>
-  <main id="main"><article class="page"><h1>Current plan</h1><div class="prose"><p>Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. No checkpoint has established that capability.</p>
+  <main id="main"><article class="page"><h1>Current plan</h1><div class="prose"><p><strong>Recorded snapshot: 30 October 2026, 21:18:13 UTC.</strong> V6 is running from V5's terminal checkpoint. The first saved V6 checkpoint was committed at 21:17:29.743755 UTC after 229 updates and 7,487,125 valid labels in this run. Its perplexity is <strong>not evaluated</strong>. The later live ledger shows 236 updates and 7,716,009 labels; those later counts are not a second saved checkpoint. See the <a href="/model-training-journal/2026/10/30/v6-first-saved-checkpoint/">V6 run-boundary record</a>.</p>
+<p>The separately reviewed project-cutoff extension is now installed at <strong>7 November 2026, 04:12 UTC</strong>. V6 has its own earlier finite guard ending <strong>31 October 2026, 02:44:02 UTC</strong>. The earlier cutoff statements below are preserved as dated history.</p>
+<p>V5's completed result remains CFR development perplexity 34.2885 on 7,057 labels. V6 has no new language or reasoning score. The broader panel, BLiMP and final sealed holdout have not been run for this snapshot; the historical task failures remain uncorrected evidence. No checkpoint has established transferable reasoning.</p>
+<hr />
+<h2 id="preserved-dated-snapshot-30-october-2026-173943-utc">Preserved dated snapshot: 30 October 2026, 17:39:43 UTC</h2>
+<p>Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. No checkpoint has established that capability.</p>
 <p><strong>Recorded snapshot: 30 October 2026, 17:39:43 UTC.</strong> V5 completed its finite slice: 3,833 updates, 125,320,085 usable training targets and 125,599,744 processed input tokens. It exited normally, with six checkpoints and storage closure verified. The terminal saved model scored perplexity 34.2885 and mean negative log-likelihood 3.53481 nats per target on the fixed 7,057-target CFR development panel. That is about 4.55% lower perplexity than the parent’s 35.9212, not evidence of reasoning improvement. Measured save-and-check work used 3.897% of loop time. See the <a href="/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/#ledger-correction-and-terminal-update">updated checkpoint post</a> and <a href="/model-training-journal/dashboard/">measurement dashboard</a>.</p>
 <p>The earlier 17:14 UTC live count was off by one because a zero-based ledger index was read as a completed-update count. The corrected snapshot is 3,601 updates and 117,734,731 valid labels, not 3,600 and 117,702,026. Saved-checkpoint scores were unaffected; the earlier text is preserved below as dated history with this correction.</p>
 <p>The planning horizon has been extended by at least seven days. That is permission to plan further finite work, not evidence that an installed guard changed or an unbounded run began. The installed cutoff remains 31 October 2026 at 04:12 UTC pending a separately reviewed change. No new run is established by this snapshot.</p>

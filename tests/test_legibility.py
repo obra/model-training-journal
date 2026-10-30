@@ -15,7 +15,7 @@ class TranslationTests(unittest.TestCase):
     def test_every_published_post_gets_a_complete_companion(self):
         import build
         posts = build.load_posts()
-        self.assertEqual(len(posts), 44)
+        self.assertEqual(len(posts), 45)
         for post in posts:
             with self.subTest(post=post['slug']):
                 self.assertIn('parallel_html', post)

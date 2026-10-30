@@ -1,3 +1,13 @@
+**Recorded snapshot: 30 October 2026, 21:18:13 UTC.** V6 is running from V5's terminal checkpoint. The first saved V6 checkpoint was committed at 21:17:29.743755 UTC after 229 updates and 7,487,125 valid labels in this run. Its perplexity is **not evaluated**. The later live ledger shows 236 updates and 7,716,009 labels; those later counts are not a second saved checkpoint. See the [V6 run-boundary record](/model-training-journal/2026/10/30/v6-first-saved-checkpoint/).
+
+The separately reviewed project-cutoff extension is now installed at **7 November 2026, 04:12 UTC**. V6 has its own earlier finite guard ending **31 October 2026, 02:44:02 UTC**. The earlier cutoff statements below are preserved as dated history.
+
+V5's completed result remains CFR development perplexity 34.2885 on 7,057 labels. V6 has no new language or reasoning score. The broader panel, BLiMP and final sealed holdout have not been run for this snapshot; the historical task failures remain uncorrected evidence. No checkpoint has established transferable reasoning.
+
+---
+
+## Preserved dated snapshot: 30 October 2026, 17:39:43 UTC
+
 Build an open, reproducible recipe for a model trained from scratch with demonstrable transferable logic beyond plausible conversation. No checkpoint has established that capability.
 
 **Recorded snapshot: 30 October 2026, 17:39:43 UTC.** V5 completed its finite slice: 3,833 updates, 125,320,085 usable training targets and 125,599,744 processed input tokens. It exited normally, with six checkpoints and storage closure verified. The terminal saved model scored perplexity 34.2885 and mean negative log-likelihood 3.53481 nats per target on the fixed 7,057-target CFR development panel. That is about 4.55% lower perplexity than the parent’s 35.9212, not evidence of reasoning improvement. Measured save-and-check work used 3.897% of loop time. See the [updated checkpoint post](/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/#ledger-correction-and-terminal-update) and [measurement dashboard](/model-training-journal/dashboard/).

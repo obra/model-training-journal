@@ -55,16 +55,16 @@ class ProgressTests(unittest.TestCase):
 
     def test_no_javascript_fallback_is_explicitly_a_snapshot(self):
         html = render_progress(fixture())
-        self.assertIn("5d 0h 0m remaining at snapshot", html)
+        self.assertIn("12d 0h 0m remaining at snapshot", html)
         self.assertIn("Status snapshot", html)
         self.assertIn("last verified", html)
         self.assertIn("Data do not refresh here", html)
         self.assertIn("Local clock unavailable", html)
         self.assertIn("26 Oct 2026, 04:12:00 UTC", html)
-        self.assertIn("31 Oct 2026, 04:12 UTC", html)
+        self.assertIn("7 Nov 2026, 04:12 UTC", html)
         self.assertNotIn("%", html)
         self.assertEqual(remaining_at_snapshot(utc_timestamp(DEADLINE_UTC)), "Budget elapsed at snapshot")
-        self.assertEqual(remaining_at_snapshot(utc_timestamp("2026-11-01T04:12:00Z")), "Budget elapsed at snapshot")
+        self.assertEqual(remaining_at_snapshot(utc_timestamp("2026-11-08T04:12:00Z")), "Budget elapsed at snapshot")
 
     def test_local_clock_boundaries_and_failure_restore_snapshot(self):
         program = r'''
@@ -72,10 +72,10 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const vm = require("node:vm");
 const api = require("./assets/progress.js");
-const deadline = Date.parse("2026-10-31T04:12:00Z");
+const deadline = Date.parse("2026-11-07T04:12:00Z");
 const verified = Date.parse("2026-10-26T04:12:00Z");
-assert.equal(api.DEADLINE_UTC, "2026-10-31T04:12:00Z");
-assert.equal(api.clockState(verified, verified).countdown, "5d 0h 0m remaining");
+assert.equal(api.DEADLINE_UTC, "2026-11-07T04:12:00Z");
+assert.equal(api.clockState(verified, verified).countdown, "12d 0h 0m remaining");
 assert.equal(api.clockState(deadline - 1, verified).countdown, "Less than 1 min remaining");
 assert.equal(api.clockState(deadline, verified).countdown, "Budget elapsed");
 assert.equal(api.clockState(deadline + 86400000, verified).countdown, "Budget elapsed");
@@ -87,7 +87,7 @@ assert.equal(api.clockState(verified, NaN).countdown, null);
 
 let now = verified + 3600000;
 class LocalDate extends Date { static now() { return now; } }
-const countdown = { textContent: "5d 0h 0m remaining at snapshot" };
+const countdown = { textContent: "12d 0h 0m remaining at snapshot" };
 const freshness = {
   textContent: "Local clock unavailable", attrs: {},
   setAttribute(key, value) { this.attrs[key] = value; },
@@ -104,14 +104,14 @@ vm.runInNewContext(fs.readFileSync("assets/progress.js", "utf8"), {
   setInterval(callback, interval) { assert.equal(interval, 60000); timer = callback; },
   fetch() { requestCount++; throw new Error("Network access is forbidden"); }
 });
-assert.equal(countdown.textContent, "4d 23h 0m remaining");
+assert.equal(countdown.textContent, "11d 23h 0m remaining");
 assert.equal(freshness.attrs["data-stale"], "true");
 now = deadline;
 timer();
 assert.equal(countdown.textContent, "Budget elapsed");
 now = NaN;
 timer();
-assert.equal(countdown.textContent, "5d 0h 0m remaining at snapshot");
+assert.equal(countdown.textContent, "12d 0h 0m remaining at snapshot");
 assert.match(freshness.textContent, /clock unavailable/);
 assert.equal(freshness.attrs["data-stale"], undefined);
 now = verified - 1;
@@ -120,7 +120,7 @@ assert.match(freshness.textContent, /precedes the snapshot/);
 root.dataset.deadline = "2026-11-01T04:12:00Z";
 now = verified;
 timer();
-assert.equal(countdown.textContent, "5d 0h 0m remaining at snapshot");
+assert.equal(countdown.textContent, "12d 0h 0m remaining at snapshot");
 assert.match(freshness.textContent, /display unavailable/);
 assert.equal(requestCount, 0);
 console.log("Clock arithmetic, stale boundary, immutable deadline and no-network DOM updates passed.");
