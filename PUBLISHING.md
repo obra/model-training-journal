@@ -105,7 +105,10 @@ validator update and review.
 The charts are generated separately from publication. See `scripts/chart-README.md`
 for the fixed data input, pinned optional plotting requirements and reproducible
 build command. The normal site build copies the reviewed SVG bytes; it does not
-fetch data or regenerate them.
+fetch data or regenerate them. The additional reviewed
+`v4-v5-cfr-perplexity.svg` is an offline, passive SVG with an exact copy
+under `docs/assets/charts/`; its standard-library builder reads only
+`assets/v4-v5-cfr-checkpoints.json`.
 
 ## Refresh the progress snapshot
 

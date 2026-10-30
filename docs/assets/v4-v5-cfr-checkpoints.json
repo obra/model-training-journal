@@ -1,0 +1,33 @@
+{
+  "schema": "sanitized_v4_v5_cfr_checkpoints_v1",
+  "observation_utc": "2026-10-30T17:14:12Z",
+  "panel": "fixed_cfr_development_7057_labels",
+  "panel_manifest_sha256": "2eea5c4228ce7ff09d8b464c6e180cc6bc70fda395e76f643d7648ca27459def",
+  "x_axis": "Completed valid labels within each separate stage; parent is repeated at zero.",
+  "scope": "Repeated narrow development evaluation; no new broader-panel, sealed-holdout, or reasoning result. V5 is still running at this observation.",
+  "stages": [
+    {
+      "id": "v4_second_slice_completed",
+      "points": [
+        {"updates": 0, "valid_labels": 0, "perplexity": 37.7860145783434, "role": "repeated_parent"},
+        {"updates": 569, "valid_labels": 18604411, "perplexity": 36.980168231502546, "role": "saved_checkpoint"},
+        {"updates": 1137, "valid_labels": 37176043, "perplexity": 36.58731508741356, "role": "saved_checkpoint"},
+        {"updates": 1705, "valid_labels": 55747706, "perplexity": 36.11635810515068, "role": "saved_checkpoint"},
+        {"updates": 2273, "valid_labels": 74319327, "perplexity": 36.04213258390102, "role": "saved_checkpoint"},
+        {"updates": 2841, "valid_labels": 92891175, "perplexity": 36.18045425938641, "role": "saved_checkpoint"},
+        {"updates": 3408, "valid_labels": 111430307, "perplexity": 35.921232002527105, "role": "terminal_checkpoint"}
+      ]
+    },
+    {
+      "id": "v5_running_slice",
+      "points": [
+        {"updates": 0, "valid_labels": 0, "perplexity": 35.921232002527105, "role": "repeated_parent"},
+        {"updates": 639, "valid_labels": 20891966, "perplexity": 35.474745541660575, "role": "saved_checkpoint"},
+        {"updates": 1278, "valid_labels": 41783903, "perplexity": 35.371147061256764, "role": "saved_checkpoint"},
+        {"updates": 1917, "valid_labels": 62676097, "perplexity": 34.9232078084308, "role": "saved_checkpoint"},
+        {"updates": 2556, "valid_labels": 83568380, "perplexity": 34.89736799093215, "role": "saved_checkpoint"},
+        {"updates": 3195, "valid_labels": 104460450, "perplexity": 34.55557236874597, "role": "saved_checkpoint"}
+      ]
+    }
+  ]
+}

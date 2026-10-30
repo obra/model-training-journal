@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A second completed slice and five V5 checkpoints · Model Training Journal</title>
+  <meta name="description" content="The second V4 slice completed 111.43M valid labels; V5 is running. Same-panel CFR perplexity fell across both slices, with one retained checkpoint regression. Reasoning improvement remains unproven.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-30T17:14:12Z" data-deadline="2026-10-31T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="299,414,528 trainable parameters">299.4M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Recorded 30 Oct 17:14 UTC: second V4 slice completed 111,430,307 valid labels/3,408 updates; V5 running at 3,600/3,833 updates and 117,702,026 valid labels.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/">Second V4 slice terminal CFR perplexity 35.9212; V5 checkpoint 3,195 scored 34.5556 on the same 7,057-label development panel. No new broader or reasoning result; V5 terminal not yet evaluated.</a></dd></div>
+    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>0d 10h 57m remaining at snapshot</strong><span class="progress-deadline">Cutoff <time datetime="2026-10-31T04:12:00Z">31 Oct 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-30T17:14:12Z">30 Oct 2026, 17:14:12 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page"><header class="article-header"><h1>A second completed slice and five V5 checkpoints</h1><p class="dek">The second V4 slice completed 111.43M valid labels; V5 is running. Same-panel CFR perplexity fell across both slices, with one retained checkpoint regression. Reasoning improvement remains unproven.</p><p class="article-meta"><time datetime="2026-10-30">30 October 2026</time> · Finite continuation: measured language loss · 3 min read</p></header><div class="prose"><p>The second V4 corpus slice completed <strong>111,430,307 valid next-token labels</strong> in <strong>3,408 updates</strong>, consuming its admitted data once. Its terminal checkpoint scored <strong>35.9212 perplexity</strong> on the same frozen <strong>7,057-label CFR development panel</strong>, versus <strong>37.7860</strong> for the repeated parent. That is a <strong>4.94% lower</strong> perplexity on this narrow panel. The history includes a small regression at checkpoint 2,841; we did not discard it.</p>
+<p>The next finite slice, V5, was <strong>still running at the 17:14 UTC observation</strong>. Its ledger had completed <strong>3,600 of 3,833 updates</strong> and <strong>117,702,026 of 125,320,085 planned valid labels</strong>. Its fifth saved checkpoint, update 3,195 at <strong>104,460,450 stage-local valid labels</strong>, scored <strong>34.5556 perplexity</strong>, versus <strong>35.9212</strong> for its repeated parent: <strong>3.80% lower</strong> on the same development panel. Later token progress is not a later quality measurement. V5's terminal checkpoint had not been evaluated in this snapshot.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Slice</th>
+<th>Checkpoint update</th>
+<th>Stage-local valid labels</th>
+<th>CFR perplexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V4 second</td>
+<td>repeated parent</td>
+<td>0</td>
+<td>37.7860</td>
+</tr>
+<tr>
+<td>V4 second</td>
+<td>569</td>
+<td>18,604,411</td>
+<td>36.9802</td>
+</tr>
+<tr>
+<td>V4 second</td>
+<td>1,137</td>
+<td>37,176,043</td>
+<td>36.5873</td>
+</tr>
+<tr>
+<td>V4 second</td>
+<td>1,705</td>
+<td>55,747,706</td>
+<td>36.1164</td>
+</tr>
+<tr>
+<td>V4 second</td>
+<td>2,273</td>
+<td>74,319,327</td>
+<td>36.0421</td>
+</tr>
+<tr>
+<td>V4 second</td>
+<td>2,841</td>
+<td>92,891,175</td>
+<td>36.1805</td>
+</tr>
+<tr>
+<td>V4 second</td>
+<td>terminal 3,408</td>
+<td>111,430,307</td>
+<td>35.9212</td>
+</tr>
+<tr>
+<td>V5</td>
+<td>repeated parent</td>
+<td>0</td>
+<td>35.9212</td>
+</tr>
+<tr>
+<td>V5</td>
+<td>639</td>
+<td>20,891,966</td>
+<td>35.4747</td>
+</tr>
+<tr>
+<td>V5</td>
+<td>1,278</td>
+<td>41,783,903</td>
+<td>35.3711</td>
+</tr>
+<tr>
+<td>V5</td>
+<td>1,917</td>
+<td>62,676,097</td>
+<td>34.9232</td>
+</tr>
+<tr>
+<td>V5</td>
+<td>2,556</td>
+<td>83,568,380</td>
+<td>34.8974</td>
+</tr>
+<tr>
+<td>V5</td>
+<td>3,195</td>
+<td>104,460,450</td>
+<td>34.5556</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="metric-chart">
+<img src="/model-training-journal/assets/charts/v4-v5-cfr-perplexity.svg" alt="Two stage-local CFR perplexity curves: blue completed second V4 slice falls from 37.7860 to 35.9212 with a regression at checkpoint 2841; green running V5 falls from repeated parent 35.9212 to checkpoint 3195 at 34.5556.">
+<figcaption>Blue is the completed second V4 slice; green is V5 through checkpoint 3,195. Hollow starting points repeat a parent checkpoint and consume no new labels in that slice. Horizontal positions are <em>stage-local</em> valid labels, not a single cumulative token clock. The vertical range is restricted to 34.0–38.2 and lower is better. All points use the same frozen 7,057-label CFR development panel; this is repeatedly viewed development data, not a sealed test or a universal perplexity target. <a href="/model-training-journal/assets/charts/v4-v5-cfr-perplexity.svg">Open the chart</a>.</figcaption>
+</figure>
+
+<p>This is evidence of improved likelihood on one narrow text distribution, <strong>not yet evidence of transferable reasoning or chatbot competence</strong>. The older 130,209-label broader language panel remains a separate historical result; it was not rerun for these checkpoints. The last completed 32-case task diagnostic remains <strong>0/32 correct and 0/32 protocol-valid</strong>. Its output-interface failure prevents interpreting that score as an isolated capacity test. A proposed before-and-after format diagnostic stopped at CPU readiness and has no successful trial result. A standard zero-shot <a href="https://github.com/alexwarstadt/blimp">BLiMP</a> minimal-pair evaluation is being assessed as a complementary grammar measure; <strong>it has not run</strong>. Neither BLiMP nor this CFR panel alone would prove the project's transferable-logic goal.</p>
+<p>The frozen tokenizer, model configuration and evaluation population are shared across the charted checkpoints. Exact saved-checkpoint metrics and stage-local label counts are in the <a href="/model-training-journal/assets/v4-v5-cfr-checkpoints.json">sanitized chart data</a>; the passive SVG is reproducible with <code>python3 scripts/build_v4_v5_cfr_chart.py</code>. This AI-assisted journal publishes aggregate results and documented failures. It does not publish raw training text, private records, credentials, or a claim that model weights have been released.</p></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/30/a-completed-slice-and-an-uneven-loss-curve/">Earlier: A completed slice and an uneven loss curve</a><a href="/model-training-journal/experiments/">Experiment index</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>
