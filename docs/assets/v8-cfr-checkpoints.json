@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "verified_at_utc": "2026-10-31T07:10:31Z",
+  "source_url": "/model-training-journal/2026/10/31/v8-completes-with-a-development-panel-regression/",
+  "scope": "Completed V8 residual slice and two postrun CFR development scores. Parent is a repeated V7 baseline, not new V8 training. No reasoning, broader-panel or final-holdout evaluation.",
+  "scoring_contract": {
+    "population": "narrow_cfr_7057",
+    "scored_labels": 7057,
+    "manifest_sha256": "2eea5c4228ce7ff09d8b464c6e180cc6bc70fda395e76f643d7648ca27459def",
+    "tokenizer_sha256": "56f55be78fdf829b1c8706b91c6b919607603901bfb0e133ce1f98d49d29c965",
+    "scorer_sha256": "b43d9e441c5d9273f0146bb46690ad6de1ec6044186db685cd7ae18a787dbdf2",
+    "precision": "native model dtype, autocast disabled, FP32 CE logits",
+    "sealed_holdout": false,
+    "global_source_family_unseen_claim": false,
+    "limitation": "Screening against the checked corpus and prior validation found no selected lexical overlap; semantic overlap, other editions, and globally unseen source families are not established."
+  },
+  "stage": {
+    "id": "v8",
+    "status": "completed",
+    "updates": 312,
+    "valid_labels": 10201586,
+    "processed_input_tokens": 10223616,
+    "source_repeated": false,
+    "points": [
+      {
+        "updates": 0,
+        "valid_labels": 0,
+        "role": "repeated_parent_baseline",
+        "checkpoint_sha256": "a7c238e3916a8818bce56975a78877a4773a00e159a7a4a674ccf5d58ad1d64e",
+        "checkpoint_time_utc": null,
+        "evaluation_finished_utc": "2026-10-31T02:55:33Z",
+        "perplexity": 33.882335618048806,
+        "mean_token_nll_nats": 3.5228938053666794
+      },
+      {
+        "updates": 156,
+        "valid_labels": 5100685,
+        "role": "saved_checkpoint",
+        "checkpoint_sha256": "8e25ad9dc9e2d42820dac8842daadb6797da52c7080c1db8aa0e23bcf4260046",
+        "checkpoint_time_utc": null,
+        "evaluation_finished_utc": null,
+        "perplexity": 34.83798355108353,
+        "mean_token_nll_nats": 3.550708272900716
+      },
+      {
+        "updates": 312,
+        "valid_labels": 10201586,
+        "role": "terminal_checkpoint",
+        "checkpoint_sha256": "fa202176ea95085ce8a8e772cbb40b3b6836f0eed4148b84d17fd0f813b3dd39",
+        "checkpoint_time_utc": null,
+        "evaluation_finished_utc": null,
+        "perplexity": 35.151670432677435,
+        "mean_token_nll_nats": 3.559672140105514
+      }
+    ]
+  },
+  "training_timing": {
+    "guard_wall_seconds": 4316,
+    "loop_elapsed_seconds": 3728.23624807701,
+    "checkpoint_seconds": 405.5330626559444,
+    "checkpoint_fraction": 0.10877343485545334,
+    "training_seconds_excluding_measured_overhead": 3322.7031854210654,
+    "includes_model_load": false,
+    "within_10_percent_target": false
+  }
+}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>V8 completes, but the development score moves backward · Model Training Journal</title>
+  <meta name="description" content="The software-run V8 slice completed 10.20 million usable training targets and both planned evaluations. Its terminal CFR perplexity is 35.1517, about 3.75% higher than V7&#x27;s 33.8823 on the same development panel.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/31/v8-completes-with-a-development-panel-regression/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/dashboard/">Dashboard</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-31T07:10:31Z" data-deadline="2026-11-07T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="299,414,528 trainable parameters">299.4M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>V8 completed 312 updates and both planned CFR development scores through the deterministic controller. No new training stage is claimed active.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/2026/10/31/v8-completes-with-a-development-panel-regression/">V8 terminal CFR perplexity 35.1517, about 3.75% higher than V7 terminal 33.8823 on the identical 7,057-target development panel. Reasoning remains unmeasured.</a></dd></div>
+    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>6d 21h 1m remaining at snapshot</strong><span class="progress-deadline">Cutoff <time datetime="2026-11-07T04:12:00Z">7 Nov 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-31T07:10:31Z">31 Oct 2026, 07:10:31 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page translated"><header class="article-header"><h1>V8 completes, but the development score moves backward</h1><p class="dek">The software-run V8 slice completed 10.20 million usable training targets and both planned evaluations. Its terminal CFR perplexity is 35.1517, about 3.75% higher than V7&#x27;s 33.8823 on the same development panel.</p><p class="article-meta"><time datetime="2026-10-31">31 October 2026</time> · Completed pretraining and fixed-panel evaluation · 2 min read</p></header><div class="reading-guide"><p><strong>Two ways to read the same record.</strong> The technical original is preserved beside a plain-language version. Matching numbers connect each passage. On a narrow screen, the plain-language version follows its original. Dates and plans describe the post’s own snapshot.</p><p><a href="#plain-passage-001">Start with the plain-language version</a> · <a href="/model-training-journal/dashboard/">See the measurement dashboard</a></p><details class="reading-terms"><summary>Terms used in this journal</summary><dl><dt>Model and parameters</dt><dd>The model is the program being trained. Parameters are the adjustable numbers it learns; more parameters do not by themselves prove better skills.</dd><dt>Token and tokenizer</dt><dd>A token is a piece of text, which may be a word, part of a word, or punctuation. The tokenizer decides how to split text into these pieces.</dd><dt>Valid label or target</dt><dd>A next-piece prediction the training or scoring rules actually count. Some positions are excluded, so processed input tokens and valid targets can differ.</dd><dt>Update and checkpoint</dt><dd>An update changes the model after some training examples. A checkpoint saves the model and, when available, the state needed to resume training.</dd><dt>Loss and perplexity</dt><dd>Two measures of text-prediction error. Lower is better on the same test under the same rules. Neither is a reasoning score or has a universal passing mark.</dd><dt>Development panel and holdout</dt><dd>A development panel is a fixed set used while making decisions. A sealed holdout is kept aside for a final check. Repeated development checks are not fresh final tests.</dd><dt>Baseline, control, and transfer</dt><dd>A baseline or control is a reference for a comparison. Transfer means a learned skill still works when the task or setting changes.</dd><dt>Supervised fine-tuning (SFT)</dt><dd>Training on example answers or actions after, or instead of, general text training. Fit to those examples is separate from success on new requests.</dd><dt>Protocol, tool, and receipt</dt><dd>A protocol sets the required output format. A tool is an action the surrounding software can run. A receipt records a tool result, but does not prove it acted on the right object.</dd><dt>Guard and budget</dt><dd>A guard enforces limits such as time or storage. Passing a guard check is evidence about the software, not the model’s intelligence. Reserved work and completed work are different counts.</dd><dt>BF16 and FP32</dt><dd>Number formats used for computation and stored state. FP32 keeps more precision. Different calculation settings can affect whether measurements are strictly comparable.</dd><dt>Hash and provenance</dt><dd>A hash is a fingerprint of exact file contents. Provenance records where data or a model came from. These help trace evidence; they do not by themselves prove quality or rights.</dd></dl></details></div><div class="prose parallel-prose"><div class="translation-pair" id="passage-001">
+<div class="original-passage" id="original-passage-001"><p class="passage-label"><a href="#plain-passage-001">Original · 1<span class="visually-hidden"> — jump to plain-language version</span></a></p><p>The V8 residual slice completed <strong>312 updates</strong>, <strong>10,201,586 usable training targets</strong> and <strong>10,223,616 processed input positions</strong> without repeating its admitted source span. Its guarded training job exited successfully; both saved checkpoints, the terminal accounting audit, and the two planned postrun evaluations completed through the deterministic controller. This is an execution result, not a proposed run.</p></div>
+<aside class="plain-passage" id="plain-passage-001" aria-label="Plain-language version of passage 1"><p class="passage-label"><a href="#original-passage-001">In plain language · 1<span class="visually-hidden"> — back to original</span></a></p><p>V8 finished 312 training steps. It learned from 10,201,586 counted predictions in 10,223,616 input positions, without looping over this admitted slice. The safety-limited job, two saved models, bookkeeping check and two planned tests all finished under the software controller. This run happened; it is not just a plan.</p></aside>
+</div>
+<div class="translation-pair" id="passage-002">
+<div class="original-passage" id="original-passage-002"><p class="passage-label"><a href="#plain-passage-002">Original · 2<span class="visually-hidden"> — jump to plain-language version</span></a></p><p>On the same frozen <strong>7,057-target CFR development panel</strong>, V7's terminal perplexity was <strong>33.88233562</strong>. V8 scored <strong>34.83798355</strong> at update 156 and <strong>35.15167043</strong> at its terminal checkpoint. Lower is better on this panel, so the V8 terminal result is about <strong>3.75% higher</strong> than V7's and about <strong>0.90% higher</strong> than V8's midpoint. The panel manifest and scorer fingerprints match the V7 evaluation. This is a measured regression on a repeatedly used development check; it is not evidence that every language ability worsened.</p></div>
+<aside class="plain-passage" id="plain-passage-002" aria-label="Plain-language version of passage 2"><p class="passage-label"><a href="#original-passage-002">In plain language · 2<span class="visually-hidden"> — back to original</span></a></p><p>On the same 7,057-prediction development check, the model before V8 scored 33.8823. V8 scored 34.8380 halfway through and 35.1517 at the end. Lower is better here, so the final score is about 3.75% worse than the starting model and 0.90% worse than the halfway model. The test text and scoring code match the earlier check. This is a setback on one familiar test, not proof that all language skills got worse.</p></aside>
+</div>
+<div class="translation-pair" id="passage-003">
+<div class="original-passage" id="original-passage-003"><p class="passage-label"><a href="#plain-passage-003">Original · 3<span class="visually-hidden"> — jump to plain-language version</span></a></p><div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Saved model</th>
+<th>New V8 usable targets</th>
+<th>CFR perplexity</th>
+<th>Mean loss, nats per target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V7 terminal parent, repeated baseline</td>
+<td>0</td>
+<td>33.88233562</td>
+<td>3.52289381</td>
+</tr>
+<tr>
+<td>V8 update 156</td>
+<td>5,100,685</td>
+<td>34.83798355</td>
+<td>3.55070827</td>
+</tr>
+<tr>
+<td>V8 terminal, update 312</td>
+<td>10,201,586</td>
+<td>35.15167043</td>
+<td>3.55967214</td>
+</tr>
+</tbody>
+</table></div></div>
+<aside class="plain-passage" id="plain-passage-003" aria-label="Plain-language version of passage 3"><p class="passage-label"><a href="#original-passage-003">In plain language · 3<span class="visually-hidden"> — back to original</span></a></p><p>The table compares the starting model with two V8 saves. The starting row adds no new V8 training. V8 counted 5,100,685 predictions by update 156 and 10,201,586 by update 312. Its prediction error rose at both saves. Mean loss is another way to show the same check; lower is better.</p></aside>
+</div>
+<div class="translation-pair" id="passage-004">
+<div class="original-passage" id="original-passage-004"><p class="passage-label"><a href="#plain-passage-004">Original · 4<span class="visually-hidden"> — jump to plain-language version</span></a></p><p>The <a href="/model-training-journal/dashboard/#cfr-v8">dashboard</a> charts all three points with the parent marked as a repeated baseline. Its <a href="/model-training-journal/assets/v8-cfr-checkpoints.json">public data</a> retain full score precision, checkpoint fingerprints and separate stage-local counts. The V8 checkpoint files, model weights, corpus and private operational records are not published.</p></div>
+<aside class="plain-passage" id="plain-passage-004" aria-label="Plain-language version of passage 4"><p class="passage-label"><a href="#original-passage-004">In plain language · 4<span class="visually-hidden"> — back to original</span></a></p><p>The dashboard shows those three points and marks the starting model as a repeated baseline. The downloadable public numbers keep the exact scores and model fingerprints. We are not releasing the model files, training text or private operations records in this post.</p></aside>
+</div>
+<div class="translation-pair" id="passage-005">
+<div class="original-passage" id="original-passage-005"><p class="passage-label"><a href="#plain-passage-005">Original · 5<span class="visually-hidden"> — jump to plain-language version</span></a></p><p>Checkpoint and writer work took <strong>405.53 seconds</strong> of a <strong>3,728.24-second training loop</strong>, or <strong>10.88%</strong>. That exceeds the 10% target. The guarded run lasted 71 minutes 56 seconds, about <strong>2,364 usable targets per wall-clock second</strong> including startup and closure. The measured loop rate was about <strong>2,736 per second</strong>. These are different denominators, and the remaining setup and closure time has not been isolated into causes.</p></div>
+<aside class="plain-passage" id="plain-passage-005" aria-label="Plain-language version of passage 5"><p class="passage-label"><a href="#original-passage-005">In plain language · 5<span class="visually-hidden"> — back to original</span></a></p><p>Saving the model and closing its storage records took 405.53 seconds out of a 3,728.24-second training loop, or 10.88%. That is above the 10% goal. The whole guarded job lasted nearly 72 minutes and averaged about 2,364 counted predictions per second. The loop alone averaged about 2,736 per second. These rates cover different parts of the run; we have not yet split all startup and shutdown time into causes.</p></aside>
+</div>
+<div class="translation-pair" id="passage-006">
+<div class="original-passage" id="original-passage-006"><p class="passage-label"><a href="#plain-passage-006">Original · 6<span class="visually-hidden"> — jump to plain-language version</span></a></p><p>There is <strong>no new reasoning, BLiMP, broader-language-panel or sealed-final-holdout result</strong>. The earlier task test remains 0/32 correct and 0/32 format-valid at an older checkpoint, so it does not isolate reasoning. The CFR panel has been used repeatedly during development. The next decision should consider complementary standard tests and a bounded speed comparison before allocating more training; neither is reported as run here. This AI-assisted journal records a real software execution and an unfavorable narrow result without treating either as a final capability verdict.</p></div>
+<aside class="plain-passage" id="plain-passage-006" aria-label="Plain-language version of passage 6"><p class="passage-label"><a href="#original-passage-006">In plain language · 6<span class="visually-hidden"> — back to original</span></a></p><p>V8 has no new reasoning, grammar, broader language or final reserved-test result. An older model got 0 of 32 task answers right and followed the requested format 0 of 32 times, so that test cannot cleanly measure reasoning. We have used this development text check many times. A standard test on different skills and a limited speed comparison would help decide what to do next, but neither has run. This post reports the completed run and the setback without claiming a final answer about the model’s ability.</p></aside>
+</div></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/31/twelve-checkpoints-close-the-scoring-gap/">Earlier: Twelve checkpoints close the scoring gap</a><a href="/model-training-journal/experiments/">Experiment index</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

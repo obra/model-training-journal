@@ -43,7 +43,11 @@ an eighth-grade reading level without removing technical facts.
   tokenizer and scorer identities remain explicit. Each stage has six saved
   points, separate stage-local and cumulative work counts, full score precision,
   and evaluation-finish times; unknown save times remain null. The latest summary
-  uses V7 terminal, while `terminal_v5` and all older arrays remain preserved.
+  in that historical source uses V7 terminal, while `terminal_v5` and all older arrays remain preserved.
+- `v8_source`: `assets/v8-cfr-checkpoints.json`, a separate three-point public
+  comparison with V7 terminal as a repeated zero-work baseline and both V8
+  saved checkpoints. The identical CFR panel/scorer contract and parent model
+  fingerprint are checked before the current homepage summary uses V8 terminal.
 - `terminal_v5`: reviewed terminal status, verification time, nullable exact
   checkpoint time, checkpoint SHA-256, updates, valid labels, processed input
   tokens, perplexity, mean NLL in nats per target, scored-label denominator,
@@ -100,6 +104,10 @@ under the unchanged passive dashboard SVG profile. The normal offline build
 regenerates these from the public aggregate. The evaluation-budget table keeps
 measured CPU, inner scoring and guard times separate from nonrefundable charges;
 the training checkpoint-overhead table uses its own loop denominator.
+
+The V8 addition allows `dashboard-cfr-v8.svg` in the same locations and passive
+profile. It preserves the V7 parent as a repeated baseline at zero new V8
+targets. The V8 checkpoint-overhead table uses its own measured loop denominator.
 
 ## Accessibility contract
 

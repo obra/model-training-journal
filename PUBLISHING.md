@@ -117,6 +117,11 @@ bounded text labels, without expanding active-content permissions. Their source
 is the reviewed aggregate `assets/v6-v7-cfr-checkpoints.json`; the normal offline
 site build generates them without reading private evidence or fetching data.
 
+The V8 addition allows `dashboard-cfr-v8.svg` under those same two chart
+directories and passive profile. Its source is the reviewed, separately pinned
+`assets/v8-cfr-checkpoints.json`, which retains the repeated V7 baseline and
+both V8 saves. No active-content permission changes accompany this chart.
+
 ## Refresh the progress snapshot
 
 Review the latest notebook status and directly supporting stage results before

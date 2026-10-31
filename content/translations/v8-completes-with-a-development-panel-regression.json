@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-31-v8-completes-with-a-development-panel-regression.md",
+  "source_sha256": "6ee3b662275bb925f51e908f38ffdfe18f797259d1f0bca9bfa8441f812997ba",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_kind": "p",
+      "source_text_sha256": "704a1644783f477f31c9c1a83946d8994809dd8a9f78084f5337fbff8e39d6d4",
+      "text": "V8 finished 312 training steps. It learned from 10,201,586 counted predictions in 10,223,616 input positions, without looping over this admitted slice. The safety-limited job, two saved models, bookkeeping check and two planned tests all finished under the software controller. This run happened; it is not just a plan."
+    },
+    {
+      "id": "passage-002",
+      "source_kind": "p",
+      "source_text_sha256": "2d865f4bab6123cb79d1ae7dd8ce723526f94aebdc9ff6df451b2201f4b0cc31",
+      "text": "On the same 7,057-prediction development check, the model before V8 scored 33.8823. V8 scored 34.8380 halfway through and 35.1517 at the end. Lower is better here, so the final score is about 3.75% worse than the starting model and 0.90% worse than the halfway model. The test text and scoring code match the earlier check. This is a setback on one familiar test, not proof that all language skills got worse."
+    },
+    {
+      "id": "passage-003",
+      "source_kind": "div",
+      "source_text_sha256": "4b22e972348572f7087db3356e05553237f9422228ca68bf5797cc8c82acadab",
+      "text": "The table compares the starting model with two V8 saves. The starting row adds no new V8 training. V8 counted 5,100,685 predictions by update 156 and 10,201,586 by update 312. Its prediction error rose at both saves. Mean loss is another way to show the same check; lower is better."
+    },
+    {
+      "id": "passage-004",
+      "source_kind": "p",
+      "source_text_sha256": "4099d050f7646a6594222989f5919c8db6aad9b60e987d7f8ee1ca4dd64af96f",
+      "text": "The dashboard shows those three points and marks the starting model as a repeated baseline. The downloadable public numbers keep the exact scores and model fingerprints. We are not releasing the model files, training text or private operations records in this post."
+    },
+    {
+      "id": "passage-005",
+      "source_kind": "p",
+      "source_text_sha256": "c2ac737850afb73f7970cd381d586973a6370e8a11d220b4f9bfcb8d64f9fb26",
+      "text": "Saving the model and closing its storage records took 405.53 seconds out of a 3,728.24-second training loop, or 10.88%. That is above the 10% goal. The whole guarded job lasted nearly 72 minutes and averaged about 2,364 counted predictions per second. The loop alone averaged about 2,736 per second. These rates cover different parts of the run; we have not yet split all startup and shutdown time into causes."
+    },
+    {
+      "id": "passage-006",
+      "source_kind": "p",
+      "source_text_sha256": "ab084199a5d499fbbadbba4a0314601086048b3b37e0f4b8636a0ad40723b7d8",
+      "text": "V8 has no new reasoning, grammar, broader language or final reserved-test result. An older model got 0 of 32 task answers right and followed the requested format 0 of 32 times, so that test cannot cleanly measure reasoning. We have used this development text check many times. A standard test on different skills and a limited speed comparison would help decide what to do next, but neither has run. This post reports the completed run and the setback without claiming a final answer about the model’s ability."
+    }
+  ]
+}

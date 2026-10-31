@@ -2,11 +2,11 @@
   "schema": 1,
   "model_parameters": 299414528,
   "initialization": "from scratch",
-  "experiment_state": "V6 and V7 completed. All twelve saved checkpoints scored on the fixed CFR development panel; the scoring run finished at 02:55:33 UTC. No training job was active in the final evidence.",
+  "experiment_state": "V8 completed 312 updates and both planned CFR development scores through the deterministic controller. No new training stage is claimed active.",
   "latest_result": {
-    "summary": "V6 terminal perplexity 34.1888; V7 terminal 33.8823 on the same 7,057 targets. The curves are uneven. No new reasoning, BLiMP or broader-panel result. V7 checkpoint overhead was 10.91% of loop time.",
-    "url": "/model-training-journal/2026/10/31/twelve-checkpoints-close-the-scoring-gap/"
+    "summary": "V8 terminal CFR perplexity 35.1517, about 3.75% higher than V7 terminal 33.8823 on the identical 7,057-target development panel. Reasoning remains unmeasured.",
+    "url": "/model-training-journal/2026/10/31/v8-completes-with-a-development-panel-regression/"
   },
-  "verified_at_utc": "2026-10-31T03:03:10Z",
+  "verified_at_utc": "2026-10-31T07:10:31Z",
   "deadline_utc": "2026-11-07T04:12:00Z"
 }

@@ -46,8 +46,8 @@ class CatchupContracts(unittest.TestCase):
         self.assertIn('cfr-v7', dashboard.CHART_IDS)
         import build
         data = dashboard.load_dashboard(ROOT, build.load_posts())
-        self.assertEqual(data['summary']['language']['stage'], 'V7 terminal')
-        self.assertEqual(data['summary']['training']['value'], 45021370)
+        self.assertEqual(data['summary']['language']['stage'], 'V8 terminal')
+        self.assertEqual(data['summary']['training']['value'], 10201586)
         self.assertEqual(data['terminal_v5']['perplexity'], 34.2885)
         panels = dashboard.chart_definitions(data)
         for stage in ('v6', 'v7'):

@@ -53,7 +53,7 @@ TIMING_METRICS = {
     'phase_valid_labels': 'Completed usable predictions',
     'phase_processed_ids': 'Completed input IDs',
 }
-CHART_IDS = ([f'cfr-{value[0]}' for value in STAGES.values()] + ['cfr-v4-second', 'cfr-v5', 'cfr-v6', 'cfr-v7', 'broader', 'v4-boundary-overhead'] +
+CHART_IDS = ([f'cfr-{value[0]}' for value in STAGES.values()] + ['cfr-v4-second', 'cfr-v5', 'cfr-v6', 'cfr-v7', 'cfr-v8', 'broader', 'v4-boundary-overhead'] +
              ['progress-' + key.replace('_', '-') for key in PROGRESS_METRICS])
 DASHBOARD_CHART_NAMES = frozenset('dashboard-' + key + '.svg' for key in CHART_IDS)
 
@@ -121,6 +121,32 @@ def validate_catchup(data):
                 raise ValueError('Do not infer save times from later evaluation times')
 
 
+def validate_v8(data, catchup):
+    if data['schema'] != 1 or data['scoring_contract'] != catchup['scoring_contract']:
+        raise ValueError('V8 comparison requires the identical frozen CFR scoring contract')
+    stage = data['stage']
+    if (stage['id'], stage['status'], stage['updates'], stage['valid_labels'], stage['processed_input_tokens'],
+            stage['source_repeated']) != ('v8', 'completed', 312, 10201586, 10223616, False):
+        raise ValueError('V8 stage counts or status differ from completed audit')
+    points = stage['points']
+    if len(points) != 3 or [p['role'] for p in points] != [
+            'repeated_parent_baseline', 'saved_checkpoint', 'terminal_checkpoint']:
+        raise ValueError('V8 must retain its parent and both saved scores')
+    parent = catchup['stages'][-1]['points'][-1]
+    if any(points[0][key] != parent[key] for key in (
+            'checkpoint_sha256', 'perplexity', 'mean_token_nll_nats')):
+        raise ValueError('V8 repeated baseline differs from V7 terminal')
+    if [(p['updates'], p['valid_labels']) for p in points] != [(0, 0), (156, 5100685), (312, 10201586)]:
+        raise ValueError('V8 local training positions differ')
+    for point in points:
+        if (not re.fullmatch('[0-9a-f]{64}', point['checkpoint_sha256'])
+                or point['checkpoint_time_utc'] is not None):
+            raise ValueError('V8 checkpoint pin or save-time semantics differ')
+        for key in ('perplexity', 'mean_token_nll_nats'):
+            if type(point[key]) not in (int, float) or not math.isfinite(point[key]) or point[key] < 0:
+                raise ValueError('Finite V8 development score required')
+
+
 def load_dashboard(root, posts):
     config = json.loads((root / 'content/dashboard.json').read_text())
     if config['schema'] != 1: raise ValueError('Unsupported dashboard schema')
@@ -135,6 +161,8 @@ def load_dashboard(root, posts):
     later = read(config['later_slices_source'])
     catchup = read(config['catchup_source'])
     validate_catchup(catchup)
+    v8 = read(config['v8_source'])
+    validate_v8(v8, catchup)
     read('content/dashboard.json')
     terminal = config['terminal_v5']
     if terminal['status'] != 'completed' or terminal['scored_labels'] != 7057 or terminal['checkpoint_time_utc'] is not None:
@@ -163,14 +191,15 @@ def load_dashboard(root, posts):
                            'summary': post['summary'], 'source': post['source'],
                            'source_sha256': sha256((root / post['source']).read_bytes()).hexdigest()})
     task = history['historical_fixed32'][-1]
-    latest_stage = catchup['stages'][-1]
+    latest_stage = v8['stage']
     latest = latest_stage['points'][-1]
     summary = {
-        'language': {'value': latest['perplexity'], 'denominator': catchup['scoring_contract']['scored_labels'],
-                     'status': 'evaluated', 'stage': 'V7 terminal', 'checkpoint_time_utc': None,
-                     'source_url': catchup['source_url']},
-        'training': {'value': latest['valid_labels'], 'updates': latest['updates'], 'stage': 'V7',
-                     'status': latest_stage['status'], 'source_url': catchup['source_url']},
+        'language': {'value': latest['perplexity'], 'denominator': v8['scoring_contract']['scored_labels'],
+                     'status': 'evaluated', 'stage': 'V8 terminal', 'prior_value': v8['stage']['points'][0]['perplexity'],
+                     'checkpoint_time_utc': None,
+                     'source_url': v8['source_url']},
+        'training': {'value': latest['valid_labels'], 'updates': latest['updates'], 'stage': 'V8',
+                     'status': latest_stage['status'], 'source_url': v8['source_url']},
         'task': {'value': task['correct'], 'denominator': task['denominator'], 'format_valid': task['protocol_valid'],
                  'stage': task['stage'], 'status': task['evaluation_status'],
                  'source_url': BASE + '/2026/10/29/two-stages-terminal-evaluations/'},
@@ -179,7 +208,7 @@ def load_dashboard(root, posts):
         if item['value'] is not None or item['status'] not in {'not_run', 'blocked_before_trial'}:
             raise ValueError('Unrun checks must have a null value and explicit status')
     return {'schema': 1, 'verified_at_utc': config['verified_at_utc'], 'sources': sources,
-            'history': history, 'later_slices': later, 'terminal_v5': terminal, 'catchup': catchup,
+            'history': history, 'later_slices': later, 'terminal_v5': terminal, 'catchup': catchup, 'v8': v8,
             'tables': tables, 'unrun': config['unrun'], 'summary': summary}
 
 
@@ -197,9 +226,9 @@ def render_summary(data):
     return f'''<section class="dashboard-summary" aria-labelledby="dashboard-summary-title">
 <div class="section-heading"><h2 id="dashboard-summary-title">What the measurements say</h2><a href="{BASE}/dashboard/">Full dashboard →</a></div>
 <div class="metric-cards">
-<article><p class="metric-kicker">Text prediction · {escape(language['stage'])}</p><p class="metric-value">{language['value']:.4f}</p><p>Perplexity on the same <strong>{language['denominator']:,}</strong>-target CFR development check. Lower is better; this is not a reasoning score.</p><a href="{language['source_url']}">Read the evidence</a></article>
+<article><p class="metric-kicker">Text prediction · {escape(language['stage'])}</p><p class="metric-value">{language['value']:.4f}</p><p>Perplexity on the same <strong>{language['denominator']:,}</strong>-target CFR development check, up from V7’s {language['prior_value']:.4f}. Lower is better; this is not a reasoning score.</p><a href="{language['source_url']}">Read the evidence</a></article>
 <article><p class="metric-kicker">Completed {escape(training['stage'])} slice</p><p class="metric-value">{training['value'] / 1e6:.2f}M</p><p><strong>{training['status'].capitalize()}</strong> usable training targets in {training['updates']:,} updates. More training is not itself a quality result.</p><a href="{training['source_url']}">{training['value']:,} exact targets</a></article>
-<article><p class="metric-kicker">Last completed task check · earlier V3</p><p class="metric-value">{task['value']}/{task['denominator']}</p><p>Correct answers; <strong>{task['format_valid']}/{task['denominator']}</strong> met the output format. That failure prevents a clean reasoning test. No new V5–V7 task result.</p><a href="{task['source_url']}">Keep the test’s limits in view</a></article>
+<article><p class="metric-kicker">Last completed task check · earlier V3</p><p class="metric-value">{task['value']}/{task['denominator']}</p><p>Correct answers; <strong>{task['format_valid']}/{task['denominator']}</strong> met the output format. That failure prevents a clean reasoning test. No new V5–V8 task result.</p><a href="{task['source_url']}">Keep the test’s limits in view</a></article>
 <article><p class="metric-kicker">Proposed grammar check</p><p class="metric-value metric-status">Not run</p><p>BLiMP has no score. A proposal is not a result, and grammar alone would not prove transferable logic.</p><a href="{BASE}/dashboard/#not-run">What remains unmeasured</a></article>
 </div></section>'''
 
@@ -288,10 +317,21 @@ def chart_definitions(data):
                                  'denominator': 7057, 'role': p['role'], 'evaluation_finished_utc': p['evaluation_finished_utc'],
                                  'checkpoint_time_utc': None, 'checkpoint_sha256': p['checkpoint_sha256']}
                                 for p in stage['points']]})
+    stage = data['v8']['stage']
+    result.append({'id': 'cfr-v8', 'group': 'language',
+                   'title': 'V8 · completed residual slice · CFR text prediction',
+                   'x_label': 'New usable training targets within V8', 'y_label': 'Perplexity · lower is better',
+                   'note': 'The zero point repeats V7 terminal, not new V8 training. Both V8 saves score worse on the identical 7,057-target development panel. Exact save times are unavailable; no reasoning result follows.',
+                   'source': 'assets/v8-cfr-checkpoints.json',
+                   'rows': [{'label': ('V7 terminal · repeated baseline' if p['updates'] == 0 else 'V8 update ' + str(p['updates'])) + ' · ' + p['role'],
+                             'x': p['valid_labels'], 'y': p['perplexity'], 'nll': p['mean_token_nll_nats'],
+                             'denominator': 7057, 'role': p['role'], 'evaluation_finished_utc': p['evaluation_finished_utc'],
+                             'checkpoint_time_utc': None, 'checkpoint_sha256': p['checkpoint_sha256']}
+                            for p in stage['points']]})
     broad=[r for r in h['evaluation_points'] if r['evaluation_population']=='broad_panel_130209']
     result.append({'id':'broader','group':'language','title':'Broader text · a different development panel',
                    'x_label':'Retained model-lineage targets','y_label':'Perplexity · lower is better',
-                   'note':'130,209 targets across arXiv, Stack Exchange and Wikimedia. These historical checkpoints span several phases. This is not the CFR population and has not been rerun on V5, V6 or V7.',
+                   'note':'130,209 targets across arXiv, Stack Exchange and Wikimedia. These historical checkpoints span several phases. This is not the CFR population and has not been rerun on V5, V6, V7 or V8.',
                    'source':data['sources'][0]['path'],
                    'rows':[{'label':r['stage'],'x':r['model_lineage_valid_labels'],'y':r['perplexity'],
                             'nll':r['mean_token_nll_nats'],'denominator':r['scored_labels'],
@@ -326,7 +366,7 @@ def chart_table(panel):
     if panel['group'] == 'language':
         headers += ['NLL (nats/target)', 'Scored targets', 'Observed / verified UTC', 'Source snapshot UTC', 'Exact save time', 'Checkpoint SHA-256']
         fields += ['nll', 'denominator', 'observed_utc', 'snapshot_utc', 'checkpoint_time_utc', 'checkpoint_sha256']
-        if panel['id'] in {'cfr-v6', 'cfr-v7'}:
+        if panel['id'] in {'cfr-v6', 'cfr-v7', 'cfr-v8'}:
             headers += ['Evaluation finished UTC']; fields += ['evaluation_finished_utc']
     else:
         headers += ['Observed UTC']; fields += ['observed_utc']
@@ -424,6 +464,9 @@ def render_dashboard(data):
             parts.append('<p>The inner scoring time is contained within the guard durations; do not add them. Reserved charges stay charged even when actual work is shorter. These evaluations followed training.</p>')
             parts.append(data_table('V7 training checkpoint cost', ['Checkpoint seconds', 'Training-loop seconds', 'Percent of loop', 'Target percent', 'Within target'], [[cost['checkpoint_seconds'], cost['loop_elapsed_seconds'], cost['fraction'] * 100, cost['limit'] * 100, cost['within_limit']]]))
             parts.append('<p>Full checkpoint-boundary work is included; model loading is excluded. In-stage evaluation seconds were zero. V7 checkpoint cost exceeded the 10% target.</p>')
+            v8cost = data['v8']['training_timing']
+            parts.append(data_table('V8 training and checkpoint cost', ['Guard seconds', 'Loop seconds', 'Checkpoint and writer seconds', 'Percent of loop', 'Target percent', 'Within target'], [[v8cost['guard_wall_seconds'], v8cost['loop_elapsed_seconds'], v8cost['checkpoint_seconds'], v8cost['checkpoint_fraction'] * 100, 10, v8cost['within_10_percent_target']]]))
+            parts.append('<p>V8 save-and-writer work exceeded the 10% loop target. The guard includes setup and closure, while the loop excludes model loading. These times are not GPU-only rates or evaluation-budget charges.</p>')
         if group=='progress':
             accounting = data['catchup']['v7_terminal_accounting']
             parts.append(data_table('V7 terminal · distinct cumulative accounting scopes', ['Measure', 'Usable targets'], [

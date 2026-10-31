@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "verified_at_utc": "2026-10-31T03:03:10Z",
+  "verified_at_utc": "2026-10-31T07:10:31Z",
   "history_source": "assets/v4-terminal-tranche1/checkpoint-history.json",
   "later_slices_source": "assets/v4-v5-cfr-checkpoints.json",
   "terminal_v5": {
@@ -67,7 +67,22 @@
       "status": "not_run",
       "value": null,
       "note": "No new task or reasoning benchmark. The earlier V3 0/32 result remains historical evidence."
+    },
+    {
+      "id": "v8-broader",
+      "title": "V8 broader language panel",
+      "status": "not_run",
+      "value": null,
+      "note": "V8 was scored only on the fixed 7,057-target CFR development panel, not the separate broader panel."
+    },
+    {
+      "id": "v8-reasoning",
+      "title": "V8 task and reasoning checks",
+      "status": "not_run",
+      "value": null,
+      "note": "No new task, standard grammar or reasoning score exists for V8. The historical V3 0/32 result is not a V8 score."
     }
   ],
-  "catchup_source": "assets/v6-v7-cfr-checkpoints.json"
+  "catchup_source": "assets/v6-v7-cfr-checkpoints.json",
+  "v8_source": "assets/v8-cfr-checkpoints.json"
 }
