@@ -53,7 +53,7 @@ TIMING_METRICS = {
     'phase_valid_labels': 'Completed usable predictions',
     'phase_processed_ids': 'Completed input IDs',
 }
-CHART_IDS = ([f'cfr-{value[0]}' for value in STAGES.values()] + ['cfr-v4-second', 'cfr-v5', 'broader', 'v4-boundary-overhead'] +
+CHART_IDS = ([f'cfr-{value[0]}' for value in STAGES.values()] + ['cfr-v4-second', 'cfr-v5', 'cfr-v6', 'cfr-v7', 'broader', 'v4-boundary-overhead'] +
              ['progress-' + key.replace('_', '-') for key in PROGRESS_METRICS])
 DASHBOARD_CHART_NAMES = frozenset('dashboard-' + key + '.svg' for key in CHART_IDS)
 
@@ -92,6 +92,35 @@ class Tables(HTMLParser):
             self.tables.append(self.rows); self.rows = None
 
 
+def validate_catchup(data):
+    """Reject mixed populations and incomplete stage curves in this frozen addition."""
+    contract = data['scoring_contract']
+    if (data['schema'] != 1 or contract['population'] != 'narrow_cfr_7057'
+            or contract['scored_labels'] != 7057 or [s['id'] for s in data['stages']] != ['v6', 'v7']):
+        raise ValueError('Catch-up evidence requires the fixed CFR panel and separate V6/V7 stages')
+    for name in ('manifest_sha256', 'tokenizer_sha256', 'scorer_sha256'):
+        if not re.fullmatch('[0-9a-f]{64}', contract[name]):
+            raise ValueError('Exact scoring identities required')
+    for stage in data['stages']:
+        points = stage['points']
+        if (stage['status'] != 'completed' or len(points) != 6
+                or [p['role'] for p in points] != ['saved_checkpoint'] * 5 + ['terminal_checkpoint']):
+            raise ValueError('All six saved checkpoints, including the terminal, are required')
+        previous = 0
+        for point in points:
+            if type(point['updates']) is not int or point['updates'] <= previous:
+                raise ValueError('Stage-local checkpoint updates must increase')
+            previous = point['updates']
+            for name in ('valid_labels', 'processed_input_tokens', 'model_lineage_valid_labels', 'physical_valid_labels'):
+                if type(point[name]) is not int or point[name] <= 0:
+                    raise ValueError('Positive counts with separate accounting scopes required')
+            for name in ('perplexity', 'mean_token_nll_nats'):
+                if type(point[name]) not in (int, float) or not math.isfinite(point[name]) or point[name] < 0:
+                    raise ValueError('Finite measured scores required')
+            if point['checkpoint_time_utc'] is not None or not re.fullmatch('[0-9a-f]{64}', point['checkpoint_sha256']):
+                raise ValueError('Do not infer save times from later evaluation times')
+
+
 def load_dashboard(root, posts):
     config = json.loads((root / 'content/dashboard.json').read_text())
     if config['schema'] != 1: raise ValueError('Unsupported dashboard schema')
@@ -104,6 +133,8 @@ def load_dashboard(root, posts):
         return json.loads(raw)
     history = read(config['history_source'])
     later = read(config['later_slices_source'])
+    catchup = read(config['catchup_source'])
+    validate_catchup(catchup)
     read('content/dashboard.json')
     terminal = config['terminal_v5']
     if terminal['status'] != 'completed' or terminal['scored_labels'] != 7057 or terminal['checkpoint_time_utc'] is not None:
@@ -132,12 +163,14 @@ def load_dashboard(root, posts):
                            'summary': post['summary'], 'source': post['source'],
                            'source_sha256': sha256((root / post['source']).read_bytes()).hexdigest()})
     task = history['historical_fixed32'][-1]
+    latest_stage = catchup['stages'][-1]
+    latest = latest_stage['points'][-1]
     summary = {
-        'language': {'value': terminal['perplexity'], 'denominator': terminal['scored_labels'],
-                     'status': 'evaluated', 'stage': 'V5 terminal', 'checkpoint_time_utc': None,
-                     'source_url': terminal['source_url']},
-        'training': {'value': terminal['valid_labels'], 'updates': terminal['updates'],
-                     'status': terminal['status'], 'source_url': terminal['source_url']},
+        'language': {'value': latest['perplexity'], 'denominator': catchup['scoring_contract']['scored_labels'],
+                     'status': 'evaluated', 'stage': 'V7 terminal', 'checkpoint_time_utc': None,
+                     'source_url': catchup['source_url']},
+        'training': {'value': latest['valid_labels'], 'updates': latest['updates'], 'stage': 'V7',
+                     'status': latest_stage['status'], 'source_url': catchup['source_url']},
         'task': {'value': task['correct'], 'denominator': task['denominator'], 'format_valid': task['protocol_valid'],
                  'stage': task['stage'], 'status': task['evaluation_status'],
                  'source_url': BASE + '/2026/10/29/two-stages-terminal-evaluations/'},
@@ -146,7 +179,7 @@ def load_dashboard(root, posts):
         if item['value'] is not None or item['status'] not in {'not_run', 'blocked_before_trial'}:
             raise ValueError('Unrun checks must have a null value and explicit status')
     return {'schema': 1, 'verified_at_utc': config['verified_at_utc'], 'sources': sources,
-            'history': history, 'later_slices': later, 'terminal_v5': terminal,
+            'history': history, 'later_slices': later, 'terminal_v5': terminal, 'catchup': catchup,
             'tables': tables, 'unrun': config['unrun'], 'summary': summary}
 
 
@@ -164,9 +197,9 @@ def render_summary(data):
     return f'''<section class="dashboard-summary" aria-labelledby="dashboard-summary-title">
 <div class="section-heading"><h2 id="dashboard-summary-title">What the measurements say</h2><a href="{BASE}/dashboard/">Full dashboard →</a></div>
 <div class="metric-cards">
-<article><p class="metric-kicker">Text prediction · V5 terminal</p><p class="metric-value">{language['value']:.4f}</p><p>Perplexity on the same <strong>{language['denominator']:,}</strong>-target CFR development check. Lower is better; this is not a reasoning score.</p><a href="{language['source_url']}">Read the evidence</a></article>
-<article><p class="metric-kicker">Completed V5 slice</p><p class="metric-value">{training['value'] / 1e6:.2f}M</p><p><strong>{training['status'].capitalize()}</strong> usable training targets in {training['updates']:,} updates. More training is not itself a quality result.</p><a href="{training['source_url']}">{training['value']:,} exact targets</a></article>
-<article><p class="metric-kicker">Last completed task check · earlier V3</p><p class="metric-value">{task['value']}/{task['denominator']}</p><p>Correct answers; <strong>{task['format_valid']}/{task['denominator']}</strong> met the output format. That failure prevents a clean reasoning test. No V5 task result.</p><a href="{task['source_url']}">Keep the test’s limits in view</a></article>
+<article><p class="metric-kicker">Text prediction · {escape(language['stage'])}</p><p class="metric-value">{language['value']:.4f}</p><p>Perplexity on the same <strong>{language['denominator']:,}</strong>-target CFR development check. Lower is better; this is not a reasoning score.</p><a href="{language['source_url']}">Read the evidence</a></article>
+<article><p class="metric-kicker">Completed {escape(training['stage'])} slice</p><p class="metric-value">{training['value'] / 1e6:.2f}M</p><p><strong>{training['status'].capitalize()}</strong> usable training targets in {training['updates']:,} updates. More training is not itself a quality result.</p><a href="{training['source_url']}">{training['value']:,} exact targets</a></article>
+<article><p class="metric-kicker">Last completed task check · earlier V3</p><p class="metric-value">{task['value']}/{task['denominator']}</p><p>Correct answers; <strong>{task['format_valid']}/{task['denominator']}</strong> met the output format. That failure prevents a clean reasoning test. No new V5–V7 task result.</p><a href="{task['source_url']}">Keep the test’s limits in view</a></article>
 <article><p class="metric-kicker">Proposed grammar check</p><p class="metric-value metric-status">Not run</p><p>BLiMP has no score. A proposal is not a result, and grammar alone would not prove transferable logic.</p><a href="{BASE}/dashboard/#not-run">What remains unmeasured</a></article>
 </div></section>'''
 
@@ -244,10 +277,21 @@ def chart_definitions(data):
                                 'observed_utc':p.get('verified_at_utc'),
                                 'snapshot_utc':data['later_slices']['observation_utc'] if 'verified_at_utc' not in p else None,
                                 'checkpoint_time_utc':None} for p in stage['points']]})
+    for stage in data['catchup']['stages']:
+        result.append({'id': 'cfr-' + stage['id'], 'group': 'language',
+                       'title': stage['id'].upper() + ' · completed slice · CFR text prediction',
+                       'x_label': 'Usable training targets within this slice', 'y_label': 'Perplexity · lower is better',
+                       'note': 'Six saved checkpoints scored afterward on the same frozen 7,057-target development panel. All rises and falls remain. No extra zero-step baseline point is added; V7 starts from V6 terminal. Evaluation time is not save time; no reasoning result follows.',
+                       'source': 'assets/v6-v7-cfr-checkpoints.json',
+                       'rows': [{'label': 'Update ' + str(p['updates']) + ' · ' + p['role'],
+                                 'x': p['valid_labels'], 'y': p['perplexity'], 'nll': p['mean_token_nll_nats'],
+                                 'denominator': 7057, 'role': p['role'], 'evaluation_finished_utc': p['evaluation_finished_utc'],
+                                 'checkpoint_time_utc': None, 'checkpoint_sha256': p['checkpoint_sha256']}
+                                for p in stage['points']]})
     broad=[r for r in h['evaluation_points'] if r['evaluation_population']=='broad_panel_130209']
     result.append({'id':'broader','group':'language','title':'Broader text · a different development panel',
                    'x_label':'Retained model-lineage targets','y_label':'Perplexity · lower is better',
-                   'note':'130,209 targets across arXiv, Stack Exchange and Wikimedia. These historical checkpoints span several phases. This is not the CFR population and has not been rerun on V5.',
+                   'note':'130,209 targets across arXiv, Stack Exchange and Wikimedia. These historical checkpoints span several phases. This is not the CFR population and has not been rerun on V5, V6 or V7.',
                    'source':data['sources'][0]['path'],
                    'rows':[{'label':r['stage'],'x':r['model_lineage_valid_labels'],'y':r['perplexity'],
                             'nll':r['mean_token_nll_nats'],'denominator':r['scored_labels'],
@@ -282,6 +326,8 @@ def chart_table(panel):
     if panel['group'] == 'language':
         headers += ['NLL (nats/target)', 'Scored targets', 'Observed / verified UTC', 'Source snapshot UTC', 'Exact save time', 'Checkpoint SHA-256']
         fields += ['nll', 'denominator', 'observed_utc', 'snapshot_utc', 'checkpoint_time_utc', 'checkpoint_sha256']
+        if panel['id'] in {'cfr-v6', 'cfr-v7'}:
+            headers += ['Evaluation finished UTC']; fields += ['evaluation_finished_utc']
     else:
         headers += ['Observed UTC']; fields += ['observed_utc']
     return data_table(panel['title']+' · every recorded observation', headers,
@@ -320,7 +366,7 @@ def historical_table(item):
 def detailed_histories(data):
     h = data['history']; parts = []
     lookup = {r['point_id']: r for r in h['evaluation_points']}
-    parts.append('<section class="dashboard-group" id="source-panels"><h2>Text sources and repeated observations</h2><p>The broader panel’s source families have different denominators. Each family stays in its own chart; none is a new V5 result.</p>')
+    parts.append('<section class="dashboard-group" id="source-panels"><h2>Text sources and repeated observations</h2><p>The broader panel’s source families have different denominators. Each family stays in its own chart; none is a new V5, V6 or V7 result.</p>')
     for family in sorted({r['source_family'] for r in h['broad_panel_per_source']}):
         rows = [r for r in h['broad_panel_per_source'] if r['source_family'] == family]
         labels = [STAGES[lookup[r['point_id']]['stage']][1] for r in rows]
@@ -368,14 +414,31 @@ def render_dashboard(data):
             terminal=data['terminal_v5']
             parts.append(data_table('Completed slice · V5', ['State','Updates','Usable training targets','Processed input tokens','Completion verified UTC'], [[terminal['status'],terminal['updates'],terminal['valid_labels'],terminal['processed_input_tokens'],terminal['verified_at_utc']]]))
             parts.append(f'<p>V5 terminal save-and-check overhead: <strong>{data["terminal_v5"]["checkpoint_plus_evaluation_percent_of_loop"]}%</strong> of loop time. No new whole-run seconds or GPU-only rate are inferred.</p>')
+            catchup = data['catchup']; budget = catchup['evaluation_budget']; cost = catchup['v7_training_timing']
+            parts.append(data_table('V6/V7 catch-up evaluation · separate timing scopes', ['Measure', 'Seconds'], [
+                ['CPU preparation gate', budget['cpu_gate_seconds']],
+                ['Inner scoring functions, twelve checkpoints', budget['scorer_seconds']],
+                ['Scoring-job conservative guards, twelve checkpoints', budget['score_guard_seconds']],
+                ['New nonrefundable allocation charged', budget['new_nonrefundable_charge_seconds']],
+                ['Combined historical and new evaluation charges', budget['combined_charged_seconds']]]))
+            parts.append('<p>The inner scoring time is contained within the guard durations; do not add them. Reserved charges stay charged even when actual work is shorter. These evaluations followed training.</p>')
+            parts.append(data_table('V7 training checkpoint cost', ['Checkpoint seconds', 'Training-loop seconds', 'Percent of loop', 'Target percent', 'Within target'], [[cost['checkpoint_seconds'], cost['loop_elapsed_seconds'], cost['fraction'] * 100, cost['limit'] * 100, cost['within_limit']]]))
+            parts.append('<p>Full checkpoint-boundary work is included; model loading is excluded. In-stage evaluation seconds were zero. V7 checkpoint cost exceeded the 10% target.</p>')
+        if group=='progress':
+            accounting = data['catchup']['v7_terminal_accounting']
+            parts.append(data_table('V7 terminal · distinct cumulative accounting scopes', ['Measure', 'Usable targets'], [
+                ['Retained model lineage', accounting['model_lineage']['valid']],
+                ['All physical campaign work', accounting['physical']['valid']],
+                ['Charged against campaign cap', accounting['charged_valid_labels']]]))
+            parts.append('<p>Retained lineage excludes discarded work. Physical work includes it, and charged work also retains reservations. These are neither unique-text counts nor quality scores.</p>')
         parts.append('</section>')
     parts.append(detailed_histories(data))
     tasks=data['history']['historical_fixed32']
-    parts.append('<section id="tasks" class="dashboard-group"><h2>Task and format checks</h2><p>The last completed fixed-32 check belongs to V3, not V5. Every answer failed the required output format. That makes these failures important, but prevents a clean measurement of reasoning capacity.</p>'+bars('Task-correct answers out of 32',[STAGES[r['stage']][1] for r in tasks],[f'{r["correct"]}/{r["denominator"]}' for r in tasks])+data_table('Historical fixed-32 development checks',['Earlier stage','Correct','Correct format','Observed UTC'],[[STAGES[r['stage']][1],f'{r["correct"]}/{r["denominator"]}',f'{r["protocol_valid"]}/{r["denominator"]}',r.get('observed_utc')] for r in tasks])+'</section>')
+    parts.append('<section id="tasks" class="dashboard-group"><h2>Task and format checks</h2><p>The last completed fixed-32 check belongs to the earlier V3 stage. No new V5, V6 or V7 task check has run. Every answer failed the required output format. That makes these failures important, but prevents a clean measurement of reasoning capacity.</p>'+bars('Task-correct answers out of 32',[STAGES[r['stage']][1] for r in tasks],[f'{r["correct"]}/{r["denominator"]}' for r in tasks])+data_table('Historical fixed-32 development checks',['Earlier stage','Correct','Correct format','Observed UTC'],[[STAGES[r['stage']][1],f'{r["correct"]}/{r["denominator"]}',f'{r["protocol_valid"]}/{r["denominator"]}',r.get('observed_utc')] for r in tasks])+'</section>')
     parts.append('<section id="historical" class="dashboard-group"><h2>Earlier experiments and recorded quantities</h2><p>Every public post table is collected below directly from its Markdown source. Numeric comparisons get their own zero-based bars; software versions, ambiguous ranges, and proposed thresholds are not guessed into measurements. Dated proxy scores remain labeled by their source limitations. These tables include the earlier 97.5M-model experiments, data reviews, recovery, and planned budgets.</p>'+''.join(historical_table(t) for t in data['tables'])+'</section>')
     parts.append('<section id="not-run" class="dashboard-group"><h2>Not run is not zero</h2>'+''.join('<article class="unrun-card"><h3>'+escape(r['title'])+'</h3><strong>'+('Blocked before trial' if r['status']=='blocked_before_trial' else 'Not run')+'</strong><p>'+escape(r['note'])+'</p></article>' for r in data['unrun'])+'</section>')
     parts.append('<details><summary>Historical unrun checks · explicit missing results</summary>'+data_table('Unrun historical checks', ['Phase','Checkpoint identity','Check','Status','Planned targets or cases','Actually scored','Perplexity','Correct','Format valid'], [[r['stage'],r['point_id'],r['evaluation_population'],r['evaluation_status'],r['planned_population_denominator'],r['scored_labels'],r['perplexity'],r['correct'],r['protocol_valid']] for r in data['history']['unrun_evaluations']])+'</details>')
-    parts.append(f'<section id="sources" class="dashboard-group"><h2>Data and method</h2><p>The homepage and this dashboard use one compiled data model. Source post charts stay frozen. This page keeps all 42 aggregate language-score rows, 22 repeated stage-two observations, 26 explicitly unrun records, 594 V4 observer rows, timing histories and all 41 post tables. Later V4/V5 saves are separate additions. Repeated observations do not create new checkpoint identities.</p><p><a href="{BASE}/assets/dashboard-data.json">Download the complete dashboard data (JSON)</a> · <a href="https://github.com/obra/model-training-journal/blob/main/scripts/dashboard-README.md">Schema and update guide</a></p><p>Exact model-save times are unavailable in these sources. Observation and completion-verification times are retained under their own names. Different populations, tokenizer/scorer contracts, training clocks and timing denominators are never pooled. No private logs, source passages, model weights or live telemetry are fetched.</p><ul>'+''.join('<li><a href="https://github.com/obra/model-training-journal/blob/main/'+s['path']+'">'+escape(s['path'])+'</a> · SHA-256 <code>'+s['sha256']+'</code></li>' for s in data['sources'])+'</ul></section></article>')
+    parts.append(f'<section id="sources" class="dashboard-group"><h2>Data and method</h2><p>The homepage and this dashboard use one compiled data model. Source post charts stay frozen. This page keeps all 42 aggregate language-score rows, 22 repeated stage-two observations, 26 explicitly unrun records, 594 V4 observer rows, timing histories and all {len(data["tables"])} post tables. Later V4/V5 saves and the twelve V6/V7 scores are separate additions. Repeated observations do not create new checkpoint identities.</p><p><a href="{BASE}/assets/dashboard-data.json">Download the complete dashboard data (JSON)</a> · <a href="https://github.com/obra/model-training-journal/blob/main/scripts/dashboard-README.md">Schema and update guide</a></p><p>Exact model-save times are unavailable in these sources. Observation and completion-verification times are retained under their own names. Different populations, tokenizer/scorer contracts, training clocks and timing denominators are never pooled. No private logs, source passages, model weights or live telemetry are fetched.</p><ul>'+''.join('<li><a href="https://github.com/obra/model-training-journal/blob/main/'+s['path']+'">'+escape(s['path'])+'</a> · SHA-256 <code>'+s['sha256']+'</code></li>' for s in data['sources'])+'</ul></section></article>')
     return '\n'.join(parts)
 
 

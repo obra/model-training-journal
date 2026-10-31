@@ -1,3 +1,13 @@
+**Recorded snapshot: 31 October 2026, 03:03:10 UTC.** V6 and V7 are complete. A separate catch-up evaluation scored all twelve saved checkpoints on the same frozen 7,057-target CFR development panel, with no failed scoring attempts or retries. Its final scoring job finished at 02:55:33 UTC. V6 terminal perplexity is **34.18875627** and V7 terminal perplexity is **33.88233562**. The curves are uneven; this is a small language-prediction change, not a reasoning result. See the [catch-up post and charts](/model-training-journal/2026/10/31/twelve-checkpoints-close-the-scoring-gap/) and [dashboard](/model-training-journal/dashboard/#cfr-v7).
+
+V7 completed 1,377 updates and 45,021,370 usable training targets. Its measured checkpoint cost was 10.91% of loop time, above the 10% target. The evaluation keeps its full nonrefundable 3,600-second allocation charged even though the scoring guards used 131.66 seconds. No training job was active in the final evaluation evidence; this is a recorded snapshot, not live telemetry.
+
+The next decision is how to reduce saving overhead and add complementary evidence before committing another finite training run. No new reasoning, BLiMP or broader-panel result exists; the final sealed holdout remains untouched. The installed project cutoff remains **7 November 2026 at 04:12 UTC**. This update does not establish a later run or release training code or weights.
+
+---
+
+## Preserved dated snapshot: 31 October 2026, 00:13:09 UTC
+
 **Recorded snapshot: 31 October 2026, 00:13:09 UTC.** V6 completed 1,369 updates and 44,759,442 valid labels; its guard exited successfully at 23:23:14 UTC on 30 October. The original completion auditor failed on an older storage schema. Versioned read-only recovery passed, followed by a separate verified completion closure. The subsequent CFR CPU gate failed before scoring: zero score attempts and zero auxiliary evaluation charges. No new V6 perplexity exists.
 
 V7 is now running from V6's exact terminal saved model under a separate finite permit. Its live ledger shows 19 updates and 621,206 valid labels, with no new saved checkpoint in this observation. Its finite guard ends **31 October 2026 at 06:02:12 UTC**; the installed project cutoff remains **7 November 2026 at 04:12 UTC**. See the [completion, failure and launch record](/model-training-journal/2026/10/31/v6-complete-v7-running-without-new-scores/) and [dashboard](/model-training-journal/dashboard/).

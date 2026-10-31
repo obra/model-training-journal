@@ -38,6 +38,12 @@ an eighth-grade reading level without removing technical facts.
 - `verified_at_utc`: reviewed snapshot time, not checkpoint creation time.
 - `history_source`: local public aggregate history JSON path.
 - `later_slices_source`: local public V4/V5 checkpoint JSON path.
+- `catchup_source`: `assets/v6-v7-cfr-checkpoints.json`, a separate public
+  aggregate for the twelve V6/V7 checkpoint evaluations. Its fixed CFR panel,
+  tokenizer and scorer identities remain explicit. Each stage has six saved
+  points, separate stage-local and cumulative work counts, full score precision,
+  and evaluation-finish times; unknown save times remain null. The latest summary
+  uses V7 terminal, while `terminal_v5` and all older arrays remain preserved.
 - `terminal_v5`: reviewed terminal status, verification time, nullable exact
   checkpoint time, checkpoint SHA-256, updates, valid labels, processed input
   tokens, perplexity, mean NLL in nats per target, scored-label denominator,
@@ -87,6 +93,13 @@ allow bounded, leaf-only text labels; frozen chart files retain their old passiv
 profile. Scripts, external resources, inline SVG/styles/events, foreign objects,
 unknown attributes and external references remain rejected. The only browser
 JavaScript remains the existing snapshot-age/cutoff clock.
+
+The V6/V7 addition allows exactly `dashboard-cfr-v6.svg` and
+`dashboard-cfr-v7.svg` in the existing source/generated chart directories,
+under the unchanged passive dashboard SVG profile. The normal offline build
+regenerates these from the public aggregate. The evaluation-budget table keeps
+measured CPU, inner scoring and guard times separate from nonrefundable charges;
+the training checkpoint-overhead table uses its own loop denominator.
 
 ## Accessibility contract
 

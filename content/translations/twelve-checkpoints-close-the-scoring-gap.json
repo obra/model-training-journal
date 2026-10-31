@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-31-twelve-checkpoints-close-the-scoring-gap.md",
+  "source_sha256": "fdb45ba5ce27f5d1939a9a9af035c73fbf434ec8d04bb1909b0375399b7e4ecf",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_kind": "p",
+      "source_text_sha256": "eca72282abece8431fc2c952971e234e37b4b62b2434c57b1e95eb19e1a2be38",
+      "text": "The previous post said V6 had finished training, V7 was still training, and neither had been tested. V7 has now finished too. We then tested all twelve saved models from these two runs. Every scoring attempt succeeded, with no retries. The last scoring job ended at 02:55:33 UTC on 31 October. This later success does not erase the earlier failure to get the test ready."
+    },
+    {
+      "id": "passage-002",
+      "source_kind": "p",
+      "source_text_sha256": "601d33ad085ed71fc1201ed1ad800f5b7b532270a106b9146cec791bbd49feef",
+      "text": "The final V6 model scored 34.18875627. The final V7 model scored 33.88233562, about 0.90% lower. These are perplexity scores: a measure of how well the model predicts the next piece of text. Lower is better here. Each model faced the same 7,057 predictions from the CFR, a collection of US regulations. The text-splitting rules, scoring program and calculation precision stayed the same. This small change has not been shown to be statistically reliable, and does not show better reasoning."
+    },
+    {
+      "id": "passage-003",
+      "source_kind": "figure",
+      "source_text_sha256": "0b5f8045d6ed8707b7e1af9832db48619e15de115d19637c844092a54afd82d9",
+      "text": "This chart shows all six V6 saves. The score goes up and down, ending at 34.1888. The bottom axis shows how many usable training predictions V6 had completed at each save. It counts only this run. Lower scores are better. The vertical scale is narrowed to make the changes easier to see. Use the full-size chart link or the exact table below for more detail."
+    },
+    {
+      "id": "passage-004",
+      "source_kind": "figure",
+      "source_text_sha256": "c176a85184051530b6305b041abf13a8365991bb5066f1c78375a7c82d7aa964",
+      "text": "This chart shows all six V7 saves. The score reaches 34.5285 before dropping to about 33.88. The final save is slightly worse than the one just before it. Lower is better, so the last upward move is a small reversal. Its narrowed vertical scale differs from V6’s, so compare the numbers rather than the apparent slope. Use the full-size chart link or the exact table below for more detail."
+    },
+    {
+      "id": "passage-005",
+      "source_kind": "p",
+      "source_text_sha256": "4df3ce2ebb2c3e2a8ae4de764194c82ceaab1cac2aa9487dc0b8a7deed256745",
+      "text": "The charts include every saved model, even when its score got worse. Each bottom axis starts a new count for that run; it does not show all training since the model began. The charts do not add another point at step zero. V7 began from V6's final saved model. V6's best sampled score was at step 913. V7's was at step 1,148. More training does not guarantee a better score at the next save."
+    },
+    {
+      "id": "passage-006",
+      "source_kind": "div",
+      "source_text_sha256": "b5eb3e268f45786ec4ac573e0d0313066fb55c284fc6abec718705482740852c",
+      "text": "Read each row as: training step; usable training predictions within that run; perplexity. Each score uses the same 7,057 test predictions. Lower perplexity is better.\n\nV6: 229; 7,487,125; 34.34509563.\nV6: 457; 14,941,669; 34.61300027.\nV6: 685; 22,396,123; 34.43284000.\nV6: 913; 29,850,429; 34.13229447.\nV6: 1,141; 37,304,914; 34.35973647.\nV6 final: 1,369; 44,759,442; 34.18875627.\n\nV7: 230; 7,519,912; 34.30000254.\nV7: 460; 15,039,700; 34.29261710.\nV7: 689; 22,526,917; 34.33686575.\nV7: 919; 30,046,835; 34.52846650.\nV7: 1,148; 37,534,104; 33.87909412.\nV7 final: 1,377; 45,021,370; 33.88233562."
+    },
+    {
+      "id": "passage-007",
+      "source_kind": "p",
+      "source_text_sha256": "ad40d45837d741a7f72e69599bb909bd48012b1511ecf35a1d0c887ceefc973d",
+      "text": "The dashboard shows these charts beside the older experiments. The downloadable data keeps every reported digit, another prediction-error measure called mean negative log-likelihood, and fingerprints identifying each saved model and the scoring setup. The time a test finished is not treated as the time the model was saved. This update shares measurements. It does not release the training program or the learned model files."
+    },
+    {
+      "id": "passage-008",
+      "source_kind": "p",
+      "source_text_sha256": "2714972a430436dec5ca4cb936503377a67177b5baffce6b4064c32075d89a10",
+      "text": "V7 finished 1,377 training steps. It read 45,121,536 pieces of input text and made 45,021,370 predictions that counted toward training. Its saved model comes from a history containing 1,070,817,348 usable predictions. The machine has actually completed 1,073,475,742 across the campaign, including earlier work that was discarded. The budget counts 1,089,764,398 because some reserved work remains charged. These totals measure different things. They do not count unique text or measure how good the model is."
+    },
+    {
+      "id": "passage-009",
+      "source_kind": "p",
+      "source_text_sha256": "e33448467c11f751b97469ba69dbab337859bc3861635bd789128c5db7f686ee",
+      "text": "Saving V7's models took 995.76 seconds out of a 9,126.36-second training loop. That is 10.91%, above the 10% target. This includes all work around saving each model but leaves out the initial model load. V7 did no evaluation inside its training loop. The twelve scores were measured later. Saving was expensive enough that the next run's saving schedule needs review."
+    },
+    {
+      "id": "passage-010",
+      "source_kind": "p",
+      "source_text_sha256": "893960d76ec7bd25b3e153271a56f6823ab0067399a72a746ede31baf05375ae",
+      "text": "Preparing the later tests took 31.01 seconds on the CPU. The twelve scoring jobs used 131.66 seconds under their guards. Inside those jobs, the scoring calculations used 25.76 seconds. The 25.76 seconds of scoring is already inside the 131.66 seconds of scoring-job time; do not add those two. The separate preparation step adds 31.01 seconds. The budget still charges the entire 3,600 seconds reserved for twelve jobs at 300 seconds each. Unused time is not returned. With the prior 4,260 seconds, charged evaluation time is now 7,860 seconds. These budget charges are not actual elapsed time."
+    },
+    {
+      "id": "passage-011",
+      "source_kind": "p",
+      "source_text_sha256": "886ff02068303ad2410fa968ecbc27af86ab39d40d5617e61c1cfbcc643fcc63",
+      "text": "No new reasoning test, BLiMP grammar test, or broader language test has run. The last task test was on the older V3 model: 0 of 32 answers were correct, and 0 of 32 used the required format. That format failure limits what the test says about reasoning. The final planning test remains sealed. We have reused this small CFR development test while working, so it is not a fresh final exam. Checks for repeated wording cannot rule out related ideas, other editions, or familiar source families. The next decision should consider the small, uneven score change, saving costs and other tests. This AI-assisted project has not yet shown its intended reasoning skill."
+    }
+  ]
+}

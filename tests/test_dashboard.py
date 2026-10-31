@@ -21,9 +21,9 @@ class DashboardTests(unittest.TestCase):
 
     def test_current_summary_uses_terminal_point_and_keeps_reasoning_separate(self):
         d = self.model()
-        self.assertEqual(d['summary']['language']['value'], 34.2885)
+        self.assertEqual(d['summary']['language']['value'], 33.882335618048806)
         self.assertEqual(d['summary']['language']['denominator'], 7057)
-        self.assertEqual(d['summary']['training']['value'], 125320085)
+        self.assertEqual(d['summary']['training']['value'], 45021370)
         self.assertEqual(d['summary']['training']['status'], 'completed')
         self.assertEqual(d['summary']['task']['value'], 0)
         self.assertEqual(d['summary']['task']['denominator'], 32)
@@ -32,7 +32,7 @@ class DashboardTests(unittest.TestCase):
 
     def test_all_historical_rows_survive_without_pooled_panels(self):
         d = self.model()
-        self.assertEqual(len(d['tables']), 43)
+        self.assertEqual(len(d['tables']), 44)
         self.assertEqual(len(d['history']['evaluation_points']), 42)
         self.assertEqual(len(d['history']['v4_progress_observations']), 594)
         self.assertEqual(len(d['history']['stage2_observations']), 22)
@@ -54,7 +54,7 @@ class DashboardTests(unittest.TestCase):
         m = self.module(); d = self.model()
         summary, page = m.render_summary(d), m.render_dashboard(d)
         for html in (summary, page):
-            self.assertIn('34.2885', html)
+            self.assertIn('33.8823', html)
             self.assertIn('7,057', html)
             self.assertIn('0/32', html)
             self.assertIn('Not run', html)

@@ -110,6 +110,13 @@ fetch data or regenerate them. The additional reviewed
 under `docs/assets/charts/`; its standard-library builder reads only
 `assets/v4-v5-cfr-checkpoints.json`.
 
+The later dashboard addition explicitly allows `dashboard-cfr-v6.svg` and
+`dashboard-cfr-v7.svg` under `assets/charts/`, with exact generated copies under
+`docs/assets/charts/`. They use the existing passive dashboard SVG profile with
+bounded text labels, without expanding active-content permissions. Their source
+is the reviewed aggregate `assets/v6-v7-cfr-checkpoints.json`; the normal offline
+site build generates them without reading private evidence or fetching data.
+
 ## Refresh the progress snapshot
 
 Review the latest notebook status and directly supporting stage results before

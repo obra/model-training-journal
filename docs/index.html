@@ -23,14 +23,14 @@
       <a href="/model-training-journal/about/">About</a>
     </nav>
   </header>
-  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-31T00:13:09Z" data-deadline="2026-11-07T04:12:00Z">
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-31T03:03:10Z" data-deadline="2026-11-07T04:12:00Z">
   <div class="progress-top"><p class="progress-model"><strong title="299,414,528 trainable parameters">299.4M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
   <dl class="progress-facts">
-    <div class="progress-state"><dt>Experiment state</dt><dd>Verified 31 Oct 00:13 UTC: V6 completed 1,369 updates and 44,759,442 valid labels. V7 running at 19 updates and 621,206 labels; no new V7 save.</dd></div>
-    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/2026/10/31/v6-complete-v7-running-without-new-scores/">V6 completed, but its CFR readiness gate failed before scoring. V6 and V7 have no new quality or reasoning score; V5 terminal CFR perplexity remains 34.2885 on 7,057 labels.</a></dd></div>
-    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>7d 3h 58m remaining at snapshot</strong><span class="progress-deadline">Cutoff <time datetime="2026-11-07T04:12:00Z">7 Nov 2026, 04:12 UTC</time></span></dd></div>
+    <div class="progress-state"><dt>Experiment state</dt><dd>V6 and V7 completed. All twelve saved checkpoints scored on the fixed CFR development panel; the scoring run finished at 02:55:33 UTC. No training job was active in the final evidence.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/2026/10/31/twelve-checkpoints-close-the-scoring-gap/">V6 terminal perplexity 34.1888; V7 terminal 33.8823 on the same 7,057 targets. The curves are uneven. No new reasoning, BLiMP or broader-panel result. V7 checkpoint overhead was 10.91% of loop time.</a></dd></div>
+    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>7d 1h 8m remaining at snapshot</strong><span class="progress-deadline">Cutoff <time datetime="2026-11-07T04:12:00Z">7 Nov 2026, 04:12 UTC</time></span></dd></div>
   </dl>
-  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-31T00:13:09Z">31 Oct 2026, 00:13:09 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-31T03:03:10Z">31 Oct 2026, 03:03:10 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
 </section>
   <main id="main">
 <section class="intro" aria-labelledby="journal-title">
@@ -41,12 +41,15 @@
 <section class="dashboard-summary" aria-labelledby="dashboard-summary-title">
 <div class="section-heading"><h2 id="dashboard-summary-title">What the measurements say</h2><a href="/model-training-journal/dashboard/">Full dashboard →</a></div>
 <div class="metric-cards">
-<article><p class="metric-kicker">Text prediction · V5 terminal</p><p class="metric-value">34.2885</p><p>Perplexity on the same <strong>7,057</strong>-target CFR development check. Lower is better; this is not a reasoning score.</p><a href="/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/#ledger-correction-and-terminal-update">Read the evidence</a></article>
-<article><p class="metric-kicker">Completed V5 slice</p><p class="metric-value">125.32M</p><p><strong>Completed</strong> usable training targets in 3,833 updates. More training is not itself a quality result.</p><a href="/model-training-journal/2026/10/30/a-second-completed-slice-and-v5-checkpoints/#ledger-correction-and-terminal-update">125,320,085 exact targets</a></article>
-<article><p class="metric-kicker">Last completed task check · earlier V3</p><p class="metric-value">0/32</p><p>Correct answers; <strong>0/32</strong> met the output format. That failure prevents a clean reasoning test. No V5 task result.</p><a href="/model-training-journal/2026/10/29/two-stages-terminal-evaluations/">Keep the test’s limits in view</a></article>
+<article><p class="metric-kicker">Text prediction · V7 terminal</p><p class="metric-value">33.8823</p><p>Perplexity on the same <strong>7,057</strong>-target CFR development check. Lower is better; this is not a reasoning score.</p><a href="/model-training-journal/2026/10/31/twelve-checkpoints-close-the-scoring-gap/">Read the evidence</a></article>
+<article><p class="metric-kicker">Completed V7 slice</p><p class="metric-value">45.02M</p><p><strong>Completed</strong> usable training targets in 1,377 updates. More training is not itself a quality result.</p><a href="/model-training-journal/2026/10/31/twelve-checkpoints-close-the-scoring-gap/">45,021,370 exact targets</a></article>
+<article><p class="metric-kicker">Last completed task check · earlier V3</p><p class="metric-value">0/32</p><p>Correct answers; <strong>0/32</strong> met the output format. That failure prevents a clean reasoning test. No new V5–V7 task result.</p><a href="/model-training-journal/2026/10/29/two-stages-terminal-evaluations/">Keep the test’s limits in view</a></article>
 <article><p class="metric-kicker">Proposed grammar check</p><p class="metric-value metric-status">Not run</p><p>BLiMP has no score. A proposal is not a result, and grammar alone would not prove transferable logic.</p><a href="/model-training-journal/dashboard/#not-run">What remains unmeasured</a></article>
 </div></section>
-<section aria-labelledby="entries-heading"><div class="section-heading"><h2 id="entries-heading">Journal entries</h2><span>Latest first · 46 entries</span></div><ol class="entries"><li class="entry">
+<section aria-labelledby="entries-heading"><div class="section-heading"><h2 id="entries-heading">Journal entries</h2><span>Latest first · 47 entries</span></div><ol class="entries"><li class="entry">
+<div class="entry-meta"><time datetime="2026-10-31">31 Oct 2026</time><span>Completed continuation and fixed-panel evaluation</span></div>
+<div><h3><a href="/model-training-journal/2026/10/31/twelve-checkpoints-close-the-scoring-gap/">Twelve checkpoints close the scoring gap</a></h3>
+<p>V6 and V7 now have twelve checkpoint scores on the same 7,057-target development panel. The final scores improve slightly, the curves remain uneven, and reasoning is still unmeasured.</p><a class="read-link" href="/model-training-journal/2026/10/31/twelve-checkpoints-close-the-scoring-gap/">Read entry · 4 min</a></div></li><li class="entry">
 <div class="entry-meta"><time datetime="2026-10-31">31 Oct 2026</time><span>Finite continuation: completion and evaluation failure</span></div>
 <div><h3><a href="/model-training-journal/2026/10/31/v6-complete-v7-running-without-new-scores/">V6 completes; V7 starts while quality remains unmeasured</a></h3>
 <p>V6 finished 44,759,442 valid labels. Completion recovery passed, but the CFR readiness gate failed before scoring. V7 is running; no new quality or reasoning result exists.</p><a class="read-link" href="/model-training-journal/2026/10/31/v6-complete-v7-running-without-new-scores/">Read entry · 2 min</a></div></li><li class="entry">

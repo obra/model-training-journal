@@ -2,11 +2,11 @@
   "schema": 1,
   "model_parameters": 299414528,
   "initialization": "from scratch",
-  "experiment_state": "Verified 31 Oct 00:13 UTC: V6 completed 1,369 updates and 44,759,442 valid labels. V7 running at 19 updates and 621,206 labels; no new V7 save.",
+  "experiment_state": "V6 and V7 completed. All twelve saved checkpoints scored on the fixed CFR development panel; the scoring run finished at 02:55:33 UTC. No training job was active in the final evidence.",
   "latest_result": {
-    "summary": "V6 completed, but its CFR readiness gate failed before scoring. V6 and V7 have no new quality or reasoning score; V5 terminal CFR perplexity remains 34.2885 on 7,057 labels.",
-    "url": "/model-training-journal/2026/10/31/v6-complete-v7-running-without-new-scores/"
+    "summary": "V6 terminal perplexity 34.1888; V7 terminal 33.8823 on the same 7,057 targets. The curves are uneven. No new reasoning, BLiMP or broader-panel result. V7 checkpoint overhead was 10.91% of loop time.",
+    "url": "/model-training-journal/2026/10/31/twelve-checkpoints-close-the-scoring-gap/"
   },
-  "verified_at_utc": "2026-10-31T00:13:09Z",
+  "verified_at_utc": "2026-10-31T03:03:10Z",
   "deadline_utc": "2026-11-07T04:12:00Z"
 }
