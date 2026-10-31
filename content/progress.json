@@ -2,11 +2,11 @@
   "schema": 1,
   "model_parameters": 299414528,
   "initialization": "from scratch",
-  "experiment_state": "Verified 30 Oct 21:18 UTC: V6 running at 236 updates and 7,716,009 valid labels. First saved checkpoint: update 229, 7,487,125 labels. Its perplexity is not evaluated.",
+  "experiment_state": "Verified 31 Oct 00:13 UTC: V6 completed 1,369 updates and 44,759,442 valid labels. V7 running at 19 updates and 621,206 labels; no new V7 save.",
   "latest_result": {
-    "summary": "V5 terminal CFR perplexity remains 34.2885 on 7,057 development labels. V6 has a verified save but no new language or reasoning score. BLiMP remains unrun.",
-    "url": "/model-training-journal/2026/10/30/v6-first-saved-checkpoint/"
+    "summary": "V6 completed, but its CFR readiness gate failed before scoring. V6 and V7 have no new quality or reasoning score; V5 terminal CFR perplexity remains 34.2885 on 7,057 labels.",
+    "url": "/model-training-journal/2026/10/31/v6-complete-v7-running-without-new-scores/"
   },
-  "verified_at_utc": "2026-10-30T21:18:13Z",
+  "verified_at_utc": "2026-10-31T00:13:09Z",
   "deadline_utc": "2026-11-07T04:12:00Z"
 }

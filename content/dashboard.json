@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "verified_at_utc": "2026-10-30T21:18:13Z",
+  "verified_at_utc": "2026-10-31T00:13:09Z",
   "history_source": "assets/v4-terminal-tranche1/checkpoint-history.json",
   "later_slices_source": "assets/v4-v5-cfr-checkpoints.json",
   "terminal_v5": {
@@ -57,9 +57,16 @@
     {
       "id": "v6-quality",
       "title": "V6 language and reasoning checks",
+      "status": "blocked_before_trial",
+      "value": null,
+      "note": "V6 completed 1,369 updates and 44,759,442 valid labels. Its CFR CPU readiness gate failed before scoring: zero scoring attempts and zero auxiliary evaluation charges. No new language or reasoning score. See the dated V6/V7 table."
+    },
+    {
+      "id": "v7-quality",
+      "title": "V7 language and reasoning checks",
       "status": "not_run",
       "value": null,
-      "note": "V6 first save is verified at update 229 and 7,487,125 stage-local valid labels. No new CFR, broader-panel, task or reasoning score; its saved checkpoint has not been evaluated. The dated V6 post table separates saved progress from later live counts."
+      "note": "V7 live ledger at 31 Oct 00:13:09 UTC: 19 updates and 621,206 valid labels. No new saved V7 checkpoint or quality score in this snapshot."
     }
   ]
 }

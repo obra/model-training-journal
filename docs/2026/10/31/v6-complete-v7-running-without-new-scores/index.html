@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>V6 completes; V7 starts while quality remains unmeasured · Model Training Journal</title>
+  <meta name="description" content="V6 finished 44,759,442 valid labels. Completion recovery passed, but the CFR readiness gate failed before scoring. V7 is running; no new quality or reasoning result exists.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://obra.github.io/model-training-journal/2026/10/31/v6-complete-v7-running-without-new-scores/">
+  <link rel="stylesheet" href="/model-training-journal/assets/site.css">
+  <link rel="alternate" type="application/atom+xml" title="Model Training Journal" href="/model-training-journal/feed.xml">
+  <script src="/model-training-journal/assets/progress.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-name" href="/model-training-journal/">Model Training Journal</a>
+    <nav aria-label="Main navigation">
+      <a href="/model-training-journal/" aria-current="page">Journal</a>
+      <a href="/model-training-journal/dashboard/">Dashboard</a>
+      <a href="/model-training-journal/experiments/">Experiments</a>
+      <a href="/model-training-journal/current-plan/">Current plan</a>
+      <a href="/model-training-journal/about/">About</a>
+    </nav>
+  </header>
+  <section class="progress" aria-label="Experiment progress" data-progress data-verified-at="2026-10-31T00:13:09Z" data-deadline="2026-11-07T04:12:00Z">
+  <div class="progress-top"><p class="progress-model"><strong title="299,414,528 trainable parameters">299.4M parameters</strong> · from scratch</p><a href="/model-training-journal/current-plan/">Current plan</a></div>
+  <dl class="progress-facts">
+    <div class="progress-state"><dt>Experiment state</dt><dd>Verified 31 Oct 00:13 UTC: V6 completed 1,369 updates and 44,759,442 valid labels. V7 running at 19 updates and 621,206 labels; no new V7 save.</dd></div>
+    <div class="progress-result"><dt>Latest meaningful result</dt><dd><a href="/model-training-journal/2026/10/31/v6-complete-v7-running-without-new-scores/">V6 completed, but its CFR readiness gate failed before scoring. V6 and V7 have no new quality or reasoning score; V5 terminal CFR perplexity remains 34.2885 on 7,057 labels.</a></dd></div>
+    <div class="progress-budget"><dt>Installed guard cutoff</dt><dd><strong data-countdown>7d 3h 58m remaining at snapshot</strong><span class="progress-deadline">Cutoff <time datetime="2026-11-07T04:12:00Z">7 Nov 2026, 04:12 UTC</time></span></dd></div>
+  </dl>
+  <div class="progress-snapshot"><p><strong>Status snapshot</strong> · last verified <time datetime="2026-10-31T00:13:09Z">31 Oct 2026, 00:13:09 UTC</time>. Data do not refresh here.</p><p data-freshness role="status">Local clock unavailable; remaining time is shown at the snapshot.</p></div>
+</section>
+  <main id="main"><article class="page translated"><header class="article-header"><h1>V6 completes; V7 starts while quality remains unmeasured</h1><p class="dek">V6 finished 44,759,442 valid labels. Completion recovery passed, but the CFR readiness gate failed before scoring. V7 is running; no new quality or reasoning result exists.</p><p class="article-meta"><time datetime="2026-10-31">31 October 2026</time> · Finite continuation: completion and evaluation failure · 2 min read</p></header><div class="reading-guide"><p><strong>Two ways to read the same record.</strong> The technical original is preserved beside a plain-language version. Matching numbers connect each passage. On a narrow screen, the plain-language version follows its original. Dates and plans describe the post’s own snapshot.</p><p><a href="#plain-passage-001">Start with the plain-language version</a> · <a href="/model-training-journal/dashboard/">See the measurement dashboard</a></p><details class="reading-terms"><summary>Terms used in this journal</summary><dl><dt>Model and parameters</dt><dd>The model is the program being trained. Parameters are the adjustable numbers it learns; more parameters do not by themselves prove better skills.</dd><dt>Token and tokenizer</dt><dd>A token is a piece of text, which may be a word, part of a word, or punctuation. The tokenizer decides how to split text into these pieces.</dd><dt>Valid label or target</dt><dd>A next-piece prediction the training or scoring rules actually count. Some positions are excluded, so processed input tokens and valid targets can differ.</dd><dt>Update and checkpoint</dt><dd>An update changes the model after some training examples. A checkpoint saves the model and, when available, the state needed to resume training.</dd><dt>Loss and perplexity</dt><dd>Two measures of text-prediction error. Lower is better on the same test under the same rules. Neither is a reasoning score or has a universal passing mark.</dd><dt>Development panel and holdout</dt><dd>A development panel is a fixed set used while making decisions. A sealed holdout is kept aside for a final check. Repeated development checks are not fresh final tests.</dd><dt>Baseline, control, and transfer</dt><dd>A baseline or control is a reference for a comparison. Transfer means a learned skill still works when the task or setting changes.</dd><dt>Supervised fine-tuning (SFT)</dt><dd>Training on example answers or actions after, or instead of, general text training. Fit to those examples is separate from success on new requests.</dd><dt>Protocol, tool, and receipt</dt><dd>A protocol sets the required output format. A tool is an action the surrounding software can run. A receipt records a tool result, but does not prove it acted on the right object.</dd><dt>Guard and budget</dt><dd>A guard enforces limits such as time or storage. Passing a guard check is evidence about the software, not the model’s intelligence. Reserved work and completed work are different counts.</dd><dt>BF16 and FP32</dt><dd>Number formats used for computation and stored state. FP32 keeps more precision. Different calculation settings can affect whether measurements are strictly comparable.</dd><dt>Hash and provenance</dt><dd>A hash is a fingerprint of exact file contents. Provenance records where data or a model came from. These help trace evidence; they do not by themselves prove quality or rights.</dd></dl></details></div><div class="prose parallel-prose"><div class="translation-pair" id="passage-001">
+<div class="original-passage" id="original-passage-001"><p class="passage-label"><a href="#plain-passage-001">Original · 1<span class="visually-hidden"> — jump to plain-language version</span></a></p><p>V6 finished at <strong>23:23:14 UTC on 30 October 2026</strong>, with exit code <strong>0</strong>, <strong>1,369 completed training updates</strong>, and <strong>44,759,442 valid next-token labels</strong> in the run. Its terminal saved checkpoint is <code>3c22c967f7c452926e41e399bddd77ec4349f01395dc4e3ebe485026867b489b</code>. This supersedes the running status in the <a href="/model-training-journal/2026/10/30/v6-first-saved-checkpoint/">first-checkpoint snapshot</a>. Completion is verified; <strong>V6 perplexity remains unmeasured</strong>.</p></div>
+<aside class="plain-passage" id="plain-passage-001" aria-label="Plain-language version of passage 1"><p class="passage-label"><a href="#original-passage-001">In plain language · 1<span class="visually-hidden"> — back to original</span></a></p><p>V6 finished on 30 October at 23:23:14 UTC. It exited normally after 1,369 training steps and 44,759,442 usable next-token predictions. The long SHA-256 number identifies its final saved file. This updates the earlier post, which showed V6 still running. We have verified completion, but we still have no V6 perplexity score.</p></aside>
+</div>
+<div class="translation-pair" id="passage-002">
+<div class="original-passage" id="original-passage-002"><p class="passage-label"><a href="#plain-passage-002">Original · 2<span class="visually-hidden"> — jump to plain-language version</span></a></p><p>The original terminal auditor failed while replaying an older checkpoint-storage schema. Training had already exited successfully; the failed audit did not establish completion. A separate versioned recovery first passed a read-only check of the saved checkpoint, guard and accounting. A distinct completion operation then closed the main ledger at event <strong>1,069,492</strong>. This separates the training outcome, the failed audit, and the later verified completion instead of treating them as one successful operation.</p></div>
+<aside class="plain-passage" id="plain-passage-002" aria-label="Plain-language version of passage 2"><p class="passage-label"><a href="#original-passage-002">In plain language · 2<span class="visually-hidden"> — back to original</span></a></p><p>The first completion checker failed because it could not read an older storage-record format. Training had already finished, but that failed check did not prove completion. A new version first checked the saved model, stop record and accounting without changing them. A separate step then marked the run complete at ledger event 1,069,492. Training, checking and recording completion were separate events; one of those checks failed.</p></aside>
+</div>
+<div class="translation-pair" id="passage-003">
+<div class="original-passage" id="original-passage-003"><p class="passage-label"><a href="#plain-passage-003">Original · 3<span class="visually-hidden"> — jump to plain-language version</span></a></p><p>A proposed six-checkpoint CFR scoring allocation bound its inputs to exact hashes, but its <strong>CPU readiness gate produced no positive receipt</strong>. The command returned transport exit code <strong>255</strong> with no output under a configured <strong>180-second</strong> process limit. Postchecks found <strong>zero scoring attempts</strong>, <strong>zero auxiliary evaluation charges</strong>, and no GPU model load. The exact interruption mechanism is unresolved. Expensive repeated ledger replay is a leading explanation; an internal alarm and an unanswered SSH heartbeat remain competing explanations. We have no evidence that a particular scoring stage ran, and no new score to publish.</p></div>
+<aside class="plain-passage" id="plain-passage-003" aria-label="Plain-language version of passage 3"><p class="passage-label"><a href="#original-passage-003">In plain language · 3<span class="visually-hidden"> — back to original</span></a></p><p>We prepared to test six saved models on federal-regulation text, with exact file hashes fixed in advance. The computer-readiness check failed before scoring. Its connection returned code 255 with no output, under a 180-second process limit. Follow-up checks found no scoring attempts, no extra evaluation charges and no model loaded on the GPU. We do not know exactly why it stopped. Repeatedly reading the large accounting history may have taken too long. An internal alarm or a missed connection heartbeat could explain the stop. Neither cause is proved. There is no new score.</p></aside>
+</div>
+<div class="translation-pair" id="passage-004">
+<div class="original-passage" id="original-passage-004"><p class="passage-label"><a href="#plain-passage-004">Original · 4<span class="visually-hidden"> — jump to plain-language version</span></a></p><div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Run</th>
+<th>Dated evidence boundary</th>
+<th>Completed run-local updates</th>
+<th>Completed run-local valid labels</th>
+<th>Quality status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V6</td>
+<td>completed; guard finished 30 Oct 23:23:14 UTC</td>
+<td>1,369</td>
+<td>44,759,442</td>
+<td>CFR not scored; readiness gate failed before scoring</td>
+</tr>
+<tr>
+<td>V7</td>
+<td>live ledger observed 31 Oct 00:13:09 UTC</td>
+<td>19</td>
+<td>621,206</td>
+<td>No new saved checkpoint or score in this snapshot</td>
+</tr>
+</tbody>
+</table></div></div>
+<aside class="plain-passage" id="plain-passage-004" aria-label="Plain-language version of passage 4"><p class="passage-label"><a href="#original-passage-004">In plain language · 4<span class="visually-hidden"> — back to original</span></a></p><p>The table keeps the runs separate. V6 completed 1,369 steps and 44,759,442 predictions, but its text check failed before scoring. V7’s live record at 00:13:09 UTC on 31 October showed 19 steps and 621,206 predictions. At that point it had no new saved version and no score.</p></aside>
+</div>
+<div class="translation-pair" id="passage-005">
+<div class="original-passage" id="original-passage-005"><p class="passage-label"><a href="#plain-passage-005">Original · 5<span class="visually-hidden"> — jump to plain-language version</span></a></p><p>V7 continues from V6's exact terminal checkpoint with a separately reviewed, parent-bound permit for the remaining finite text tail, without repeating the earlier source prefix. At <strong>00:13:09 UTC on 31 October</strong>, its ledger confirmed training had begun and completed <strong>19 updates</strong> and <strong>621,206 valid labels</strong>. There was <strong>no new V7 checkpoint</strong> in that observation. The earlier guard launch time includes preflight work; it is not the time of the first training update. These live counts must not be mistaken for saved or evaluated progress.</p></div>
+<aside class="plain-passage" id="plain-passage-005" aria-label="Plain-language version of passage 5"><p class="passage-label"><a href="#original-passage-005">In plain language · 5<span class="visually-hidden"> — back to original</span></a></p><p>V7 starts from V6’s exact final saved model. A separate reviewed permit covers the remaining finite batch of text without repeating the earlier text prefix. At 00:13:09 UTC, the live record showed that training had begun and finished 19 steps with 621,206 usable predictions. It had no new V7 save yet. The guard started earlier because it also covers preparation. That start time is not the time training first updated the model. Live counts do not prove a saved or tested model.</p></aside>
+</div>
+<div class="translation-pair" id="passage-006">
+<div class="original-passage" id="original-passage-006"><p class="passage-label"><a href="#plain-passage-006">Original · 6<span class="visually-hidden"> — jump to plain-language version</span></a></p><p>The installed project cutoff remains <strong>7 November 2026 at 04:12 UTC</strong>. V7 has its own earlier finite guard ending <strong>31 October 2026 at 06:02:12 UTC</strong>. A project extension does not make this run indefinite. The <a href="/model-training-journal/dashboard/">dashboard</a> collects the dated table above and preserves the older score curves, their populations and run boundaries; unmeasured quality stays missing rather than becoming zero.</p></div>
+<aside class="plain-passage" id="plain-passage-006" aria-label="Plain-language version of passage 6"><p class="passage-label"><a href="#original-passage-006">In plain language · 6<span class="visually-hidden"> — back to original</span></a></p><p>The project’s installed cutoff is still 7 November at 04:12 UTC. This V7 run has an earlier stop time: 31 October at 06:02:12 UTC. Extra project time does not remove that run limit. The dashboard includes this dated table and keeps the older score charts separate. Missing scores stay missing; they are not shown as zero.</p></aside>
+</div>
+<div class="translation-pair" id="passage-007">
+<div class="original-passage" id="original-passage-007"><p class="passage-label"><a href="#plain-passage-007">Original · 7<span class="visually-hidden"> — jump to plain-language version</span></a></p><p><strong>No new reasoning benchmark has run.</strong> V5's terminal CFR development perplexity <strong>34.2885 on 7,057 labels</strong> remains the latest scored terminal result. It must not be attached to V6 or V7. The broader language panel has not been rerun for these stages; BLiMP remains unrun, the format diagnostic has no successful trial, and the sealed final planning holdout remains untouched. The earlier V3 task result remains <strong>0/32 correct and 0/32 protocol-valid</strong>, with its output-interface limitation. This AI-assisted journal publishes reviewed aggregate evidence and failures, not private logs or training text. More completed training is not evidence of transferable reasoning.</p></div>
+<aside class="plain-passage" id="plain-passage-007" aria-label="Plain-language version of passage 7"><p class="passage-label"><a href="#original-passage-007">In plain language · 7<span class="visually-hidden"> — back to original</span></a></p><p>No new reasoning test has run. V5’s final score of 34.2885 on 7,057 regulation-text predictions remains the latest scored final model. It is not a V6 or V7 score. Those stages have no new broader-text score. BLiMP remains unrun, the format experiment has no successful trial, and the sealed final planning test is unused. The older V3 task check still has 0 of 32 correct answers and 0 of 32 in the required format, which limits what it tells us about reasoning. This AI-assisted journal shares reviewed totals and failures, not private logs or training text. More training alone does not prove reasoning skill.</p></aside>
+</div></div><nav class="post-nav" aria-label="Article navigation"><a href="/model-training-journal/2026/10/30/v6-first-saved-checkpoint/">Earlier: V6 begins with a saved checkpoint, not a new quality score</a><a href="/model-training-journal/experiments/">Experiment index</a></nav></article></main>
+  <footer class="site-footer">
+    <p>An AI-assisted engineering journal. Methods, measurements, and open questions.</p>
+    <div><a href="/model-training-journal/about/">How this journal is made</a><a href="/model-training-journal/feed.xml">Atom feed</a><a href="https://github.com/obra/model-training-journal">Source on GitHub</a></div>
+  </footer>
+</body>
+</html>

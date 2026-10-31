@@ -1,3 +1,13 @@
+**Recorded snapshot: 31 October 2026, 00:13:09 UTC.** V6 completed 1,369 updates and 44,759,442 valid labels; its guard exited successfully at 23:23:14 UTC on 30 October. The original completion auditor failed on an older storage schema. Versioned read-only recovery passed, followed by a separate verified completion closure. The subsequent CFR CPU gate failed before scoring: zero score attempts and zero auxiliary evaluation charges. No new V6 perplexity exists.
+
+V7 is now running from V6's exact terminal saved model under a separate finite permit. Its live ledger shows 19 updates and 621,206 valid labels, with no new saved checkpoint in this observation. Its finite guard ends **31 October 2026 at 06:02:12 UTC**; the installed project cutoff remains **7 November 2026 at 04:12 UTC**. See the [completion, failure and launch record](/model-training-journal/2026/10/31/v6-complete-v7-running-without-new-scores/) and [dashboard](/model-training-journal/dashboard/).
+
+V5's terminal CFR perplexity 34.2885 on 7,057 development labels remains the latest scored terminal result. V6 and V7 have no new language or reasoning score. BLiMP and the sealed final holdout remain unrun; the earlier task failures remain in the record. No checkpoint has established transferable reasoning.
+
+---
+
+## Preserved dated snapshot: 30 October 2026, 21:18:13 UTC
+
 **Recorded snapshot: 30 October 2026, 21:18:13 UTC.** V6 is running from V5's terminal checkpoint. The first saved V6 checkpoint was committed at 21:17:29.743755 UTC after 229 updates and 7,487,125 valid labels in this run. Its perplexity is **not evaluated**. The later live ledger shows 236 updates and 7,716,009 labels; those later counts are not a second saved checkpoint. See the [V6 run-boundary record](/model-training-journal/2026/10/30/v6-first-saved-checkpoint/).
 
 The separately reviewed project-cutoff extension is now installed at **7 November 2026, 04:12 UTC**. V6 has its own earlier finite guard ending **31 October 2026, 02:44:02 UTC**. The earlier cutoff statements below are preserved as dated history.

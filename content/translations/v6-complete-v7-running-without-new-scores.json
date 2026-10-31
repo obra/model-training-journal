@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "source": "content/posts/2026-10-31-v6-complete-v7-running-without-new-scores.md",
+  "source_sha256": "7299376de0c3d2456cc73f40ea6a1eac671bf99d8ac5e4708741919fd4748d87",
+  "blocks": [
+    {
+      "id": "passage-001",
+      "source_kind": "p",
+      "source_text_sha256": "dc6aa4f0c9a2eed7fa8500a961571b2705a97d6a8a79c76c49fb1382b5fe4f1b",
+      "text": "V6 finished on 30 October at 23:23:14 UTC. It exited normally after 1,369 training steps and 44,759,442 usable next-token predictions. The long SHA-256 number identifies its final saved file. This updates the earlier post, which showed V6 still running. We have verified completion, but we still have no V6 perplexity score."
+    },
+    {
+      "id": "passage-002",
+      "source_kind": "p",
+      "source_text_sha256": "ce84c4933370205c9b1e3b034c2f0a306909e42f0e1bd6d3d051faf775c706ba",
+      "text": "The first completion checker failed because it could not read an older storage-record format. Training had already finished, but that failed check did not prove completion. A new version first checked the saved model, stop record and accounting without changing them. A separate step then marked the run complete at ledger event 1,069,492. Training, checking and recording completion were separate events; one of those checks failed."
+    },
+    {
+      "id": "passage-003",
+      "source_kind": "p",
+      "source_text_sha256": "811bd51d80ebc66f1d6475186b82ad41ed7dcb9aab2ec98fad1bfd78883da29e",
+      "text": "We prepared to test six saved models on federal-regulation text, with exact file hashes fixed in advance. The computer-readiness check failed before scoring. Its connection returned code 255 with no output, under a 180-second process limit. Follow-up checks found no scoring attempts, no extra evaluation charges and no model loaded on the GPU. We do not know exactly why it stopped. Repeatedly reading the large accounting history may have taken too long. An internal alarm or a missed connection heartbeat could explain the stop. Neither cause is proved. There is no new score."
+    },
+    {
+      "id": "passage-004",
+      "source_kind": "div",
+      "source_text_sha256": "b499160cbe31f456dca2d931c0ebf9a35ceb99c89443a02112905e85980a4505",
+      "text": "The table keeps the runs separate. V6 completed 1,369 steps and 44,759,442 predictions, but its text check failed before scoring. V7’s live record at 00:13:09 UTC on 31 October showed 19 steps and 621,206 predictions. At that point it had no new saved version and no score."
+    },
+    {
+      "id": "passage-005",
+      "source_kind": "p",
+      "source_text_sha256": "420578bb5f4b175fa0533cd47a08e686455709e33a93ba2782a150b6ce3643d3",
+      "text": "V7 starts from V6’s exact final saved model. A separate reviewed permit covers the remaining finite batch of text without repeating the earlier text prefix. At 00:13:09 UTC, the live record showed that training had begun and finished 19 steps with 621,206 usable predictions. It had no new V7 save yet. The guard started earlier because it also covers preparation. That start time is not the time training first updated the model. Live counts do not prove a saved or tested model."
+    },
+    {
+      "id": "passage-006",
+      "source_kind": "p",
+      "source_text_sha256": "8cda3086012a9968b128a39a0c4dbdd09dc0a0f985c585e321bab24fc71754ea",
+      "text": "The project’s installed cutoff is still 7 November at 04:12 UTC. This V7 run has an earlier stop time: 31 October at 06:02:12 UTC. Extra project time does not remove that run limit. The dashboard includes this dated table and keeps the older score charts separate. Missing scores stay missing; they are not shown as zero."
+    },
+    {
+      "id": "passage-007",
+      "source_kind": "p",
+      "source_text_sha256": "ca90471c6f9b175c66026f907aac391968805b79e9dea15aaa86081c14667eae",
+      "text": "No new reasoning test has run. V5’s final score of 34.2885 on 7,057 regulation-text predictions remains the latest scored final model. It is not a V6 or V7 score. Those stages have no new broader-text score. BLiMP remains unrun, the format experiment has no successful trial, and the sealed final planning test is unused. The older V3 task check still has 0 of 32 correct answers and 0 of 32 in the required format, which limits what it tells us about reasoning. This AI-assisted journal shares reviewed totals and failures, not private logs or training text. More training alone does not prove reasoning skill."
+    }
+  ]
+}
